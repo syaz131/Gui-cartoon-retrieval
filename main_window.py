@@ -52,3 +52,6 @@ if __name__ == '__main__':
 
 # to compile
 # pyinstaller.exe --onefile Pages_colour.py
+
+# to convert ui to py
+# pyuic5 name_.ui -o Ui_main_pages.py
