@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ccir.ui'
+# Form implementation generated from reading ui file 'UI_ccir.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.1
 #
@@ -17,15 +17,20 @@ class Ui_MainWindow(object):
         MainWindow.resize(1000, 600)
         MainWindow.setMinimumSize(QtCore.QSize(1000, 600))
         MainWindow.setMaximumSize(QtCore.QSize(1400, 800))
+        MainWindow.setAcceptDrops(True)
         MainWindow.setWindowOpacity(1.0)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setMinimumSize(QtCore.QSize(1000, 600))
+        self.centralwidget.setAcceptDrops(True)
         self.centralwidget.setObjectName("centralwidget")
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
         self.stackedWidget.setEnabled(True)
         self.stackedWidget.setGeometry(QtCore.QRect(0, 0, 1001, 601))
         self.stackedWidget.setMinimumSize(QtCore.QSize(950, 500))
+        self.stackedWidget.setAcceptDrops(True)
+        self.stackedWidget.setAutoFillBackground(False)
         self.stackedWidget.setStyleSheet("background-color:white")
+        self.stackedWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.stackedWidget.setObjectName("stackedWidget")
         self.start_page = QtWidgets.QWidget()
         self.start_page.setStyleSheet("background-color:white")
@@ -44,34 +49,43 @@ class Ui_MainWindow(object):
         self.btn_startApp.setObjectName("btn_startApp")
         self.stackedWidget.addWidget(self.start_page)
         self.insert_page = QtWidgets.QWidget()
+        self.insert_page.setAcceptDrops(True)
         self.insert_page.setStyleSheet("background-color:white")
         self.insert_page.setObjectName("insert_page")
-        self.btn_insertImage = QtWidgets.QPushButton(self.insert_page)
-        self.btn_insertImage.setGeometry(QtCore.QRect(420, 420, 181, 51))
-        self.btn_insertImage.setStyleSheet("background-color:gray;\n"
+        self.btn_chooseImage = QtWidgets.QPushButton(self.insert_page)
+        self.btn_chooseImage.setGeometry(QtCore.QRect(330, 420, 181, 51))
+        self.btn_chooseImage.setStyleSheet("background-color:gray;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
 "color: white;\n"
 "")
-        self.btn_insertImage.setObjectName("btn_insertImage")
+        self.btn_chooseImage.setObjectName("btn_chooseImage")
         self.frame_dragDrop = QtWidgets.QFrame(self.insert_page)
         self.frame_dragDrop.setGeometry(QtCore.QRect(320, 120, 401, 271))
+        self.frame_dragDrop.setAcceptDrops(True)
         self.frame_dragDrop.setStyleSheet("background-color:lightgray;\n"
 "border-radius: 10px;")
         self.frame_dragDrop.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_dragDrop.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_dragDrop.setObjectName("frame_dragDrop")
-        self.label_dragDrop = QtWidgets.QLabel(self.frame_dragDrop)
-        self.label_dragDrop.setGeometry(QtCore.QRect(90, 130, 191, 61))
-        self.label_dragDrop.setStyleSheet("background-color:gray;\n"
-"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
-"color: white;\n"
-"border-radius: 0;\n"
-"align:center;\n"
-"padding-left: 30px;")
-        self.label_dragDrop.setObjectName("label_dragDrop")
+        self.cartoon_image = QtWidgets.QLabel(self.frame_dragDrop)
+        self.cartoon_image.setGeometry(QtCore.QRect(20, 20, 361, 231))
+        self.cartoon_image.setAcceptDrops(True)
+        self.cartoon_image.setAutoFillBackground(True)
+        self.cartoon_image.setStyleSheet("background-color:white;\n"
+"border-radius: 0;")
+        self.cartoon_image.setText("")
+        self.cartoon_image.setScaledContents(True)
+        self.cartoon_image.setObjectName("cartoon_image")
         self.text1 = QtWidgets.QPlainTextEdit(self.insert_page)
         self.text1.setGeometry(QtCore.QRect(140, 30, 104, 31))
         self.text1.setObjectName("text1")
+        self.btn_confirmImage = QtWidgets.QPushButton(self.insert_page)
+        self.btn_confirmImage.setGeometry(QtCore.QRect(540, 420, 181, 51))
+        self.btn_confirmImage.setStyleSheet("background-color:gray;\n"
+"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"color: white;\n"
+"")
+        self.btn_confirmImage.setObjectName("btn_confirmImage")
         self.stackedWidget.addWidget(self.insert_page)
         self.match_page = QtWidgets.QWidget()
         self.match_page.setStyleSheet("background-color:white")
@@ -83,15 +97,14 @@ class Ui_MainWindow(object):
         self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_3.setObjectName("frame_3")
-        self.label_5 = QtWidgets.QLabel(self.frame_3)
-        self.label_5.setGeometry(QtCore.QRect(50, 30, 341, 201))
-        self.label_5.setAutoFillBackground(False)
-        self.label_5.setStyleSheet("background-color:white;\n"
+        self.match_page_image = QtWidgets.QLabel(self.frame_3)
+        self.match_page_image.setGeometry(QtCore.QRect(20, 20, 391, 221))
+        self.match_page_image.setAutoFillBackground(False)
+        self.match_page_image.setStyleSheet("background-color:white;\n"
 "border-radius: 0;")
-        self.label_5.setText("")
-        self.label_5.setPixmap(QtGui.QPixmap("images/we bare bear sticker medium.png"))
-        self.label_5.setScaledContents(True)
-        self.label_5.setObjectName("label_5")
+        self.match_page_image.setText("")
+        self.match_page_image.setScaledContents(True)
+        self.match_page_image.setObjectName("match_page_image")
         self.btn_matchCharacter = QtWidgets.QPushButton(self.match_page)
         self.btn_matchCharacter.setGeometry(QtCore.QRect(520, 390, 201, 41))
         self.btn_matchCharacter.setStyleSheet("background-color:gray;\n"
@@ -126,7 +139,7 @@ class Ui_MainWindow(object):
         self.not_found_page.setStyleSheet("background-color:white")
         self.not_found_page.setObjectName("not_found_page")
         self.label = QtWidgets.QLabel(self.not_found_page)
-        self.label.setGeometry(QtCore.QRect(60, 50, 501, 41))
+        self.label.setGeometry(QtCore.QRect(60, 50, 601, 41))
         self.label.setStyleSheet("background-color:pink;\n"
 "border: 2px solid red;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
@@ -146,15 +159,15 @@ class Ui_MainWindow(object):
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
-        self.label_3 = QtWidgets.QLabel(self.frame)
-        self.label_3.setGeometry(QtCore.QRect(10, 10, 271, 151))
-        self.label_3.setAutoFillBackground(False)
-        self.label_3.setStyleSheet("background-color:white;\n"
+        self.label_inputImage1 = QtWidgets.QLabel(self.frame)
+        self.label_inputImage1.setGeometry(QtCore.QRect(10, 10, 271, 151))
+        self.label_inputImage1.setAutoFillBackground(False)
+        self.label_inputImage1.setStyleSheet("background-color:white;\n"
 "border-radius: 0;")
-        self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("images/we bare bear sticker medium.png"))
-        self.label_3.setScaledContents(True)
-        self.label_3.setObjectName("label_3")
+        self.label_inputImage1.setText("")
+        self.label_inputImage1.setPixmap(QtGui.QPixmap("images/we bare bear sticker medium.png"))
+        self.label_inputImage1.setScaledContents(True)
+        self.label_inputImage1.setObjectName("label_inputImage1")
         self.label_4 = QtWidgets.QLabel(self.frame)
         self.label_4.setGeometry(QtCore.QRect(50, 170, 181, 31))
         self.label_4.setStyleSheet("background-color:gray;\n"
@@ -229,24 +242,24 @@ class Ui_MainWindow(object):
         self.frame_7.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_7.setObjectName("frame_7")
-        self.label_13 = QtWidgets.QLabel(self.frame_7)
-        self.label_13.setGeometry(QtCore.QRect(10, 10, 261, 151))
-        self.label_13.setAutoFillBackground(False)
-        self.label_13.setStyleSheet("background-color:white;\n"
+        self.label_inputImage2 = QtWidgets.QLabel(self.frame_7)
+        self.label_inputImage2.setGeometry(QtCore.QRect(10, 10, 261, 151))
+        self.label_inputImage2.setAutoFillBackground(False)
+        self.label_inputImage2.setStyleSheet("background-color:white;\n"
 "border-radius: 0;")
-        self.label_13.setText("")
-        self.label_13.setPixmap(QtGui.QPixmap("images/we bare bear sticker medium.png"))
-        self.label_13.setScaledContents(True)
-        self.label_13.setObjectName("label_13")
-        self.label_14 = QtWidgets.QLabel(self.frame_7)
-        self.label_14.setGeometry(QtCore.QRect(50, 170, 181, 31))
-        self.label_14.setStyleSheet("background-color:gray;\n"
+        self.label_inputImage2.setText("")
+        self.label_inputImage2.setPixmap(QtGui.QPixmap("images/we bare bear sticker medium.png"))
+        self.label_inputImage2.setScaledContents(True)
+        self.label_inputImage2.setObjectName("label_inputImage2")
+        self.label_3 = QtWidgets.QLabel(self.frame_7)
+        self.label_3.setGeometry(QtCore.QRect(50, 170, 181, 31))
+        self.label_3.setStyleSheet("background-color:gray;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
 "color: white;\n"
 "border-radius: 0;\n"
 "align:center;\n"
 "padding-left: 30px;")
-        self.label_14.setObjectName("label_14")
+        self.label_3.setObjectName("label_3")
         self.label_15 = QtWidgets.QLabel(self.found_page)
         self.label_15.setGeometry(QtCore.QRect(50, 40, 291, 41))
         self.label_15.setStyleSheet("background-color:palegreen;\n"
@@ -261,14 +274,14 @@ class Ui_MainWindow(object):
 "font: 12pt \"Shiny Signature\", \"Arial\";\n"
 "color: white;")
         self.btn_insertAnotherImage2.setObjectName("btn_insertAnotherImage2")
-        self.label_16 = QtWidgets.QLabel(self.found_page)
-        self.label_16.setGeometry(QtCore.QRect(370, 40, 291, 41))
-        self.label_16.setStyleSheet("background-color:palegreen;\n"
+        self.label_characterName = QtWidgets.QLabel(self.found_page)
+        self.label_characterName.setGeometry(QtCore.QRect(370, 40, 291, 41))
+        self.label_characterName.setStyleSheet("background-color:palegreen;\n"
 "border: 2px solid green;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
 "padding-left:10px;\n"
 "")
-        self.label_16.setObjectName("label_16")
+        self.label_characterName.setObjectName("label_characterName")
         self.frame_8 = QtWidgets.QFrame(self.found_page)
         self.frame_8.setGeometry(QtCore.QRect(370, 100, 291, 211))
         self.frame_8.setStyleSheet("background-color:lightgray;\n"
@@ -330,10 +343,9 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Cartoon Character Image Retrieval"))
         self.btn_startApp.setText(_translate("MainWindow", "START APPLICATION"))
-        self.btn_insertImage.setText(_translate("MainWindow", "Insert Image"))
-        self.label_dragDrop.setText(_translate("MainWindow", "Drag and drop \n"
-"image"))
+        self.btn_chooseImage.setText(_translate("MainWindow", "Choose Image"))
         self.text1.setPlainText(_translate("MainWindow", "insert page"))
+        self.btn_confirmImage.setText(_translate("MainWindow", "Confirm Image"))
         self.btn_matchCharacter.setText(_translate("MainWindow", "Match Character"))
         self.btn_changeImage.setText(_translate("MainWindow", "Change Image"))
         self.pushButton_foundPage.setText(_translate("MainWindow", "Found page"))
@@ -348,11 +360,11 @@ class Ui_MainWindow(object):
         self.label_6.setText(_translate("MainWindow", "No Appearance Time"))
         self.label_7.setText(_translate("MainWindow", " - "))
         self.label_22.setText(_translate("MainWindow", "No Video Match"))
-        self.label_14.setText(_translate("MainWindow", "Input Image"))
+        self.label_3.setText(_translate("MainWindow", "Input Image"))
         self.label_15.setText(_translate("MainWindow", "Character Found"))
         self.btn_insertAnotherImage2.setText(_translate("MainWindow", "INSERT ANOTHER\n"
 "IMAGE"))
-        self.label_16.setText(_translate("MainWindow", "naruto"))
+        self.label_characterName.setText(_translate("MainWindow", "naruto"))
         self.label_18.setText(_translate("MainWindow", "Retrieved Character"))
         self.text_3.setPlainText(_translate("MainWindow", "list time appearance"))
         self.text_4.setPlainText(_translate("MainWindow", "video play"))
