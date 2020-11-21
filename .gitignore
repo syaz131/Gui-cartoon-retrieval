@@ -2,3 +2,5 @@
 images/
 .idea/
 __pycache__/Ui_main_pages.cpython-37.pyc
+cfg/cartoon_yolo.weights
+output/

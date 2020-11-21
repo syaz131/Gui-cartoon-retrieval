@@ -1,36 +1,17 @@
 # Importing Required Libraries
 import os
 import sys
-import cv2
 import time
-import argparse
+import shutil
+import cv2
 import numpy as np
 
-# Adding Command Line Arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("--classes", required=True,
-                help="path_to_classes/classes.txt : .txt file that contains names of all classes")
-ap.add_argument("--config", required=True, help="path_to_cfg/yolov2.cfg : configuration file of yolo model")
-ap.add_argument("--weights", required=True, help="path_to_weihts/cartoon_yolo.weights : trained model weights file")
-ap.add_argument("--file", required=True,
-                help="path_to_img/img.jpg or path_to_video/video.mp4 : image or video on which you want to perform prediction")
-ap.add_argument("--confidence", type=float, default=0.5, help="minimum probability to filter weak detections")
-ap.add_argument("--threshold", type=float, default=0.3, help="threshold when applying non-maxima suppression")
-
-# Parsing the arguments
-# args = vars(ap.parse_args())
-# CLASSES = args["classes"]
-# CONFIG = args["config"]
-# WEIGHTS = args["weights"]
-# FILE = args["file"]
-# CONFIDENCE = args["confidence"]
-# NMS_THRESHOLD = args["threshold"]
 SCALE = 0.00392
 
 CLASSES = 'cfg/cartoon.names'
 CONFIG = 'cfg/yolov2.cfg'
 WEIGHTS = 'cfg/cartoon_yolo.weights'
-FILE = 'bear_10secs.mp4'  # can be video, can be image
+FILE = 'images/shin-chan2.jpg'  # can be video, can be image
 # FILE = 'image_detect/shin_2.jpg'  # can be video, can be image
 CONFIDENCE = 0.5
 NMS_THRESHOLD = 0.3
@@ -44,6 +25,19 @@ if not os.path.exists(WEIGHTS):
     sys.exit("[ERROR] Invalid weights path given")
 if not os.path.exists(FILE):
     sys.exit("[ERROR] Invalid file path given")
+
+# clear output first
+output_dir = 'output/'
+if os.path.exists(output_dir):
+    try:
+        shutil.rmtree(output_dir)
+    except OSError as e:
+        print("Error: %s : %s" % (output_dir, e.strerror))
+
+# make output directory
+os.mkdir(output_dir)
+
+
 
 # Retriving Mode : video or image based in input file's extension
 # default is set to image
@@ -156,7 +150,7 @@ def process_Image(image, index):
         print("[Prediction] Class : ", classes[class_ids[i]])
         print("[Prediction] Score : ", round(confidences[i] * 100, 6))
 
-    # Storing Image
+    # Storing Image ================= make sure have folder output
     if MODE == "image":
         cv2.imwrite("output/output." + ext, image)
 
@@ -167,12 +161,10 @@ if MODE == "image":
     img = cv2.imread(FILE, cv2.IMREAD_COLOR)
     process_Image(img, 1)
 
-fps1 = 1
 
 if MODE == "video":
     cap = cv2.VideoCapture(FILE)
     fps = int(cap.get(cv2.CAP_PROP_FPS))
-    fps1 = fps
 
     # Change fourcc according to video format supported by your device
     fourcc = cv2.VideoWriter_fourcc(*'MJPG') #(*'XVID')
@@ -200,7 +192,7 @@ if MODE == "video":
 end = time.time()
 total_time = round(end - start, 2)
 print("[INFO] Time : {} sec".format(total_time))
-print(str(fps) + "---" + str(fps1))
+# print(str(fps) + "---" + str(fps1))
 
 # python cartoon.py --classes cfg/cartoon.names --config cfg/yolov2.cfg --weights cartoon_yolo.weights --file image_detect/shin_2.jpg
 # python cartoon.py --classes cfg/cartoon.names --config cfg/yolov2.cfg --weights cartoon_yolo.weights --file image_detect/shin_2.jpg --confidence 0.8 --threshold 0.5
