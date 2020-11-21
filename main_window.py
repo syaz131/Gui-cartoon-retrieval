@@ -9,23 +9,6 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QFileDialog, QSty
 from Ui_main_pages import Ui_MainWindow
 # from Cartoon_character import Cartoon
 
-
-class ImageLabel(QLabel):
-    def __init__(self):
-        super().__init__()
-
-        # self.setAlignment(Qt.AlignCenter)
-        self.setText('\n\n Drop Image Here \n\n')
-        # self.setStyleSheet('''
-        #     QLabel{
-        #         border: 4px dashed #aaa
-        #     }
-        # ''')
-
-    def setPixmap(self, image):
-        super().setPixmap(image)
-
-
 class MainWindow:
     def __init__(self):
         self.main_win = QMainWindow()
