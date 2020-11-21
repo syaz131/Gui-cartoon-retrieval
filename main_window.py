@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QFileDialog, QSty
 
 # change from file
 from Ui_main_pages import Ui_MainWindow
+# from Cartoon_character import Cartoon
 
 
 class ImageLabel(QLabel):

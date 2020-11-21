@@ -6,6 +6,8 @@ import shutil
 import cv2
 import numpy as np
 
+# class Cartoon
+
 SCALE = 0.00392
 
 CLASSES = 'cfg/cartoon.names'
