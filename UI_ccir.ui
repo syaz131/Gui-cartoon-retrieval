@@ -72,7 +72,7 @@
      <enum>QFrame::NoFrame</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="start_page">
      <property name="styleSheet">
@@ -181,10 +181,13 @@ border-radius: 10px;</string>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color:white;
-border-radius: 0;</string>
+border-radius: 0;
+border: 2px dashed gray;
+font-size: 11pt;
+color: gray;</string>
        </property>
        <property name="text">
-        <string/>
+        <string>         Choose an image to search</string>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -261,7 +264,8 @@ border-radius: 10px;</string>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color:white;
-border-radius: 0;</string>
+border-radius: 0;
+</string>
        </property>
        <property name="text">
         <string/>

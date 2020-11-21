@@ -70,10 +70,12 @@ class Ui_MainWindow(object):
         self.cartoon_image = QtWidgets.QLabel(self.frame_dragDrop)
         self.cartoon_image.setGeometry(QtCore.QRect(20, 20, 361, 231))
         self.cartoon_image.setAcceptDrops(True)
-        self.cartoon_image.setAutoFillBackground(True)
+        self.cartoon_image.setAutoFillBackground(False)
         self.cartoon_image.setStyleSheet("background-color:white;\n"
-"border-radius: 0;")
-        self.cartoon_image.setText("")
+"border-radius: 0;\n"
+"border: 2px dashed gray;\n"
+"font-size: 11pt;\n"
+"color: gray;")
         self.cartoon_image.setScaledContents(True)
         self.cartoon_image.setObjectName("cartoon_image")
         self.text1 = QtWidgets.QPlainTextEdit(self.insert_page)
@@ -101,7 +103,8 @@ class Ui_MainWindow(object):
         self.match_page_image.setGeometry(QtCore.QRect(20, 20, 391, 221))
         self.match_page_image.setAutoFillBackground(False)
         self.match_page_image.setStyleSheet("background-color:white;\n"
-"border-radius: 0;")
+"border-radius: 0;\n"
+"")
         self.match_page_image.setText("")
         self.match_page_image.setScaledContents(True)
         self.match_page_image.setObjectName("match_page_image")
@@ -336,7 +339,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -344,6 +347,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Cartoon Character Image Retrieval"))
         self.btn_startApp.setText(_translate("MainWindow", "START APPLICATION"))
         self.btn_chooseImage.setText(_translate("MainWindow", "Choose Image"))
+        self.cartoon_image.setText(_translate("MainWindow", "         Choose an image to search"))
         self.text1.setPlainText(_translate("MainWindow", "insert page"))
         self.btn_confirmImage.setText(_translate("MainWindow", "Confirm Image"))
         self.btn_matchCharacter.setText(_translate("MainWindow", "Match Character"))

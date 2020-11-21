@@ -63,7 +63,6 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
     def showMatchPage(self):
-
         try:
             if self.image_name != '':
                 self.ui.match_page_image.setPixmap(QPixmap(self.image_name))
@@ -71,36 +70,11 @@ class MainWindow:
 
             else:
                 # when no file selected
-                print('null')
-
-                msg = QMessageBox()
-                msg.setIcon(QMessageBox.Information)
-
-                msg.setText("This is a message box")
-                msg.setInformativeText("This is additional information")
-                msg.setWindowTitle("MessageBox demo")
-                msg.setDetailedText("The details are as follows:")
-
-                msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-                # msg.buttonClicked.connect(msgbtn)
-                # retval = msg.exec_()
-                # print"value of pressed message box button:", retval
+                self.showPopupBox()
 
         except:
-
             # when no file selected
-            print('no type str')
-
-    def chooseImage(self):
-        fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
-                                            'c:\\', "Image files (*.jpg *.png *.jpeg)")
-        # print(fname[0].title())
-        # print(type(fname[0]))
-        self.image_name = fname[0]
-        # self.characterName = 'Boruto'
-        self.characterName = self.ui.text_2.toPlainText()
-
-        self.ui.cartoon_image.setPixmap(QPixmap(self.image_name))
+            self.showPopupBox()
 
     def showNotFoundPage(self):
         self.ui.label_inputImage1.setPixmap(QPixmap(self.image_name))
@@ -112,6 +86,31 @@ class MainWindow:
 
         self.ui.label_inputImage2.setPixmap(QPixmap(self.image_name))
         self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
+
+    def showPopupBox(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setWindowTitle("Warning Popup")
+        msg.setText("No Image!")
+        msg.setInformativeText("Please choose an Image")
+        msg.setStandardButtons(QMessageBox.Ok)
+        x = msg.exec_()
+
+    # =================== button function ========================
+
+    # to read image
+    def chooseImage(self):
+        fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
+                                            'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                            "Image files (*.jpg *.png *.jpeg)")
+        # 'c:\\', "Image files (*.jpg *.png *.jpeg)")
+        # print(fname[0].title())
+        # print(type(fname[0]))
+        self.image_name = fname[0]
+        self.characterName = 'rename me'
+        # self.characterName = self.ui.text_2.toPlainText()
+
+        self.ui.cartoon_image.setPixmap(QPixmap(self.image_name))
 
     # # =================== play video event ========================
     #
