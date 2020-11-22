@@ -763,10 +763,13 @@ border-radius: 10px;</string>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color:white;
-border-radius: 0;</string>
+border-radius: 0;
+font-size: 9.5pt;
+color: gray;</string>
        </property>
        <property name="text">
-        <string/>
+        <string>           Double click on Data to 
+               open Frame</string>
        </property>
        <property name="pixmap">
         <pixmap>images/title we bare bear.png</pixmap>
@@ -864,21 +867,40 @@ padding-left: 30px;</string>
        </property>
       </widget>
      </widget>
-     <widget class="QLabel" name="label_8">
+     <widget class="QTableWidget" name="tableFrameFound">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>50</y>
-        <width>331</width>
-        <height>16</height>
+        <x>40</x>
+        <y>80</y>
+        <width>621</width>
+        <height>201</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">font: 9pt; background-color:palegreen;</string>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
       </property>
-      <property name="text">
-       <string> -  Double click on Data to change Frame</string>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
       </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::NoSelection</enum>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>189</number>
+      </attribute>
+      <attribute name="verticalHeaderCascadingSectionResizes">
+       <bool>false</bool>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>File Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Time Appearance</string>
+       </property>
+      </column>
      </widget>
     </widget>
    </widget>

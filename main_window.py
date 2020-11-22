@@ -3,10 +3,12 @@ import sys, os, glob
 from PyQt5.QtCore import Qt, QUrl, QDir
 from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
-from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QFileDialog, QStyle, QAction, QMessageBox, QTableWidgetItem
+from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox, QTableWidgetItem
 
 # change from file
 from Ui_main_pages import Ui_MainWindow
+
+
 # from Cartoon_character import Cartoon
 
 class MainWindow:
@@ -41,8 +43,8 @@ class MainWindow:
 
         # ======= initiate table ==============
         # change width of column
-        # self.ui.table1.setColumnWidth(0, 420)
-        # self.ui.table1.setColumnWidth(1, 150)
+        self.ui.tableFrameFound.setColumnWidth(0, 420)
+        self.ui.tableFrameFound.setColumnWidth(1, 160)
         #
         # # button openFile =====================================
         # self.ui.table1.itemDoubleClicked.connect(self.openImage)
@@ -50,7 +52,8 @@ class MainWindow:
         # self.loadData()
 
     def loadData(self):
-        people = [{'name': 'images\\title we bare bear.png', 'age': 45, 'address': 'NY', }, {'name': 'Mark', 'age': 41, 'address': 'ENG', },
+        people = [{'name': 'images\\title we bare bear.png', 'age': 45, 'address': 'NY', },
+                  {'name': 'Mark', 'age': 41, 'address': 'ENG', },
                   {'name': 'output_video.mp4', 'age': 45, 'address': 'NY', },
                   {'name': 'images\\shin-chan2.jpg', 'age': 41, 'address': 'ENG', },
                   {'name': 'John', 'age': 45, 'address': 'NY', }, {'name': 'Mark', 'age': 41, 'address': 'ENG', },
@@ -69,18 +72,69 @@ class MainWindow:
             # self.ui.table1.setItem(row, 2, QTableWidgetItem(person['address']))
             row = row + 1
 
-    def load_frame_output_data(self, name_list, time_list):
+    def load_frame_output_data(self, name_list='h', time_list='h'):
         print('hai')
+        print(name_list + time_list)
         # self.ui.table1.setRowCount(len(people))
 
-        # row = 0
-        #
         # for person in people:
         #     self.ui.table1.setItem(row, 0, QTableWidgetItem(person['name']))
         #     self.ui.table1.setItem(row, 1, QTableWidgetItem(str(person['age'])))  # number change to str like print
         #     # self.ui.table1.setItem(row, 2, QTableWidgetItem(person['address']))
         #     row = row + 1
 
+        times = ['1.000 sec', '1.033 sec', '1.066 sec', '1.100 sec', '1.133 sec', '1.166 sec', '1.200 sec', '1.233 sec',
+                 '1.266 sec', '1.300 sec', '1.333 sec', '1.366 sec', '1.400 sec', '1.433 sec', '1.466 sec', '1.500 sec',
+                 '1.533 sec', '1.666 sec', '1.700 sec', '1.733 sec', '1.766 sec', '1.800 sec', '1.833 sec', '1.866 sec',
+                 '1.900 sec', '1.933 sec', '1.966 sec', '2.000 sec', '2.033 sec', '2.066 sec', '2.100 sec', '2.133 sec',
+                 '2.166 sec', '2.200 sec', '2.233 sec', '2.266 sec', '2.300 sec', '2.333 sec', '2.366 sec', '2.400 sec',
+                 '2.433 sec', '2.466 sec', '2.500 sec', '2.533 sec', '2.566 sec', '2.600 sec', '2.633 sec', '2.666 sec',
+                 '2.700 sec', '2.733 sec', '2.766 sec', '2.800 sec', '2.833 sec', '2.866 sec', '2.900 sec', '2.933 sec',
+                 '2.966 sec', '3.000 sec', '3.033 sec', '3.066 sec', '3.100 sec', '3.133 sec', '3.166 sec', '3.200 sec',
+                 '3.233 sec', '3.266 sec', '3.300 sec', '3.333 sec', '3.366 sec', '3.400 sec', '3.433 sec', '3.466 sec',
+                 '3.500 sec', '3.699 sec', '3.733 sec']
+        files = ['output\\output_bean00031.png', 'output\\output_bean00032.png', 'output\\output_bean00033.png',
+                 'output\\output_bean00034.png', 'output\\output_bean00035.png', 'output\\output_bean00036.png',
+                 'output\\output_bean00037.png', 'output\\output_bean00038.png', 'output\\output_bean00039.png',
+                 'output\\output_bean00040.png', 'output\\output_bean00041.png', 'output\\output_bean00042.png',
+                 'output\\output_bean00043.png', 'output\\output_bean00044.png', 'output\\output_bean00045.png',
+                 'output\\output_bean00046.png', 'output\\output_bean00047.png', 'output\\output_bean00051.png',
+                 'output\\output_bean00052.png', 'output\\output_bean00053.png', 'output\\output_bean00054.png',
+                 'output\\output_bean00055.png', 'output\\output_bean00056.png', 'output\\output_bean00057.png',
+                 'output\\output_bean00058.png', 'output\\output_bean00059.png', 'output\\output_bean00060.png',
+                 'output\\output_bean00061.png', 'output\\output_bean00062.png', 'output\\output_bean00063.png',
+                 'output\\output_bean00064.png', 'output\\output_bean00065.png', 'output\\output_bean00066.png',
+                 'output\\output_bean00067.png', 'output\\output_bean00068.png', 'output\\output_bean00069.png',
+                 'output\\output_bean00070.png', 'output\\output_bean00071.png', 'output\\output_bean00072.png',
+                 'output\\output_bean00073.png', 'output\\output_bean00074.png', 'output\\output_bean00075.png',
+                 'output\\output_bean00076.png', 'output\\output_bean00077.png', 'output\\output_bean00078.png',
+                 'output\\output_bean00079.png', 'output\\output_bean00080.png', 'output\\output_bean00081.png',
+                 'output\\output_bean00082.png', 'output\\output_bean00083.png', 'output\\output_bean00084.png',
+                 'output\\output_bean00085.png', 'output\\output_bean00086.png', 'output\\output_bean00087.png',
+                 'output\\output_bean00088.png', 'output\\output_bean00089.png', 'output\\output_bean00090.png',
+                 'output\\output_bean00091.png', 'output\\output_bean00092.png', 'output\\output_bean00093.png',
+                 'output\\output_bean00094.png', 'output\\output_bean00095.png', 'output\\output_bean00096.png',
+                 'output\\output_bean00097.png', 'output\\output_bean00098.png', 'output\\output_bean00099.png',
+                 'output\\output_bean00100.png', 'output\\output_bean00101.png', 'output\\output_bean00102.png',
+                 'output\\output_bean00103.png', 'output\\output_bean00104.png', 'output\\output_bean00105.png',
+                 'output\\output_bean00106.png', 'output\\output_bean00112.png', 'output\\output_bean00113.png']
+
+        self.ui.tableFrameFound.clear()
+
+        # for person in people:
+        #     self.ui.table1.setItem(row, 0, QTableWidgetItem(person['name']))
+
+        row = 0
+        for file in files:
+            self.ui.tableFrameFound.setItem(row, 0, QTableWidgetItem('file'))
+            row = row + 1
+
+        row = 0
+        for time in times:
+            self.ui.tableFrameFound.setItem(row, 1, QTableWidgetItem('time'))
+            row = row + 1
+
+        print(row)
     # =================== show pages ========================
     def show(self):
         self.main_win.show()
@@ -120,8 +174,10 @@ class MainWindow:
         #
         # self.ui.label_characterName.setText(self.characterName)
         # # self.ui.label_16.setText(self.character_name)
-        #
-        # self.ui.label_inputImage2.setPixmap(QPixmap(self.image_name))
+
+        self.load_frame_output_data('jk', 'r')  # get timestamps and fileNames
+        self.ui.inputImage_found.setPixmap(QPixmap(self.image_name))
+        self.ui.label_characterName.setText('biri biri')  # getCharacterName
         self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
 
     def showPopupError(self, errorText, errorInfo):
@@ -132,7 +188,6 @@ class MainWindow:
         msg.setInformativeText(errorInfo)
         msg.setStandardButtons(QMessageBox.Ok)
         x = msg.exec_()
-
 
     # =================== button function ========================
 
@@ -169,8 +224,6 @@ class MainWindow:
             self.ui.frameFound.setPixmap(QPixmap(fileName))
         else:
             self.showPopupError('Not an image', 'File open should be in *.png, *jpeg, *jpg')
-
-
 
     # # =================== play video event ========================
     #

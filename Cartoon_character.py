@@ -190,7 +190,7 @@ class Cartoon:
                         output_frame_name = "output/" + output_file
                         fileName = 'output\\' + output_file
 
-                        self.timestamps.append(frameTimestamp)
+                        self.timestamps.append(str(frameTimestamp) + ' sec')
                         self.fileNames.append(fileName)
                         cv2.imwrite(output_frame_name, frame)
 
@@ -269,4 +269,6 @@ if __name__ == '__main__':
     cartoon.detectCharacter()
     print(cartoon.timestamps)
     print(cartoon.fileNames)
+    print(len(cartoon.fileNames))
+    print(len(cartoon.fileNames))
     # print(cartoon.getCharacterName())
