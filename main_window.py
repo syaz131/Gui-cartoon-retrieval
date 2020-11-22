@@ -17,8 +17,8 @@ class MainWindow:
         # mimeData = QMimeData()
 
         # start first page
-        self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
-        # self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
+        # self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
         # set switch button pages
         self.ui.btn_startApp.clicked.connect(self.showInsertPage)
@@ -41,8 +41,9 @@ class MainWindow:
 
         # ======= initiate table ==============
         # change width of column
-        self.ui.tableFrameFound.setColumnWidth(0, 420)
-        self.ui.tableFrameFound.setColumnWidth(1, 150)
+        self.ui.tableFrameFound.setColumnWidth(0, 280)
+        self.ui.tableFrameFound.setColumnWidth(1, 160)
+        self.ui.tableFrameFound.setColumnWidth(2, 120)
         #
         # # button openFile =====================================
         self.ui.tableFrameFound.itemDoubleClicked.connect(self.changeFrameFound)
@@ -90,6 +91,16 @@ class MainWindow:
                  '2.966 sec', '3.000 sec', '3.033 sec', '3.066 sec', '3.100 sec', '3.133 sec', '3.166 sec', '3.200 sec',
                  '3.233 sec', '3.266 sec', '3.300 sec', '3.333 sec', '3.366 sec', '3.400 sec', '3.433 sec', '3.466 sec',
                  '3.500 sec', '3.699 sec', '3.733 sec']
+        accuracies = ['10.19%', '1.033 sec', '1 sec', '1 sec', '1.133 sec', '1.166 sec', '1.200 sec', '1.233 sec',
+                 '1.266 sec', '1.300 sec', '1.333 sec', '1.366 sec', '1.400 sec', '1.433 sec', '1.466 sec', '1.500 sec',
+                 '1.533 sec', '1.666 sec', '1.700 sec', '1.733 sec', '1.766 sec', '1.800 sec', '1.833 sec', '1.866 sec',
+                 '1.900 sec', '1.933 sec', '1.966 sec', '2.000 sec', '2.033 sec', '2.066 sec', '2.100 sec', '2.133 sec',
+                 '2.166 sec', '2.200 sec', '2.233 sec', '2.266 sec', '2.300 sec', '2.333 sec', '2.366 sec', '2.400 sec',
+                 '2.433 sec', '2.466 sec', '2.500 sec', '2.533 sec', '2.566 sec', '2.600 sec', '2.633 sec', '2.666 sec',
+                 '2.700 sec', '2.733 sec', '2.766 sec', '2.800 sec', '2.833 sec', '2.866 sec', '2.900 sec', '2.933 sec',
+                 '2.966 sec', '3.000 sec', '3.033 sec', '3.066 sec', '3.100 sec', '3.133 sec', '3.166 sec', '3.200 sec',
+                 '3.233 sec', '3.266 sec', '3.300 sec', '3.333 sec', '3.366 sec', '3.400 sec', '3.433 sec', '3.466 sec',
+                 '3.500 sec', '3.699 sec', '3.733 sec']
         files = ['output\\output_bean00031.png', 'output\\output_bean00032.png', 'output\\output_bean00033.png',
                  'images\\shin-chan2.jpg', 'images\\title we bare bear.png', 'output\\output_bean00036.png',
                  'images\\title we bare bear.png', 'output\\output_bean00038.png', 'output\\output_bean00039.png',
@@ -128,7 +139,11 @@ class MainWindow:
             self.ui.tableFrameFound.setItem(row, 1, QTableWidgetItem(time))
             row = row + 1
 
-        print(row)
+        row = 0
+        for accuracy in accuracies:
+            self.ui.tableFrameFound.setItem(row, 2, QTableWidgetItem(accuracy))
+            row = row + 1
+
     # =================== show pages ========================
     def show(self):
         self.main_win.show()
@@ -195,7 +210,8 @@ class MainWindow:
         row = self.ui.tableFrameFound.currentRow()
         item = self.ui.tableFrameFound.item(row, 0).text()
         time = self.ui.tableFrameFound.item(row, 1).text()
-        self.ui.label_frameTitle.setText('Frame at ' + time)
+        acc = self.ui.tableFrameFound.item(row, 2).text()
+        self.ui.label_frameTitle.setText('Frame Time : ' + time + '\nAccuracy : ' + acc)
         self.setFrameFound(item)
 
     def runFile(self, fileName):

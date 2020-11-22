@@ -905,6 +905,11 @@ padding-left: 30px;</string>
         <string>Time Appearance</string>
        </property>
       </column>
+      <column>
+       <property name="text">
+        <string>Accuracy</string>
+       </property>
+      </column>
      </widget>
      <widget class="QLabel" name="label_frameTitle">
       <property name="geometry">
