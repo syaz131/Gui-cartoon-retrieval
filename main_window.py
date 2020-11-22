@@ -77,9 +77,9 @@ class MainWindow:
             # self.ui.table1.setItem(row, 2, QTableWidgetItem(person['address']))
             row = row + 1
 
-    def load_frame_output_data(self, name_list='h', time_list='h'):
+    def load_frame_output_data(self, name_list='h', time_list='h', accuracy_list='b'):
         print('hai')
-        print(name_list + time_list)
+        print(name_list + time_list + accuracy_list)
 
         times = ['1.000 sec', '1.033 sec', '1.066 sec', '1.100 sec', '1.133 sec', '1.166 sec', '1.200 sec', '1.233 sec',
                  '1.266 sec', '1.300 sec', '1.333 sec', '1.366 sec', '1.400 sec', '1.433 sec', '1.466 sec', '1.500 sec',
@@ -181,7 +181,7 @@ class MainWindow:
 
     def showFoundPage(self):
         output_image_name = 'output_image.png'
-        self.load_frame_output_data('jk', 'r')  # get timestamps and fileNames
+        self.load_frame_output_data('jk', 'r', 'l')  # get timestamps and fileNames
         self.ui.inputImage_found.setPixmap(QPixmap(output_image_name))
         self.ui.label_characterName.setText(self.cartoon_image.getCharacterName())
         self.ui.label_accuracy.setText(self.cartoon_image.accuracy_image)

@@ -1,8 +1,9 @@
 # Importing Required Libraries
+import imutils
 import os
+import shutil
 import sys
 import time
-import shutil
 import cv2
 import numpy as np
 
@@ -25,8 +26,10 @@ class Cartoon:
         self.characterName = ''
         self.timestamps = []
         self.fileNames = []
+        self.frame_accuracies = []
         self.isFound = False
         self.accuracy_image = ''
+        self.isFrameMatched = False
 
         # Validation of Paths / Files
         if not os.path.exists(self.CLASSES):
@@ -91,6 +94,8 @@ class Cartoon:
         cv2.rectangle(image, (x, y), (x_plus_width, y_plus_height), color, 2)
         cv2.putText(image, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
         self.accuracy_image = 'Accuracy : ' + str(round(confidence * 100, 2)) + '%'
+        # for video frame
+        self.isFrameMatched = True
 
     # Function to Process Image - Forward Propogation, NMS, BBox
     def process_Image(self, image, index):
@@ -169,34 +174,40 @@ class Cartoon:
             cap = cv2.VideoCapture(self.FILE)
             fps = int(cap.get(cv2.CAP_PROP_FPS))
 
+            ret, frame = cap.read()  # read first frame
+            frame = imutils.resize(frame, width=600)
+
             # Change fourcc according to video format supported by your device
             fourcc = cv2.VideoWriter_fourcc(*'MJPG')  # (*'XVID')
-            op_vid = cv2.VideoWriter("output_video." + self.ext, fourcc, fps,
-                                     (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))))
+            op_vid = cv2.VideoWriter("output_video." + self.ext, fourcc, fps, (frame.shape[1], frame.shape[0]))
 
             index = 0
             self.timestamps.clear()
             self.fileNames.clear()
+            self.frame_accuracies.clear()
 
             while cap.isOpened():
                 # Reading video frame by frame
                 ret, frame = cap.read()
-                numOfFrame = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+                # numOfFrame = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
                 if ret:
-                    frameTimestamp = int(cap.get(cv2.CAP_PROP_POS_MSEC))/1000  # in milliseconds - times by 1000
+                    frame = imutils.resize(frame, width=600)
+                    frameTimestamp = int(cap.get(cv2.CAP_PROP_POS_MSEC)) / 1000  # in milliseconds - times by 1000
                     frameTimestamp = "{:.3f}".format(frameTimestamp)
 
                     self.process_Image(frame, index)
                     index += 1
                     op_vid.write(frame)
-                    if not self.isFrameMatched:
+
+                    if self.isFrameMatched:  # is character = character / label
                         output_file = "output_" + self.characterName + str(index).zfill(5) + "." + "png"
                         output_frame_name = "output/" + output_file
                         fileName = 'output\\' + output_file
 
                         self.timestamps.append(str(frameTimestamp) + ' sec')
                         self.fileNames.append(fileName)
+                        self.frame_accuracies.append(self.accuracy_image)
                         cv2.imwrite(output_frame_name, frame)
 
                 else:
@@ -208,17 +219,8 @@ class Cartoon:
         end = time.time()
         total_time = round(end - start, 2)
         print("[INFO] Time : {} sec".format(total_time))
-
-        # [Num of Frame] - 154
-        # [number of timestamp] - 153
-        # BEAN
+        print(len(self.frame_accuracies))
         # print(self.timestamps)
-
-        # print("[Timestamp] - ")
-        # print(self.timestamps)
-        #
-        # print('\n\n\n\n[Num of Frame] - ' + str(numOfFrame))
-        # print(len(self.timestamps))
 
     def checkVideo(self):
         return 0
@@ -259,11 +261,11 @@ class Cartoon:
         charName = self.characterName.upper()
         return charName
 
-#
-# if __name__ == '__main__':
-#     cartoon = Cartoon()
-#     # dir = 'images/shin-chan2.jpg'
-#     dir = 'images/bean 5 secs.mp4'
-#     # cartoon.setConfidence(0.6)
-#     cartoon.setFileName(dir)
-#     cartoon.detectCharacter()
+
+if __name__ == '__main__':
+    cartoon = Cartoon()
+    # dir = 'images/shin-chan2.jpg'
+    dir = 'images/bean 5 secs.mp4'
+    # cartoon.setConfidence(0.6)
+    cartoon.setFileName(dir)
+    cartoon.detectCharacter()
