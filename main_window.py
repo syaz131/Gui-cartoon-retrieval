@@ -44,7 +44,7 @@ class MainWindow:
         # ======= initiate table ==============
         # change width of column
         self.ui.tableFrameFound.setColumnWidth(0, 420)
-        self.ui.tableFrameFound.setColumnWidth(1, 160)
+        self.ui.tableFrameFound.setColumnWidth(1, 150)
         #
         # # button openFile =====================================
         # self.ui.table1.itemDoubleClicked.connect(self.openImage)
@@ -61,14 +61,15 @@ class MainWindow:
                   {'name': 'John', 'age': 45, 'address': 'NY', }, {'name': 'Mark', 'age': 41, 'address': 'ENG', }
                   ]
 
+        self.ui.tableFrameFound.clear()
         row = 0
-        self.ui.table1.setRowCount(len(people))
+        self.ui.tableFrameFound.setRowCount(len(people))
 
         print(type(people))
 
         for person in people:
-            self.ui.table1.setItem(row, 0, QTableWidgetItem(person['name']))
-            self.ui.table1.setItem(row, 1, QTableWidgetItem(str(person['age'])))  # number change to str like print
+            self.ui.tableFrameFound.setItem(row, 0, QTableWidgetItem(person['name']))
+            self.ui.tableFrameFound.setItem(row, 1, QTableWidgetItem(str(person['age'])))  # number change to str like print
             # self.ui.table1.setItem(row, 2, QTableWidgetItem(person['address']))
             row = row + 1
 
@@ -119,19 +120,24 @@ class MainWindow:
                  'output\\output_bean00103.png', 'output\\output_bean00104.png', 'output\\output_bean00105.png',
                  'output\\output_bean00106.png', 'output\\output_bean00112.png', 'output\\output_bean00113.png']
 
-        self.ui.tableFrameFound.clear()
+        # self.ui.tableFrameFound.clear()
+        # self.ui.tableFrameFound.horizontalHeaderItem(0).setText('Frame Name')
+        # self.ui.tableFrameFound.horizontalHeaderItem(1).setText('Time Appearance')
+        # item = self.tableFrameFound.horizontalHeaderItem(0)
+        # item.setText(_translate("MainWindow", "File Name"))
+        self.ui.tableFrameFound.setRowCount(len(files))
 
         # for person in people:
         #     self.ui.table1.setItem(row, 0, QTableWidgetItem(person['name']))
 
         row = 0
         for file in files:
-            self.ui.tableFrameFound.setItem(row, 0, QTableWidgetItem('file'))
+            self.ui.tableFrameFound.setItem(row, 0, QTableWidgetItem(file))
             row = row + 1
 
         row = 0
         for time in times:
-            self.ui.tableFrameFound.setItem(row, 1, QTableWidgetItem('time'))
+            self.ui.tableFrameFound.setItem(row, 1, QTableWidgetItem(time))
             row = row + 1
 
         print(row)
@@ -178,6 +184,7 @@ class MainWindow:
         self.load_frame_output_data('jk', 'r')  # get timestamps and fileNames
         self.ui.inputImage_found.setPixmap(QPixmap(self.image_name))
         self.ui.label_characterName.setText('biri biri')  # getCharacterName
+        self.ui.label_frameTitle.setText('Character found at ' + '1 sec')  # getCharacterName
         self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
 
     def showPopupError(self, errorText, errorInfo):

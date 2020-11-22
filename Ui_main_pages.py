@@ -302,15 +302,15 @@ class Ui_MainWindow(object):
         self.frameFound.setPixmap(QtGui.QPixmap("images/title we bare bear.png"))
         self.frameFound.setScaledContents(True)
         self.frameFound.setObjectName("frameFound")
-        self.label_18 = QtWidgets.QLabel(self.frame_8)
-        self.label_18.setGeometry(QtCore.QRect(10, 170, 271, 21))
-        self.label_18.setStyleSheet("background-color:gray;\n"
+        self.label_frameTitle = QtWidgets.QLabel(self.frame_8)
+        self.label_frameTitle.setGeometry(QtCore.QRect(10, 170, 271, 21))
+        self.label_frameTitle.setStyleSheet("background-color:gray;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
 "color: white;\n"
 "border-radius: 0;\n"
 "align:center;\n"
 "padding-left: 30px;")
-        self.label_18.setObjectName("label_18")
+        self.label_frameTitle.setObjectName("label_frameTitle")
         self.frame_11 = QtWidgets.QFrame(self.found_page)
         self.frame_11.setGeometry(QtCore.QRect(40, 300, 471, 281))
         self.frame_11.setStyleSheet("background-color:lightgray;\n"
@@ -385,11 +385,11 @@ class Ui_MainWindow(object):
         self.label_characterName.setText(_translate("MainWindow", "naruto"))
         self.frameFound.setText(_translate("MainWindow", "           Double click on Data to \n"
 "               open Frame"))
-        self.label_18.setText(_translate("MainWindow", "Retrieved Character"))
+        self.label_frameTitle.setText(_translate("MainWindow", "Retrieved Character"))
         self.label_5.setText(_translate("MainWindow", "Video"))
         self.label_23.setText(_translate("MainWindow", "Video Match"))
         self.text_4.setPlainText(_translate("MainWindow", "video play"))
         item = self.tableFrameFound.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "File Name"))
+        item.setText(_translate("MainWindow", "Frame Name"))
         item = self.tableFrameFound.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Time Appearance"))
