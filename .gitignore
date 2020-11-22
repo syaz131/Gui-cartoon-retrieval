@@ -5,3 +5,4 @@ __pycache__/Ui_main_pages.cpython-37.pyc
 cfg/cartoon_yolo.weights
 output/
 *.mp4
+__pycache__/Ui_table_page.cpython-37.pyc

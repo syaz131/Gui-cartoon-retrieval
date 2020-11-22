@@ -24,6 +24,7 @@ class Cartoon:
         self.FILE = ''  # can be video, can be image
         self.characterName = ''
         self.timestamps = []
+        self.fileNames = []
 
         # Validation of Paths / Files
         if not os.path.exists(self.CLASSES):
@@ -170,6 +171,7 @@ class Cartoon:
 
             index = 0
             self.timestamps.clear()
+            self.fileNames.clear()
 
             while (cap.isOpened()):
                 # Reading video frame by frame
@@ -177,15 +179,19 @@ class Cartoon:
                 numOfFrame = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
                 if ret:
-                    frameTimestamp = int(cap.get(cv2.CAP_PROP_POS_MSEC))  # in milliseconds - times by 1000
-                    self.timestamps.append(frameTimestamp)
+                    frameTimestamp = int(cap.get(cv2.CAP_PROP_POS_MSEC))/1000  # in milliseconds - times by 1000
+                    frameTimestamp = "{:.3f}".format(frameTimestamp)
 
                     self.process_Image(frame, index)
                     index += 1
                     op_vid.write(frame)
                     if not self.isFrameMatched:
-                        #  name = './'+ capt_folder + '/frame' + str(currentFrame).zfill(4) + '.jpg'
-                        output_frame_name = "output/output_" + self.characterName + str(index).zfill(5) + "." + "png"
+                        output_file = "output_" + self.characterName + str(index).zfill(5) + "." + "png"
+                        output_frame_name = "output/" + output_file
+                        fileName = 'output\\' + output_file
+
+                        self.timestamps.append(frameTimestamp)
+                        self.fileNames.append(fileName)
                         cv2.imwrite(output_frame_name, frame)
 
                 else:
@@ -201,6 +207,7 @@ class Cartoon:
         # [Num of Frame] - 154
         # [number of timestamp] - 153
         # BEAN
+        # print(self.timestamps)
 
         # print("[Timestamp] - ")
         # print(self.timestamps)
@@ -257,7 +264,9 @@ if __name__ == '__main__':
     # dir = 'images/shin-chan2.jpg'
     dir = 'images/bean 5 secs.mp4'
     # dir = 'images/bean-10secs.mp4'
-    cartoon.setConfidence(0.6)
+    # cartoon.setConfidence(0.6)
     cartoon.setFileName(dir)
     cartoon.detectCharacter()
-    print(cartoon.getCharacterName())
+    print(cartoon.timestamps)
+    print(cartoon.fileNames)
+    # print(cartoon.getCharacterName())

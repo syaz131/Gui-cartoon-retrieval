@@ -3,7 +3,7 @@ import sys, os, glob
 from PyQt5.QtCore import Qt, QUrl, QDir
 from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
-from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QFileDialog, QStyle, QAction, QMessageBox
+from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QFileDialog, QStyle, QAction, QMessageBox, QTableWidgetItem
 
 # change from file
 from Ui_main_pages import Ui_MainWindow
@@ -17,8 +17,8 @@ class MainWindow:
         # mimeData = QMimeData()
 
         # start first page
-        # self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
-        self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
+        # self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
 
         # set switch button pages
         self.ui.btn_startApp.clicked.connect(self.showInsertPage)
@@ -39,6 +39,48 @@ class MainWindow:
         # drag and drop image
         # self.ui.cartoon_image.setPixmap(image)
 
+        # ======= initiate table ==============
+        # change width of column
+        # self.ui.table1.setColumnWidth(0, 420)
+        # self.ui.table1.setColumnWidth(1, 150)
+        #
+        # # button openFile =====================================
+        # self.ui.table1.itemDoubleClicked.connect(self.openImage)
+
+        # self.loadData()
+
+    def loadData(self):
+        people = [{'name': 'images\\title we bare bear.png', 'age': 45, 'address': 'NY', }, {'name': 'Mark', 'age': 41, 'address': 'ENG', },
+                  {'name': 'output_video.mp4', 'age': 45, 'address': 'NY', },
+                  {'name': 'images\\shin-chan2.jpg', 'age': 41, 'address': 'ENG', },
+                  {'name': 'John', 'age': 45, 'address': 'NY', }, {'name': 'Mark', 'age': 41, 'address': 'ENG', },
+                  {'name': 'John', 'age': 45, 'address': 'NY', }, {'name': 'Mark', 'age': 41, 'address': 'ENG', },
+                  {'name': 'John', 'age': 45, 'address': 'NY', }, {'name': 'Mark', 'age': 41, 'address': 'ENG', }
+                  ]
+
+        row = 0
+        self.ui.table1.setRowCount(len(people))
+
+        print(type(people))
+
+        for person in people:
+            self.ui.table1.setItem(row, 0, QTableWidgetItem(person['name']))
+            self.ui.table1.setItem(row, 1, QTableWidgetItem(str(person['age'])))  # number change to str like print
+            # self.ui.table1.setItem(row, 2, QTableWidgetItem(person['address']))
+            row = row + 1
+
+    def load_frame_output_data(self, name_list, time_list):
+        print('hai')
+        # self.ui.table1.setRowCount(len(people))
+
+        # row = 0
+        #
+        # for person in people:
+        #     self.ui.table1.setItem(row, 0, QTableWidgetItem(person['name']))
+        #     self.ui.table1.setItem(row, 1, QTableWidgetItem(str(person['age'])))  # number change to str like print
+        #     # self.ui.table1.setItem(row, 2, QTableWidgetItem(person['address']))
+        #     row = row + 1
+
     # =================== show pages ========================
     def show(self):
         self.main_win.show()
@@ -54,31 +96,43 @@ class MainWindow:
 
             else:
                 # when no file selected
-                self.showPopupBox()
+                self.showPopupError('No Image!', "Please choose an Image")
 
         except:
             # when no file selected
-            self.showPopupBox()
+            self.showPopupError('No Image!', "Please choose an Image")
 
     def showNotFoundPage(self):
         self.ui.label_inputImage1.setPixmap(QPixmap(self.image_name))
         self.ui.stackedWidget.setCurrentWidget(self.ui.not_found_page)
 
     def showFoundPage(self):
-        self.ui.label_characterName.setText(self.characterName)
-        # self.ui.label_16.setText(self.character_name)
 
-        self.ui.label_inputImage2.setPixmap(QPixmap(self.image_name))
+        # ======= initiate table ==============
+        # change width of column
+        # self.ui.table1.setColumnWidth(0, 420)
+        # self.ui.table1.setColumnWidth(1, 150)
+        #
+        # # button openFile =====================================
+        # self.ui.table1.itemDoubleClicked.connect(self.openImage)
+        #
+        # self.loadData()
+        #
+        # self.ui.label_characterName.setText(self.characterName)
+        # # self.ui.label_16.setText(self.character_name)
+        #
+        # self.ui.label_inputImage2.setPixmap(QPixmap(self.image_name))
         self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
 
-    def showPopupBox(self):
+    def showPopupError(self, errorText, errorInfo):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Warning)
         msg.setWindowTitle("Warning Popup")
-        msg.setText("No Image!")
-        msg.setInformativeText("Please choose an Image")
+        msg.setText(errorText)
+        msg.setInformativeText(errorInfo)
         msg.setStandardButtons(QMessageBox.Ok)
         x = msg.exec_()
+
 
     # =================== button function ========================
 
@@ -95,6 +149,28 @@ class MainWindow:
         # self.characterName = self.ui.text_2.toPlainText()
 
         self.ui.cartoon_image.setPixmap(QPixmap(self.image_name))
+
+    def openImage(self):
+        row = self.ui.table1.currentRow()
+        item = self.ui.table1.item(row, 0).text()
+        # self.runFile(item)
+        self.setFrameFound(item)
+
+    def runFile(self, fileName):
+        try:
+            os.startfile(fileName)
+        except:
+            print('[ERROR] File Not Found')
+
+    def setFrameFound(self, fileName):
+        img_ext = ["jpg", "jpeg", "png", "bmp"]
+        ext = fileName.split('.')[-1]
+        if ext in img_ext:
+            self.ui.frameFound.setPixmap(QPixmap(fileName))
+        else:
+            self.showPopupError('Not an image', 'File open should be in *.png, *jpeg, *jpg')
+
+
 
     # # =================== play video event ========================
     #

@@ -72,7 +72,7 @@
      <enum>QFrame::NoFrame</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="start_page">
      <property name="styleSheet">
@@ -608,10 +608,10 @@ padding-left: 30px;</string>
      <widget class="QFrame" name="frame_7">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>100</y>
+        <x>670</x>
+        <y>320</y>
         <width>291</width>
-        <height>211</height>
+        <height>201</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -624,7 +624,7 @@ border-radius: 10px;</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QLabel" name="label_inputImage2">
+      <widget class="QLabel" name="inputImage_found">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -656,7 +656,7 @@ border-radius: 0;</string>
          <x>50</x>
          <y>170</y>
          <width>181</width>
-         <height>31</height>
+         <height>21</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -675,10 +675,10 @@ padding-left: 30px;</string>
      <widget class="QLabel" name="label_15">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>40</x>
         <y>40</y>
-        <width>291</width>
-        <height>41</height>
+        <width>621</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -695,10 +695,10 @@ padding-left:10px;
      <widget class="QPushButton" name="btn_insertAnotherImage2">
       <property name="geometry">
        <rect>
-        <x>740</x>
-        <y>480</y>
-        <width>211</width>
-        <height>71</height>
+        <x>670</x>
+        <y>540</y>
+        <width>281</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -707,17 +707,16 @@ font: 12pt &quot;Shiny Signature&quot;, &quot;Arial&quot;;
 color: white;</string>
       </property>
       <property name="text">
-       <string>INSERT ANOTHER
-IMAGE</string>
+       <string>INSERT ANOTHER IMAGE</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_characterName">
       <property name="geometry">
        <rect>
-        <x>370</x>
+        <x>670</x>
         <y>40</y>
         <width>291</width>
-        <height>41</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -734,10 +733,10 @@ padding-left:10px;
      <widget class="QFrame" name="frame_8">
       <property name="geometry">
        <rect>
-        <x>370</x>
-        <y>100</y>
+        <x>670</x>
+        <y>80</y>
         <width>291</width>
-        <height>211</height>
+        <height>201</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -750,7 +749,7 @@ border-radius: 10px;</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QLabel" name="label_17">
+      <widget class="QLabel" name="frameFound">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -782,7 +781,7 @@ border-radius: 0;</string>
          <x>10</x>
          <y>170</y>
          <width>271</width>
-         <height>31</height>
+         <height>21</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -798,39 +797,13 @@ padding-left: 30px;</string>
        </property>
       </widget>
      </widget>
-     <widget class="QPlainTextEdit" name="text_3">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>430</y>
-        <width>191</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="plainText">
-       <string>list time appearance</string>
-      </property>
-     </widget>
-     <widget class="QPlainTextEdit" name="text_4">
-      <property name="geometry">
-       <rect>
-        <x>790</x>
-        <y>360</y>
-        <width>104</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="plainText">
-       <string>video play</string>
-      </property>
-     </widget>
      <widget class="QFrame" name="frame_11">
       <property name="geometry">
        <rect>
-        <x>690</x>
-        <y>100</y>
-        <width>291</width>
-        <height>251</height>
+        <x>40</x>
+        <y>300</y>
+        <width>471</width>
+        <height>281</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -843,13 +816,26 @@ border-radius: 10px;</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>100</y>
+         <width>201</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Video</string>
+       </property>
+      </widget>
       <widget class="QLabel" name="label_23">
        <property name="geometry">
         <rect>
-         <x>30</x>
-         <y>80</y>
-         <width>231</width>
-         <height>61</height>
+         <x>120</x>
+         <y>220</y>
+         <width>161</width>
+         <height>41</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -864,6 +850,35 @@ padding-left: 30px;</string>
         <string>Video Match</string>
        </property>
       </widget>
+      <widget class="QPlainTextEdit" name="text_4">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>70</y>
+         <width>104</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="plainText">
+        <string>video play</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>50</y>
+        <width>331</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt; background-color:palegreen;</string>
+      </property>
+      <property name="text">
+       <string> -  Double click on Data to change Frame</string>
+      </property>
      </widget>
     </widget>
    </widget>
