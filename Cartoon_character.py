@@ -25,6 +25,8 @@ class Cartoon:
         self.characterName = ''
         self.timestamps = []
         self.fileNames = []
+        self.isFound = False
+        self.accuracy_image = ''
 
         # Validation of Paths / Files
         if not os.path.exists(self.CLASSES):
@@ -88,6 +90,7 @@ class Cartoon:
         color = self.COLORS[class_id]
         cv2.rectangle(image, (x, y), (x_plus_width, y_plus_height), color, 2)
         cv2.putText(image, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
+        self.accuracy_image = 'Accuracy : ' + str(round(confidence * 100, 2)) + '%'
 
     # Function to Process Image - Forward Propogation, NMS, BBox
     def process_Image(self, image, index):
@@ -145,15 +148,17 @@ class Cartoon:
             h = box[3]
             self.draw_BBox(image, class_ids[i], confidences[i], round(x), round(y), round(x + w), round(y + h))
             self.characterName = self.classes[class_ids[i]]
-            self.isFrameMatched = True
+
+            self.isFound = True
             # print("[Prediction] Class : ", self.classes[class_ids[i]])
             # print("[Prediction] Score : ", round(confidences[i] * 100, 6))
 
         # Storing Image ================= make sure have folder output
         if self.MODE == "image":
-            cv2.imwrite("output/output." + self.ext, image)
+            cv2.imwrite("output_image.png", image)
 
     def detectCharacter(self):
+        self.isFound = False
         start = time.time()
         # Loading input file and processing
         if self.MODE == "image":
@@ -173,7 +178,7 @@ class Cartoon:
             self.timestamps.clear()
             self.fileNames.clear()
 
-            while (cap.isOpened()):
+            while cap.isOpened():
                 # Reading video frame by frame
                 ret, frame = cap.read()
                 numOfFrame = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -254,21 +259,11 @@ class Cartoon:
         charName = self.characterName.upper()
         return charName
 
-
-if __name__ == '__main__':
-    # main_win = MainWindow()
-    # main_win.show()
-    # sys.exit(app.exec_())
-
-    cartoon = Cartoon()
-    # dir = 'images/shin-chan2.jpg'
-    dir = 'images/bean 5 secs.mp4'
-    # dir = 'images/bean-10secs.mp4'
-    # cartoon.setConfidence(0.6)
-    cartoon.setFileName(dir)
-    cartoon.detectCharacter()
-    print(cartoon.timestamps)
-    print(cartoon.fileNames)
-    print(len(cartoon.fileNames))
-    print(len(cartoon.fileNames))
-    # print(cartoon.getCharacterName())
+#
+# if __name__ == '__main__':
+#     cartoon = Cartoon()
+#     # dir = 'images/shin-chan2.jpg'
+#     dir = 'images/bean 5 secs.mp4'
+#     # cartoon.setConfidence(0.6)
+#     cartoon.setFileName(dir)
+#     cartoon.detectCharacter()

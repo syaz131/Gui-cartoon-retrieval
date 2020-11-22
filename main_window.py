@@ -7,9 +7,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox,
 
 # change from file
 from Ui_main_pages import Ui_MainWindow
-
-
-# from Cartoon_character import Cartoon
+from Cartoon_character import Cartoon
 
 class MainWindow:
     def __init__(self):
@@ -35,7 +33,7 @@ class MainWindow:
         self.ui.pushButton_notFoundPage.clicked.connect(self.showNotFoundPage)
 
         # not yet functioning
-        self.ui.btn_matchCharacter.clicked.connect(self.show)
+        self.ui.btn_matchCharacter.clicked.connect(self.showResultPage)
         # self.ui.pushButton_3.clicked.connect(self.showBlue)
 
         # drag and drop image
@@ -49,7 +47,12 @@ class MainWindow:
         # # button openFile =====================================
         self.ui.tableFrameFound.itemDoubleClicked.connect(self.changeFrameFound)
 
-        # self.loadData()
+        # ========= initiate cartoon detector ==================
+        self.cartoon_image = Cartoon()
+        # dir = 'images/shin-chan2.jpg'
+        # dir = 'images/bean 5 secs.mp4'
+        # cartoon.setConfidence(0.6)
+        # self.cartoon_image.detectCharacter()
 
     def loadData(self):
         people = [{'name': 'images\\title we bare bear.png', 'age': 45, 'address': 'NY', },
@@ -131,14 +134,18 @@ class MainWindow:
         self.main_win.show()
 
     def showInsertPage(self):
+        self.ui.cartoon_image.setText('         Choose an image to search')
+        self.image_name = ''
         self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
     def showMatchPage(self):
         try:
             if self.image_name != '':
                 self.ui.match_page_image.setPixmap(QPixmap(self.image_name))
+                self.cartoon_image.setFileName(self.image_name)
+                self.cartoon_image.detectCharacter()
+                self.ui.text_2.setPlainText(str(self.cartoon_image.isFound))
                 self.ui.stackedWidget.setCurrentWidget(self.ui.match_page)
-
             else:
                 # when no file selected
                 self.showPopupError('No Image!', "Please choose an Image")
@@ -147,14 +154,22 @@ class MainWindow:
             # when no file selected
             self.showPopupError('No Image!', "Please choose an Image")
 
+    def showResultPage(self):
+        if self.cartoon_image.isFound:
+            self.showFoundPage()
+        else:
+            self.showNotFoundPage()
+
     def showNotFoundPage(self):
         self.ui.label_inputImage1.setPixmap(QPixmap(self.image_name))
         self.ui.stackedWidget.setCurrentWidget(self.ui.not_found_page)
 
     def showFoundPage(self):
+        output_image_name = 'output_image.png'
         self.load_frame_output_data('jk', 'r')  # get timestamps and fileNames
-        self.ui.inputImage_found.setPixmap(QPixmap(self.image_name))
-        self.ui.label_characterName.setText('biri biri')  # getCharacterName
+        self.ui.inputImage_found.setPixmap(QPixmap(output_image_name))
+        self.ui.label_characterName.setText(self.cartoon_image.getCharacterName())
+        self.ui.label_accuracy.setText(self.cartoon_image.accuracy_image)
         self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
 
     def showPopupError(self, errorText, errorInfo):
@@ -173,13 +188,7 @@ class MainWindow:
         fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
                                             'c:\\Users\\Asus\\Pictures\\cartoon character',
                                             "Image files (*.jpg *.png *.jpeg)")
-        # 'c:\\', "Image files (*.jpg *.png *.jpeg)")
-        # print(fname[0].title())
-        # print(type(fname[0]))
         self.image_name = fname[0]
-        self.characterName = 'rename me'
-        # self.characterName = self.ui.text_2.toPlainText()
-
         self.ui.cartoon_image.setPixmap(QPixmap(self.image_name))
 
     def changeFrameFound(self):
@@ -196,9 +205,6 @@ class MainWindow:
             print('[ERROR] File Not Found')
 
     def setFrameFound(self, fileName):
-        # if not os.path.exists(self.WEIGHTS):
-        #     sys.exit("[ERROR] Invalid weights path given")
-
         img_ext = ["jpg", "jpeg", "png", "bmp"]
         ext = fileName.split('.')[-1]
         if ext in img_ext and os.path.exists(fileName):

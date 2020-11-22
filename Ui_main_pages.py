@@ -27,6 +27,9 @@ class Ui_MainWindow(object):
         self.stackedWidget.setEnabled(True)
         self.stackedWidget.setGeometry(QtCore.QRect(0, 0, 1001, 601))
         self.stackedWidget.setMinimumSize(QtCore.QSize(950, 500))
+        font = QtGui.QFont()
+        font.setPointSize(6)
+        self.stackedWidget.setFont(font)
         self.stackedWidget.setAcceptDrops(True)
         self.stackedWidget.setAutoFillBackground(False)
         self.stackedWidget.setStyleSheet("background-color:white")
@@ -123,12 +126,14 @@ class Ui_MainWindow(object):
 "")
         self.btn_changeImage.setObjectName("btn_changeImage")
         self.pushButton_foundPage = QtWidgets.QPushButton(self.match_page)
+        self.pushButton_foundPage.setEnabled(False)
         self.pushButton_foundPage.setGeometry(QtCore.QRect(470, 480, 161, 41))
         self.pushButton_foundPage.setStyleSheet("background-color:palegreen;\n"
 "font: 8pt \"Arial Rounded MT Bold\", \"Arial\";\n"
 "")
         self.pushButton_foundPage.setObjectName("pushButton_foundPage")
         self.pushButton_notFoundPage = QtWidgets.QPushButton(self.match_page)
+        self.pushButton_notFoundPage.setEnabled(False)
         self.pushButton_notFoundPage.setGeometry(QtCore.QRect(640, 480, 161, 41))
         self.pushButton_notFoundPage.setStyleSheet("background-color:pink;\n"
 "font: 8pt \"Arial Rounded MT Bold\", \"Arial\";\n"
@@ -142,7 +147,7 @@ class Ui_MainWindow(object):
         self.not_found_page.setStyleSheet("background-color:white")
         self.not_found_page.setObjectName("not_found_page")
         self.label = QtWidgets.QLabel(self.not_found_page)
-        self.label.setGeometry(QtCore.QRect(60, 50, 601, 41))
+        self.label.setGeometry(QtCore.QRect(50, 50, 601, 41))
         self.label.setStyleSheet("background-color:pink;\n"
 "border: 2px solid red;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
@@ -150,20 +155,20 @@ class Ui_MainWindow(object):
 "")
         self.label.setObjectName("label")
         self.btn_insertAnotherImage1 = QtWidgets.QPushButton(self.not_found_page)
-        self.btn_insertAnotherImage1.setGeometry(QtCore.QRect(710, 480, 221, 71))
+        self.btn_insertAnotherImage1.setGeometry(QtCore.QRect(670, 520, 291, 41))
         self.btn_insertAnotherImage1.setStyleSheet("background-color:gray;\n"
 "font: 12pt \"Shiny Signature\", \"Arial\";\n"
 "color: white;")
         self.btn_insertAnotherImage1.setObjectName("btn_insertAnotherImage1")
         self.frame = QtWidgets.QFrame(self.not_found_page)
-        self.frame.setGeometry(QtCore.QRect(60, 110, 291, 211))
+        self.frame.setGeometry(QtCore.QRect(670, 280, 291, 221))
         self.frame.setStyleSheet("background-color:lightgray;\n"
 "border-radius: 10px;")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.label_inputImage1 = QtWidgets.QLabel(self.frame)
-        self.label_inputImage1.setGeometry(QtCore.QRect(10, 10, 271, 151))
+        self.label_inputImage1.setGeometry(QtCore.QRect(10, 10, 271, 161))
         self.label_inputImage1.setAutoFillBackground(False)
         self.label_inputImage1.setStyleSheet("background-color:white;\n"
 "border-radius: 0;")
@@ -172,32 +177,32 @@ class Ui_MainWindow(object):
         self.label_inputImage1.setScaledContents(True)
         self.label_inputImage1.setObjectName("label_inputImage1")
         self.label_4 = QtWidgets.QLabel(self.frame)
-        self.label_4.setGeometry(QtCore.QRect(50, 170, 181, 31))
+        self.label_4.setGeometry(QtCore.QRect(10, 170, 271, 41))
         self.label_4.setStyleSheet("background-color:gray;\n"
-"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"font: 9pt \"Arial Rounded MT Bold\", \"Arial\";\n"
 "color: white;\n"
 "border-radius: 0;\n"
 "align:center;\n"
-"padding-left: 30px;")
+"padding-left: 80px;")
         self.label_4.setObjectName("label_4")
         self.frame_9 = QtWidgets.QFrame(self.not_found_page)
-        self.frame_9.setGeometry(QtCore.QRect(370, 110, 291, 211))
+        self.frame_9.setGeometry(QtCore.QRect(670, 50, 291, 211))
         self.frame_9.setStyleSheet("background-color:lightgray;\n"
 "border-radius: 10px;")
         self.frame_9.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_9.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_9.setObjectName("frame_9")
         self.label_20 = QtWidgets.QLabel(self.frame_9)
-        self.label_20.setGeometry(QtCore.QRect(30, 80, 231, 61))
-        self.label_20.setStyleSheet("background-color:gray;\n"
+        self.label_20.setGeometry(QtCore.QRect(0, 70, 281, 61))
+        self.label_20.setStyleSheet("\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
-"color: white;\n"
+"color: gray;\n"
 "border-radius: 0;\n"
 "align:center;\n"
 "padding-left: 30px;")
         self.label_20.setObjectName("label_20")
         self.label_6 = QtWidgets.QLabel(self.not_found_page)
-        self.label_6.setGeometry(QtCore.QRect(70, 420, 441, 41))
+        self.label_6.setGeometry(QtCore.QRect(50, 110, 601, 41))
         self.label_6.setStyleSheet("background-color:lightgray;\n"
 "border: 2px solid gray;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
@@ -205,29 +210,34 @@ class Ui_MainWindow(object):
 "")
         self.label_6.setObjectName("label_6")
         self.label_7 = QtWidgets.QLabel(self.not_found_page)
-        self.label_7.setGeometry(QtCore.QRect(70, 460, 441, 41))
+        self.label_7.setGeometry(QtCore.QRect(50, 150, 601, 111))
         self.label_7.setStyleSheet("background-color:white;\n"
 "border: 2px solid gray;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
 "padding-left:10px;\n"
 "")
+        self.label_7.setText("")
         self.label_7.setObjectName("label_7")
         self.frame_10 = QtWidgets.QFrame(self.not_found_page)
-        self.frame_10.setGeometry(QtCore.QRect(690, 110, 291, 251))
+        self.frame_10.setGeometry(QtCore.QRect(50, 280, 471, 281))
         self.frame_10.setStyleSheet("background-color:lightgray;\n"
 "border-radius: 10px;")
         self.frame_10.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_10.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_10.setObjectName("frame_10")
         self.label_22 = QtWidgets.QLabel(self.frame_10)
-        self.label_22.setGeometry(QtCore.QRect(30, 80, 231, 61))
-        self.label_22.setStyleSheet("background-color:gray;\n"
+        self.label_22.setGeometry(QtCore.QRect(130, 100, 211, 61))
+        self.label_22.setStyleSheet("\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
-"color: white;\n"
+"color: gray;\n"
 "border-radius: 0;\n"
 "align:center;\n"
 "padding-left: 30px;")
         self.label_22.setObjectName("label_22")
+        self.label_3 = QtWidgets.QLabel(self.not_found_page)
+        self.label_3.setGeometry(QtCore.QRect(80, 160, 71, 31))
+        self.label_3.setStyleSheet("font-size: 12pt")
+        self.label_3.setObjectName("label_3")
         self.frame.raise_()
         self.label.raise_()
         self.btn_insertAnotherImage1.raise_()
@@ -235,18 +245,19 @@ class Ui_MainWindow(object):
         self.label_6.raise_()
         self.label_7.raise_()
         self.frame_10.raise_()
+        self.label_3.raise_()
         self.stackedWidget.addWidget(self.not_found_page)
         self.found_page = QtWidgets.QWidget()
         self.found_page.setObjectName("found_page")
         self.frame_7 = QtWidgets.QFrame(self.found_page)
-        self.frame_7.setGeometry(QtCore.QRect(670, 320, 291, 201))
+        self.frame_7.setGeometry(QtCore.QRect(670, 310, 291, 201))
         self.frame_7.setStyleSheet("background-color:lightgray;\n"
 "border-radius: 10px;")
         self.frame_7.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_7.setObjectName("frame_7")
         self.inputImage_found = QtWidgets.QLabel(self.frame_7)
-        self.inputImage_found.setGeometry(QtCore.QRect(10, 10, 261, 151))
+        self.inputImage_found.setGeometry(QtCore.QRect(10, 10, 271, 151))
         self.inputImage_found.setAutoFillBackground(False)
         self.inputImage_found.setStyleSheet("background-color:white;\n"
 "border-radius: 0;")
@@ -254,17 +265,17 @@ class Ui_MainWindow(object):
         self.inputImage_found.setPixmap(QtGui.QPixmap("images/we bare bear sticker medium.png"))
         self.inputImage_found.setScaledContents(True)
         self.inputImage_found.setObjectName("inputImage_found")
-        self.label_3 = QtWidgets.QLabel(self.frame_7)
-        self.label_3.setGeometry(QtCore.QRect(50, 170, 181, 21))
-        self.label_3.setStyleSheet("background-color:gray;\n"
-"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+        self.label_accuracy = QtWidgets.QLabel(self.frame_7)
+        self.label_accuracy.setGeometry(QtCore.QRect(10, 160, 271, 31))
+        self.label_accuracy.setStyleSheet("background-color:gray;\n"
+"font: 9pt \"Arial Rounded MT Bold\", \"Arial\";\n"
 "color: white;\n"
 "border-radius: 0;\n"
 "align:center;\n"
-"padding-left: 30px;")
-        self.label_3.setObjectName("label_3")
+"padding-left: 60px;")
+        self.label_accuracy.setObjectName("label_accuracy")
         self.label_15 = QtWidgets.QLabel(self.found_page)
-        self.label_15.setGeometry(QtCore.QRect(40, 40, 621, 31))
+        self.label_15.setGeometry(QtCore.QRect(40, 40, 611, 31))
         self.label_15.setStyleSheet("background-color:palegreen;\n"
 "border: 2px solid green;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
@@ -272,7 +283,7 @@ class Ui_MainWindow(object):
 "")
         self.label_15.setObjectName("label_15")
         self.btn_insertAnotherImage2 = QtWidgets.QPushButton(self.found_page)
-        self.btn_insertAnotherImage2.setGeometry(QtCore.QRect(670, 540, 281, 41))
+        self.btn_insertAnotherImage2.setGeometry(QtCore.QRect(670, 530, 291, 41))
         self.btn_insertAnotherImage2.setStyleSheet("background-color:gray;\n"
 "font: 12pt \"Shiny Signature\", \"Arial\";\n"
 "color: white;")
@@ -282,11 +293,11 @@ class Ui_MainWindow(object):
         self.label_characterName.setStyleSheet("background-color:palegreen;\n"
 "border: 2px solid green;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
-"padding-left:10px;\n"
+"padding-left:90px;\n"
 "")
         self.label_characterName.setObjectName("label_characterName")
         self.frame_8 = QtWidgets.QFrame(self.found_page)
-        self.frame_8.setGeometry(QtCore.QRect(670, 80, 291, 201))
+        self.frame_8.setGeometry(QtCore.QRect(670, 80, 291, 211))
         self.frame_8.setStyleSheet("background-color:lightgray;\n"
 "border-radius: 10px;")
         self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -299,20 +310,12 @@ class Ui_MainWindow(object):
 "border-radius: 0;\n"
 "font-size: 9.5pt;\n"
 "color: gray;")
+        self.frameFound.setText("")
         self.frameFound.setPixmap(QtGui.QPixmap("images/title we bare bear.png"))
         self.frameFound.setScaledContents(True)
         self.frameFound.setObjectName("frameFound")
-        self.label_frameTitle = QtWidgets.QLabel(self.frame_8)
-        self.label_frameTitle.setGeometry(QtCore.QRect(10, 170, 271, 21))
-        self.label_frameTitle.setStyleSheet("background-color:gray;\n"
-"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
-"color: white;\n"
-"border-radius: 0;\n"
-"align:center;\n"
-"padding-left: 30px;")
-        self.label_frameTitle.setObjectName("label_frameTitle")
         self.frame_11 = QtWidgets.QFrame(self.found_page)
-        self.frame_11.setGeometry(QtCore.QRect(40, 300, 471, 281))
+        self.frame_11.setGeometry(QtCore.QRect(40, 310, 471, 271))
         self.frame_11.setStyleSheet("background-color:lightgray;\n"
 "border-radius: 10px;")
         self.frame_11.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -334,7 +337,7 @@ class Ui_MainWindow(object):
         self.text_4.setGeometry(QtCore.QRect(280, 70, 104, 31))
         self.text_4.setObjectName("text_4")
         self.tableFrameFound = QtWidgets.QTableWidget(self.found_page)
-        self.tableFrameFound.setGeometry(QtCore.QRect(40, 80, 621, 201))
+        self.tableFrameFound.setGeometry(QtCore.QRect(40, 80, 611, 211))
         self.tableFrameFound.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tableFrameFound.setAlternatingRowColors(True)
         self.tableFrameFound.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
@@ -347,6 +350,22 @@ class Ui_MainWindow(object):
         self.tableFrameFound.setHorizontalHeaderItem(1, item)
         self.tableFrameFound.horizontalHeader().setDefaultSectionSize(189)
         self.tableFrameFound.verticalHeader().setCascadingSectionResizes(False)
+        self.label_frameTitle = QtWidgets.QLabel(self.found_page)
+        self.label_frameTitle.setGeometry(QtCore.QRect(680, 240, 271, 41))
+        font = QtGui.QFont()
+        font.setFamily("Arial Rounded MT Bold,Arial")
+        font.setPointSize(9)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.label_frameTitle.setFont(font)
+        self.label_frameTitle.setStyleSheet("background-color:gray;\n"
+"font: 9pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"color: white;\n"
+"border-radius: 0;\n"
+"align:center;\n"
+"padding-left: 60px;")
+        self.label_frameTitle.setObjectName("label_frameTitle")
         self.stackedWidget.addWidget(self.found_page)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -371,21 +390,16 @@ class Ui_MainWindow(object):
         self.pushButton_notFoundPage.setText(_translate("MainWindow", "Not Found page"))
         self.text_2.setPlainText(_translate("MainWindow", "match page"))
         self.label.setText(_translate("MainWindow", "Character Not Found"))
-        self.btn_insertAnotherImage1.setText(_translate("MainWindow", "INSERT ANOTHER\n"
-"IMAGE"))
+        self.btn_insertAnotherImage1.setText(_translate("MainWindow", "INSERT ANOTHER IMAGE"))
         self.label_4.setText(_translate("MainWindow", "Input Image"))
-        self.label_20.setText(_translate("MainWindow", "No Retrieved \n"
-"Character"))
+        self.label_20.setText(_translate("MainWindow", "No Retrieved Character"))
         self.label_6.setText(_translate("MainWindow", "No Appearance Time"))
-        self.label_7.setText(_translate("MainWindow", " - "))
         self.label_22.setText(_translate("MainWindow", "No Video Match"))
-        self.label_3.setText(_translate("MainWindow", "Input Image"))
+        self.label_3.setText(_translate("MainWindow", "_"))
+        self.label_accuracy.setText(_translate("MainWindow", "Accuracy : 88.88%"))
         self.label_15.setText(_translate("MainWindow", "Character Found"))
         self.btn_insertAnotherImage2.setText(_translate("MainWindow", "INSERT ANOTHER IMAGE"))
-        self.label_characterName.setText(_translate("MainWindow", "naruto"))
-        self.frameFound.setText(_translate("MainWindow", "           Double click on Data to \n"
-"               open Frame"))
-        self.label_frameTitle.setText(_translate("MainWindow", "Retrieved Character"))
+        self.label_characterName.setText(_translate("MainWindow", "doraemon"))
         self.label_5.setText(_translate("MainWindow", "Video"))
         self.label_23.setText(_translate("MainWindow", "Video Match"))
         self.text_4.setPlainText(_translate("MainWindow", "video play"))
@@ -393,3 +407,5 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Frame Name"))
         item = self.tableFrameFound.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Time Appearance"))
+        self.label_frameTitle.setText(_translate("MainWindow", "Time : 123.000 sec \n"
+"Accuracy : 10.10%"))
