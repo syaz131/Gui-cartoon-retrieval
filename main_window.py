@@ -47,7 +47,7 @@ class MainWindow:
         self.ui.tableFrameFound.setColumnWidth(1, 150)
         #
         # # button openFile =====================================
-        # self.ui.table1.itemDoubleClicked.connect(self.openImage)
+        self.ui.tableFrameFound.itemDoubleClicked.connect(self.changeFrameFound)
 
         # self.loadData()
 
@@ -76,13 +76,6 @@ class MainWindow:
     def load_frame_output_data(self, name_list='h', time_list='h'):
         print('hai')
         print(name_list + time_list)
-        # self.ui.table1.setRowCount(len(people))
-
-        # for person in people:
-        #     self.ui.table1.setItem(row, 0, QTableWidgetItem(person['name']))
-        #     self.ui.table1.setItem(row, 1, QTableWidgetItem(str(person['age'])))  # number change to str like print
-        #     # self.ui.table1.setItem(row, 2, QTableWidgetItem(person['address']))
-        #     row = row + 1
 
         times = ['1.000 sec', '1.033 sec', '1.066 sec', '1.100 sec', '1.133 sec', '1.166 sec', '1.200 sec', '1.233 sec',
                  '1.266 sec', '1.300 sec', '1.333 sec', '1.366 sec', '1.400 sec', '1.433 sec', '1.466 sec', '1.500 sec',
@@ -95,8 +88,8 @@ class MainWindow:
                  '3.233 sec', '3.266 sec', '3.300 sec', '3.333 sec', '3.366 sec', '3.400 sec', '3.433 sec', '3.466 sec',
                  '3.500 sec', '3.699 sec', '3.733 sec']
         files = ['output\\output_bean00031.png', 'output\\output_bean00032.png', 'output\\output_bean00033.png',
-                 'output\\output_bean00034.png', 'output\\output_bean00035.png', 'output\\output_bean00036.png',
-                 'output\\output_bean00037.png', 'output\\output_bean00038.png', 'output\\output_bean00039.png',
+                 'images\\shin-chan2.jpg', 'images\\title we bare bear.png', 'output\\output_bean00036.png',
+                 'images\\title we bare bear.png', 'output\\output_bean00038.png', 'output\\output_bean00039.png',
                  'output\\output_bean00040.png', 'output\\output_bean00041.png', 'output\\output_bean00042.png',
                  'output\\output_bean00043.png', 'output\\output_bean00044.png', 'output\\output_bean00045.png',
                  'output\\output_bean00046.png', 'output\\output_bean00047.png', 'output\\output_bean00051.png',
@@ -120,15 +113,7 @@ class MainWindow:
                  'output\\output_bean00103.png', 'output\\output_bean00104.png', 'output\\output_bean00105.png',
                  'output\\output_bean00106.png', 'output\\output_bean00112.png', 'output\\output_bean00113.png']
 
-        # self.ui.tableFrameFound.clear()
-        # self.ui.tableFrameFound.horizontalHeaderItem(0).setText('Frame Name')
-        # self.ui.tableFrameFound.horizontalHeaderItem(1).setText('Time Appearance')
-        # item = self.tableFrameFound.horizontalHeaderItem(0)
-        # item.setText(_translate("MainWindow", "File Name"))
         self.ui.tableFrameFound.setRowCount(len(files))
-
-        # for person in people:
-        #     self.ui.table1.setItem(row, 0, QTableWidgetItem(person['name']))
 
         row = 0
         for file in files:
@@ -167,24 +152,9 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.not_found_page)
 
     def showFoundPage(self):
-
-        # ======= initiate table ==============
-        # change width of column
-        # self.ui.table1.setColumnWidth(0, 420)
-        # self.ui.table1.setColumnWidth(1, 150)
-        #
-        # # button openFile =====================================
-        # self.ui.table1.itemDoubleClicked.connect(self.openImage)
-        #
-        # self.loadData()
-        #
-        # self.ui.label_characterName.setText(self.characterName)
-        # # self.ui.label_16.setText(self.character_name)
-
         self.load_frame_output_data('jk', 'r')  # get timestamps and fileNames
         self.ui.inputImage_found.setPixmap(QPixmap(self.image_name))
         self.ui.label_characterName.setText('biri biri')  # getCharacterName
-        self.ui.label_frameTitle.setText('Character found at ' + '1 sec')  # getCharacterName
         self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
 
     def showPopupError(self, errorText, errorInfo):
@@ -212,10 +182,11 @@ class MainWindow:
 
         self.ui.cartoon_image.setPixmap(QPixmap(self.image_name))
 
-    def openImage(self):
-        row = self.ui.table1.currentRow()
-        item = self.ui.table1.item(row, 0).text()
-        # self.runFile(item)
+    def changeFrameFound(self):
+        row = self.ui.tableFrameFound.currentRow()
+        item = self.ui.tableFrameFound.item(row, 0).text()
+        time = self.ui.tableFrameFound.item(row, 1).text()
+        self.ui.label_frameTitle.setText('Frame at ' + time)
         self.setFrameFound(item)
 
     def runFile(self, fileName):
@@ -225,12 +196,15 @@ class MainWindow:
             print('[ERROR] File Not Found')
 
     def setFrameFound(self, fileName):
+        # if not os.path.exists(self.WEIGHTS):
+        #     sys.exit("[ERROR] Invalid weights path given")
+
         img_ext = ["jpg", "jpeg", "png", "bmp"]
         ext = fileName.split('.')[-1]
-        if ext in img_ext:
+        if ext in img_ext and os.path.exists(fileName):
             self.ui.frameFound.setPixmap(QPixmap(fileName))
         else:
-            self.showPopupError('Not an image', 'File open should be in *.png, *jpeg, *jpg')
+            self.showPopupError('Not an image', 'File not found or \nFile open should be in *.png, *jpeg, *jpg')
 
     # # =================== play video event ========================
     #
