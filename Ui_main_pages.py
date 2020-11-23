@@ -56,70 +56,105 @@ class Ui_MainWindow(object):
         self.insert_page.setStyleSheet("background-color:white")
         self.insert_page.setObjectName("insert_page")
         self.btn_chooseImage = QtWidgets.QPushButton(self.insert_page)
-        self.btn_chooseImage.setGeometry(QtCore.QRect(330, 420, 181, 51))
+        self.btn_chooseImage.setGeometry(QtCore.QRect(190, 350, 201, 51))
         self.btn_chooseImage.setStyleSheet("background-color:gray;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
 "color: white;\n"
 "")
         self.btn_chooseImage.setObjectName("btn_chooseImage")
         self.frame_dragDrop = QtWidgets.QFrame(self.insert_page)
-        self.frame_dragDrop.setGeometry(QtCore.QRect(320, 120, 401, 271))
+        self.frame_dragDrop.setGeometry(QtCore.QRect(90, 70, 401, 271))
         self.frame_dragDrop.setAcceptDrops(True)
         self.frame_dragDrop.setStyleSheet("background-color:lightgray;\n"
 "border-radius: 10px;")
         self.frame_dragDrop.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_dragDrop.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_dragDrop.setObjectName("frame_dragDrop")
-        self.cartoon_image = QtWidgets.QLabel(self.frame_dragDrop)
-        self.cartoon_image.setGeometry(QtCore.QRect(20, 20, 361, 231))
-        self.cartoon_image.setAcceptDrops(True)
-        self.cartoon_image.setAutoFillBackground(False)
-        self.cartoon_image.setStyleSheet("background-color:white;\n"
+        self.insertPage_cartoonImage = QtWidgets.QLabel(self.frame_dragDrop)
+        self.insertPage_cartoonImage.setGeometry(QtCore.QRect(20, 20, 361, 231))
+        self.insertPage_cartoonImage.setAcceptDrops(True)
+        self.insertPage_cartoonImage.setAutoFillBackground(False)
+        self.insertPage_cartoonImage.setStyleSheet("background-color:white;\n"
 "border-radius: 0;\n"
 "border: 2px dashed gray;\n"
 "font-size: 11pt;\n"
 "color: gray;")
-        self.cartoon_image.setScaledContents(True)
-        self.cartoon_image.setObjectName("cartoon_image")
+        self.insertPage_cartoonImage.setScaledContents(True)
+        self.insertPage_cartoonImage.setObjectName("insertPage_cartoonImage")
         self.text1 = QtWidgets.QPlainTextEdit(self.insert_page)
-        self.text1.setGeometry(QtCore.QRect(140, 30, 104, 31))
+        self.text1.setGeometry(QtCore.QRect(30, 20, 104, 31))
         self.text1.setObjectName("text1")
         self.btn_confirmImage = QtWidgets.QPushButton(self.insert_page)
-        self.btn_confirmImage.setGeometry(QtCore.QRect(540, 420, 181, 51))
+        self.btn_confirmImage.setGeometry(QtCore.QRect(350, 460, 321, 61))
         self.btn_confirmImage.setStyleSheet("background-color:gray;\n"
-"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"font: 12pt \"Shiny Signature\", \"Arial\";\n"
 "color: white;\n"
 "")
         self.btn_confirmImage.setObjectName("btn_confirmImage")
+        self.frame_dragDrop_2 = QtWidgets.QFrame(self.insert_page)
+        self.frame_dragDrop_2.setGeometry(QtCore.QRect(540, 70, 401, 271))
+        self.frame_dragDrop_2.setAcceptDrops(True)
+        self.frame_dragDrop_2.setStyleSheet("background-color:lightgray;\n"
+"border-radius: 10px;")
+        self.frame_dragDrop_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_dragDrop_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_dragDrop_2.setObjectName("frame_dragDrop_2")
+        self.insertPage_cartoonVideo = QtWidgets.QLabel(self.frame_dragDrop_2)
+        self.insertPage_cartoonVideo.setGeometry(QtCore.QRect(20, 20, 361, 231))
+        self.insertPage_cartoonVideo.setAcceptDrops(True)
+        self.insertPage_cartoonVideo.setAutoFillBackground(False)
+        self.insertPage_cartoonVideo.setStyleSheet("background-color:white;\n"
+"border-radius: 0;\n"
+"border: 2px dashed gray;\n"
+"font-size: 11pt;\n"
+"color: gray;")
+        self.insertPage_cartoonVideo.setScaledContents(True)
+        self.insertPage_cartoonVideo.setObjectName("insertPage_cartoonVideo")
+        self.btn_chooseVideo = QtWidgets.QPushButton(self.insert_page)
+        self.btn_chooseVideo.setGeometry(QtCore.QRect(650, 350, 201, 51))
+        self.btn_chooseVideo.setStyleSheet("background-color:gray;\n"
+"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"color: white;\n"
+"")
+        self.btn_chooseVideo.setObjectName("btn_chooseVideo")
         self.stackedWidget.addWidget(self.insert_page)
         self.match_page = QtWidgets.QWidget()
         self.match_page.setStyleSheet("background-color:white")
         self.match_page.setObjectName("match_page")
         self.frame_3 = QtWidgets.QFrame(self.match_page)
-        self.frame_3.setGeometry(QtCore.QRect(290, 100, 431, 261))
+        self.frame_3.setGeometry(QtCore.QRect(60, 60, 431, 301))
         self.frame_3.setStyleSheet("background-color:lightgray;\n"
 "border-radius: 10px;")
         self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_3.setObjectName("frame_3")
-        self.match_page_image = QtWidgets.QLabel(self.frame_3)
-        self.match_page_image.setGeometry(QtCore.QRect(20, 20, 391, 221))
-        self.match_page_image.setAutoFillBackground(False)
-        self.match_page_image.setStyleSheet("background-color:white;\n"
+        self.matchPage_inputImage = QtWidgets.QLabel(self.frame_3)
+        self.matchPage_inputImage.setGeometry(QtCore.QRect(20, 20, 391, 221))
+        self.matchPage_inputImage.setAutoFillBackground(False)
+        self.matchPage_inputImage.setStyleSheet("background-color:white;\n"
 "border-radius: 0;\n"
 "")
-        self.match_page_image.setText("")
-        self.match_page_image.setScaledContents(True)
-        self.match_page_image.setObjectName("match_page_image")
-        self.btn_matchCharacter = QtWidgets.QPushButton(self.match_page)
-        self.btn_matchCharacter.setGeometry(QtCore.QRect(520, 390, 201, 41))
-        self.btn_matchCharacter.setStyleSheet("background-color:gray;\n"
-"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+        self.matchPage_inputImage.setText("")
+        self.matchPage_inputImage.setScaledContents(True)
+        self.matchPage_inputImage.setObjectName("matchPage_inputImage")
+        self.label_8 = QtWidgets.QLabel(self.frame_3)
+        self.label_8.setGeometry(QtCore.QRect(20, 240, 391, 41))
+        self.label_8.setStyleSheet("background-color:gray;\n"
+"font: 10pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"color: white;\n"
+"border-radius: 0;\n"
+"align:center;\n"
+"padding-left: 140px;")
+        self.label_8.setObjectName("label_8")
+        self.btn_findMatchCharacter = QtWidgets.QPushButton(self.match_page)
+        self.btn_findMatchCharacter.setGeometry(QtCore.QRect(360, 460, 291, 61))
+        self.btn_findMatchCharacter.setStyleSheet("background-color:gray;\n"
+"font: 12pt \"Shiny Signature\", \"Arial\";\n"
 "color: white;\n"
 "")
-        self.btn_matchCharacter.setObjectName("btn_matchCharacter")
+        self.btn_findMatchCharacter.setObjectName("btn_findMatchCharacter")
         self.btn_changeImage = QtWidgets.QPushButton(self.match_page)
-        self.btn_changeImage.setGeometry(QtCore.QRect(300, 390, 201, 41))
+        self.btn_changeImage.setGeometry(QtCore.QRect(180, 370, 201, 51))
         self.btn_changeImage.setStyleSheet("background-color:gray;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
 "color: white;\n"
@@ -127,14 +162,14 @@ class Ui_MainWindow(object):
         self.btn_changeImage.setObjectName("btn_changeImage")
         self.pushButton_foundPage = QtWidgets.QPushButton(self.match_page)
         self.pushButton_foundPage.setEnabled(False)
-        self.pushButton_foundPage.setGeometry(QtCore.QRect(470, 480, 161, 41))
+        self.pushButton_foundPage.setGeometry(QtCore.QRect(20, 530, 161, 41))
         self.pushButton_foundPage.setStyleSheet("background-color:palegreen;\n"
 "font: 8pt \"Arial Rounded MT Bold\", \"Arial\";\n"
 "")
         self.pushButton_foundPage.setObjectName("pushButton_foundPage")
         self.pushButton_notFoundPage = QtWidgets.QPushButton(self.match_page)
         self.pushButton_notFoundPage.setEnabled(False)
-        self.pushButton_notFoundPage.setGeometry(QtCore.QRect(640, 480, 161, 41))
+        self.pushButton_notFoundPage.setGeometry(QtCore.QRect(190, 530, 161, 41))
         self.pushButton_notFoundPage.setStyleSheet("background-color:pink;\n"
 "font: 8pt \"Arial Rounded MT Bold\", \"Arial\";\n"
 "")
@@ -142,6 +177,38 @@ class Ui_MainWindow(object):
         self.text_2 = QtWidgets.QPlainTextEdit(self.match_page)
         self.text_2.setGeometry(QtCore.QRect(30, 20, 104, 31))
         self.text_2.setObjectName("text_2")
+        self.frame_4 = QtWidgets.QFrame(self.match_page)
+        self.frame_4.setGeometry(QtCore.QRect(520, 60, 431, 301))
+        self.frame_4.setStyleSheet("background-color:lightgray;\n"
+"border-radius: 10px;")
+        self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_4.setObjectName("frame_4")
+        self.matchPage_inputVideo = QtWidgets.QLabel(self.frame_4)
+        self.matchPage_inputVideo.setGeometry(QtCore.QRect(20, 20, 391, 221))
+        self.matchPage_inputVideo.setAutoFillBackground(False)
+        self.matchPage_inputVideo.setStyleSheet("background-color:white;\n"
+"border-radius: 0;\n"
+"")
+        self.matchPage_inputVideo.setText("")
+        self.matchPage_inputVideo.setScaledContents(True)
+        self.matchPage_inputVideo.setObjectName("matchPage_inputVideo")
+        self.label_9 = QtWidgets.QLabel(self.frame_4)
+        self.label_9.setGeometry(QtCore.QRect(20, 240, 391, 41))
+        self.label_9.setStyleSheet("background-color:gray;\n"
+"font: 10pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"color: white;\n"
+"border-radius: 0;\n"
+"align:center;\n"
+"padding-left: 140px;")
+        self.label_9.setObjectName("label_9")
+        self.btn_changeVIdeo = QtWidgets.QPushButton(self.match_page)
+        self.btn_changeVIdeo.setGeometry(QtCore.QRect(640, 370, 201, 51))
+        self.btn_changeVIdeo.setStyleSheet("background-color:gray;\n"
+"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"color: white;\n"
+"")
+        self.btn_changeVIdeo.setObjectName("btn_changeVIdeo")
         self.stackedWidget.addWidget(self.match_page)
         self.not_found_page = QtWidgets.QWidget()
         self.not_found_page.setStyleSheet("background-color:white")
@@ -315,7 +382,7 @@ class Ui_MainWindow(object):
         self.frameFound.setScaledContents(True)
         self.frameFound.setObjectName("frameFound")
         self.frame_11 = QtWidgets.QFrame(self.found_page)
-        self.frame_11.setGeometry(QtCore.QRect(40, 310, 471, 271))
+        self.frame_11.setGeometry(QtCore.QRect(70, 310, 471, 271))
         self.frame_11.setStyleSheet("background-color:lightgray;\n"
 "border-radius: 10px;")
         self.frame_11.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -375,7 +442,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -383,16 +450,21 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Cartoon Character Image Retrieval"))
         self.btn_startApp.setText(_translate("MainWindow", "START APPLICATION"))
         self.btn_chooseImage.setText(_translate("MainWindow", "Choose Image"))
-        self.cartoon_image.setText(_translate("MainWindow", "         Choose an image to search"))
+        self.insertPage_cartoonImage.setText(_translate("MainWindow", "         Choose an image to search"))
         self.text1.setPlainText(_translate("MainWindow", "insert page"))
-        self.btn_confirmImage.setText(_translate("MainWindow", "Confirm Image"))
-        self.btn_matchCharacter.setText(_translate("MainWindow", "Match Character"))
+        self.btn_confirmImage.setText(_translate("MainWindow", "CONFIRM IMAGE AND VIDEO"))
+        self.insertPage_cartoonVideo.setText(_translate("MainWindow", "            Choose a video to search"))
+        self.btn_chooseVideo.setText(_translate("MainWindow", "Choose Video"))
+        self.label_8.setText(_translate("MainWindow", "Input Image"))
+        self.btn_findMatchCharacter.setText(_translate("MainWindow", "FIND MATCH CHARACTER"))
         self.btn_changeImage.setText(_translate("MainWindow", "Change Image"))
         self.pushButton_foundPage.setText(_translate("MainWindow", "Found page"))
         self.pushButton_notFoundPage.setText(_translate("MainWindow", "Not Found page"))
         self.text_2.setPlainText(_translate("MainWindow", "match page"))
+        self.label_9.setText(_translate("MainWindow", "Input Video"))
+        self.btn_changeVIdeo.setText(_translate("MainWindow", "Change Video"))
         self.label.setText(_translate("MainWindow", "Character Not Found"))
-        self.btn_insertAnotherImage1.setText(_translate("MainWindow", "INSERT ANOTHER IMAGE"))
+        self.btn_insertAnotherImage1.setText(_translate("MainWindow", "INSERT ANOTHER MATCH"))
         self.label_4.setText(_translate("MainWindow", "Input Image"))
         self.label_20.setText(_translate("MainWindow", "No Retrieved Character"))
         self.label_6.setText(_translate("MainWindow", "No Appearance Time"))
@@ -400,7 +472,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "_"))
         self.label_accuracy.setText(_translate("MainWindow", "Accuracy : 88.88%"))
         self.label_15.setText(_translate("MainWindow", "Character Found"))
-        self.btn_insertAnotherImage2.setText(_translate("MainWindow", "INSERT ANOTHER IMAGE"))
+        self.btn_insertAnotherImage2.setText(_translate("MainWindow", "INSERT ANOTHER MATCH"))
         self.label_characterName.setText(_translate("MainWindow", "doraemon"))
         self.label_5.setText(_translate("MainWindow", "Video"))
         self.label_23.setText(_translate("MainWindow", "Video Match"))

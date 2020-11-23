@@ -33,11 +33,11 @@ class MainWindow:
         self.ui.pushButton_notFoundPage.clicked.connect(self.showNotFoundPage)
 
         # not yet functioning
-        self.ui.btn_matchCharacter.clicked.connect(self.showResultPage)
+        self.ui.btn_findMatchCharacter.clicked.connect(self.showResultPage)
         # self.ui.pushButton_3.clicked.connect(self.showBlue)
 
         # drag and drop image
-        # self.ui.cartoon_image.setPixmap(image)
+        # self.ui.insertPage_cartoonImage.setPixmap(image)
 
         # ======= initiate table ==============
         # change width of column
@@ -149,14 +149,14 @@ class MainWindow:
         self.main_win.show()
 
     def showInsertPage(self):
-        self.ui.cartoon_image.setText('         Choose an image to search')
+        self.ui.insertPage_cartoonImage.setText('         Choose an image to search')
         self.image_name = ''
         self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
     def showMatchPage(self):
         try:
             if self.image_name != '':
-                self.ui.match_page_image.setPixmap(QPixmap(self.image_name))
+                self.ui.matchPage_inputImage.setPixmap(QPixmap(self.image_name))
                 self.cartoon_image.setFileName(self.image_name)
                 self.cartoon_image.detectCharacter()
                 self.ui.text_2.setPlainText(str(self.cartoon_image.isFound))
@@ -204,7 +204,7 @@ class MainWindow:
                                             'c:\\Users\\Asus\\Pictures\\cartoon character',
                                             "Image files (*.jpg *.png *.jpeg)")
         self.image_name = fname[0]
-        self.ui.cartoon_image.setPixmap(QPixmap(self.image_name))
+        self.ui.insertPage_cartoonImage.setPixmap(QPixmap(self.image_name))
 
     def changeFrameFound(self):
         row = self.ui.tableFrameFound.currentRow()
