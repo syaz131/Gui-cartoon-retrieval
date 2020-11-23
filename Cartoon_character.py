@@ -227,6 +227,18 @@ class Cartoon:
 
     # ============================    set and get function   ============================================
 
+    def getFirstFrame(self, fileName):
+        if not os.path.exists(fileName):
+            sys.exit("[ERROR] Invalid config path given")
+
+        firstFrameName = 'video_firstFrame.png'
+        cap = cv2.VideoCapture(fileName)
+        ret, frame = cap.read()  # read first frame
+        cv2.imwrite(firstFrameName, frame)
+        cap.release()
+
+        return firstFrameName
+
     def setFileName(self, fileName):
         if not os.path.exists(fileName):
             sys.exit("[ERROR] Invalid file path given")

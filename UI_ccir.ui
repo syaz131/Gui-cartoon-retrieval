@@ -212,7 +212,7 @@ color: gray;</string>
        <string>insert page</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_confirmImage">
+     <widget class="QPushButton" name="btn_confirmImageVideo">
       <property name="geometry">
        <rect>
         <x>350</x>

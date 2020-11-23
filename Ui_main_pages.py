@@ -84,13 +84,13 @@ class Ui_MainWindow(object):
         self.text1 = QtWidgets.QPlainTextEdit(self.insert_page)
         self.text1.setGeometry(QtCore.QRect(30, 20, 104, 31))
         self.text1.setObjectName("text1")
-        self.btn_confirmImage = QtWidgets.QPushButton(self.insert_page)
-        self.btn_confirmImage.setGeometry(QtCore.QRect(350, 460, 321, 61))
-        self.btn_confirmImage.setStyleSheet("background-color:gray;\n"
+        self.btn_confirmImageVideo = QtWidgets.QPushButton(self.insert_page)
+        self.btn_confirmImageVideo.setGeometry(QtCore.QRect(350, 460, 321, 61))
+        self.btn_confirmImageVideo.setStyleSheet("background-color:gray;\n"
 "font: 12pt \"Shiny Signature\", \"Arial\";\n"
 "color: white;\n"
 "")
-        self.btn_confirmImage.setObjectName("btn_confirmImage")
+        self.btn_confirmImageVideo.setObjectName("btn_confirmImageVideo")
         self.frame_dragDrop_2 = QtWidgets.QFrame(self.insert_page)
         self.frame_dragDrop_2.setGeometry(QtCore.QRect(540, 70, 401, 271))
         self.frame_dragDrop_2.setAcceptDrops(True)
@@ -452,7 +452,7 @@ class Ui_MainWindow(object):
         self.btn_chooseImage.setText(_translate("MainWindow", "Choose Image"))
         self.insertPage_cartoonImage.setText(_translate("MainWindow", "         Choose an image to search"))
         self.text1.setPlainText(_translate("MainWindow", "insert page"))
-        self.btn_confirmImage.setText(_translate("MainWindow", "CONFIRM IMAGE AND VIDEO"))
+        self.btn_confirmImageVideo.setText(_translate("MainWindow", "CONFIRM IMAGE AND VIDEO"))
         self.insertPage_cartoonVideo.setText(_translate("MainWindow", "            Choose a video to search"))
         self.btn_chooseVideo.setText(_translate("MainWindow", "Choose Video"))
         self.label_8.setText(_translate("MainWindow", "Input Image"))

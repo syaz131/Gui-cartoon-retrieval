@@ -9,12 +9,16 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox,
 from Ui_main_pages import Ui_MainWindow
 from Cartoon_character import Cartoon
 
+
 class MainWindow:
     def __init__(self):
         self.main_win = QMainWindow()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.main_win)
         # mimeData = QMimeData()
+
+        self.image_name = ''
+        self.video_name = ''
 
         # start first page
         # self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
@@ -26,8 +30,9 @@ class MainWindow:
         self.ui.btn_insertAnotherImage2.clicked.connect(self.showInsertPage)
         self.ui.btn_changeImage.clicked.connect(self.showInsertPage)
 
-        self.ui.btn_confirmImage.clicked.connect(self.showMatchPage)
+        self.ui.btn_confirmImageVideo.clicked.connect(self.showMatchPage)
         self.ui.btn_chooseImage.clicked.connect(self.chooseImage)
+        self.ui.btn_chooseVideo.clicked.connect(self.chooseVideo)
         # self.ui.btn_insertImage.clicked.connect(self.showMatchPage)
         self.ui.pushButton_foundPage.clicked.connect(self.showFoundPage)
         self.ui.pushButton_notFoundPage.clicked.connect(self.showNotFoundPage)
@@ -50,6 +55,7 @@ class MainWindow:
 
         # ========= initiate cartoon detector ==================
         self.cartoon_image = Cartoon()
+        self.cartoon_video = Cartoon()
         # dir = 'images/shin-chan2.jpg'
         # dir = 'images/bean 5 secs.mp4'
         # cartoon.setConfidence(0.6)
@@ -73,7 +79,8 @@ class MainWindow:
 
         for person in people:
             self.ui.tableFrameFound.setItem(row, 0, QTableWidgetItem(person['name']))
-            self.ui.tableFrameFound.setItem(row, 1, QTableWidgetItem(str(person['age'])))  # number change to str like print
+            self.ui.tableFrameFound.setItem(row, 1,
+                                            QTableWidgetItem(str(person['age'])))  # number change to str like print
             # self.ui.table1.setItem(row, 2, QTableWidgetItem(person['address']))
             row = row + 1
 
@@ -92,15 +99,23 @@ class MainWindow:
                  '3.233 sec', '3.266 sec', '3.300 sec', '3.333 sec', '3.366 sec', '3.400 sec', '3.433 sec', '3.466 sec',
                  '3.500 sec', '3.699 sec', '3.733 sec']
         accuracies = ['10.19%', '1.033 sec', '1 sec', '1 sec', '1.133 sec', '1.166 sec', '1.200 sec', '1.233 sec',
-                 '1.266 sec', '1.300 sec', '1.333 sec', '1.366 sec', '1.400 sec', '1.433 sec', '1.466 sec', '1.500 sec',
-                 '1.533 sec', '1.666 sec', '1.700 sec', '1.733 sec', '1.766 sec', '1.800 sec', '1.833 sec', '1.866 sec',
-                 '1.900 sec', '1.933 sec', '1.966 sec', '2.000 sec', '2.033 sec', '2.066 sec', '2.100 sec', '2.133 sec',
-                 '2.166 sec', '2.200 sec', '2.233 sec', '2.266 sec', '2.300 sec', '2.333 sec', '2.366 sec', '2.400 sec',
-                 '2.433 sec', '2.466 sec', '2.500 sec', '2.533 sec', '2.566 sec', '2.600 sec', '2.633 sec', '2.666 sec',
-                 '2.700 sec', '2.733 sec', '2.766 sec', '2.800 sec', '2.833 sec', '2.866 sec', '2.900 sec', '2.933 sec',
-                 '2.966 sec', '3.000 sec', '3.033 sec', '3.066 sec', '3.100 sec', '3.133 sec', '3.166 sec', '3.200 sec',
-                 '3.233 sec', '3.266 sec', '3.300 sec', '3.333 sec', '3.366 sec', '3.400 sec', '3.433 sec', '3.466 sec',
-                 '3.500 sec', '3.699 sec', '3.733 sec']
+                      '1.266 sec', '1.300 sec', '1.333 sec', '1.366 sec', '1.400 sec', '1.433 sec', '1.466 sec',
+                      '1.500 sec',
+                      '1.533 sec', '1.666 sec', '1.700 sec', '1.733 sec', '1.766 sec', '1.800 sec', '1.833 sec',
+                      '1.866 sec',
+                      '1.900 sec', '1.933 sec', '1.966 sec', '2.000 sec', '2.033 sec', '2.066 sec', '2.100 sec',
+                      '2.133 sec',
+                      '2.166 sec', '2.200 sec', '2.233 sec', '2.266 sec', '2.300 sec', '2.333 sec', '2.366 sec',
+                      '2.400 sec',
+                      '2.433 sec', '2.466 sec', '2.500 sec', '2.533 sec', '2.566 sec', '2.600 sec', '2.633 sec',
+                      '2.666 sec',
+                      '2.700 sec', '2.733 sec', '2.766 sec', '2.800 sec', '2.833 sec', '2.866 sec', '2.900 sec',
+                      '2.933 sec',
+                      '2.966 sec', '3.000 sec', '3.033 sec', '3.066 sec', '3.100 sec', '3.133 sec', '3.166 sec',
+                      '3.200 sec',
+                      '3.233 sec', '3.266 sec', '3.300 sec', '3.333 sec', '3.366 sec', '3.400 sec', '3.433 sec',
+                      '3.466 sec',
+                      '3.500 sec', '3.699 sec', '3.733 sec']
         files = ['output\\output_bean00031.png', 'output\\output_bean00032.png', 'output\\output_bean00033.png',
                  'images\\shin-chan2.jpg', 'images\\title we bare bear.png', 'output\\output_bean00036.png',
                  'images\\title we bare bear.png', 'output\\output_bean00038.png', 'output\\output_bean00039.png',
@@ -150,7 +165,9 @@ class MainWindow:
 
     def showInsertPage(self):
         self.ui.insertPage_cartoonImage.setText('         Choose an image to search')
+        self.ui.insertPage_cartoonVideo.setText('            Choose a video to search')
         self.image_name = ''
+        self.video_name = ''
         self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
     def showMatchPage(self):
@@ -158,16 +175,25 @@ class MainWindow:
             if self.image_name != '':
                 self.ui.matchPage_inputImage.setPixmap(QPixmap(self.image_name))
                 self.cartoon_image.setFileName(self.image_name)
-                self.cartoon_image.detectCharacter()
-                self.ui.text_2.setPlainText(str(self.cartoon_image.isFound))
-                self.ui.stackedWidget.setCurrentWidget(self.ui.match_page)
+
+                if self.video_name != '':
+                    self.ui.matchPage_inputVideo.setPixmap(QPixmap(self.firstFrameName))
+
+                    self.cartoon_image.detectCharacter()
+                    self.ui.text_2.setPlainText(str(self.cartoon_image.isFound))
+                    self.ui.stackedWidget.setCurrentWidget(self.ui.match_page)
+
+                else:
+                    # when no file selected
+                    self.showPopupError('No Video!', "Please choose a Video")
             else:
                 # when no file selected
                 self.showPopupError('No Image!', "Please choose an Image")
 
         except:
-            # when no file selected
-            self.showPopupError('No Image!', "Please choose an Image")
+            self.showPopupError('No Image or Video!', "Please choose Image and Video")
+
+
 
     def showResultPage(self):
         if self.cartoon_image.isFound:
@@ -205,6 +231,19 @@ class MainWindow:
                                             "Image files (*.jpg *.png *.jpeg)")
         self.image_name = fname[0]
         self.ui.insertPage_cartoonImage.setPixmap(QPixmap(self.image_name))
+
+    def chooseVideo(self):
+        fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
+                                            'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                            "Video files (*.mp4 *.avi)")
+        self.video_name = fname[0]
+
+        try:
+            self.firstFrameName = self.cartoon_video.getFirstFrame(self.video_name)
+            self.ui.insertPage_cartoonVideo.setPixmap(QPixmap(self.firstFrameName))
+        except:
+            self.ui.insertPage_cartoonVideo.setText(' ')
+            print('[ERROR] - Cant read video file')
 
     def changeFrameFound(self):
         row = self.ui.tableFrameFound.currentRow()
