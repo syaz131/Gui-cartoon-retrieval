@@ -7,3 +7,6 @@ output/
 *.mp4
 __pycache__/Ui_table_page.cpython-37.pyc
 *.png
+build/
+dist/
+main_window.spec

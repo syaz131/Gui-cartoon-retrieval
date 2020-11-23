@@ -19,6 +19,7 @@ class MainWindow:
 
         self.image_name = ''
         self.video_name = ''
+        self.isImageMatchedVideo = False
 
         # start first page
         # self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
@@ -86,76 +87,76 @@ class MainWindow:
 
     def load_frame_output_data(self, name_list='h', time_list='h', accuracy_list='b'):
         print('hai')
-        print(name_list + time_list + accuracy_list)
+        # print(name_list + time_list + accuracy_list)
 
-        times = ['1.000 sec', '1.033 sec', '1.066 sec', '1.100 sec', '1.133 sec', '1.166 sec', '1.200 sec', '1.233 sec',
-                 '1.266 sec', '1.300 sec', '1.333 sec', '1.366 sec', '1.400 sec', '1.433 sec', '1.466 sec', '1.500 sec',
-                 '1.533 sec', '1.666 sec', '1.700 sec', '1.733 sec', '1.766 sec', '1.800 sec', '1.833 sec', '1.866 sec',
-                 '1.900 sec', '1.933 sec', '1.966 sec', '2.000 sec', '2.033 sec', '2.066 sec', '2.100 sec', '2.133 sec',
-                 '2.166 sec', '2.200 sec', '2.233 sec', '2.266 sec', '2.300 sec', '2.333 sec', '2.366 sec', '2.400 sec',
-                 '2.433 sec', '2.466 sec', '2.500 sec', '2.533 sec', '2.566 sec', '2.600 sec', '2.633 sec', '2.666 sec',
-                 '2.700 sec', '2.733 sec', '2.766 sec', '2.800 sec', '2.833 sec', '2.866 sec', '2.900 sec', '2.933 sec',
-                 '2.966 sec', '3.000 sec', '3.033 sec', '3.066 sec', '3.100 sec', '3.133 sec', '3.166 sec', '3.200 sec',
-                 '3.233 sec', '3.266 sec', '3.300 sec', '3.333 sec', '3.366 sec', '3.400 sec', '3.433 sec', '3.466 sec',
-                 '3.500 sec', '3.699 sec', '3.733 sec']
-        accuracies = ['10.19%', '1.033 sec', '1 sec', '1 sec', '1.133 sec', '1.166 sec', '1.200 sec', '1.233 sec',
-                      '1.266 sec', '1.300 sec', '1.333 sec', '1.366 sec', '1.400 sec', '1.433 sec', '1.466 sec',
-                      '1.500 sec',
-                      '1.533 sec', '1.666 sec', '1.700 sec', '1.733 sec', '1.766 sec', '1.800 sec', '1.833 sec',
-                      '1.866 sec',
-                      '1.900 sec', '1.933 sec', '1.966 sec', '2.000 sec', '2.033 sec', '2.066 sec', '2.100 sec',
-                      '2.133 sec',
-                      '2.166 sec', '2.200 sec', '2.233 sec', '2.266 sec', '2.300 sec', '2.333 sec', '2.366 sec',
-                      '2.400 sec',
-                      '2.433 sec', '2.466 sec', '2.500 sec', '2.533 sec', '2.566 sec', '2.600 sec', '2.633 sec',
-                      '2.666 sec',
-                      '2.700 sec', '2.733 sec', '2.766 sec', '2.800 sec', '2.833 sec', '2.866 sec', '2.900 sec',
-                      '2.933 sec',
-                      '2.966 sec', '3.000 sec', '3.033 sec', '3.066 sec', '3.100 sec', '3.133 sec', '3.166 sec',
-                      '3.200 sec',
-                      '3.233 sec', '3.266 sec', '3.300 sec', '3.333 sec', '3.366 sec', '3.400 sec', '3.433 sec',
-                      '3.466 sec',
-                      '3.500 sec', '3.699 sec', '3.733 sec']
-        files = ['output\\output_bean00031.png', 'output\\output_bean00032.png', 'output\\output_bean00033.png',
-                 'images\\shin-chan2.jpg', 'images\\title we bare bear.png', 'output\\output_bean00036.png',
-                 'images\\title we bare bear.png', 'output\\output_bean00038.png', 'output\\output_bean00039.png',
-                 'output\\output_bean00040.png', 'output\\output_bean00041.png', 'output\\output_bean00042.png',
-                 'output\\output_bean00043.png', 'output\\output_bean00044.png', 'output\\output_bean00045.png',
-                 'output\\output_bean00046.png', 'output\\output_bean00047.png', 'output\\output_bean00051.png',
-                 'output\\output_bean00052.png', 'output\\output_bean00053.png', 'output\\output_bean00054.png',
-                 'output\\output_bean00055.png', 'output\\output_bean00056.png', 'output\\output_bean00057.png',
-                 'output\\output_bean00058.png', 'output\\output_bean00059.png', 'output\\output_bean00060.png',
-                 'output\\output_bean00061.png', 'output\\output_bean00062.png', 'output\\output_bean00063.png',
-                 'output\\output_bean00064.png', 'output\\output_bean00065.png', 'output\\output_bean00066.png',
-                 'output\\output_bean00067.png', 'output\\output_bean00068.png', 'output\\output_bean00069.png',
-                 'output\\output_bean00070.png', 'output\\output_bean00071.png', 'output\\output_bean00072.png',
-                 'output\\output_bean00073.png', 'output\\output_bean00074.png', 'output\\output_bean00075.png',
-                 'output\\output_bean00076.png', 'output\\output_bean00077.png', 'output\\output_bean00078.png',
-                 'output\\output_bean00079.png', 'output\\output_bean00080.png', 'output\\output_bean00081.png',
-                 'output\\output_bean00082.png', 'output\\output_bean00083.png', 'output\\output_bean00084.png',
-                 'output\\output_bean00085.png', 'output\\output_bean00086.png', 'output\\output_bean00087.png',
-                 'output\\output_bean00088.png', 'output\\output_bean00089.png', 'output\\output_bean00090.png',
-                 'output\\output_bean00091.png', 'output\\output_bean00092.png', 'output\\output_bean00093.png',
-                 'output\\output_bean00094.png', 'output\\output_bean00095.png', 'output\\output_bean00096.png',
-                 'output\\output_bean00097.png', 'output\\output_bean00098.png', 'output\\output_bean00099.png',
-                 'output\\output_bean00100.png', 'output\\output_bean00101.png', 'output\\output_bean00102.png',
-                 'output\\output_bean00103.png', 'output\\output_bean00104.png', 'output\\output_bean00105.png',
-                 'output\\output_bean00106.png', 'output\\output_bean00112.png', 'output\\output_bean00113.png']
+        # times = ['1.000 sec', '1.033 sec', '1.066 sec', '1.100 sec', '1.133 sec', '1.166 sec', '1.200 sec', '1.233 sec',
+        #          '1.266 sec', '1.300 sec', '1.333 sec', '1.366 sec', '1.400 sec', '1.433 sec', '1.466 sec', '1.500 sec',
+        #          '1.533 sec', '1.666 sec', '1.700 sec', '1.733 sec', '1.766 sec', '1.800 sec', '1.833 sec', '1.866 sec',
+        #          '1.900 sec', '1.933 sec', '1.966 sec', '2.000 sec', '2.033 sec', '2.066 sec', '2.100 sec', '2.133 sec',
+        #          '2.166 sec', '2.200 sec', '2.233 sec', '2.266 sec', '2.300 sec', '2.333 sec', '2.366 sec', '2.400 sec',
+        #          '2.433 sec', '2.466 sec', '2.500 sec', '2.533 sec', '2.566 sec', '2.600 sec', '2.633 sec', '2.666 sec',
+        #          '2.700 sec', '2.733 sec', '2.766 sec', '2.800 sec', '2.833 sec', '2.866 sec', '2.900 sec', '2.933 sec',
+        #          '2.966 sec', '3.000 sec', '3.033 sec', '3.066 sec', '3.100 sec', '3.133 sec', '3.166 sec', '3.200 sec',
+        #          '3.233 sec', '3.266 sec', '3.300 sec', '3.333 sec', '3.366 sec', '3.400 sec', '3.433 sec', '3.466 sec',
+        #          '3.500 sec', '3.699 sec', '3.733 sec']
+        # accuracies = ['10.19%', '1.033 sec', '1 sec', '1 sec', '1.133 sec', '1.166 sec', '1.200 sec', '1.233 sec',
+        #               '1.266 sec', '1.300 sec', '1.333 sec', '1.366 sec', '1.400 sec', '1.433 sec', '1.466 sec',
+        #               '1.500 sec',
+        #               '1.533 sec', '1.666 sec', '1.700 sec', '1.733 sec', '1.766 sec', '1.800 sec', '1.833 sec',
+        #               '1.866 sec',
+        #               '1.900 sec', '1.933 sec', '1.966 sec', '2.000 sec', '2.033 sec', '2.066 sec', '2.100 sec',
+        #               '2.133 sec',
+        #               '2.166 sec', '2.200 sec', '2.233 sec', '2.266 sec', '2.300 sec', '2.333 sec', '2.366 sec',
+        #               '2.400 sec',
+        #               '2.433 sec', '2.466 sec', '2.500 sec', '2.533 sec', '2.566 sec', '2.600 sec', '2.633 sec',
+        #               '2.666 sec',
+        #               '2.700 sec', '2.733 sec', '2.766 sec', '2.800 sec', '2.833 sec', '2.866 sec', '2.900 sec',
+        #               '2.933 sec',
+        #               '2.966 sec', '3.000 sec', '3.033 sec', '3.066 sec', '3.100 sec', '3.133 sec', '3.166 sec',
+        #               '3.200 sec',
+        #               '3.233 sec', '3.266 sec', '3.300 sec', '3.333 sec', '3.366 sec', '3.400 sec', '3.433 sec',
+        #               '3.466 sec',
+        #               '3.500 sec', '3.699 sec', '3.733 sec']
+        # files = ['output\\output_bean00031.png', 'output\\output_bean00032.png', 'output\\output_bean00033.png',
+        #          'images\\shin-chan2.jpg', 'images\\title we bare bear.png', 'output\\output_bean00036.png',
+        #          'images\\title we bare bear.png', 'output\\output_bean00038.png', 'output\\output_bean00039.png',
+        #          'output\\output_bean00040.png', 'output\\output_bean00041.png', 'output\\output_bean00042.png',
+        #          'output\\output_bean00043.png', 'output\\output_bean00044.png', 'output\\output_bean00045.png',
+        #          'output\\output_bean00046.png', 'output\\output_bean00047.png', 'output\\output_bean00051.png',
+        #          'output\\output_bean00052.png', 'output\\output_bean00053.png', 'output\\output_bean00054.png',
+        #          'output\\output_bean00055.png', 'output\\output_bean00056.png', 'output\\output_bean00057.png',
+        #          'output\\output_bean00058.png', 'output\\output_bean00059.png', 'output\\output_bean00060.png',
+        #          'output\\output_bean00061.png', 'output\\output_bean00062.png', 'output\\output_bean00063.png',
+        #          'output\\output_bean00064.png', 'output\\output_bean00065.png', 'output\\output_bean00066.png',
+        #          'output\\output_bean00067.png', 'output\\output_bean00068.png', 'output\\output_bean00069.png',
+        #          'output\\output_bean00070.png', 'output\\output_bean00071.png', 'output\\output_bean00072.png',
+        #          'output\\output_bean00073.png', 'output\\output_bean00074.png', 'output\\output_bean00075.png',
+        #          'output\\output_bean00076.png', 'output\\output_bean00077.png', 'output\\output_bean00078.png',
+        #          'output\\output_bean00079.png', 'output\\output_bean00080.png', 'output\\output_bean00081.png',
+        #          'output\\output_bean00082.png', 'output\\output_bean00083.png', 'output\\output_bean00084.png',
+        #          'output\\output_bean00085.png', 'output\\output_bean00086.png', 'output\\output_bean00087.png',
+        #          'output\\output_bean00088.png', 'output\\output_bean00089.png', 'output\\output_bean00090.png',
+        #          'output\\output_bean00091.png', 'output\\output_bean00092.png', 'output\\output_bean00093.png',
+        #          'output\\output_bean00094.png', 'output\\output_bean00095.png', 'output\\output_bean00096.png',
+        #          'output\\output_bean00097.png', 'output\\output_bean00098.png', 'output\\output_bean00099.png',
+        #          'output\\output_bean00100.png', 'output\\output_bean00101.png', 'output\\output_bean00102.png',
+        #          'output\\output_bean00103.png', 'output\\output_bean00104.png', 'output\\output_bean00105.png',
+        #          'output\\output_bean00106.png', 'output\\output_bean00112.png', 'output\\output_bean00113.png']
 
-        self.ui.tableFrameFound.setRowCount(len(files))
+        self.ui.tableFrameFound.setRowCount(len(name_list))
 
         row = 0
-        for file in files:
+        for file in name_list:
             self.ui.tableFrameFound.setItem(row, 0, QTableWidgetItem(file))
             row = row + 1
 
         row = 0
-        for time in times:
+        for time in time_list:
             self.ui.tableFrameFound.setItem(row, 1, QTableWidgetItem(time))
             row = row + 1
 
         row = 0
-        for accuracy in accuracies:
+        for accuracy in accuracy_list:
             self.ui.tableFrameFound.setItem(row, 2, QTableWidgetItem(accuracy))
             row = row + 1
 
@@ -197,6 +198,17 @@ class MainWindow:
 
     def showResultPage(self):
         if self.cartoon_image.isFound:
+
+            # get character name from image
+            # run detect video
+            # assign true to self.isImageMatchedVideo = True
+            # pass list = load data
+            self.cartoon_video.setFileName(self.video_name)
+            self.cartoon_video.detectCharacter()
+            # get name and compare video and image
+
+            self.load_frame_output_data(self.cartoon_video.fileNames, self.cartoon_video.timestamps,
+                                        self.cartoon_video.frame_accuracies)
             self.showFoundPage()
         else:
             self.showNotFoundPage()
@@ -207,10 +219,12 @@ class MainWindow:
 
     def showFoundPage(self):
         output_image_name = 'output_image.png'
-        self.load_frame_output_data('jk', 'r', 'l')  # get timestamps and fileNames
+
         self.ui.inputImage_found.setPixmap(QPixmap(output_image_name))
+        self.ui.frameFound.setText('Double click on Data to change Frame')
+        self.ui.label_frameTitle.setText('Frame Time : -' + '\nAccuracy : -')
         self.ui.label_characterName.setText(self.cartoon_image.getCharacterName())
-        self.ui.label_accuracy.setText(self.cartoon_image.accuracy_image)
+        self.ui.label_accuracy.setText('Accuracy : ' + self.cartoon_image.accuracy_image)
         self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
 
     def showPopupError(self, errorText, errorInfo):
@@ -312,8 +326,19 @@ if __name__ == '__main__':
     main_win.show()
     sys.exit(app.exec_())
 
+# activate activate ccir_environment
+# python.exe main_window.py
+
+# to import env from yml file
+# conda env create -f ccir_env.yml
+# to export env to yml file
+# conda env export > ccir_env.yml
+
 # to compile
 # pyinstaller.exe --onefile Pages_colour.py
+# pyinstaller.exe --onefile -w --icon=vip-icon.ico main_window.py
+# pyinstaller.exe --onefile -w main_window.py
 
 # to convert ui to py
 # pyuic5 UI_ccir.ui -o Ui_main_pages.py
+

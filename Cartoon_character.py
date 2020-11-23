@@ -93,7 +93,7 @@ class Cartoon:
         color = self.COLORS[class_id]
         cv2.rectangle(image, (x, y), (x_plus_width, y_plus_height), color, 2)
         cv2.putText(image, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
-        self.accuracy_image = 'Accuracy : ' + str(round(confidence * 100, 2)) + '%'
+        self.accuracy_image = str(round(confidence * 100, 2)) + '%'
         # for video frame
         self.isFrameMatched = True
 
