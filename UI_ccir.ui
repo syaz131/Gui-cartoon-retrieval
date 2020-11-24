@@ -1103,8 +1103,8 @@ border-radius: 10px;</string>
        <widget class="QPushButton" name="pushButton_pauseVideo">
         <property name="geometry">
          <rect>
-          <x>620</x>
-          <y>130</y>
+          <x>610</x>
+          <y>80</y>
           <width>93</width>
           <height>28</height>
          </rect>
@@ -1116,8 +1116,8 @@ border-radius: 10px;</string>
        <widget class="QPushButton" name="pushButton_runVideoDirectly">
         <property name="geometry">
          <rect>
-          <x>620</x>
-          <y>170</y>
+          <x>610</x>
+          <y>120</y>
           <width>93</width>
           <height>28</height>
          </rect>
@@ -1159,6 +1159,39 @@ padding-left: 30px;</string>
         <property name="plainText">
          <string>video play</string>
         </property>
+       </widget>
+       <widget class="QFrame" name="frame_12">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>190</y>
+          <width>381</width>
+          <height>251</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:lightgray;
+border-radius: 10px;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QGraphicsView" name="graphicsView_video">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>361</width>
+           <height>231</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:lightyellow</string>
+         </property>
+        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_statistics">

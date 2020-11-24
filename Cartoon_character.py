@@ -27,9 +27,15 @@ class Cartoon:
         self.timestamps = []
         self.fileNames = []
         self.frame_accuracies = []
-        self.isFound = False
+        # self.isFound = False
         self.accuracy_image = ''
-        self.isFrameMatched = False
+
+        # to compare image with video
+        self.isCharacterFound = False
+        self.isImageMatchedVideo = False
+        self.characterId = None
+        self.characterToFindId = None
+        self.characterMatchedId = None
 
         # Validation of Paths / Files
         if not os.path.exists(self.CLASSES):
@@ -95,7 +101,7 @@ class Cartoon:
         cv2.putText(image, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
         self.accuracy_image = str(round(confidence * 100, 2)) + '%'
         # for video frame
-        self.isFrameMatched = True
+        self.isCharacterFound = True
 
     # Function to Process Image - Forward Propogation, NMS, BBox
     def process_Image(self, image, index):
@@ -141,7 +147,7 @@ class Cartoon:
         # Applying NMS
         indices = cv2.dnn.NMSBoxes(boxes, confidences, self.CONFIDENCE, self.NMS_THRESHOLD)
 
-        self.isFrameMatched = False
+        self.isCharacterFound = False
 
         # Draw final BBoxes
         for ind in indices:
@@ -153,8 +159,9 @@ class Cartoon:
             h = box[3]
             self.draw_BBox(image, class_ids[i], confidences[i], round(x), round(y), round(x + w), round(y + h))
             self.characterName = self.classes[class_ids[i]]
+            self.characterId = class_ids[i]
 
-            self.isFound = True
+            # self.isFound = True
             # print("[Prediction] Class : ", self.classes[class_ids[i]])
             # print("[Prediction] Score : ", round(confidences[i] * 100, 6))
 
@@ -163,7 +170,7 @@ class Cartoon:
             cv2.imwrite("output_image.png", image)
 
     def detectCharacter(self):
-        self.isFound = False
+        # self.isFound = False
         start = time.time()
         # Loading input file and processing
         if self.MODE == "image":
@@ -178,13 +185,17 @@ class Cartoon:
             frame = imutils.resize(frame, width=600)
 
             # Change fourcc according to video format supported by your device
-            fourcc = cv2.VideoWriter_fourcc(*'MJPG')  # (*'XVID')
+            fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # (*'XVID')
+            # fourcc = cv2.VideoWriter_fourcc(*'MJPG')  # (*'XVID') mp4v
             op_vid = cv2.VideoWriter("output_video." + self.ext, fourcc, fps, (frame.shape[1], frame.shape[0]))
 
             index = 0
             self.timestamps.clear()
             self.fileNames.clear()
             self.frame_accuracies.clear()
+
+            print('before loop charId : ' + str(self.characterId))
+            print('before loop isMatched : ' + str(self.isImageMatchedVideo))
 
             while cap.isOpened():
                 # Reading video frame by frame
@@ -200,8 +211,20 @@ class Cartoon:
                     index += 1
                     op_vid.write(frame)
 
-                    if self.isFrameMatched:  # is character = character / label
+                    print('charId : ' + str(self.characterId))
+                    print('charId to find : ' + str(self.characterToFindId))
+                    print('isMatched : ' + str(self.isImageMatchedVideo))
+
+                    if self.isCharacterFound and self.characterId == self.characterToFindId:
+                        # if self.isCharacterFound and self.characterId == self.characterToFindId:  # is character =
+                        # character / label
+                        print('charId : ' + str(self.characterId))
+                        print('charId to find : ' + str(self.characterToFindId))
+
+                        self.isImageMatchedVideo = True
+
                         output_file = "output_" + self.characterName + str(index).zfill(5) + "." + "png"
+
                         output_frame_name = "output/" + output_file
                         fileName = 'output\\' + output_file
 
@@ -209,7 +232,6 @@ class Cartoon:
                         self.fileNames.append(fileName)
                         self.frame_accuracies.append(self.accuracy_image)
                         cv2.imwrite(output_frame_name, frame)
-
                 else:
                     break
 
@@ -219,8 +241,8 @@ class Cartoon:
         end = time.time()
         total_time = round(end - start, 2)
         print("[INFO] Time : {} sec".format(total_time))
-        print(len(self.frame_accuracies))
-        # print(self.timestamps)
+        # print(len(self.frame_accuracies))
+        print(self.timestamps)
 
     def checkVideo(self):
         return 0
@@ -240,6 +262,15 @@ class Cartoon:
         return firstFrameName
 
     def setFileName(self, fileName):
+        # reset all video status
+        # to compare image with video
+        # self.isCharacterFound = False
+        # self.characterMatchedId = None
+
+        self.isImageMatchedVideo = False
+        self.characterId = None     # not a big prob - always change at ddraw
+        self.characterToFindId = None
+
         if not os.path.exists(fileName):
             sys.exit("[ERROR] Invalid file path given")
         else:
@@ -256,6 +287,11 @@ class Cartoon:
             sys.exit(error_msg)
 
         print("[INFO] Processing mode set to : ", self.MODE)
+
+    def setCharacterToFindId(self, id):
+        # only for video
+        print(id)
+        self.characterToFindId = id
 
     def setConfidence(self, confidence):
         if isinstance(confidence, float):
