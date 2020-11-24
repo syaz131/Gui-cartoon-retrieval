@@ -835,9 +835,9 @@ padding-left: 30px;</string>
      <widget class="QLabel" name="label_15">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>30</y>
-        <width>621</width>
+        <x>10</x>
+        <y>10</y>
+        <width>981</width>
         <height>31</height>
        </rect>
       </property>
@@ -855,9 +855,9 @@ padding-left:10px;
      <widget class="QPushButton" name="btn_insertAnotherImage2">
       <property name="geometry">
        <rect>
-        <x>670</x>
-        <y>530</y>
-        <width>291</width>
+        <x>710</x>
+        <y>550</y>
+        <width>281</width>
         <height>41</height>
        </rect>
       </property>
@@ -870,43 +870,20 @@ color: white;</string>
        <string>INSERT ANOTHER MATCH</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_characterName">
-      <property name="geometry">
-       <rect>
-        <x>670</x>
-        <y>30</y>
-        <width>301</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:palegreen;
-border: 2px solid green;
-font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
-padding-left:90px;
-</string>
-      </property>
-      <property name="text">
-       <string>doraemon</string>
-      </property>
-     </widget>
      <widget class="QTabWidget" name="tabWidget_foundPage">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>70</y>
-        <width>941</width>
-        <height>451</height>
+        <x>10</x>
+        <y>50</y>
+        <width>981</width>
+        <height>491</height>
        </rect>
       </property>
       <property name="tabPosition">
        <enum>QTabWidget::North</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
-      </property>
-      <property name="tabBarAutoHide">
-       <bool>false</bool>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_frame_table">
        <attribute name="title">
@@ -915,10 +892,10 @@ padding-left:90px;
        <widget class="QFrame" name="frame_8">
         <property name="geometry">
          <rect>
-          <x>630</x>
-          <y>30</y>
-          <width>291</width>
-          <height>211</height>
+          <x>160</x>
+          <y>10</y>
+          <width>381</width>
+          <height>231</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -936,8 +913,8 @@ border-radius: 10px;</string>
           <rect>
            <x>10</x>
            <y>10</y>
-           <width>271</width>
-           <height>151</height>
+           <width>361</width>
+           <height>211</height>
           </rect>
          </property>
          <property name="autoFillBackground">
@@ -950,49 +927,18 @@ font-size: 9.5pt;
 color: gray;</string>
          </property>
          <property name="text">
-          <string/>
+          <string>        Double click on Data to change Frame</string>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_frameTitle">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>160</y>
-           <width>271</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial Rounded MT Bold,Arial</family>
-           <pointsize>9</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:gray;
-font: 9pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
-color: white;
-border-radius: 0;
-align:center;
-padding-left: 60px;</string>
-         </property>
-         <property name="text">
-          <string>Time : 123.000 sec 
-Accuracy : 10.10%</string>
          </property>
         </widget>
        </widget>
        <widget class="QTableWidget" name="tableFrameFound">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>30</y>
+          <x>160</x>
+          <y>250</y>
           <width>611</width>
           <height>211</height>
          </rect>
@@ -1027,6 +973,58 @@ Accuracy : 10.10%</string>
           <string>Accuracy</string>
          </property>
         </column>
+       </widget>
+       <widget class="QLabel" name="label_frameTitle">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>100</y>
+          <width>221</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Rounded MT Bold,Arial</family>
+          <pointsize>9</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:gray;
+font: 9pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+color: white;
+border-radius: 0;
+align:center;
+padding-left: 30px;</string>
+        </property>
+        <property name="text">
+         <string>Time : 123.000 sec 
+
+Accuracy : 10.10%</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_characterName">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>50</y>
+          <width>221</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:palegreen;
+border: 2px solid green;
+font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+padding-left:30px;
+</string>
+        </property>
+        <property name="text">
+         <string>doraemon</string>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_video_play">
@@ -1171,6 +1169,9 @@ padding-left: 60px;</string>
        </widget>
       </widget>
      </widget>
+     <zorder>label_15</zorder>
+     <zorder>tabWidget_foundPage</zorder>
+     <zorder>btn_insertAnotherImage2</zorder>
     </widget>
    </widget>
   </widget>
