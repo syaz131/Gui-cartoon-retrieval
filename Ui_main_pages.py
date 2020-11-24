@@ -325,8 +325,114 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.not_found_page)
         self.found_page = QtWidgets.QWidget()
         self.found_page.setObjectName("found_page")
-        self.frame_7 = QtWidgets.QFrame(self.found_page)
-        self.frame_7.setGeometry(QtCore.QRect(670, 310, 291, 201))
+        self.label_15 = QtWidgets.QLabel(self.found_page)
+        self.label_15.setGeometry(QtCore.QRect(30, 30, 621, 31))
+        self.label_15.setStyleSheet("background-color:palegreen;\n"
+"border: 2px solid green;\n"
+"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"padding-left:10px;\n"
+"")
+        self.label_15.setObjectName("label_15")
+        self.btn_insertAnotherImage2 = QtWidgets.QPushButton(self.found_page)
+        self.btn_insertAnotherImage2.setGeometry(QtCore.QRect(670, 530, 291, 41))
+        self.btn_insertAnotherImage2.setStyleSheet("background-color:gray;\n"
+"font: 12pt \"Shiny Signature\", \"Arial\";\n"
+"color: white;")
+        self.btn_insertAnotherImage2.setObjectName("btn_insertAnotherImage2")
+        self.label_characterName = QtWidgets.QLabel(self.found_page)
+        self.label_characterName.setGeometry(QtCore.QRect(670, 30, 301, 31))
+        self.label_characterName.setStyleSheet("background-color:palegreen;\n"
+"border: 2px solid green;\n"
+"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"padding-left:90px;\n"
+"")
+        self.label_characterName.setObjectName("label_characterName")
+        self.tabWidget_foundPage = QtWidgets.QTabWidget(self.found_page)
+        self.tabWidget_foundPage.setGeometry(QtCore.QRect(30, 70, 941, 451))
+        self.tabWidget_foundPage.setTabPosition(QtWidgets.QTabWidget.North)
+        self.tabWidget_foundPage.setTabBarAutoHide(False)
+        self.tabWidget_foundPage.setObjectName("tabWidget_foundPage")
+        self.tab_frame_table = QtWidgets.QWidget()
+        self.tab_frame_table.setObjectName("tab_frame_table")
+        self.frame_8 = QtWidgets.QFrame(self.tab_frame_table)
+        self.frame_8.setGeometry(QtCore.QRect(630, 30, 291, 211))
+        self.frame_8.setStyleSheet("background-color:lightgray;\n"
+"border-radius: 10px;")
+        self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_8.setObjectName("frame_8")
+        self.frameFound = QtWidgets.QLabel(self.frame_8)
+        self.frameFound.setGeometry(QtCore.QRect(10, 10, 271, 151))
+        self.frameFound.setAutoFillBackground(False)
+        self.frameFound.setStyleSheet("background-color:white;\n"
+"border-radius: 0;\n"
+"font-size: 9.5pt;\n"
+"color: gray;")
+        self.frameFound.setText("")
+        self.frameFound.setScaledContents(True)
+        self.frameFound.setObjectName("frameFound")
+        self.label_frameTitle = QtWidgets.QLabel(self.frame_8)
+        self.label_frameTitle.setGeometry(QtCore.QRect(10, 160, 271, 41))
+        font = QtGui.QFont()
+        font.setFamily("Arial Rounded MT Bold,Arial")
+        font.setPointSize(9)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.label_frameTitle.setFont(font)
+        self.label_frameTitle.setStyleSheet("background-color:gray;\n"
+"font: 9pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"color: white;\n"
+"border-radius: 0;\n"
+"align:center;\n"
+"padding-left: 60px;")
+        self.label_frameTitle.setObjectName("label_frameTitle")
+        self.tableFrameFound = QtWidgets.QTableWidget(self.tab_frame_table)
+        self.tableFrameFound.setGeometry(QtCore.QRect(10, 30, 611, 211))
+        self.tableFrameFound.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tableFrameFound.setAlternatingRowColors(True)
+        self.tableFrameFound.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
+        self.tableFrameFound.setObjectName("tableFrameFound")
+        self.tableFrameFound.setColumnCount(3)
+        self.tableFrameFound.setRowCount(0)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableFrameFound.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableFrameFound.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableFrameFound.setHorizontalHeaderItem(2, item)
+        self.tableFrameFound.horizontalHeader().setDefaultSectionSize(189)
+        self.tableFrameFound.verticalHeader().setCascadingSectionResizes(False)
+        self.tabWidget_foundPage.addTab(self.tab_frame_table, "")
+        self.tab_video_play = QtWidgets.QWidget()
+        self.tab_video_play.setObjectName("tab_video_play")
+        self.frame_11 = QtWidgets.QFrame(self.tab_video_play)
+        self.frame_11.setGeometry(QtCore.QRect(100, 70, 471, 271))
+        self.frame_11.setStyleSheet("background-color:lightgray;\n"
+"border-radius: 10px;")
+        self.frame_11.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_11.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_11.setObjectName("frame_11")
+        self.label_5 = QtWidgets.QLabel(self.frame_11)
+        self.label_5.setGeometry(QtCore.QRect(130, 100, 201, 81))
+        self.label_5.setObjectName("label_5")
+        self.label_23 = QtWidgets.QLabel(self.frame_11)
+        self.label_23.setGeometry(QtCore.QRect(120, 220, 161, 41))
+        self.label_23.setStyleSheet("background-color:gray;\n"
+"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"color: white;\n"
+"border-radius: 0;\n"
+"align:center;\n"
+"padding-left: 30px;")
+        self.label_23.setObjectName("label_23")
+        self.text_4 = QtWidgets.QPlainTextEdit(self.frame_11)
+        self.text_4.setGeometry(QtCore.QRect(280, 70, 104, 31))
+        self.text_4.setObjectName("text_4")
+        self.tabWidget_foundPage.addTab(self.tab_video_play, "")
+        self.tab_statistics = QtWidgets.QWidget()
+        self.tab_statistics.setObjectName("tab_statistics")
+        self.frame_7 = QtWidgets.QFrame(self.tab_statistics)
+        self.frame_7.setGeometry(QtCore.QRect(580, 40, 291, 201))
         self.frame_7.setStyleSheet("background-color:lightgray;\n"
 "border-radius: 10px;")
         self.frame_7.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -349,99 +455,7 @@ class Ui_MainWindow(object):
 "align:center;\n"
 "padding-left: 60px;")
         self.label_accuracy.setObjectName("label_accuracy")
-        self.label_15 = QtWidgets.QLabel(self.found_page)
-        self.label_15.setGeometry(QtCore.QRect(40, 40, 611, 31))
-        self.label_15.setStyleSheet("background-color:palegreen;\n"
-"border: 2px solid green;\n"
-"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
-"padding-left:10px;\n"
-"")
-        self.label_15.setObjectName("label_15")
-        self.btn_insertAnotherImage2 = QtWidgets.QPushButton(self.found_page)
-        self.btn_insertAnotherImage2.setGeometry(QtCore.QRect(670, 530, 291, 41))
-        self.btn_insertAnotherImage2.setStyleSheet("background-color:gray;\n"
-"font: 12pt \"Shiny Signature\", \"Arial\";\n"
-"color: white;")
-        self.btn_insertAnotherImage2.setObjectName("btn_insertAnotherImage2")
-        self.label_characterName = QtWidgets.QLabel(self.found_page)
-        self.label_characterName.setGeometry(QtCore.QRect(670, 40, 291, 31))
-        self.label_characterName.setStyleSheet("background-color:palegreen;\n"
-"border: 2px solid green;\n"
-"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
-"padding-left:90px;\n"
-"")
-        self.label_characterName.setObjectName("label_characterName")
-        self.frame_8 = QtWidgets.QFrame(self.found_page)
-        self.frame_8.setGeometry(QtCore.QRect(670, 80, 291, 211))
-        self.frame_8.setStyleSheet("background-color:lightgray;\n"
-"border-radius: 10px;")
-        self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_8.setObjectName("frame_8")
-        self.frameFound = QtWidgets.QLabel(self.frame_8)
-        self.frameFound.setGeometry(QtCore.QRect(10, 10, 271, 151))
-        self.frameFound.setAutoFillBackground(False)
-        self.frameFound.setStyleSheet("background-color:white;\n"
-"border-radius: 0;\n"
-"font-size: 9.5pt;\n"
-"color: gray;")
-        self.frameFound.setText("")
-        self.frameFound.setScaledContents(True)
-        self.frameFound.setObjectName("frameFound")
-        self.frame_11 = QtWidgets.QFrame(self.found_page)
-        self.frame_11.setGeometry(QtCore.QRect(70, 310, 471, 271))
-        self.frame_11.setStyleSheet("background-color:lightgray;\n"
-"border-radius: 10px;")
-        self.frame_11.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_11.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_11.setObjectName("frame_11")
-        self.label_5 = QtWidgets.QLabel(self.frame_11)
-        self.label_5.setGeometry(QtCore.QRect(130, 100, 201, 81))
-        self.label_5.setObjectName("label_5")
-        self.label_23 = QtWidgets.QLabel(self.frame_11)
-        self.label_23.setGeometry(QtCore.QRect(120, 220, 161, 41))
-        self.label_23.setStyleSheet("background-color:gray;\n"
-"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
-"color: white;\n"
-"border-radius: 0;\n"
-"align:center;\n"
-"padding-left: 30px;")
-        self.label_23.setObjectName("label_23")
-        self.text_4 = QtWidgets.QPlainTextEdit(self.frame_11)
-        self.text_4.setGeometry(QtCore.QRect(280, 70, 104, 31))
-        self.text_4.setObjectName("text_4")
-        self.tableFrameFound = QtWidgets.QTableWidget(self.found_page)
-        self.tableFrameFound.setGeometry(QtCore.QRect(40, 80, 611, 211))
-        self.tableFrameFound.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.tableFrameFound.setAlternatingRowColors(True)
-        self.tableFrameFound.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
-        self.tableFrameFound.setObjectName("tableFrameFound")
-        self.tableFrameFound.setColumnCount(3)
-        self.tableFrameFound.setRowCount(0)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableFrameFound.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableFrameFound.setHorizontalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableFrameFound.setHorizontalHeaderItem(2, item)
-        self.tableFrameFound.horizontalHeader().setDefaultSectionSize(189)
-        self.tableFrameFound.verticalHeader().setCascadingSectionResizes(False)
-        self.label_frameTitle = QtWidgets.QLabel(self.found_page)
-        self.label_frameTitle.setGeometry(QtCore.QRect(680, 240, 271, 41))
-        font = QtGui.QFont()
-        font.setFamily("Arial Rounded MT Bold,Arial")
-        font.setPointSize(9)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(50)
-        self.label_frameTitle.setFont(font)
-        self.label_frameTitle.setStyleSheet("background-color:gray;\n"
-"font: 9pt \"Arial Rounded MT Bold\", \"Arial\";\n"
-"color: white;\n"
-"border-radius: 0;\n"
-"align:center;\n"
-"padding-left: 60px;")
-        self.label_frameTitle.setObjectName("label_frameTitle")
+        self.tabWidget_foundPage.addTab(self.tab_statistics, "")
         self.stackedWidget.addWidget(self.found_page)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -449,7 +463,8 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(5)
+        self.tabWidget_foundPage.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -478,18 +493,21 @@ class Ui_MainWindow(object):
         self.label_6.setText(_translate("MainWindow", "No Appearance Time"))
         self.label_22.setText(_translate("MainWindow", "No Video Match"))
         self.label_3.setText(_translate("MainWindow", "_"))
-        self.label_accuracy.setText(_translate("MainWindow", "Accuracy : 88.88%"))
         self.label_15.setText(_translate("MainWindow", "Character Found"))
         self.btn_insertAnotherImage2.setText(_translate("MainWindow", "INSERT ANOTHER MATCH"))
         self.label_characterName.setText(_translate("MainWindow", "doraemon"))
-        self.label_5.setText(_translate("MainWindow", "Video"))
-        self.label_23.setText(_translate("MainWindow", "Video Match"))
-        self.text_4.setPlainText(_translate("MainWindow", "video play"))
+        self.label_frameTitle.setText(_translate("MainWindow", "Time : 123.000 sec \n"
+"Accuracy : 10.10%"))
         item = self.tableFrameFound.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Frame Name"))
         item = self.tableFrameFound.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Time Appearance"))
         item = self.tableFrameFound.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Accuracy"))
-        self.label_frameTitle.setText(_translate("MainWindow", "Time : 123.000 sec \n"
-"Accuracy : 10.10%"))
+        self.tabWidget_foundPage.setTabText(self.tabWidget_foundPage.indexOf(self.tab_frame_table), _translate("MainWindow", "Video Frames"))
+        self.label_5.setText(_translate("MainWindow", "Video"))
+        self.label_23.setText(_translate("MainWindow", "Video Match"))
+        self.text_4.setPlainText(_translate("MainWindow", "video play"))
+        self.tabWidget_foundPage.setTabText(self.tabWidget_foundPage.indexOf(self.tab_video_play), _translate("MainWindow", "Play Video"))
+        self.label_accuracy.setText(_translate("MainWindow", "Accuracy : 88.88%"))
+        self.tabWidget_foundPage.setTabText(self.tabWidget_foundPage.indexOf(self.tab_statistics), _translate("MainWindow", "Character Statistics"))
