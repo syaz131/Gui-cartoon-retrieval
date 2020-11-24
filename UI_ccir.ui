@@ -77,13 +77,13 @@
      <enum>QFrame::NoFrame</enum>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="start_page">
      <property name="styleSheet">
       <string notr="true">background-color:white</string>
      </property>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="label_ico_bear">
       <property name="geometry">
        <rect>
         <x>280</x>
@@ -94,9 +94,6 @@
       </property>
       <property name="text">
        <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>images/title we bare bear.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -300,6 +297,34 @@ color: white;
       </property>
       <property name="text">
        <string>Choose Video</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="loading_page">
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>50</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>loading page</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_buffer">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>160</y>
+        <width>201</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -845,9 +870,6 @@ border-radius: 0;</string>
        <property name="text">
         <string/>
        </property>
-       <property name="pixmap">
-        <pixmap>images/we bare bear sticker medium.png</pixmap>
-       </property>
        <property name="scaledContents">
         <bool>true</bool>
        </property>
@@ -971,9 +993,6 @@ color: gray;</string>
        </property>
        <property name="text">
         <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap>images/title we bare bear.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>

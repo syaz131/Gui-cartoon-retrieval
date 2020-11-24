@@ -276,8 +276,8 @@ class Cartoon:
 
 if __name__ == '__main__':
     cartoon = Cartoon()
-    # dir = 'images/shin-chan2.jpg'
-    dir = 'images/bean 5 secs.mp4'
+    # dir = 'input_images/shin-chan2.jpg'
+    dir = 'input_images/bean 5 secs.mp4'
     # cartoon.setConfidence(0.6)
     cartoon.setFileName(dir)
     cartoon.detectCharacter()

@@ -1,7 +1,7 @@
 import sys, os, glob
 
 from PyQt5.QtCore import Qt, QUrl, QDir
-from PyQt5.QtGui import QPixmap, QIcon
+from PyQt5.QtGui import QPixmap, QIcon, QMovie
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox, QTableWidgetItem
 
@@ -21,11 +21,21 @@ class MainWindow:
         self.video_name = ''
         self.isImageMatchedVideo = False
 
+        we_bear_ico = 'title we bare bear'
+        self.ui.label_ico_bear.setPixmap((QPixmap(we_bear_ico)))
+
+        loadingGif = 'Loading_2.gif'
+        self.movie = QMovie(loadingGif)
+        self.ui.label_buffer.setMovie(self.movie)
+        # self.movie.start()
+
         # start first page
-        # self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
-        self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
+        # self.ui.stackedWidget.setCurrentWidget(self.ui.loading_page)
+        # self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
         # set switch button pages
+        # self.ui.btn_startApp.clicked.connect(self.showLoadingPage)
         self.ui.btn_startApp.clicked.connect(self.showInsertPage)
         self.ui.btn_insertAnotherImage1.clicked.connect(self.showInsertPage)
         self.ui.btn_insertAnotherImage2.clicked.connect(self.showInsertPage)
@@ -94,6 +104,8 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
     def showMatchPage(self):
+        # self.ui.stackedWidget.setCurrentWidget(self.ui.loading_page)
+        # self.movie.start()
         try:
             if self.image_name != '':
                 self.ui.matchPage_inputImage.setPixmap(QPixmap(self.image_name))
@@ -102,7 +114,10 @@ class MainWindow:
                 if self.video_name != '':
                     self.ui.matchPage_inputVideo.setPixmap(QPixmap(self.firstFrameName))
 
+                    # self.showLoadingPage()
                     self.cartoon_image.detectCharacter()
+                    self.movie.stop()
+
                     self.ui.text_2.setPlainText(str(self.cartoon_image.isFound))
                     self.ui.stackedWidget.setCurrentWidget(self.ui.match_page)
 
@@ -126,7 +141,10 @@ class MainWindow:
             # assign true to self.isImageMatchedVideo = True
             # pass list = load data
             self.cartoon_video.setFileName(self.video_name)
+
+            # self.showLoadingPage()
             self.cartoon_video.detectCharacter()
+            # self.movie.stop()
             # get name and compare video and image
 
             self.load_frame_output_data(self.cartoon_video.fileNames, self.cartoon_video.timestamps,
@@ -148,6 +166,11 @@ class MainWindow:
         self.ui.label_characterName.setText(self.cartoon_image.getCharacterName())
         self.ui.label_accuracy.setText('Accuracy : ' + self.cartoon_image.accuracy_image)
         self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
+
+    def showLoadingPage(self):
+        self.movie.start()
+        self.ui.stackedWidget.setCurrentWidget(self.ui.loading_page)
+
 
     def showPopupError(self, errorText, errorInfo):
         msg = QMessageBox()

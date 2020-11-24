@@ -1,5 +1,5 @@
 
-images/
+input_images/
 .idea/
 __pycache__/Ui_main_pages.cpython-37.pyc
 cfg/cartoon_yolo.weights
@@ -10,3 +10,4 @@ __pycache__/Ui_table_page.cpython-37.pyc
 build/
 dist/
 main_window.spec
+*.gif
