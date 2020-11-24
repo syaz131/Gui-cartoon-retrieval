@@ -326,7 +326,7 @@ class Ui_MainWindow(object):
         self.found_page = QtWidgets.QWidget()
         self.found_page.setObjectName("found_page")
         self.label_15 = QtWidgets.QLabel(self.found_page)
-        self.label_15.setGeometry(QtCore.QRect(10, 10, 971, 31))
+        self.label_15.setGeometry(QtCore.QRect(10, 10, 981, 31))
         self.label_15.setStyleSheet("background-color:palegreen;\n"
 "border: 2px solid green;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
@@ -359,7 +359,6 @@ class Ui_MainWindow(object):
 "border-radius: 0;\n"
 "font-size: 9.5pt;\n"
 "color: gray;")
-        self.frameFound.setText("")
         self.frameFound.setScaledContents(True)
         self.frameFound.setObjectName("frameFound")
         self.tableFrameFound = QtWidgets.QTableWidget(self.tab_frame_table)
@@ -392,31 +391,48 @@ class Ui_MainWindow(object):
 "color: white;\n"
 "border-radius: 0;\n"
 "align:center;\n"
-"padding-left: 20px;")
+"padding-left: 30px;")
         self.label_frameTitle.setObjectName("label_frameTitle")
         self.label_characterName = QtWidgets.QLabel(self.tab_frame_table)
         self.label_characterName.setGeometry(QtCore.QRect(550, 50, 221, 51))
         self.label_characterName.setStyleSheet("background-color:palegreen;\n"
 "border: 2px solid green;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
-"padding-left:20px;\n"
+"padding-left:30px;\n"
 "")
         self.label_characterName.setObjectName("label_characterName")
         self.tabWidget_foundPage.addTab(self.tab_frame_table, "")
         self.tab_video_play = QtWidgets.QWidget()
         self.tab_video_play.setObjectName("tab_video_play")
         self.frame_11 = QtWidgets.QFrame(self.tab_video_play)
-        self.frame_11.setGeometry(QtCore.QRect(100, 70, 471, 271))
+        self.frame_11.setGeometry(QtCore.QRect(100, 30, 471, 311))
         self.frame_11.setStyleSheet("background-color:lightgray;\n"
 "border-radius: 10px;")
         self.frame_11.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_11.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_11.setObjectName("frame_11")
-        self.label_5 = QtWidgets.QLabel(self.frame_11)
-        self.label_5.setGeometry(QtCore.QRect(130, 100, 201, 81))
-        self.label_5.setObjectName("label_5")
-        self.label_23 = QtWidgets.QLabel(self.frame_11)
-        self.label_23.setGeometry(QtCore.QRect(120, 220, 161, 41))
+        self.label_videoPlay = QtWidgets.QLabel(self.frame_11)
+        self.label_videoPlay.setGeometry(QtCore.QRect(10, 10, 451, 221))
+        self.label_videoPlay.setStyleSheet("background-color:white; border-radius: 0;")
+        self.label_videoPlay.setObjectName("label_videoPlay")
+        self.horizontalSlider_video = QtWidgets.QSlider(self.frame_11)
+        self.horizontalSlider_video.setGeometry(QtCore.QRect(80, 270, 381, 21))
+        self.horizontalSlider_video.setStyleSheet("background-color:white;\n"
+" border-radius:0;")
+        self.horizontalSlider_video.setOrientation(QtCore.Qt.Horizontal)
+        self.horizontalSlider_video.setObjectName("horizontalSlider_video")
+        self.pushButton_playVideo = QtWidgets.QPushButton(self.frame_11)
+        self.pushButton_playVideo.setGeometry(QtCore.QRect(10, 260, 61, 41))
+        self.pushButton_playVideo.setStyleSheet("background-color:white; border-radius:5px;")
+        self.pushButton_playVideo.setObjectName("pushButton_playVideo")
+        self.pushButton_pauseVideo = QtWidgets.QPushButton(self.tab_video_play)
+        self.pushButton_pauseVideo.setGeometry(QtCore.QRect(620, 130, 93, 28))
+        self.pushButton_pauseVideo.setObjectName("pushButton_pauseVideo")
+        self.pushButton_runVideoDirectly = QtWidgets.QPushButton(self.tab_video_play)
+        self.pushButton_runVideoDirectly.setGeometry(QtCore.QRect(620, 170, 93, 28))
+        self.pushButton_runVideoDirectly.setObjectName("pushButton_runVideoDirectly")
+        self.label_23 = QtWidgets.QLabel(self.tab_video_play)
+        self.label_23.setGeometry(QtCore.QRect(160, 350, 161, 41))
         self.label_23.setStyleSheet("background-color:gray;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
 "color: white;\n"
@@ -424,8 +440,8 @@ class Ui_MainWindow(object):
 "align:center;\n"
 "padding-left: 30px;")
         self.label_23.setObjectName("label_23")
-        self.text_4 = QtWidgets.QPlainTextEdit(self.frame_11)
-        self.text_4.setGeometry(QtCore.QRect(280, 70, 104, 31))
+        self.text_4 = QtWidgets.QPlainTextEdit(self.tab_video_play)
+        self.text_4.setGeometry(QtCore.QRect(330, 350, 104, 31))
         self.text_4.setObjectName("text_4")
         self.tabWidget_foundPage.addTab(self.tab_video_play, "")
         self.tab_statistics = QtWidgets.QWidget()
@@ -466,7 +482,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(5)
-        self.tabWidget_foundPage.setCurrentIndex(0)
+        self.tabWidget_foundPage.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -497,6 +513,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "_"))
         self.label_15.setText(_translate("MainWindow", "Character Found"))
         self.btn_insertAnotherImage2.setText(_translate("MainWindow", "INSERT ANOTHER MATCH"))
+        self.frameFound.setText(_translate("MainWindow", "        Double click on Data to change Frame"))
         item = self.tableFrameFound.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Frame Name"))
         item = self.tableFrameFound.horizontalHeaderItem(1)
@@ -508,7 +525,10 @@ class Ui_MainWindow(object):
 "Accuracy : 10.10%"))
         self.label_characterName.setText(_translate("MainWindow", "doraemon"))
         self.tabWidget_foundPage.setTabText(self.tabWidget_foundPage.indexOf(self.tab_frame_table), _translate("MainWindow", "Video Frames"))
-        self.label_5.setText(_translate("MainWindow", "Video"))
+        self.label_videoPlay.setText(_translate("MainWindow", "Video"))
+        self.pushButton_playVideo.setText(_translate("MainWindow", "Play"))
+        self.pushButton_pauseVideo.setText(_translate("MainWindow", "Pause"))
+        self.pushButton_runVideoDirectly.setText(_translate("MainWindow", "Play Video"))
         self.label_23.setText(_translate("MainWindow", "Video Match"))
         self.text_4.setPlainText(_translate("MainWindow", "video play"))
         self.tabWidget_foundPage.setTabText(self.tabWidget_foundPage.indexOf(self.tab_video_play), _translate("MainWindow", "Play Video"))

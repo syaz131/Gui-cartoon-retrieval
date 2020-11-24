@@ -3,7 +3,9 @@ import sys, os, glob
 from PyQt5.QtCore import Qt, QUrl, QDir
 from PyQt5.QtGui import QPixmap, QIcon, QMovie
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
-from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox, QTableWidgetItem
+from PyQt5.QtMultimediaWidgets import QVideoWidget
+from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox, QTableWidgetItem, QSlider, QLabel, \
+    QSizePolicy, QStyle
 
 # change from file
 from Ui_main_pages import Ui_MainWindow
@@ -29,12 +31,14 @@ class MainWindow:
         self.ui.label_buffer.setMovie(self.movie)
         # self.movie.start()
 
-        videoOutput_name = 'output_video_bean_eg'
-        self.video_output = QMovie(videoOutput_name)
+        self.videoOutput_name = 'output_video_bean_eg.mp4'
+        self.videoPlay_output = QMovie(self.videoOutput_name)
+        self.ui.label_videoPlay.setMovie(self.videoPlay_output)
+        self.videoPlay_output.setPaused(True)
 
         # start first page
-        self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
-        # self.ui.stackedWidget.setCurrentWidget(self.ui.pushButton_foundPage)
+        # self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.pushButton_foundPage)
         # self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
         # set switch button pages
@@ -49,6 +53,7 @@ class MainWindow:
         self.ui.btn_chooseVideo.clicked.connect(self.chooseVideo)
         self.ui.pushButton_foundPage.clicked.connect(self.showFoundPage)
         self.ui.pushButton_notFoundPage.clicked.connect(self.showNotFoundPage)
+        self.ui.pushButton_runVideoDirectly.clicked.connect(self.playVideoDirectly)
 
         self.ui.btn_changeImage.clicked.connect(self.changeImage_clicked)
         self.ui.btn_changeVIdeo.clicked.connect(self.changeVideo_clicked)
@@ -76,6 +81,29 @@ class MainWindow:
         # dir = 'images/bean 5 secs.mp4'
         # cartoon.setConfidence(0.6)
         # self.cartoon_image.detectCharacter()
+
+        # ============================= videoPlayer ==============================
+        self.mediaPlayer = QMediaPlayer(None, QMediaPlayer.VideoSurface)
+
+        videoWidget = QVideoWidget()
+
+        # self.playButton = QPushButton()
+        self.ui.pushButton_playVideo.setEnabled(False)
+        # self.ui.pushButton_playVideo.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
+        self.ui.pushButton_playVideo.clicked.connect(self.play)
+
+        self.ui.horizontalSlider_video = QSlider(Qt.Horizontal)
+        self.ui.horizontalSlider_video.setRange(0, 0)
+        self.ui.horizontalSlider_video.sliderMoved.connect(self.setPosition)
+
+        # self.errorLabel = QLabel()
+        # self.errorLabel.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
+
+        self.mediaPlayer.setVideoOutput(videoWidget)
+        self.mediaPlayer.stateChanged.connect(self.mediaStateChanged)
+        self.mediaPlayer.positionChanged.connect(self.positionChanged)
+        self.mediaPlayer.durationChanged.connect(self.durationChanged)
+        self.mediaPlayer.error.connect(self.handleError)
 
     def load_frame_output_data(self, name_list='h', time_list='h', accuracy_list='b'):
 
@@ -261,6 +289,9 @@ class MainWindow:
         self.ui.label_frameTitle.setText('Frame Time : ' + time + '\n\nAccuracy : ' + acc)
         self.setFrameFound(item)
 
+    def playVideoDirectly(self):
+        self.runFile(self.videoOutput_name)
+
     def runFile(self, fileName):
         try:
             os.startfile(fileName)
@@ -286,6 +317,12 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
     # # =================== play video event ========================
+
+    def openVideoFile(self, fileName):
+        if fileName != '':
+            self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(fileName)))
+            self.ui.pushButton_playVideo.setEnabled(True)
+
     #
     # def openFile(self):
     #     fileName, _ = QFileDialog.getOpenFileName(self, "Open Movie",
@@ -295,33 +332,35 @@ class MainWindow:
     #         self.mediaPlayer.setMedia(
     #             QMediaContent(QUrl.fromLocalFile(fileName)))
     #         self.playButton.setEnabled(True)
-    #
-    # def play(self):
-    #     if self.mediaPlayer.state() == QMediaPlayer.PlayingState:
-    #         self.mediaPlayer.pause()
-    #     else:
-    #         self.mediaPlayer.play()
-    #
-    # def mediaStateChanged(self, state):
-    #     if self.mediaPlayer.state() == QMediaPlayer.PlayingState:
-    #         self.playButton.setIcon(
-    #             self.style().standardIcon(QStyle.SP_MediaPause))
-    #     else:
-    #         self.playButton.setIcon(
-    #             self.style().standardIcon(QStyle.SP_MediaPlay))
-    #
-    # def positionChanged(self, position):
-    #     self.positionSlider.setValue(position)
-    #
-    # def durationChanged(self, duration):
-    #     self.positionSlider.setRange(0, duration)
-    #
-    # def setPosition(self, position):
-    #     self.mediaPlayer.setPosition(position)
-    #
-    # def handleError(self):
-    #     self.playButton.setEnabled(False)
-    #     self.errorLabel.setText("Error: " + self.mediaPlayer.errorString())
+
+    def play(self):
+        if self.mediaPlayer.state() == QMediaPlayer.PlayingState:
+            self.mediaPlayer.pause()
+        else:
+            self.mediaPlayer.play()
+
+    def mediaStateChanged(self, state):
+        if self.mediaPlayer.state() == QMediaPlayer.PlayingState:
+            self.ui.pushButton_playVideo.setText('Play')
+            # self.ui.pushButton_playVideo.setIcon(
+            #     self.style().standardIcon(QStyle.SP_MediaPause))
+        else:
+            self.ui.pushButton_playVideo.setText('Pause')
+            # self.ui.pushButton_playVideo.setIcon(
+                # self.style().standardIcon(QStyle.SP_MediaPlay))
+
+    def positionChanged(self, position):
+        self.ui.horizontalSlider_video.setValue(position)
+
+    def durationChanged(self, duration):
+        self.ui.horizontalSlider_video.setRange(0, duration)
+
+    def setPosition(self, position):
+        self.mediaPlayer.setPosition(position)
+
+    def handleError(self):
+        self.ui.pushButton_playVideo.setEnabled(False)
+        # self.errorLabel.setText("Error: " + self.mediaPlayer.errorString())
 
 
 if __name__ == '__main__':
