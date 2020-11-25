@@ -63,7 +63,8 @@ class MainWindow:
         self.videoPlay_output.setPaused(True)
 
         # start first page
-        self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.advanceSearch_page)
+        # self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
         # self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
         # self.ui.stackedWidget.setCurrentWidget(self.ui.pushButton_foundPage)
         # self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
@@ -95,6 +96,18 @@ class MainWindow:
 
         # drag and drop image
         # self.ui.insertPage_cartoonImage.setPixmap(image)
+
+        # ================ Extra Pages - Advance Search / How To Use ===================
+        self.ui.btn_advanceSearch.clicked.connect(self.showAdvanceSearchPage)   # reset all value var
+        self.ui.btn_howToUse.clicked.connect(self.showHowToUsePage)
+        self.ui.btn_readyToStart.clicked.connect(self.showInsertPage)
+        self.ui.btn_findMatchCharacter_advanceSearch.clicked.connect(self.showResultPage)
+
+        self.ui.btn_chooseFile_advancePage.clicked.connect(self.chooseFileAdvance)
+        self.ui.btn_chooseImage_advancePage.clicked.connect(self.chooseImageAdvance)
+        self.ui.btn_chooseFolder.clicked.connect(self.chooseFolder)
+        # self.ui.btn_reset_detectionSettings.clicked.connect()
+        # self.ui.btn_reset_videoDetails.clicked.connect()
 
         # ======= initiate table ==================================
         # change width of column
@@ -297,6 +310,14 @@ class MainWindow:
         self.ui.label_accuracy.setText('Accuracy : ' + self.cartoon_image.accuracy_image)
         self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
 
+    def showAdvanceSearchPage(self):
+        # reset all value to default
+        self.ui.stackedWidget.setCurrentWidget(self.ui.advanceSearch_page)
+
+    def showHowToUsePage(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.howToUse_page)
+
+
     def showLoadingPage(self):
         self.movie.start()
         self.ui.stackedWidget.setCurrentWidget(self.ui.loading_page)
@@ -332,6 +353,44 @@ class MainWindow:
         except:
             self.ui.insertPage_cartoonVideo.setText(' ')
             print('[ERROR] - Cant read video file')
+
+    def chooseImageAdvance(self):
+        fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
+                                            'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                            "Image files (*.jpg *.png *.jpeg)")
+        self.image_name = fname[0]
+        self.ui.advancePage_insertImage.setPixmap(QPixmap(self.image_name))
+
+    def chooseFileAdvance(self):
+        fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
+                                            'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                            "Image files (*.jpg *.png *.jpeg *.mp4 *.avi)")
+
+        # danger to use self.image_name
+        self.fileAdvance_name = fname[0]
+
+        try:
+            ext = self.fileAdvance_name.split('.')[-1]
+            if ext in self.cartoon_image.IMG_EXT:
+                self.ui.advancePage_insertFile.setPixmap(QPixmap(self.fileAdvance_name))
+            elif ext in self.cartoon_image.VID_EXT:
+                self.firstFrameName = self.cartoon_video.getFirstFrame(self.fileAdvance_name)
+                self.ui.advancePage_insertFile.setPixmap(QPixmap(self.firstFrameName))
+            else:
+                error_msg = "[ERROR] Invalid file format"
+                sys.exit(error_msg)
+
+        except:
+            self.ui.advancePage_insertFile.setText(' ')
+            print('[ERROR] - Cant read image/video file')
+
+    def chooseFolder(self):
+        dir = QFileDialog.getExistingDirectory(self.ui.insert_page, 'Open file',
+                                               'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                               QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
+
+        print(dir)
+        self.ui.label_dirAdvance.setText(dir)
 
     def changeFrameFound(self):
         row = self.ui.tableFrameFound.currentRow()
