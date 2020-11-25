@@ -194,9 +194,6 @@ class Cartoon:
             self.fileNames.clear()
             self.frame_accuracies.clear()
 
-            print('before loop charId : ' + str(self.characterId))
-            print('before loop isMatched : ' + str(self.isImageMatchedVideo))
-
             while cap.isOpened():
                 # Reading video frame by frame
                 ret, frame = cap.read()
@@ -242,7 +239,24 @@ class Cartoon:
         total_time = round(end - start, 2)
         print("[INFO] Time : {} sec".format(total_time))
         # print(len(self.frame_accuracies))
-        print(self.timestamps)
+        # print(self.timestamps)
+
+        # delete when no match found - NO EFFECT
+        # if not self.isImageMatchedVideo and self.MODE == "video":
+        #     output_dir = 'output/'
+        #     output_vid = 'output_video.mp4'
+        #
+        #     if os.path.exists(output_dir):
+        #         try:
+        #             shutil.rmtree(output_dir)
+        #         except OSError as e:
+        #             print("Error: %s : %s" % (output_dir, e.strerror))
+        #
+        #     if os.path.exists(output_vid):
+        #         try:
+        #             shutil.rmtree(output_vid)
+        #         except OSError as e:
+        #             print("Error: %s : %s" % (output_vid, e.strerror))
 
     def checkVideo(self):
         return 0

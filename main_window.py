@@ -6,11 +6,33 @@ from PyQt5.QtGui import QPixmap, QIcon, QMovie
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtMultimediaWidgets import QVideoWidget
 from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox, QTableWidgetItem, QSlider, QLabel, \
-    QSizePolicy, QStyle
+    QSizePolicy, QStyle, QWidget
 
 # change from file
 from Ui_main_pages import Ui_MainWindow
 from Cartoon_character import Cartoon
+
+
+# from Loading_window import LoadingScreen
+
+class LoadingScreen(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setFixedSize(300, 300)
+        self.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.CustomizeWindowHint)
+        self.label_animation = QLabel(self)
+
+        self.movie = QMovie('Loading_2.gif')
+        self.label_animation.setMovie(self.movie)
+        self.movie.start()
+
+    def startAnimation(self):
+        self.movie.start()
+        self.show()
+
+    def stopAnimation(self):
+        self.close()
+        self.movie.stop()
 
 
 class MainWindow:
@@ -31,7 +53,9 @@ class MainWindow:
         self.movie = QMovie(loadingGif)
         self.ui.label_buffer.setMovie(self.movie)
         self.ui.label_videoPlay.setMovie(self.movie)
-        # self.movie.start()
+        # self.ui.label_buffer_insertPage.setMovie(self.movie)
+        # self.ui.label_buffer_insertPage.setHidden(True)
+        self.movie.start()
 
         self.videoOutput_name = 'output_video_bean_eg.mp4'
         self.videoPlay_output = QMovie(self.videoOutput_name)
@@ -39,9 +63,10 @@ class MainWindow:
         self.videoPlay_output.setPaused(True)
 
         # start first page
-        # self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
+        # self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
         # self.ui.stackedWidget.setCurrentWidget(self.ui.pushButton_foundPage)
-        self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
+        # self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
         # set switch button pages
         # self.ui.btn_startApp.clicked.connect(self.showLoadingPage)
@@ -49,7 +74,11 @@ class MainWindow:
         self.ui.btn_insertAnotherImage1.clicked.connect(self.showInsertPage)
         self.ui.btn_insertAnotherImage2.clicked.connect(self.showInsertPage)
 
+        # ====================== Loading Window =========================================
+        self.loadingScreen = LoadingScreen()
+
         # # ======= initiate button connection ==================================
+        # self.ui.btn_confirmImageVideo.clicked.connect(self.showLoadingPage)
         self.ui.btn_confirmImageVideo.clicked.connect(self.showMatchPage)
         self.ui.btn_chooseImage.clicked.connect(self.chooseImage)
         self.ui.btn_chooseVideo.clicked.connect(self.chooseVideo)
@@ -69,9 +98,9 @@ class MainWindow:
 
         # ======= initiate table ==================================
         # change width of column
-        self.ui.tableFrameFound.setColumnWidth(0, 280)
-        self.ui.tableFrameFound.setColumnWidth(1, 160)
-        self.ui.tableFrameFound.setColumnWidth(2, 120)
+        self.ui.tableFrameFound.setColumnWidth(0, 300)
+        self.ui.tableFrameFound.setColumnWidth(1, 180)
+        self.ui.tableFrameFound.setColumnWidth(2, 160)
         #
         # # button openFile =====================================
         self.ui.tableFrameFound.itemDoubleClicked.connect(self.changeFrameFound)
@@ -82,7 +111,6 @@ class MainWindow:
         # dir = 'images/shin-chan2.jpg'
         # dir = 'images/bean 5 secs.mp4'
         # cartoon.setConfidence(0.6)
-        # self.cartoon_image.detectCharacter()
 
         # ============================= videoPlayer ==============================
         self.mediaPlayer = QMediaPlayer(None, QMediaPlayer.VideoSurface)
@@ -182,8 +210,8 @@ class MainWindow:
         self.main_win.show()
 
     def showInsertPage(self):
-        self.ui.insertPage_cartoonImage.setText('         Choose an image to search')
-        self.ui.insertPage_cartoonVideo.setText('            Choose a video to search')
+        self.ui.insertPage_cartoonImage.setText('              Choose an image to search')
+        self.ui.insertPage_cartoonVideo.setText('                Choose a video to search')
         self.image_name = ''
         self.video_name = ''
         self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
@@ -200,8 +228,15 @@ class MainWindow:
                     self.ui.matchPage_inputVideo.setPixmap(QPixmap(self.firstFrameName))
 
                     # self.showLoadingPage()
+                    # self.showLoadingPage()
+                    # self.ui.stackedWidget.setCurrentWidget(self.ui.loading_page)
+                    # self.ui.label_buffer_insertPage.setHidden(False)
+                    # self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
+                    self.loadingScreen.startAnimation()
                     self.cartoon_image.detectCharacter()
-                    self.movie.stop()
+                    self.loadingScreen.stopAnimation()
+                    # self.ui.label_buffer_insertPage.setHidden(True)
+                    # self.movie.stop()
 
                     self.ui.text_2.setPlainText(str(self.cartoon_image.isCharacterFound))
                     self.ui.stackedWidget.setCurrentWidget(self.ui.match_page)
@@ -216,13 +251,10 @@ class MainWindow:
         except:
             self.showPopupError('No Image or Video!', "Please choose Image and Video")
 
-
-
     def showResultPage(self):
         if self.cartoon_image.isCharacterFound:
 
             # get character name from image
-            # run detect video
             # assign true to self.isImageMatchedVideo = True
             # pass list = load data
             self.cartoon_video.setFileName(self.video_name)
@@ -230,17 +262,24 @@ class MainWindow:
             # self.showLoadingPage()
             # get name/id and compare video and image - set video status
             self.cartoon_video.setCharacterToFindId(self.cartoon_image.characterId)
+            # self.ui.label_buffer_insertPage.setHidden(False)
+            # self.ui.stackedWidget.setCurrentWidget(self.ui.match_page)
+            self.loadingScreen.startAnimation()
             self.cartoon_video.detectCharacter()
+            self.loadingScreen.stopAnimation()
+            # self.ui.label_buffer_insertPage.setHidden(True)
 
-            self.isImageMatchedVideo = self.cartoon_video.isImageMatchedVideo   # assign img match vid is T/F
+            self.isImageMatchedVideo = self.cartoon_video.isImageMatchedVideo  # assign img match vid is T/F
             # true go to found page
             # false go to not found
-
-            # self.movie.stop()
-
-            self.load_frame_output_data(self.cartoon_video.fileNames, self.cartoon_video.timestamps,
-                                        self.cartoon_video.frame_accuracies)
-            self.showFoundPage()
+            if self.isImageMatchedVideo:
+                self.load_frame_output_data(self.cartoon_video.fileNames, self.cartoon_video.timestamps,
+                                            self.cartoon_video.frame_accuracies)
+                self.showFoundPage()
+                # self.showNotFoundPage() SUCCESS
+            else:
+                self.showNotFoundPage()
+                # self.movie.stop()
         else:
             self.showNotFoundPage()
 
@@ -252,8 +291,8 @@ class MainWindow:
         output_image_name = 'output_image.png'
 
         self.ui.inputImage_found.setPixmap(QPixmap(output_image_name))
-        self.ui.frameFound.setText('        Double click on Data to change Frame')
-        self.ui.label_frameTitle.setText('Frame Time : -' + '\n\nAccuracy : -')
+        self.ui.frameFound.setText('             Double click on Data to change Frame')
+        self.ui.label_frameTitle.setText('      Time : -           ' + '          Accuracy : -')
         self.ui.label_characterName.setText(self.cartoon_image.getCharacterName())
         self.ui.label_accuracy.setText('Accuracy : ' + self.cartoon_image.accuracy_image)
         self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
@@ -261,7 +300,6 @@ class MainWindow:
     def showLoadingPage(self):
         self.movie.start()
         self.ui.stackedWidget.setCurrentWidget(self.ui.loading_page)
-
 
     def showPopupError(self, errorText, errorInfo):
         msg = QMessageBox()
@@ -300,7 +338,7 @@ class MainWindow:
         item = self.ui.tableFrameFound.item(row, 0).text()
         time = self.ui.tableFrameFound.item(row, 1).text()
         acc = self.ui.tableFrameFound.item(row, 2).text()
-        self.ui.label_frameTitle.setText('Frame Time : ' + time + '\n\nAccuracy : ' + acc)
+        self.ui.label_frameTitle.setText('      Time : ' + time + '          Accuracy : ' + acc)
         self.setFrameFound(item)
 
     def playVideoDirectly(self):
@@ -321,12 +359,12 @@ class MainWindow:
             self.showPopupError('Not an image', 'File not found or \nFile open should be in *.png, *jpeg, *jpg')
 
     def changeImage_clicked(self):
-        self.ui.insertPage_cartoonImage.setText('         Choose an image to search')
+        self.ui.insertPage_cartoonImage.setText('              Choose an image to search')
         self.image_name = ''
         self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
     def changeVideo_clicked(self):
-        self.ui.insertPage_cartoonVideo.setText('            Choose a video to search')
+        self.ui.insertPage_cartoonVideo.setText('                Choose a video to search')
         self.video_name = ''
         self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
@@ -365,7 +403,7 @@ class MainWindow:
         else:
             self.ui.pushButton_playVideo.setText('Pause')
             # self.ui.pushButton_playVideo.setIcon(
-                # self.style().standardIcon(QStyle.SP_MediaPlay))
+            # self.style().standardIcon(QStyle.SP_MediaPlay))
 
     def positionChanged(self, position):
         self.ui.horizontalSlider_video.setValue(position)
@@ -402,4 +440,3 @@ if __name__ == '__main__':
 
 # to convert ui to py
 # pyuic5 UI_ccir.ui -o Ui_main_pages.py
-
