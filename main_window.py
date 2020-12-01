@@ -45,6 +45,7 @@ class MainWindow:
         self.image_name = ''
         self.video_name = ''
         self.isImageMatchedVideo = False
+        self.fileExt = ''
 
         we_bear_ico = 'title we bare bear'
         self.ui.label_ico_bear.setPixmap((QPixmap(we_bear_ico)))
@@ -98,16 +99,24 @@ class MainWindow:
         # self.ui.insertPage_cartoonImage.setPixmap(image)
 
         # ================ Extra Pages - Advance Search / How To Use ===================
-        self.ui.btn_advanceSearch.clicked.connect(self.showAdvanceSearchPage)   # reset all value var
+        self.ui.btn_advanceSearch.clicked.connect(self.showAdvanceSearchPage)  # reset all value var
         self.ui.btn_howToUse.clicked.connect(self.showHowToUsePage)
         self.ui.btn_readyToStart.clicked.connect(self.showInsertPage)
-        self.ui.btn_findMatchCharacter_advanceSearch.clicked.connect(self.showResultPage)
+        self.ui.btn_findMatchCharacter_advanceSearch.clicked.connect(self.showAdvanceSearchResult)
+        # self.ui.btn_findMatchCharacter_advanceSearch.clicked.connect(self.showResultPage)
 
         self.ui.btn_chooseFile_advancePage.clicked.connect(self.chooseFileAdvance)
         self.ui.btn_chooseImage_advancePage.clicked.connect(self.chooseImageAdvance)
-        self.ui.btn_chooseFolder.clicked.connect(self.chooseFolder)
-        # self.ui.btn_reset_detectionSettings.clicked.connect()
-        # self.ui.btn_reset_videoDetails.clicked.connect()
+        self.ui.btn_chooseFolder_video.clicked.connect(self.chooseVideoFolder)
+        self.ui.btn_chooseFolder_image.clicked.connect(self.chooseImageFolder)
+
+        # =================== Advance Page - radio button / reset =====================
+        self.ui.btn_reset_detectionSettings.clicked.connect(self.reset_detectionSettings)
+        self.ui.btn_reset_videoDetails.clicked.connect(self.reset_videoDetails)
+
+        self.ui.radioButton_oneFile.clicked.connect(self.radioBtn_chooseFile)
+        self.ui.radioButton_imageFolder.clicked.connect(self.radioBtn_chooseImageFolder)
+        self.ui.radioButton_videoFolder.clicked.connect(self.radioBtn_chooseVideoFolder)
 
         # ======= initiate table ==================================
         # change width of column
@@ -156,24 +165,25 @@ class MainWindow:
 
     def load_frame_output_data(self, name_list='h', time_list='h', accuracy_list='b'):
 
-        # accuracy_list = ['82.61%', '82.79%', '73.9%', '74.23%', '80.14%', '80.31%', '80.25%', '74.33%', '74.25%', '69.91%', '70.37%',
-        #  '63.82%', '63.83%', '65.21%', '65.17%', '65.2%', '65.24%', '65.27%', '65.25%', '65.32%', '65.32%', '65.33%',
-        #  '65.33%', '65.4%', '65.38%', '63.53%', '63.49%', '85.45%', '68.85%', '69.0%', '75.48%', '75.56%', '88.24%',
-        #  '88.26%', '88.19%', '91.88%', '91.84%', '91.83%', '79.39%', '79.07%', '87.3%', '87.75%', '92.47%', '92.52%',
-        #  '92.56%', '90.77%', '90.87%', '90.92%', '91.12%', '91.13%', '91.21%', '91.24%', '90.14%', '90.32%', '89.54%',
-        #  '89.54%', '89.59%', '88.61%', '88.39%', '87.01%', '86.96%', '86.97%', '88.17%', '88.08%', '90.41%', '90.41%',
-        #  '90.41%', '90.41%', '88.91%', '90.87%', '90.86%', '88.27%', '88.18%', '88.17%', '90.19%']
+        # accuracy_list = ['82.61%', '82.79%', '73.9%', '74.23%', '80.14%', '80.31%', '80.25%', '74.33%', '74.25%',
+        # '69.91%', '70.37%', '63.82%', '63.83%', '65.21%', '65.17%', '65.2%', '65.24%', '65.27%', '65.25%',
+        # '65.32%', '65.32%', '65.33%', '65.33%', '65.4%', '65.38%', '63.53%', '63.49%', '85.45%', '68.85%', '69.0%',
+        # '75.48%', '75.56%', '88.24%', '88.26%', '88.19%', '91.88%', '91.84%', '91.83%', '79.39%', '79.07%',
+        # '87.3%', '87.75%', '92.47%', '92.52%', '92.56%', '90.77%', '90.87%', '90.92%', '91.12%', '91.13%',
+        # '91.21%', '91.24%', '90.14%', '90.32%', '89.54%', '89.54%', '89.59%', '88.61%', '88.39%', '87.01%',
+        # '86.96%', '86.97%', '88.17%', '88.08%', '90.41%', '90.41%', '90.41%', '90.41%', '88.91%', '90.87%',
+        # '90.86%', '88.27%', '88.18%', '88.17%', '90.19%']
         #
-        # time_list = ['0.033 sec', '0.066 sec', '0.100 sec', '0.133 sec', '0.166 sec', '0.200 sec', '0.233 sec', '0.266 sec',
-        #  '0.300 sec', '0.333 sec', '0.366 sec', '0.400 sec', '0.433 sec', '0.466 sec', '0.500 sec', '0.533 sec',
-        #  '0.566 sec', '0.600 sec', '0.633 sec', '0.666 sec', '0.700 sec', '0.733 sec', '0.766 sec', '0.800 sec',
-        #  '0.833 sec', '0.866 sec', '0.900 sec', '1.566 sec', '1.600 sec', '1.633 sec', '3.533 sec', '3.566 sec',
-        #  '3.600 sec', '3.633 sec', '3.666 sec', '3.766 sec', '3.800 sec', '3.833 sec', '3.866 sec', '3.900 sec',
-        #  '3.933 sec', '3.966 sec', '4.000 sec', '4.033 sec', '4.066 sec', '4.100 sec', '4.133 sec', '4.166 sec',
-        #  '4.200 sec', '4.233 sec', '4.266 sec', '4.300 sec', '4.333 sec', '4.366 sec', '4.400 sec', '4.433 sec',
-        #  '4.466 sec', '4.500 sec', '4.533 sec', '4.566 sec', '4.600 sec', '4.633 sec', '4.666 sec', '4.700 sec',
-        #  '4.733 sec', '4.766 sec', '4.800 sec', '4.833 sec', '4.866 sec', '4.900 sec', '4.933 sec', '4.966 sec',
-        #  '5.000 sec', '5.033 sec', '5.066 sec']
+        # time_list = ['0.033 sec', '0.066 sec', '0.100 sec', '0.133 sec', '0.166 sec', '0.200 sec', '0.233 sec',
+        # '0.266 sec', '0.300 sec', '0.333 sec', '0.366 sec', '0.400 sec', '0.433 sec', '0.466 sec', '0.500 sec',
+        # '0.533 sec', '0.566 sec', '0.600 sec', '0.633 sec', '0.666 sec', '0.700 sec', '0.733 sec', '0.766 sec',
+        # '0.800 sec', '0.833 sec', '0.866 sec', '0.900 sec', '1.566 sec', '1.600 sec', '1.633 sec', '3.533 sec',
+        # '3.566 sec', '3.600 sec', '3.633 sec', '3.666 sec', '3.766 sec', '3.800 sec', '3.833 sec', '3.866 sec',
+        # '3.900 sec', '3.933 sec', '3.966 sec', '4.000 sec', '4.033 sec', '4.066 sec', '4.100 sec', '4.133 sec',
+        # '4.166 sec', '4.200 sec', '4.233 sec', '4.266 sec', '4.300 sec', '4.333 sec', '4.366 sec', '4.400 sec',
+        # '4.433 sec', '4.466 sec', '4.500 sec', '4.533 sec', '4.566 sec', '4.600 sec', '4.633 sec', '4.666 sec',
+        # '4.700 sec', '4.733 sec', '4.766 sec', '4.800 sec', '4.833 sec', '4.866 sec', '4.900 sec', '4.933 sec',
+        # '4.966 sec', '5.000 sec', '5.033 sec', '5.066 sec']
         #
         # name_list = ['output\\output_bean00001.png', 'output\\output_bean00002.png', 'output\\output_bean00003.png',
         #  'output\\output_bean00004.png', 'output\\output_bean00005.png', 'output\\output_bean00006.png',
@@ -267,16 +277,8 @@ class MainWindow:
     def showResultPage(self):
         if self.cartoon_image.isCharacterFound:
 
-            # get character name from image
-            # assign true to self.isImageMatchedVideo = True
-            # pass list = load data
             self.cartoon_video.setFileName(self.video_name)
-
-            # self.showLoadingPage()
-            # get name/id and compare video and image - set video status
             self.cartoon_video.setCharacterToFindId(self.cartoon_image.characterId)
-            # self.ui.label_buffer_insertPage.setHidden(False)
-            # self.ui.stackedWidget.setCurrentWidget(self.ui.match_page)
             self.loadingScreen.startAnimation()
             self.cartoon_video.detectCharacter()
             self.loadingScreen.stopAnimation()
@@ -289,10 +291,8 @@ class MainWindow:
                 self.load_frame_output_data(self.cartoon_video.fileNames, self.cartoon_video.timestamps,
                                             self.cartoon_video.frame_accuracies)
                 self.showFoundPage()
-                # self.showNotFoundPage() SUCCESS
             else:
                 self.showNotFoundPage()
-                # self.movie.stop()
         else:
             self.showNotFoundPage()
 
@@ -311,12 +311,19 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
 
     def showAdvanceSearchPage(self):
+        self.radioBtn_chooseFile()
         # reset all value to default
+        self.reset_videoDetails()
+        self.reset_detectionSettings()
+        self.ui.advancePage_insertImage.setText('     Choose an image to search')
+        self.ui.advancePage_insertFile.setText('         Choose a file to search')
+        self.ui.label_dirAdvance_image.setText('Folder Directory')
+        self.ui.label_dirAdvance_video.setText('Folder Directory')
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.advanceSearch_page)
 
     def showHowToUsePage(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.howToUse_page)
-
 
     def showLoadingPage(self):
         self.movie.start()
@@ -372,11 +379,14 @@ class MainWindow:
         try:
             ext = self.fileAdvance_name.split('.')[-1]
             if ext in self.cartoon_image.IMG_EXT:
+                # self.fileExt = 'image'
                 self.ui.advancePage_insertFile.setPixmap(QPixmap(self.fileAdvance_name))
             elif ext in self.cartoon_image.VID_EXT:
+                # self.fileExt = 'video'
                 self.firstFrameName = self.cartoon_video.getFirstFrame(self.fileAdvance_name)
                 self.ui.advancePage_insertFile.setPixmap(QPixmap(self.firstFrameName))
             else:
+                self.fileExt = ''
                 error_msg = "[ERROR] Invalid file format"
                 sys.exit(error_msg)
 
@@ -384,13 +394,25 @@ class MainWindow:
             self.ui.advancePage_insertFile.setText(' ')
             print('[ERROR] - Cant read image/video file')
 
-    def chooseFolder(self):
-        dir = QFileDialog.getExistingDirectory(self.ui.insert_page, 'Open file',
+    def chooseImageFolder(self):
+        directory = QFileDialog.getExistingDirectory(self.ui.insert_page, 'Open file',
                                                'c:\\Users\\Asus\\Pictures\\cartoon character',
                                                QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
+        try:
+            print(directory)
+            self.ui.label_dirAdvance_image.setText(directory)
+        except:
+            print("No folder selected")
 
-        print(dir)
-        self.ui.label_dirAdvance.setText(dir)
+    def chooseVideoFolder(self):
+        directory = QFileDialog.getExistingDirectory(self.ui.insert_page, 'Open file',
+                                               'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                               QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
+        try:
+            print(directory)
+            self.ui.label_dirAdvance_video.setText(directory)
+        except:
+            print("No folder selected")
 
     def changeFrameFound(self):
         row = self.ui.tableFrameFound.currentRow()
@@ -427,6 +449,151 @@ class MainWindow:
         self.video_name = ''
         self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
+    def radioBtn_chooseFile(self):
+        self.ui.radioButton_oneFile.setChecked(True)
+        self.ui.frame_dragDrop_3.setEnabled(True)
+        self.ui.btn_chooseFile_advancePage.setEnabled(True)
+
+        self.ui.label_dirAdvance_image.setEnabled(False)
+        self.ui.btn_chooseFolder_image.setEnabled(False)
+
+        self.ui.label_dirAdvance_video.setEnabled(False)
+        self.ui.btn_chooseFolder_video.setEnabled(False)
+
+    def radioBtn_chooseImageFolder(self):
+        self.ui.frame_dragDrop_3.setEnabled(False)
+        self.ui.btn_chooseFile_advancePage.setEnabled(False)
+
+        self.ui.label_dirAdvance_image.setEnabled(True)
+        self.ui.btn_chooseFolder_image.setEnabled(True)
+
+        self.ui.label_dirAdvance_video.setEnabled(False)
+        self.ui.btn_chooseFolder_video.setEnabled(False)
+
+    def radioBtn_chooseVideoFolder(self):
+        self.ui.frame_dragDrop_3.setEnabled(False)
+        self.ui.btn_chooseFile_advancePage.setEnabled(False)
+
+        self.ui.label_dirAdvance_image.setEnabled(False)
+        self.ui.btn_chooseFolder_image.setEnabled(False)
+
+        self.ui.label_dirAdvance_video.setEnabled(True)
+        self.ui.btn_chooseFolder_video.setEnabled(True)
+
+    def reset_detectionSettings(self):
+        confidence = 0.5
+        scale = 0.004
+        threshold = 0.3
+
+        self.ui.doubleSpinBox_confidence.setValue(confidence)
+        self.ui.doubleSpinBox_scale.setValue(scale)
+        self.ui.doubleSpinBox_threshold.setValue(threshold)
+
+    def reset_videoDetails(self):
+        width = 600
+        height = 336
+        fps = 30
+
+        self.ui.spinBox_width.setValue(width)
+        self.ui.spinBox_height.setValue(height)
+        self.ui.spinBox_fps.setValue(fps)
+
+    def showAdvanceSearchResult(self):
+        print(22)
+
+        # set vid details and detect settings
+        self.cartoon_image.setConfidence(self.ui.doubleSpinBox_confidence.value())
+        self.cartoon_image.setScale(self.ui.doubleSpinBox_scale.value())
+        self.cartoon_image.setThreshold(self.ui.doubleSpinBox_threshold.value())
+        self.cartoon_video.setConfidence(self.ui.doubleSpinBox_confidence.value())
+        self.cartoon_video.setScale(self.ui.doubleSpinBox_scale.value())
+        self.cartoon_video.setThreshold(self.ui.doubleSpinBox_threshold.value())
+
+        # print(self.ui.doubleSpinBox_threshold.value()) - use this
+        # video advance details
+        self.cartoon_video.setHeight(self.ui.spinBox_width.value())
+        self.cartoon_video.setWidth(self.ui.spinBox_height.value())
+        self.cartoon_video.setFps(self.ui.spinBox_fps.value())
+
+        if self.image_name != '':
+            self.cartoon_image.setFileName(self.image_name)
+            self.cartoon_image.detectCharacter()
+            if self.cartoon_image.isCharacterFound:
+                print('call findMatch_advanceSearh')
+                self.findMatch_advanceSearh()
+            else:
+                self.showNotFoundPage()
+        else:
+            self.showPopupError('No Image Chosen!', 'Please choose an input image')
+
+    def findMatch_advanceSearh(self):
+        # assign folder directory
+        directory = ''
+
+
+
+        if self.ui.btn_chooseFile_advancePage.isEnabled() and self.ui.radioButton_oneFile.isChecked():
+            try:
+                directory = self.fileAdvance_name
+                print(directory)
+
+                if directory == '':
+                    self.showPopupError('Error', 'Choose a file to search')
+
+                else:
+                    print('run file search')
+                    self.cartoon_video.setFileName(directory)
+
+                    # self.cartoon_video.setCharacterToFindId(self.cartoon_image.characterId)
+                    if self.cartoon_video.MODE == 'image':
+                        self.cartoon_video.detectCharacter()
+
+                        if self.cartoon_image.characterId == self.cartoon_video.characterId:
+                            self.showFoundPage()
+                            # special found page - advance
+                        else:
+                            self.showNotFoundPage()
+                            # special not found page - advance
+
+                    elif self.cartoon_video.MODE == 'video':
+                        print('detect video')
+                        self.video_name = directory
+                        self.showResultPage()
+
+            except:
+                self.showPopupError('Error', 'Choose a file to search')
+
+        elif self.ui.btn_chooseFolder_image.isEnabled() and self.ui.radioButton_imageFolder.isChecked():
+            try:
+                directory = self.ui.label_dirAdvance_image.text()
+                print(directory)
+
+                if directory == '' or directory == 'Folder Directory':
+                    self.showPopupError('Error', 'Choose a folder to search')
+
+                else:
+                    print('run image folder search')
+
+            except:
+                self.showPopupError('Error', 'Choose a folder to search')
+
+        elif self.ui.btn_chooseFolder_video.isEnabled() and self.ui.radioButton_videoFolder.isChecked():
+            try:
+                directory = self.ui.label_dirAdvance_video.text()
+                print(directory)
+
+                if directory == '' or directory == 'Folder Directory':
+                    self.showPopupError('Error', 'Choose a folder to search')
+
+                else:
+                    print('run video folder search')
+
+            except:
+                self.showPopupError('Error', 'Choose a folder to search')
+
+        else:
+            self.showPopupError('Search Item Not Chosen', 'Choose a search item')
+
     # # =================== play video event ========================
 
     def openVideoFile(self):
@@ -435,7 +602,6 @@ class MainWindow:
             self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(fileName)))
             self.ui.pushButton_playVideo.setEnabled(True)
 
-    #
     # def openFile(self):
     #     fileName, _ = QFileDialog.getOpenFileName(self, "Open Movie",
     #                                               QDir.homePath())

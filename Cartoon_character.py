@@ -30,12 +30,18 @@ class Cartoon:
         # self.isFound = False
         self.accuracy_image = ''
 
+
         # to compare image with video
         self.isCharacterFound = False
         self.isImageMatchedVideo = False
         self.characterId = None
         self.characterToFindId = None
         self.characterMatchedId = None
+
+        self.isVideoDetails = False
+        self.videoWidth = 0
+        self.videoHeight = 0
+        self.videoFps = 0
 
         # Validation of Paths / Files
         if not os.path.exists(self.CLASSES):
@@ -178,15 +184,25 @@ class Cartoon:
             self.process_Image(img, 1)
 
         if self.MODE == "video":
+
+            # self.isVideoDetails = False
+            # self.videoWidth = 0
+            # self.videoHeight = 0
+            # self.fps = 0
+
             cap = cv2.VideoCapture(self.FILE)
             fps = int(cap.get(cv2.CAP_PROP_FPS))
 
             ret, frame = cap.read()  # read first frame
-            frame = imutils.resize(frame, width=600)
+            # - change width only
+            frame = imutils.resize(frame, width=800)
+            # frame = imutils.resize(frame, width=600, height=600)
 
             # Change fourcc according to video format supported by your device
             fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # (*'XVID')
             # fourcc = cv2.VideoWriter_fourcc(*'MJPG')  # (*'XVID') mp4v
+
+            # change fps and shape
             op_vid = cv2.VideoWriter("output_video." + self.ext, fourcc, fps, (frame.shape[1], frame.shape[0]))
 
             index = 0
@@ -200,7 +216,8 @@ class Cartoon:
                 # numOfFrame = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
                 if ret:
-                    frame = imutils.resize(frame, width=600)
+                    # frame = imutils.resize(frame, width=600, height=600) - change width only
+                    frame = imutils.resize(frame, width=800)
                     frameTimestamp = int(cap.get(cv2.CAP_PROP_POS_MSEC)) / 1000  # in milliseconds - times by 1000
                     frameTimestamp = "{:.3f}".format(frameTimestamp)
 
@@ -318,6 +335,18 @@ class Cartoon:
     def setScale(self, scale):
         if isinstance(scale, float):
             self.SCALE = scale
+
+    def setWidth(self, width):
+        if isinstance(width, int):
+            self.videoWidth = width
+
+    def setHeight(self, height):
+        if isinstance(height, int):
+            self.videoHeight = height
+
+    def setFps(self, fps):
+        if isinstance(fps, int):
+            self.videoFps = fps
 
     def getCharacterName(self):
         charName = self.characterName.upper()

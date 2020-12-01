@@ -82,7 +82,7 @@ font:10pt &quot;Open Sans&quot;;</string>
      <enum>QFrame::NoFrame</enum>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="start_page">
      <property name="styleSheet">
@@ -486,7 +486,7 @@ color: white;
         <string>Confidence :</string>
        </property>
       </widget>
-      <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
+      <widget class="QDoubleSpinBox" name="doubleSpinBox_scale">
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -511,7 +511,7 @@ color: white;
         <double>0.004000000000000</double>
        </property>
       </widget>
-      <widget class="QDoubleSpinBox" name="doubleSpinBox_5">
+      <widget class="QDoubleSpinBox" name="doubleSpinBox_threshold">
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -536,7 +536,7 @@ color: white;
         <double>0.300000000000000</double>
        </property>
       </widget>
-      <widget class="QDoubleSpinBox" name="doubleSpinBox_6">
+      <widget class="QDoubleSpinBox" name="doubleSpinBox_confidence">
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -633,7 +633,7 @@ background-color: none;</string>
         <string>Height (px) : </string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="spinBox_4">
+      <widget class="QSpinBox" name="spinBox_height">
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -652,7 +652,7 @@ background-color: none;</string>
         <number>336</number>
        </property>
       </widget>
-      <widget class="QSpinBox" name="spinBox_5">
+      <widget class="QSpinBox" name="spinBox_width">
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -684,7 +684,7 @@ background-color: none;</string>
         <string>FPS : </string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="spinBox_6">
+      <widget class="QSpinBox" name="spinBox_fps">
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -740,7 +740,7 @@ background-color: none;</string>
         <x>490</x>
         <y>10</y>
         <width>661</width>
-        <height>511</height>
+        <height>581</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -749,14 +749,14 @@ background-color: none;</string>
       <property name="title">
        <string>Search Item</string>
       </property>
-      <widget class="QPushButton" name="btn_chooseFolder">
+      <widget class="QPushButton" name="btn_chooseFolder_image">
        <property name="enabled">
         <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
          <x>470</x>
-         <y>430</y>
+         <y>370</y>
          <width>131</width>
          <height>51</height>
         </rect>
@@ -769,18 +769,19 @@ background-color: none;</string>
         <string>Choose Folder</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_dirAdvance">
+      <widget class="QLabel" name="label_dirAdvance_image">
        <property name="geometry">
         <rect>
          <x>60</x>
-         <y>430</y>
+         <y>370</y>
          <width>411</width>
          <height>51</height>
         </rect>
        </property>
        <property name="styleSheet">
         <string notr="true">border: 1px solid gray;
-padding-left: 10px;</string>
+padding-left: 10px;
+font-size:9pt;</string>
        </property>
        <property name="text">
         <string>Folder Directory</string>
@@ -888,7 +889,7 @@ background-color: none;</string>
        <property name="geometry">
         <rect>
          <x>60</x>
-         <y>380</y>
+         <y>460</y>
          <width>161</width>
          <height>20</height>
         </rect>
@@ -908,6 +909,44 @@ background-color: none;</string>
        </property>
        <property name="text">
         <string>A Image/Video File</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_chooseFolder_video">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>490</y>
+         <width>131</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+background-color: none;</string>
+       </property>
+       <property name="text">
+        <string>Choose Folder</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_dirAdvance_video">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>490</y>
+         <width>411</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 1px solid gray;
+padding-left: 10px;
+font-size:9pt;</string>
+       </property>
+       <property name="text">
+        <string>Folder Directory</string>
        </property>
       </widget>
      </widget>
@@ -1409,7 +1448,7 @@ border-radius: 10px;</string>
         <rect>
          <x>10</x>
          <y>10</y>
-         <width>271</width>
+         <width>351</width>
          <height>161</height>
         </rect>
        </property>
@@ -1435,7 +1474,7 @@ border-radius: 0;</string>
         <rect>
          <x>10</x>
          <y>170</y>
-         <width>271</width>
+         <width>351</width>
          <height>41</height>
         </rect>
        </property>
@@ -1445,7 +1484,7 @@ font: 9pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
 color: white;
 border-radius: 0;
 align:center;
-padding-left: 80px;</string>
+padding-left: 140px;</string>
        </property>
        <property name="text">
         <string>Input Image</string>
