@@ -68,8 +68,8 @@ class MainWindow:
         self.videoPlay_output.setPaused(True)
 
         # start first page
-        self.ui.stackedWidget.setCurrentWidget(self.ui.advanceSearch_page)
-        # self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
+        # self.ui.stackedWidget.setCurrentWidget(self.ui.advanceSearch_page)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
         # self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
         # self.ui.stackedWidget.setCurrentWidget(self.ui.pushButton_foundPage)
         # self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
@@ -89,8 +89,8 @@ class MainWindow:
         self.ui.btn_confirmImageVideo.clicked.connect(self.showMatchPage)
         self.ui.btn_chooseImage.clicked.connect(self.chooseImage)
         self.ui.btn_chooseVideo.clicked.connect(self.chooseVideo)
-        self.ui.pushButton_foundPage.clicked.connect(self.showFoundPage)
-        self.ui.pushButton_notFoundPage.clicked.connect(self.showNotFoundPage)
+        # self.ui.pushButton_foundPage.clicked.connect(self.showFoundPage)
+        # self.ui.pushButton_notFoundPage.clicked.connect(self.showNotFoundPage)
         self.ui.pushButton_runVideoDirectly.clicked.connect(self.playVideoDirectly)
 
         self.ui.btn_changeImage.clicked.connect(self.changeImage_clicked)
@@ -230,7 +230,7 @@ class MainWindow:
 
         row = 0
         for accuracy in accuracy_list:
-            self.ui.tableFrameFound.setItem(row, 2, QTableWidgetItem(accuracy))
+            self.ui.tableFrameFound.setItem(row, 2, QTableWidgetItem(str(accuracy) + '%'))
             row = row + 1
 
     # =================== show pages ========================
@@ -320,6 +320,38 @@ class MainWindow:
         self.ui.label_frameTitle.setText('      Time : -           ' + '          Accuracy : -')
         self.ui.label_characterName.setText(self.cartoon_image.getCharacterName())
         self.ui.label_accuracy.setText('Accuracy : ' + self.cartoon_image.accuracy_image)
+
+        # statistics video
+        maxAcc = max(self.cartoon_video.frame_accuracies)
+        # print(maxAcc)
+        minAcc = min(self.cartoon_video.frame_accuracies)
+        # print(minAcc+maxAcc)
+        sumAcc = sum(self.cartoon_video.frame_accuracies)
+        numOfAppearance = len(self.cartoon_video.frame_accuracies)
+        avgAcc = round(sumAcc/numOfAppearance, 2)
+        numOfFrame = self.cartoon_video.numOfFramestats
+        appearancePercentage = round(numOfAppearance/numOfFrame*100, 2)
+        # print(appearancePercentage)
+        fps = self.cartoon_video.fpsStats
+        totalTimeAppearance = round((1/fps)*numOfAppearance, 2)
+        # print(totalTimeAppearance)
+
+
+        self.ui.label_characterName_input.setText('Input Image - ' + self.cartoon_image.getCharacterName())
+        self.ui.label_lowestAccNum.setText(str(minAcc)+'%')
+        self.ui.label_lowestAccFileName.setText(str(minAcc)+'%')    # no index num
+        self.ui.label_highestAccNum.setText(str(maxAcc)+'%')
+        self.ui.label_highestAccFileName.setText(str(maxAcc)+'%')   # no index num
+
+        self.ui.label_averageAccNum.setText(str(avgAcc) + '%')
+        self.ui.label_numAppearance.setText(str(numOfAppearance) + ' frames')
+        self.ui.label_numFps.setText(str(numOfFrame) + ' frames')
+        self.ui.label_percentageAppearance.setText(str(appearancePercentage) + '%')
+        self.ui.label_totalAppearanceTime.setText(str(totalTimeAppearance) + ' seconds')
+
+
+
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
 
     def showAdvanceSearchPage(self):

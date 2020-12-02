@@ -106,6 +106,7 @@ class Cartoon:
         cv2.rectangle(image, (x, y), (x_plus_width, y_plus_height), color, 2)
         cv2.putText(image, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
         self.accuracy_image = str(round(confidence * 100, 2)) + '%'
+        self.numAccuracy = round(confidence * 100, 2)
         # for video frame
         self.isCharacterFound = True
 
@@ -195,6 +196,7 @@ class Cartoon:
         if self.MODE == "video":
             cap = cv2.VideoCapture(self.FILE)
             fps = int(cap.get(cv2.CAP_PROP_FPS))
+            self.fpsStats = fps
             frameWidth = 600
 
             if self.isVideoDetails == True:
@@ -217,7 +219,8 @@ class Cartoon:
             while cap.isOpened():
                 # Reading video frame by frame
                 ret, frame = cap.read()
-                # numOfFrame = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+                numOfFrame = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+                self.numOfFramestats = numOfFrame
 
                 if ret:
                     frame = imutils.resize(frame, width=frameWidth)
@@ -243,7 +246,7 @@ class Cartoon:
 
                         self.timestamps.append(str(frameTimestamp) + ' sec')
                         self.fileNames.append(fileName)
-                        self.frame_accuracies.append(self.accuracy_image)
+                        self.frame_accuracies.append(self.numAccuracy)
                         cv2.imwrite(output_frame_name, frame)
                 else:
                     break

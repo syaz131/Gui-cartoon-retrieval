@@ -82,7 +82,7 @@ font:10pt &quot;Open Sans&quot;;</string>
      <enum>QFrame::NoFrame</enum>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="start_page">
      <property name="styleSheet">
@@ -449,6 +449,66 @@ color: white;
        <string>Advance Search</string>
       </property>
      </widget>
+     <widget class="QFrame" name="frame_dragDrop_7">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>30</y>
+        <width>471</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="acceptDrops">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:cyan;
+border-radius: 10px;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="label_12">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>261</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Shiny Signature&quot;, &quot;Arial&quot;;
+</string>
+       </property>
+       <property name="text">
+        <string>INSERT INPUT IMAGE</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>0</y>
+         <width>141</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>../../../../Pictures/we bare bear sticker medium.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <zorder>frame_dragDrop_7</zorder>
      <zorder>btn_chooseImage</zorder>
      <zorder>frame_dragDrop</zorder>
      <zorder>btn_confirmImageVideo</zorder>
@@ -462,7 +522,7 @@ color: white;
       <property name="geometry">
        <rect>
         <x>120</x>
-        <y>500</y>
+        <y>270</y>
         <width>291</width>
         <height>191</height>
        </rect>
@@ -609,7 +669,7 @@ background-color: none;</string>
       <property name="geometry">
        <rect>
         <x>120</x>
-        <y>270</y>
+        <y>500</y>
         <width>291</width>
         <height>191</height>
        </rect>
@@ -1042,7 +1102,7 @@ color: white;
       <property name="geometry">
        <rect>
         <x>110</x>
-        <y>260</y>
+        <y>490</y>
         <width>311</width>
         <height>211</height>
        </rect>
@@ -1065,7 +1125,7 @@ border-radius: 15px;</string>
       <property name="geometry">
        <rect>
         <x>110</x>
-        <y>490</y>
+        <y>260</y>
         <width>311</width>
         <height>211</height>
        </rect>
@@ -1245,27 +1305,6 @@ background-color: none;</string>
        <string>Change Image</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_notFoundPage">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>360</x>
-        <y>610</y>
-        <width>161</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:pink;
-font: 8pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
-</string>
-      </property>
-      <property name="text">
-       <string>Not Found page</string>
-      </property>
-     </widget>
      <widget class="QPlainTextEdit" name="text_2">
       <property name="geometry">
        <rect>
@@ -1361,26 +1400,64 @@ background-color: none;</string>
        <string>Change Video</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_foundPage">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
+     <widget class="QFrame" name="frame_dragDrop_8">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>610</y>
-        <width>161</width>
-        <height>41</height>
+        <x>390</x>
+        <y>30</y>
+        <width>471</width>
+        <height>81</height>
        </rect>
       </property>
+      <property name="acceptDrops">
+       <bool>true</bool>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color:palegreen;
-font: 8pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+       <string notr="true">background-color:pink;
+border-radius: 10px;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="label_13">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>261</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Shiny Signature&quot;, &quot;Arial&quot;;
 </string>
-      </property>
-      <property name="text">
-       <string>Found page</string>
-      </property>
+       </property>
+       <property name="text">
+        <string>CONFIRM INPUT IMAGE</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_14">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>0</y>
+         <width>141</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>../../../../Pictures/we bare bear sticker medium.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="not_found_page">
@@ -1689,7 +1766,7 @@ background-color: none;</string>
        <enum>QTabWidget::North</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab_frame_table">
        <attribute name="title">
@@ -2006,10 +2083,10 @@ border-radius: 10px;</string>
        <widget class="QFrame" name="frame_7">
         <property name="geometry">
          <rect>
-          <x>580</x>
-          <y>40</y>
-          <width>291</width>
-          <height>201</height>
+          <x>680</x>
+          <y>110</y>
+          <width>381</width>
+          <height>301</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -2027,8 +2104,8 @@ border-radius: 10px;</string>
           <rect>
            <x>10</x>
            <y>10</y>
-           <width>271</width>
-           <height>151</height>
+           <width>361</width>
+           <height>221</height>
           </rect>
          </property>
          <property name="autoFillBackground">
@@ -2049,9 +2126,9 @@ border-radius: 0;</string>
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>160</y>
-           <width>271</width>
-           <height>31</height>
+           <y>230</y>
+           <width>361</width>
+           <height>61</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -2063,21 +2140,22 @@ align:center;
 padding-left: 60px;</string>
          </property>
          <property name="text">
-          <string>Accuracy : 88.88%</string>
+          <string>Input Image 
+Accuracy : 88.88%</string>
          </property>
         </widget>
        </widget>
        <widget class="QFrame" name="frame_13">
         <property name="geometry">
          <rect>
-          <x>40</x>
-          <y>330</y>
-          <width>1111</width>
-          <height>161</height>
+          <x>120</x>
+          <y>110</y>
+          <width>501</width>
+          <height>301</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color:lightgray;
+         <string notr="true">background-color:palegreen;
 border-radius: 10px;</string>
         </property>
         <property name="frameShape">
@@ -2091,8 +2169,8 @@ border-radius: 10px;</string>
           <rect>
            <x>10</x>
            <y>10</y>
-           <width>241</width>
-           <height>141</height>
+           <width>481</width>
+           <height>281</height>
           </rect>
          </property>
          <property name="autoFillBackground">
@@ -2109,57 +2187,676 @@ border-radius: 0;</string>
           <bool>true</bool>
          </property>
         </widget>
-        <widget class="QLabel" name="label_characterName2">
+        <widget class="QLabel" name="label_28">
          <property name="geometry">
           <rect>
-           <x>260</x>
-           <y>10</y>
-           <width>191</width>
-           <height>51</height>
+           <x>50</x>
+           <y>30</y>
+           <width>151</width>
+           <height>21</height>
           </rect>
          </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:palegreen;
+         <property name="text">
+          <string>  Lowest Accuracy</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_29">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>60</y>
+           <width>161</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>  Highest Accuracy</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_30">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>90</y>
+           <width>161</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>  Average Accuracy</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_lowestAccNum">
+         <property name="geometry">
+          <rect>
+           <x>240</x>
+           <y>30</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>num</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_lowestAccFileName">
+         <property name="geometry">
+          <rect>
+           <x>340</x>
+           <y>30</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>file name</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_highestAccFileName">
+         <property name="geometry">
+          <rect>
+           <x>340</x>
+           <y>60</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>file name</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_highestAccNum">
+         <property name="geometry">
+          <rect>
+           <x>240</x>
+           <y>60</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>num</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_averageAccNum">
+         <property name="geometry">
+          <rect>
+           <x>240</x>
+           <y>90</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>num</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_35">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>120</y>
+           <width>211</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>  num of appearance</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_37">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>150</y>
+           <width>211</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>  num of frame frame</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_38">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>180</y>
+           <width>211</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>  percentage apearance</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_numFps">
+         <property name="geometry">
+          <rect>
+           <x>320</x>
+           <y>150</y>
+           <width>101</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>num</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_percentageAppearance">
+         <property name="geometry">
+          <rect>
+           <x>320</x>
+           <y>180</y>
+           <width>101</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>num</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_numAppearance">
+         <property name="geometry">
+          <rect>
+           <x>320</x>
+           <y>120</y>
+           <width>101</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>num</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_42">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>210</y>
+           <width>211</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>  total time appearance</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_totalAppearanceTime">
+         <property name="geometry">
+          <rect>
+           <x>320</x>
+           <y>210</y>
+           <width>101</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>total time</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="label_characterName_input">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>50</y>
+          <width>381</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:palegreen;
 border: 2px solid green;
 font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
 padding-left:10px;
 </string>
-         </property>
-         <property name="text">
-          <string>doraemon</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_accuracy_2">
-         <property name="geometry">
-          <rect>
-           <x>260</x>
-           <y>50</y>
-           <width>191</width>
-           <height>101</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:gray;
-font: 10pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
-color: white;
-border-radius: 0;
-align:center;
-padding-left: 10px;</string>
-         </property>
-         <property name="text">
-          <string>Input Image 
-Accuracy : 88.88%</string>
-         </property>
-        </widget>
-        <zorder>label_accuracy_2</zorder>
-        <zorder>inputImage_found_2</zorder>
-        <zorder>label_characterName2</zorder>
+        </property>
+        <property name="text">
+         <string>doraemon</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_31">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>50</y>
+          <width>501</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:palegreen;
+border: 2px solid green;
+font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+padding-left:10px;
+</string>
+        </property>
+        <property name="text">
+         <string>Character detail statistics in Video</string>
+        </property>
        </widget>
       </widget>
      </widget>
      <zorder>label_15</zorder>
      <zorder>tabWidget_foundPage</zorder>
      <zorder>btn_insertAnotherImage2</zorder>
+    </widget>
+    <widget class="QWidget" name="resultPage_fileSearch">
+     <widget class="QFrame" name="frame_16">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>200</y>
+        <width>491</width>
+        <height>331</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:lightgray;
+border-radius: 10px;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="frameImage_advSearch">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>471</width>
+         <height>271</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:white;
+border-radius: 0;
+font-size: 11pt;
+color: gray;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_frameTitle_advSearch">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>280</y>
+         <width>471</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial Rounded MT Bold,Arial</family>
+         <pointsize>10</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:gray;
+font: 10pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+color: white;
+border-radius: 0;
+align:center;
+padding-left: 30px;</string>
+       </property>
+       <property name="text">
+        <string>                                Accuracy : 88.80%</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="label_titleFound_fileSearch">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>1221</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:palegreen;
+border: 2px solid green;
+font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+padding-left:10px;
+</string>
+      </property>
+      <property name="text">
+       <string>Character Matched</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_found_advSearch">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>140</y>
+        <width>491</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:palegreen;
+border: 2px solid green;
+font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+padding-left:180px;
+border-radius: 6px;
+</string>
+      </property>
+      <property name="text">
+       <string>doraemon</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_insertAnotherImage_pageFileAdvSch">
+      <property name="geometry">
+       <rect>
+        <x>870</x>
+        <y>620</y>
+        <width>371</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Shiny Signature&quot;, &quot;Arial&quot;;
+background-color: none;</string>
+      </property>
+      <property name="text">
+       <string>INSERT ANOTHER MATCH</string>
+      </property>
+     </widget>
+     <widget class="QFrame" name="frame_18">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>200</y>
+        <width>491</width>
+        <height>331</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:lightgray;
+border-radius: 10px;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="frameImage_advInput">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>471</width>
+         <height>271</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:white;
+border-radius: 0;
+font-size: 11pt;
+color: gray;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_frameTitle_advInput">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>280</y>
+         <width>471</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial Rounded MT Bold,Arial</family>
+         <pointsize>10</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:gray;
+font: 10pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+color: white;
+border-radius: 0;
+align:center;
+padding-left: 30px;</string>
+       </property>
+       <property name="text">
+        <string>                                Accuracy : -</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="label_found_advInput">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>140</y>
+        <width>491</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:palegreen;
+border: 2px solid green;
+font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+padding-left:180px;
+border-radius: 6px;
+</string>
+      </property>
+      <property name="text">
+       <string>doraemon</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_titleNotFound_fileSearch">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>1221</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:pink;
+border: 2px solid red;
+font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+padding-left:10px;
+</string>
+      </property>
+      <property name="text">
+       <string>Character Not Found</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_notFound_advInput">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>140</y>
+        <width>491</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:pink;
+border: 2px solid red;
+font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+padding-left:170px;
+border-radius: 6px;
+</string>
+      </property>
+      <property name="text">
+       <string>No character</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_notFound_advSearch">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>140</y>
+        <width>491</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:pink;
+border: 2px solid red;
+font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+padding-left:170px;
+border-radius: 6px;
+</string>
+      </property>
+      <property name="text">
+       <string>No character</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>550</y>
+        <width>491</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:lightyellow;
+border: 2px solid gray;
+font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+padding-left:10px;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_6">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>560</y>
+        <width>451</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:lightyellow;</string>
+      </property>
+      <property name="title">
+       <string>Detection Settings</string>
+      </property>
+      <widget class="QLabel" name="label_25">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>40</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Confidence</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_26">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>40</y>
+         <width>91</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Threshold</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_27">
+       <property name="geometry">
+        <rect>
+         <x>200</x>
+         <y>40</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Scale</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_conf_fileSearch">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>70</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 13pt &quot;MS Sans Serif&quot;;</string>
+       </property>
+       <property name="text">
+        <string>123</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_scale_fileSearch">
+       <property name="geometry">
+        <rect>
+         <x>200</x>
+         <y>70</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 13pt &quot;MS Sans Serif&quot;;</string>
+       </property>
+       <property name="text">
+        <string>123</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_thresh_fileSearch">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>70</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 13pt &quot;MS Sans Serif&quot;;</string>
+       </property>
+       <property name="text">
+        <string>123</string>
+       </property>
+      </widget>
+     </widget>
     </widget>
    </widget>
   </widget>
