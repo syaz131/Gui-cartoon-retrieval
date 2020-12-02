@@ -219,10 +219,6 @@ class Cartoon:
                     index += 1
                     op_vid.write(frame)
 
-                    print('charId : ' + str(self.characterId))
-                    print('charId to find : ' + str(self.characterToFindId))
-                    print('isMatched : ' + str(self.isImageMatchedVideo))
-
                     if self.isCharacterFound and self.characterId == self.characterToFindId:
                         # if self.isCharacterFound and self.characterId == self.characterToFindId:  # is character =
                         # character / label

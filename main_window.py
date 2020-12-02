@@ -22,17 +22,18 @@ class LoadingScreen(QWidget):
         self.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.CustomizeWindowHint)
         self.label_animation = QLabel(self)
 
-        self.movie = QMovie('Loading_2.gif')
-        self.label_animation.setMovie(self.movie)
-        self.movie.start()
+        # self.movie = QMovie('Loading_2.gif')
+        # self.label_animation.setMovie(self.movie)
+        self.label_animation.setText('Loading...')
+        # self.movie.start()
 
     def startAnimation(self):
-        self.movie.start()
+        # self.movie.start()
         self.show()
 
     def stopAnimation(self):
         self.close()
-        self.movie.stop()
+        # self.movie.stop()
 
 
 class MainWindow:
@@ -236,6 +237,7 @@ class MainWindow:
         self.main_win.show()
 
     def showInsertPage(self):
+        self.settings_details_backToDefault()
         self.ui.insertPage_cartoonImage.setText('              Choose an image to search')
         self.ui.insertPage_cartoonVideo.setText('                Choose a video to search')
         self.image_name = ''
@@ -524,7 +526,9 @@ class MainWindow:
             self.cartoon_image.detectCharacter()
             if self.cartoon_image.isCharacterFound:
                 print('call findMatch_advanceSearh')
+                self.loadingScreen.startAnimation()
                 self.findMatch_advanceSearh()
+                self.loadingScreen.stopAnimation()
                 self.cartoon_video.isVideoDetails = False
             else:
                 self.showNotFoundPage()
@@ -642,6 +646,19 @@ class MainWindow:
 
         else:
             self.showPopupError('Search Item Not Chosen', 'Choose a search item')
+
+    def settings_details_backToDefault(self):
+        confidence = 0.5
+        scale = 0.004
+        threshold = 0.3
+
+        self.cartoon_image.CONFIDENCE = confidence
+        self.cartoon_image.SCALE = scale
+        self.cartoon_image.NMS_THRESHOLD = threshold
+
+        self.cartoon_video.CONFIDENCE = confidence
+        self.cartoon_video.SCALE = scale
+        self.cartoon_video.NMS_THRESHOLD = threshold
 
     # # =================== play video event ========================
 
