@@ -79,6 +79,7 @@ class MainWindow:
         self.ui.btn_startApp.clicked.connect(self.showInsertPage)
         self.ui.btn_insertAnotherImage1.clicked.connect(self.showInsertPage)
         self.ui.btn_insertAnotherImage2.clicked.connect(self.showInsertPage)
+        self.ui.btn_insertAnotherImage_pageFileAdvSch.clicked.connect(self.showInsertPage)
 
         # ====================== Loading Window =========================================
         self.loadingScreen = LoadingScreen()
@@ -301,6 +302,12 @@ class MainWindow:
         else:
             self.showNotFoundPage()
 
+    def showFileAdvSearchResult(self):
+        self.ui.label_conf_fileSearch.setText(str(self.cartoon_image.CONFIDENCE))
+        self.ui.label_scale_fileSearch.setText(str(self.cartoon_image.SCALE))
+        self.ui.label_thresh_fileSearch.setText(str(self.cartoon_image.NMS_THRESHOLD))
+        self.ui.stackedWidget.setCurrentWidget(self.ui.resultPage_fileSearch)
+
     def showNotFoundPage(self):
         self.ui.label_inputImage1.setPixmap(QPixmap(self.image_name))
         self.ui.stackedWidget.setCurrentWidget(self.ui.not_found_page)
@@ -507,6 +514,7 @@ class MainWindow:
         print(22)
 
         # set vid details and detect settings
+        self.cartoon_image.isVideoDetails = True
         self.cartoon_video.isVideoDetails = True
         self.cartoon_image.setConfidence(self.ui.doubleSpinBox_confidence.value())
         self.cartoon_image.setScale(self.ui.doubleSpinBox_scale.value())
@@ -521,17 +529,34 @@ class MainWindow:
         self.cartoon_video.setHeight(self.ui.spinBox_height.value())
         self.cartoon_video.setFps(self.ui.spinBox_fps.value())
 
+        saveFile = 'output_image1.png'
+        if os.path.exists(saveFile):
+            try:
+                os.remove(saveFile)
+            except OSError as e:
+                print("Error: %s : %s" % (saveFile, e.strerror))
+
+        saveFile = 'output_image2.png'
+        if os.path.exists(saveFile):
+            try:
+                os.remove(saveFile)
+            except OSError as e:
+                print("Error: %s : %s" % (saveFile, e.strerror))
+
         if self.image_name != '':
             self.cartoon_image.setFileName(self.image_name)
             self.cartoon_image.detectCharacter()
             if self.cartoon_image.isCharacterFound:
                 print('call findMatch_advanceSearh')
-                self.loadingScreen.startAnimation()
+
+                # self.loadingScreen.startAnimation()
                 self.findMatch_advanceSearh()
-                self.loadingScreen.stopAnimation()
+                # self.loadingScreen.stopAnimation()
+                self.cartoon_image.isVideoDetails = False
                 self.cartoon_video.isVideoDetails = False
             else:
                 self.showNotFoundPage()
+                self.cartoon_image.isVideoDetails = False
                 self.cartoon_video.isVideoDetails = False
         else:
             self.showPopupError('No Image Chosen!', 'Please choose an input image')
@@ -554,11 +579,49 @@ class MainWindow:
                         self.cartoon_video.detectCharacter()
 
                         if self.cartoon_image.characterId == self.cartoon_video.characterId:
-                            self.showFoundPage()
+
+                            # hide red not found
+                            self.ui.label_titleNotFound_fileSearch.setHidden(True)
+                            self.ui.label_notFound_advInput.setHidden(True)
+                            self.ui.label_notFound_advSearch.setHidden(True)
+                            self.ui.label_titleFound_fileSearch.setHidden(False)
+                            self.ui.label_found_advInput.setHidden(False)
+                            self.ui.label_found_advSearch.setHidden(False)
+
+                            self.ui.frameImage_advInput.setPixmap(QPixmap('output_image1.png'))
+                            self.ui.label_found_advInput.setText(self.cartoon_image.getCharacterName())
+                            self.ui.label_frameTitle_advInput.setText('                                Accuracy : '
+                                                                      + str(self.cartoon_image.accuracy_image)+'%')
+                            self.ui.frameImage_advSearch.setPixmap(QPixmap('output_image2.png'))
+                            self.ui.label_found_advSearch.setText(self.cartoon_video.getCharacterName())
+                            self.ui.label_frameTitle_advSearch.setText('                                Accuracy : '
+                                                                       + str(self.cartoon_video.accuracy_image)+'%')
+
+                            self.showFileAdvSearchResult()
                             # special found page - advance
+
+
+
                         else:
-                            self.showNotFoundPage()
+
+                            self.ui.label_titleNotFound_fileSearch.setHidden(False)
+                            self.ui.label_notFound_advInput.setHidden(False)
+                            self.ui.label_notFound_advSearch.setHidden(False)
+                            self.ui.label_titleFound_fileSearch.setHidden(True)
+                            self.ui.label_found_advInput.setHidden(True)
+                            self.ui.label_found_advSearch.setHidden(True)
+
+                            # "output_image1.png"
+                            self.ui.frameImage_advInput.setPixmap(QPixmap(self.cartoon_image.FILE))
+                            self.ui.label_frameTitle_advInput.setText('                                Accuracy : -')
+                            self.ui.frameImage_advSearch.setPixmap(QPixmap(self.cartoon_video.FILE))
+                            self.ui.label_frameTitle_advSearch.setText('                                Accuracy : -')
+
+                            self.showFileAdvSearchResult()
                             # special not found page - advance
+
+
+
 
                     elif self.cartoon_video.MODE == 'video':
                         print('detect video')

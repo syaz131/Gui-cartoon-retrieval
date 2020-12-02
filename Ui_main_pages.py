@@ -183,7 +183,7 @@ class Ui_MainWindow(object):
         self.advanceSearch_page = QtWidgets.QWidget()
         self.advanceSearch_page.setObjectName("advanceSearch_page")
         self.groupBox_4 = QtWidgets.QGroupBox(self.advanceSearch_page)
-        self.groupBox_4.setGeometry(QtCore.QRect(120, 500, 291, 191))
+        self.groupBox_4.setGeometry(QtCore.QRect(120, 270, 291, 191))
         self.groupBox_4.setStyleSheet("background-color:lightyellow;")
         self.groupBox_4.setObjectName("groupBox_4")
         self.label_19 = QtWidgets.QLabel(self.groupBox_4)
@@ -225,7 +225,7 @@ class Ui_MainWindow(object):
 "background-color: none;")
         self.btn_reset_detectionSettings.setObjectName("btn_reset_detectionSettings")
         self.groupBox_3 = QtWidgets.QGroupBox(self.advanceSearch_page)
-        self.groupBox_3.setGeometry(QtCore.QRect(120, 270, 291, 191))
+        self.groupBox_3.setGeometry(QtCore.QRect(120, 500, 291, 191))
         self.groupBox_3.setStyleSheet("background-color:lightyellow;")
         self.groupBox_3.setObjectName("groupBox_3")
         self.label_16 = QtWidgets.QLabel(self.groupBox_3)
@@ -358,7 +358,7 @@ class Ui_MainWindow(object):
 "")
         self.btn_findMatchCharacter_advanceSearch.setObjectName("btn_findMatchCharacter_advanceSearch")
         self.frame_dragDrop_5 = QtWidgets.QFrame(self.advanceSearch_page)
-        self.frame_dragDrop_5.setGeometry(QtCore.QRect(110, 260, 311, 211))
+        self.frame_dragDrop_5.setGeometry(QtCore.QRect(110, 490, 311, 211))
         self.frame_dragDrop_5.setAcceptDrops(True)
         self.frame_dragDrop_5.setStyleSheet("background-color:lightyellow;\n"
 "border-radius: 15px;")
@@ -366,7 +366,7 @@ class Ui_MainWindow(object):
         self.frame_dragDrop_5.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_dragDrop_5.setObjectName("frame_dragDrop_5")
         self.frame_dragDrop_6 = QtWidgets.QFrame(self.advanceSearch_page)
-        self.frame_dragDrop_6.setGeometry(QtCore.QRect(110, 490, 311, 211))
+        self.frame_dragDrop_6.setGeometry(QtCore.QRect(110, 260, 311, 211))
         self.frame_dragDrop_6.setAcceptDrops(True)
         self.frame_dragDrop_6.setStyleSheet("background-color:lightyellow;\n"
 "border-radius: 15px;")
@@ -787,14 +787,174 @@ class Ui_MainWindow(object):
         self.tabWidget_foundPage.raise_()
         self.btn_insertAnotherImage2.raise_()
         self.stackedWidget.addWidget(self.found_page)
+        self.resultPage_fileSearch = QtWidgets.QWidget()
+        self.resultPage_fileSearch.setObjectName("resultPage_fileSearch")
+        self.frame_16 = QtWidgets.QFrame(self.resultPage_fileSearch)
+        self.frame_16.setGeometry(QtCore.QRect(670, 200, 491, 331))
+        self.frame_16.setStyleSheet("background-color:lightgray;\n"
+"border-radius: 10px;")
+        self.frame_16.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_16.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_16.setObjectName("frame_16")
+        self.frameImage_advSearch = QtWidgets.QLabel(self.frame_16)
+        self.frameImage_advSearch.setGeometry(QtCore.QRect(10, 10, 471, 271))
+        self.frameImage_advSearch.setAutoFillBackground(False)
+        self.frameImage_advSearch.setStyleSheet("background-color:white;\n"
+"border-radius: 0;\n"
+"font-size: 11pt;\n"
+"color: gray;")
+        self.frameImage_advSearch.setText("")
+        self.frameImage_advSearch.setScaledContents(True)
+        self.frameImage_advSearch.setObjectName("frameImage_advSearch")
+        self.label_frameTitle_advSearch = QtWidgets.QLabel(self.frame_16)
+        self.label_frameTitle_advSearch.setGeometry(QtCore.QRect(10, 280, 471, 41))
+        font = QtGui.QFont()
+        font.setFamily("Arial Rounded MT Bold,Arial")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.label_frameTitle_advSearch.setFont(font)
+        self.label_frameTitle_advSearch.setStyleSheet("background-color:gray;\n"
+"font: 10pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"color: white;\n"
+"border-radius: 0;\n"
+"align:center;\n"
+"padding-left: 30px;")
+        self.label_frameTitle_advSearch.setObjectName("label_frameTitle_advSearch")
+        self.label_titleFound_fileSearch = QtWidgets.QLabel(self.resultPage_fileSearch)
+        self.label_titleFound_fileSearch.setGeometry(QtCore.QRect(20, 30, 1221, 51))
+        self.label_titleFound_fileSearch.setStyleSheet("background-color:palegreen;\n"
+"border: 2px solid green;\n"
+"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"padding-left:10px;\n"
+"")
+        self.label_titleFound_fileSearch.setObjectName("label_titleFound_fileSearch")
+        self.label_found_advSearch = QtWidgets.QLabel(self.resultPage_fileSearch)
+        self.label_found_advSearch.setGeometry(QtCore.QRect(670, 140, 491, 51))
+        self.label_found_advSearch.setStyleSheet("background-color:palegreen;\n"
+"border: 2px solid green;\n"
+"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"padding-left:180px;\n"
+"border-radius: 6px;\n"
+"")
+        self.label_found_advSearch.setObjectName("label_found_advSearch")
+        self.btn_insertAnotherImage_pageFileAdvSch = QtWidgets.QPushButton(self.resultPage_fileSearch)
+        self.btn_insertAnotherImage_pageFileAdvSch.setGeometry(QtCore.QRect(870, 620, 371, 61))
+        self.btn_insertAnotherImage_pageFileAdvSch.setStyleSheet("font: 12pt \"Shiny Signature\", \"Arial\";\n"
+"background-color: none;")
+        self.btn_insertAnotherImage_pageFileAdvSch.setObjectName("btn_insertAnotherImage_pageFileAdvSch")
+        self.frame_18 = QtWidgets.QFrame(self.resultPage_fileSearch)
+        self.frame_18.setGeometry(QtCore.QRect(120, 200, 491, 331))
+        self.frame_18.setStyleSheet("background-color:lightgray;\n"
+"border-radius: 10px;")
+        self.frame_18.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_18.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_18.setObjectName("frame_18")
+        self.frameImage_advInput = QtWidgets.QLabel(self.frame_18)
+        self.frameImage_advInput.setGeometry(QtCore.QRect(10, 10, 471, 271))
+        self.frameImage_advInput.setAutoFillBackground(False)
+        self.frameImage_advInput.setStyleSheet("background-color:white;\n"
+"border-radius: 0;\n"
+"font-size: 11pt;\n"
+"color: gray;")
+        self.frameImage_advInput.setText("")
+        self.frameImage_advInput.setScaledContents(True)
+        self.frameImage_advInput.setObjectName("frameImage_advInput")
+        self.label_frameTitle_advInput = QtWidgets.QLabel(self.frame_18)
+        self.label_frameTitle_advInput.setGeometry(QtCore.QRect(10, 280, 471, 41))
+        font = QtGui.QFont()
+        font.setFamily("Arial Rounded MT Bold,Arial")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.label_frameTitle_advInput.setFont(font)
+        self.label_frameTitle_advInput.setStyleSheet("background-color:gray;\n"
+"font: 10pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"color: white;\n"
+"border-radius: 0;\n"
+"align:center;\n"
+"padding-left: 30px;")
+        self.label_frameTitle_advInput.setObjectName("label_frameTitle_advInput")
+        self.label_found_advInput = QtWidgets.QLabel(self.resultPage_fileSearch)
+        self.label_found_advInput.setGeometry(QtCore.QRect(120, 140, 491, 51))
+        self.label_found_advInput.setStyleSheet("background-color:palegreen;\n"
+"border: 2px solid green;\n"
+"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"padding-left:180px;\n"
+"border-radius: 6px;\n"
+"")
+        self.label_found_advInput.setObjectName("label_found_advInput")
+        self.label_titleNotFound_fileSearch = QtWidgets.QLabel(self.resultPage_fileSearch)
+        self.label_titleNotFound_fileSearch.setGeometry(QtCore.QRect(20, 30, 1221, 51))
+        self.label_titleNotFound_fileSearch.setStyleSheet("background-color:pink;\n"
+"border: 2px solid red;\n"
+"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"padding-left:10px;\n"
+"")
+        self.label_titleNotFound_fileSearch.setObjectName("label_titleNotFound_fileSearch")
+        self.label_notFound_advInput = QtWidgets.QLabel(self.resultPage_fileSearch)
+        self.label_notFound_advInput.setGeometry(QtCore.QRect(120, 140, 491, 51))
+        self.label_notFound_advInput.setStyleSheet("background-color:pink;\n"
+"border: 2px solid red;\n"
+"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"padding-left:170px;\n"
+"border-radius: 6px;\n"
+"")
+        self.label_notFound_advInput.setObjectName("label_notFound_advInput")
+        self.label_notFound_advSearch = QtWidgets.QLabel(self.resultPage_fileSearch)
+        self.label_notFound_advSearch.setGeometry(QtCore.QRect(670, 140, 491, 51))
+        self.label_notFound_advSearch.setStyleSheet("background-color:pink;\n"
+"border: 2px solid red;\n"
+"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"padding-left:170px;\n"
+"border-radius: 6px;\n"
+"")
+        self.label_notFound_advSearch.setObjectName("label_notFound_advSearch")
+        self.label_11 = QtWidgets.QLabel(self.resultPage_fileSearch)
+        self.label_11.setGeometry(QtCore.QRect(120, 550, 491, 141))
+        self.label_11.setStyleSheet("background-color:lightyellow;\n"
+"border: 2px solid gray;\n"
+"font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"padding-left:10px;\n"
+"")
+        self.label_11.setText("")
+        self.label_11.setObjectName("label_11")
+        self.groupBox_6 = QtWidgets.QGroupBox(self.resultPage_fileSearch)
+        self.groupBox_6.setGeometry(QtCore.QRect(140, 560, 451, 111))
+        self.groupBox_6.setStyleSheet("background-color:lightyellow;")
+        self.groupBox_6.setObjectName("groupBox_6")
+        self.label_25 = QtWidgets.QLabel(self.groupBox_6)
+        self.label_25.setGeometry(QtCore.QRect(30, 40, 121, 21))
+        self.label_25.setObjectName("label_25")
+        self.label_26 = QtWidgets.QLabel(self.groupBox_6)
+        self.label_26.setGeometry(QtCore.QRect(340, 40, 91, 20))
+        self.label_26.setObjectName("label_26")
+        self.label_27 = QtWidgets.QLabel(self.groupBox_6)
+        self.label_27.setGeometry(QtCore.QRect(200, 40, 121, 21))
+        self.label_27.setObjectName("label_27")
+        self.label_conf_fileSearch = QtWidgets.QLabel(self.groupBox_6)
+        self.label_conf_fileSearch.setGeometry(QtCore.QRect(30, 70, 91, 21))
+        self.label_conf_fileSearch.setStyleSheet("font: 13pt \"MS Sans Serif\";")
+        self.label_conf_fileSearch.setObjectName("label_conf_fileSearch")
+        self.label_scale_fileSearch = QtWidgets.QLabel(self.groupBox_6)
+        self.label_scale_fileSearch.setGeometry(QtCore.QRect(200, 70, 91, 21))
+        self.label_scale_fileSearch.setStyleSheet("font: 13pt \"MS Sans Serif\";")
+        self.label_scale_fileSearch.setObjectName("label_scale_fileSearch")
+        self.label_thresh_fileSearch = QtWidgets.QLabel(self.groupBox_6)
+        self.label_thresh_fileSearch.setGeometry(QtCore.QRect(340, 70, 91, 21))
+        self.label_thresh_fileSearch.setStyleSheet("font: 13pt \"MS Sans Serif\";")
+        self.label_thresh_fileSearch.setObjectName("label_thresh_fileSearch")
+        self.stackedWidget.addWidget(self.resultPage_fileSearch)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(6)
-        self.tabWidget_foundPage.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
+        self.tabWidget_foundPage.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -875,3 +1035,19 @@ class Ui_MainWindow(object):
         self.label_accuracy_2.setText(_translate("MainWindow", "Input Image \n"
 "Accuracy : 88.88%"))
         self.tabWidget_foundPage.setTabText(self.tabWidget_foundPage.indexOf(self.tab_statistics), _translate("MainWindow", "Character Statistics"))
+        self.label_frameTitle_advSearch.setText(_translate("MainWindow", "                                Accuracy : 88.80%"))
+        self.label_titleFound_fileSearch.setText(_translate("MainWindow", "Character Matched"))
+        self.label_found_advSearch.setText(_translate("MainWindow", "doraemon"))
+        self.btn_insertAnotherImage_pageFileAdvSch.setText(_translate("MainWindow", "INSERT ANOTHER MATCH"))
+        self.label_frameTitle_advInput.setText(_translate("MainWindow", "                                Accuracy : -"))
+        self.label_found_advInput.setText(_translate("MainWindow", "doraemon"))
+        self.label_titleNotFound_fileSearch.setText(_translate("MainWindow", "Character Not Found"))
+        self.label_notFound_advInput.setText(_translate("MainWindow", "No character"))
+        self.label_notFound_advSearch.setText(_translate("MainWindow", "No character"))
+        self.groupBox_6.setTitle(_translate("MainWindow", "Detection Settings"))
+        self.label_25.setText(_translate("MainWindow", "Confidence"))
+        self.label_26.setText(_translate("MainWindow", "Threshold"))
+        self.label_27.setText(_translate("MainWindow", "Scale"))
+        self.label_conf_fileSearch.setText(_translate("MainWindow", "123"))
+        self.label_scale_fileSearch.setText(_translate("MainWindow", "123"))
+        self.label_thresh_fileSearch.setText(_translate("MainWindow", "123"))

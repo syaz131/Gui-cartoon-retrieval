@@ -173,7 +173,16 @@ class Cartoon:
 
         # Storing Image ================= make sure have folder output
         if self.MODE == "image":
-            cv2.imwrite("output_image.png", image)
+            if self.isVideoDetails == False:
+                cv2.imwrite("output_image.png", image)
+            else:
+                saveFile = "output_image1.png"
+                if os.path.exists(saveFile):
+                    saveFile = "output_image2.png"
+                    cv2.imwrite(saveFile, image)
+                else:
+                    cv2.imwrite(saveFile, image)
+
 
     def detectCharacter(self):
         # self.isFound = False
