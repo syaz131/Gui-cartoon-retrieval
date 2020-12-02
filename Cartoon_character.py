@@ -184,25 +184,20 @@ class Cartoon:
             self.process_Image(img, 1)
 
         if self.MODE == "video":
-
-            # self.isVideoDetails = False
-            # self.videoWidth = 0
-            # self.videoHeight = 0
-            # self.fps = 0
-
             cap = cv2.VideoCapture(self.FILE)
             fps = int(cap.get(cv2.CAP_PROP_FPS))
+            frameWidth = 600
+
+            if self.isVideoDetails == True:
+                frameWidth = self.videoWidth
+                fps = self.videoFps
 
             ret, frame = cap.read()  # read first frame
             # - change width only
-            frame = imutils.resize(frame, width=800)
-            # frame = imutils.resize(frame, width=600, height=600)
+            frame = imutils.resize(frame, width=frameWidth)
 
             # Change fourcc according to video format supported by your device
-            fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # (*'XVID')
-            # fourcc = cv2.VideoWriter_fourcc(*'MJPG')  # (*'XVID') mp4v
-
-            # change fps and shape
+            fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # (*'XVID') (*'MJPG')
             op_vid = cv2.VideoWriter("output_video." + self.ext, fourcc, fps, (frame.shape[1], frame.shape[0]))
 
             index = 0
@@ -216,8 +211,7 @@ class Cartoon:
                 # numOfFrame = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
                 if ret:
-                    # frame = imutils.resize(frame, width=600, height=600) - change width only
-                    frame = imutils.resize(frame, width=800)
+                    frame = imutils.resize(frame, width=frameWidth)
                     frameTimestamp = int(cap.get(cv2.CAP_PROP_POS_MSEC)) / 1000  # in milliseconds - times by 1000
                     frameTimestamp = "{:.3f}".format(frameTimestamp)
 
@@ -232,8 +226,8 @@ class Cartoon:
                     if self.isCharacterFound and self.characterId == self.characterToFindId:
                         # if self.isCharacterFound and self.characterId == self.characterToFindId:  # is character =
                         # character / label
-                        print('charId : ' + str(self.characterId))
-                        print('charId to find : ' + str(self.characterToFindId))
+                        # print('charId : ' + str(self.characterId))
+                        # print('charId to find : ' + str(self.characterToFindId))
 
                         self.isImageMatchedVideo = True
 
@@ -320,8 +314,6 @@ class Cartoon:
         print("[INFO] Processing mode set to : ", self.MODE)
 
     def setCharacterToFindId(self, id):
-        # only for video
-        print(id)
         self.characterToFindId = id
 
     def setConfidence(self, confidence):

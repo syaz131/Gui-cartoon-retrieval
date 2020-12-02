@@ -47,6 +47,9 @@ class MainWindow:
         self.isImageMatchedVideo = False
         self.fileExt = ''
 
+        self.videoList = []
+        self.imageList = []
+
         we_bear_ico = 'title we bare bear'
         self.ui.label_ico_bear.setPixmap((QPixmap(we_bear_ico)))
 
@@ -502,6 +505,7 @@ class MainWindow:
         print(22)
 
         # set vid details and detect settings
+        self.cartoon_video.isVideoDetails = True
         self.cartoon_image.setConfidence(self.ui.doubleSpinBox_confidence.value())
         self.cartoon_image.setScale(self.ui.doubleSpinBox_scale.value())
         self.cartoon_image.setThreshold(self.ui.doubleSpinBox_threshold.value())
@@ -511,8 +515,8 @@ class MainWindow:
 
         # print(self.ui.doubleSpinBox_threshold.value()) - use this
         # video advance details
-        self.cartoon_video.setHeight(self.ui.spinBox_width.value())
-        self.cartoon_video.setWidth(self.ui.spinBox_height.value())
+        self.cartoon_video.setWidth(self.ui.spinBox_width.value())
+        self.cartoon_video.setHeight(self.ui.spinBox_height.value())
         self.cartoon_video.setFps(self.ui.spinBox_fps.value())
 
         if self.image_name != '':
@@ -521,17 +525,14 @@ class MainWindow:
             if self.cartoon_image.isCharacterFound:
                 print('call findMatch_advanceSearh')
                 self.findMatch_advanceSearh()
+                self.cartoon_video.isVideoDetails = False
             else:
                 self.showNotFoundPage()
+                self.cartoon_video.isVideoDetails = False
         else:
             self.showPopupError('No Image Chosen!', 'Please choose an input image')
 
     def findMatch_advanceSearh(self):
-        # assign folder directory
-        directory = ''
-
-
-
         if self.ui.btn_chooseFile_advancePage.isEnabled() and self.ui.radioButton_oneFile.isChecked():
             try:
                 directory = self.fileAdvance_name
@@ -563,6 +564,9 @@ class MainWindow:
             except:
                 self.showPopupError('Error', 'Choose a file to search')
 
+
+
+
         elif self.ui.btn_chooseFolder_image.isEnabled() and self.ui.radioButton_imageFolder.isChecked():
             try:
                 directory = self.ui.label_dirAdvance_image.text()
@@ -573,6 +577,33 @@ class MainWindow:
 
                 else:
                     print('run image folder search')
+
+                    directoryJpg = directory + '\\*.jpg'
+                    directoryJpeg = directory + '\\*.jpeg'
+                    directoryPng = directory + '\\*.png'
+                    directoryBmp = directory + '\\*.bmp'
+                    self.imageList.clear()
+
+                    image_glob = glob.glob(directoryJpg)
+                    for image in image_glob:
+                        self.imageList.append(image)
+
+                    image_glob = glob.glob(directoryJpeg)
+                    for image in image_glob:
+                        self.imageList.append(image)
+
+                    image_glob = glob.glob(directoryPng)
+                    for image in image_glob:
+                        self.imageList.append(image)
+
+                    image_glob = glob.glob(directoryBmp)
+                    for image in image_glob:
+                        self.imageList.append(image)
+
+                    print(len(self.imageList))
+
+
+
 
             except:
                 self.showPopupError('Error', 'Choose a folder to search')
@@ -587,6 +618,24 @@ class MainWindow:
 
                 else:
                     print('run video folder search')
+
+                    directoryMp4 = directory + '\\*.mp4'
+                    directoryAvi = directory + '\\*.avi'
+                    self.videoList.clear()
+
+                    video_glob = glob.glob(directoryMp4)
+                    for video in video_glob:
+                        self.videoList.append(video)
+
+                    video_glob = glob.glob(directoryAvi)
+                    for video in video_glob:
+                        self.videoList.append(video)
+
+                    print(len(self.videoList))
+
+                    self.cartoon_video.setFileName(self.videoList[0])
+                    self.cartoon_video.setCharacterToFindId(3)
+                    self.cartoon_video.detectCharacter()
 
             except:
                 self.showPopupError('Error', 'Choose a folder to search')
