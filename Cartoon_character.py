@@ -33,7 +33,6 @@ class Cartoon:
         # self.isFound = False
         self.accuracy_image = ''
 
-
         # to compare image with video
         self.isCharacterFound = False
         self.isImageMatchedVideo = False
@@ -187,7 +186,6 @@ class Cartoon:
                 else:
                     cv2.imwrite(saveFile, image)
 
-
     def detectCharacter(self):
         # self.isFound = False
         start = time.time()
@@ -216,7 +214,6 @@ class Cartoon:
             self.videoWidth = frame.shape[1]
             self.videoHeight = frame.shape[0]
             self.videoFps = fps
-
 
             index = 0
             self.timestamps.clear()
@@ -287,9 +284,6 @@ class Cartoon:
     def checkVideo(self):
         return 0
 
-
-
-
     def process_Image_inFolder(self, image, index, count):
         width = image.shape[1]
         height = image.shape[0]
@@ -337,7 +331,7 @@ class Cartoon:
             self.characterId = class_ids[i]
 
         if self.MODE == "image" and self.isCharacterFound and self.characterId == self.characterToFindId:
-            outputFile = "output\\output_" + self.characterName + str(count+1) + ".png"
+            outputFile = "output\\output_" + self.characterName + str(count + 1) + ".png"
             self.outputImageFolderList.append(outputFile)
             self.frame_accuracies.append(self.numAccuracy)
             cv2.imwrite(outputFile, image)
@@ -348,68 +342,59 @@ class Cartoon:
             img = cv2.imread(self.FILE, cv2.IMREAD_COLOR)
             self.process_Image_inFolder(img, 1, count)
 
-        # if self.MODE == "video":
-        #     cap = cv2.VideoCapture(self.FILE)
-        #     fps = int(cap.get(cv2.CAP_PROP_FPS))
-        #     self.fpsStats = fps
-        #     frameWidth = 600
-        #
-        #     if self.isVideoDetails == True:
-        #         frameWidth = self.videoWidth
-        #         fps = self.videoFps
-        #
-        #     ret, frame = cap.read()
-        #     frame = imutils.resize(frame, width=frameWidth)
-        #
-        #     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-        #     op_vid = cv2.VideoWriter("output_video." + self.ext, fourcc, fps, (frame.shape[1], frame.shape[0]))
-        #     self.videoWidth = frame.shape[1]
-        #     self.videoHeight = frame.shape[0]
-        #     self.videoFps = fps
-        #
-        #
-        #     index = 0
-        #     self.timestamps.clear()
-        #     self.fileNames.clear()
-        #     self.frame_accuracies.clear()
-        #
-        #     while cap.isOpened():
-        #         ret, frame = cap.read()
-        #         numOfFrame = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-        #         self.numOfFramestats = numOfFrame
-        #
-        #         if ret:
-        #             frame = imutils.resize(frame, width=frameWidth)
-        #             frameTimestamp = int(cap.get(cv2.CAP_PROP_POS_MSEC)) / 1000  # in milliseconds - times by 1000
-        #             frameTimestamp = "{:.3f}".format(frameTimestamp)
-        #
-        #             self.process_Image(frame, index)
-        #             index += 1
-        #             op_vid.write(frame)
-        #
-        #             if self.isCharacterFound and self.characterId == self.characterToFindId:
-        #
-        #                 self.isImageMatchedVideo = True
-        #
-        #                 output_file = "output_" + self.characterName + str(index).zfill(5) + "." + "png"
-        #
-        #                 output_frame_name = "output/" + output_file
-        #                 fileName = 'output\\' + output_file
-        #
-        #                 self.timestamps.append(str(frameTimestamp) + ' sec')
-        #                 self.fileNames.append(fileName)
-        #                 self.frame_accuracies.append(self.numAccuracy)
-        #                 cv2.imwrite(output_frame_name, frame)
-        #         else:
-        #             break
-        #
-        #     cap.release()
-        #     op_vid.release()
-        #
+        if self.MODE == "video":
+            cap = cv2.VideoCapture(self.FILE)
+            fps = int(cap.get(cv2.CAP_PROP_FPS))
+            frameWidth = 600
+
+            if self.isVideoDetails == True:
+                frameWidth = self.videoWidth
+                fps = self.videoFps
+
+            ret, frame = cap.read()
+            frame = imutils.resize(frame, width=frameWidth)
+
+            fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+            videoName = "output\\output_video" + str(count+1) + ".mp4"
+            op_vid = cv2.VideoWriter(videoName, fourcc, fps, (frame.shape[1], frame.shape[0]))
+            self.videoWidth = frame.shape[1]
+            self.videoHeight = frame.shape[0]
+            self.videoFps = fps
+
+            index = 0
+            accuracies = []
+
+            while cap.isOpened():
+                ret, frame = cap.read()
+
+                if ret:
+                    frame = imutils.resize(frame, width=frameWidth)
+
+                    self.process_Image(frame, index)
+                    index += 1
+                    op_vid.write(frame)
+
+                    if self.isCharacterFound and self.characterId == self.characterToFindId:
+                        self.isImageMatchedVideo = True
+                        accuracies.append(self.numAccuracy)
+
+                else:
+                    break
+
+            cap.release()
+            op_vid.release()
+
+            if self.isImageMatchedVideo:
+                sumAcc = sum(accuracies)
+                avgAcc = round(sumAcc/len(accuracies), 2)
+                self.outputVideoFolderList.append(videoName)
+                self.frame_accuracies.append(avgAcc)
+            else:
+                os.remove(videoName)
+
         end = time.time()
         total_time = round(end - start, 2)
         print("[INFO] Time : {} sec".format(total_time))
-
 
     # ============================    set and get function   ============================================
 
@@ -432,7 +417,7 @@ class Cartoon:
         # self.characterMatchedId = None
 
         self.isImageMatchedVideo = False
-        self.characterId = None     # not a big prob - always change at ddraw
+        self.characterId = None  # not a big prob - always change at ddraw
         self.characterToFindId = None
 
         if not os.path.exists(fileName):
