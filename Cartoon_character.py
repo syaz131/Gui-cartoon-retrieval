@@ -210,6 +210,10 @@ class Cartoon:
             # Change fourcc according to video format supported by your device
             fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # (*'XVID') (*'MJPG')
             op_vid = cv2.VideoWriter("output_video." + self.ext, fourcc, fps, (frame.shape[1], frame.shape[0]))
+            self.videoWidth = frame.shape[1]
+            self.videoHeight = frame.shape[0]
+            self.videoFps = fps
+
 
             index = 0
             self.timestamps.clear()
