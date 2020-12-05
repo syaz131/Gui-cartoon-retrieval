@@ -12,30 +12,6 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox,
 from Ui_main_pages import Ui_MainWindow
 from Cartoon_character import Cartoon
 
-
-# from Loading_window import LoadingScreen
-
-class LoadingScreen(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.setFixedSize(300, 300)
-        self.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.CustomizeWindowHint)
-        self.label_animation = QLabel(self)
-
-        # self.movie = QMovie('Loading_2.gif')
-        # self.label_animation.setMovie(self.movie)
-        self.label_animation.setText('Loading...')
-        # self.movie.start()
-
-    def startAnimation(self):
-        # self.movie.start()
-        self.show()
-
-    def stopAnimation(self):
-        self.close()
-        # self.movie.stop()
-
-
 class MainWindow:
     def __init__(self):
         self.main_win = QMainWindow()
@@ -51,8 +27,11 @@ class MainWindow:
         self.videoList = []
         self.imageList = []
 
-        we_bear_ico = 'title we bare bear'
-        self.ui.label_ico_bear.setPixmap((QPixmap(we_bear_ico)))
+        we_bear_title = 'UI Images\\title we bare bear.png'
+        we_bear_icon = 'UI Images\\we bare bear sticker medium.png'
+        self.ui.label_ico_bear.setPixmap(QPixmap(we_bear_title))
+        self.ui.label_2.setPixmap(QPixmap(we_bear_icon))
+        self.ui.label_14.setPixmap(QPixmap(we_bear_icon))
 
         loadingGif = 'Loading_2.gif'
         self.movie = QMovie(loadingGif)
@@ -62,16 +41,16 @@ class MainWindow:
         # self.ui.label_buffer_insertPage.setHidden(True)
         self.movie.start()
 
-        self.videoOutput_name = 'output_video_bean_eg.mp4'
-        self.videoPlay_output = QMovie(self.videoOutput_name)
-        self.ui.label_videoPlay.setMovie(self.videoPlay_output)
-        self.videoPlay_output.setPaused(True)
+        self.videoOutput_name = 'output\\output_video.mp4'
+        # self.videoPlay_output = QMovie(self.videoOutput_name)
+        # self.ui.label_videoPlay.setMovie(self.videoPlay_output)
+        # self.videoPlay_output.setPaused(True)
 
         # start first page
         # self.ui.stackedWidget.setCurrentWidget(self.ui.advanceSearch_page)
-        # self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
         # self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
-        self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
+        # self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
         # set switch button pages
         # self.ui.btn_startApp.clicked.connect(self.showLoadingPage)
@@ -80,9 +59,7 @@ class MainWindow:
         self.ui.btn_insertAnotherImage2.clicked.connect(self.showInsertPage)
         self.ui.btn_insertAnotherImage_folderFound.clicked.connect(self.showInsertPage)
         self.ui.btn_insertAnotherImage_pageFileAdvSch.clicked.connect(self.showInsertPage)
-
-        # ====================== Loading Window =========================================
-        self.loadingScreen = LoadingScreen()
+        self.ui.btn_toInsertPage.clicked.connect(self.showInsertPage)
 
         # # ======= initiate button connection ==================================
         # self.ui.btn_confirmImageVideo.clicked.connect(self.showLoadingPage)
@@ -173,53 +150,6 @@ class MainWindow:
         self.mediaPlayer.error.connect(self.handleError)
 
     def load_frame_output_data(self, name_list='h', time_list='h', accuracy_list='b'):
-
-        # accuracy_list = ['82.61%', '82.79%', '73.9%', '74.23%', '80.14%', '80.31%', '80.25%', '74.33%', '74.25%',
-        # '69.91%', '70.37%', '63.82%', '63.83%', '65.21%', '65.17%', '65.2%', '65.24%', '65.27%', '65.25%',
-        # '65.32%', '65.32%', '65.33%', '65.33%', '65.4%', '65.38%', '63.53%', '63.49%', '85.45%', '68.85%', '69.0%',
-        # '75.48%', '75.56%', '88.24%', '88.26%', '88.19%', '91.88%', '91.84%', '91.83%', '79.39%', '79.07%',
-        # '87.3%', '87.75%', '92.47%', '92.52%', '92.56%', '90.77%', '90.87%', '90.92%', '91.12%', '91.13%',
-        # '91.21%', '91.24%', '90.14%', '90.32%', '89.54%', '89.54%', '89.59%', '88.61%', '88.39%', '87.01%',
-        # '86.96%', '86.97%', '88.17%', '88.08%', '90.41%', '90.41%', '90.41%', '90.41%', '88.91%', '90.87%',
-        # '90.86%', '88.27%', '88.18%', '88.17%', '90.19%']
-        #
-        # time_list = ['0.033 sec', '0.066 sec', '0.100 sec', '0.133 sec', '0.166 sec', '0.200 sec', '0.233 sec',
-        # '0.266 sec', '0.300 sec', '0.333 sec', '0.366 sec', '0.400 sec', '0.433 sec', '0.466 sec', '0.500 sec',
-        # '0.533 sec', '0.566 sec', '0.600 sec', '0.633 sec', '0.666 sec', '0.700 sec', '0.733 sec', '0.766 sec',
-        # '0.800 sec', '0.833 sec', '0.866 sec', '0.900 sec', '1.566 sec', '1.600 sec', '1.633 sec', '3.533 sec',
-        # '3.566 sec', '3.600 sec', '3.633 sec', '3.666 sec', '3.766 sec', '3.800 sec', '3.833 sec', '3.866 sec',
-        # '3.900 sec', '3.933 sec', '3.966 sec', '4.000 sec', '4.033 sec', '4.066 sec', '4.100 sec', '4.133 sec',
-        # '4.166 sec', '4.200 sec', '4.233 sec', '4.266 sec', '4.300 sec', '4.333 sec', '4.366 sec', '4.400 sec',
-        # '4.433 sec', '4.466 sec', '4.500 sec', '4.533 sec', '4.566 sec', '4.600 sec', '4.633 sec', '4.666 sec',
-        # '4.700 sec', '4.733 sec', '4.766 sec', '4.800 sec', '4.833 sec', '4.866 sec', '4.900 sec', '4.933 sec',
-        # '4.966 sec', '5.000 sec', '5.033 sec', '5.066 sec']
-        #
-        # name_list = ['output\\output_bean00001.png', 'output\\output_bean00002.png', 'output\\output_bean00003.png',
-        #  'output\\output_bean00004.png', 'output\\output_bean00005.png', 'output\\output_bean00006.png',
-        #  'output\\output_bean00007.png', 'output\\output_bean00008.png', 'output\\output_bean00009.png',
-        #  'output\\output_bean00010.png', 'output\\output_bean00011.png', 'output\\output_bean00012.png',
-        #  'output\\output_bean00013.png', 'output\\output_bean00014.png', 'output\\output_bean00015.png',
-        #  'output\\output_bean00016.png', 'output\\output_bean00017.png', 'output\\output_bean00018.png',
-        #  'output\\output_bean00019.png', 'output\\output_bean00020.png', 'output\\output_bean00021.png',
-        #  'output\\output_bean00022.png', 'output\\output_bean00023.png', 'output\\output_bean00024.png',
-        #  'output\\output_bean00025.png', 'output\\output_bean00026.png', 'output\\output_bean00027.png',
-        #  'output\\output_bean00047.png', 'output\\output_bean00048.png', 'output\\output_bean00049.png',
-        #  'output\\output_bean00106.png', 'output\\output_bean00107.png', 'output\\output_bean00108.png',
-        #  'output\\output_bean00109.png', 'output\\output_bean00110.png', 'output\\output_bean00113.png',
-        #  'output\\output_bean00114.png', 'output\\output_bean00115.png', 'output\\output_bean00116.png',
-        #  'output\\output_bean00117.png', 'output\\output_bean00118.png', 'output\\output_bean00119.png',
-        #  'output\\output_bean00120.png', 'output\\output_bean00121.png', 'output\\output_bean00122.png',
-        #  'output\\output_bean00123.png', 'output\\output_bean00124.png', 'output\\output_bean00125.png',
-        #  'output\\output_bean00126.png', 'output\\output_bean00127.png', 'output\\output_bean00128.png',
-        #  'output\\output_bean00129.png', 'output\\output_bean00130.png', 'output\\output_bean00131.png',
-        #  'output\\output_bean00132.png', 'output\\output_bean00133.png', 'output\\output_bean00134.png',
-        #  'output\\output_bean00135.png', 'output\\output_bean00136.png', 'output\\output_bean00137.png',
-        #  'output\\output_bean00138.png', 'output\\output_bean00139.png', 'output\\output_bean00140.png',
-        #  'output\\output_bean00141.png', 'output\\output_bean00142.png', 'output\\output_bean00143.png',
-        #  'output\\output_bean00144.png', 'output\\output_bean00145.png', 'output\\output_bean00146.png',
-        #  'output\\output_bean00147.png', 'output\\output_bean00148.png', 'output\\output_bean00149.png',
-        #  'output\\output_bean00150.png', 'output\\output_bean00151.png', 'output\\output_bean00152.png']
-
         self.ui.tableFrameFound.setRowCount(len(name_list))
 
         row = 0
@@ -335,7 +265,7 @@ class MainWindow:
 
     def showFolderFoundPage(self):
 
-        output_image_name = 'output_image1.png'
+        output_image_name = 'output\\output_image1.png'
         self.ui.frameFound_folderFoundInput.setPixmap(QPixmap(output_image_name))
         self.ui.label_characterName_folderFound.setText('Input Image - ' + self.cartoon_image.getCharacterName())
         self.ui.label_frameTitle_folderFound.setText('                                Accuracy : ' +
@@ -352,7 +282,7 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.resultFoundPage_advFolder)
 
     def showFoundPage(self):
-        output_image_name = 'output_image.png'
+        output_image_name = 'output\\output_image.png'
 
         self.ui.inputImage_found.setPixmap(QPixmap(output_image_name))
         self.ui.frameFound.setText('             Double click on Data to change Frame')
@@ -610,14 +540,14 @@ class MainWindow:
         self.cartoon_video.setHeight(self.ui.spinBox_height.value())
         self.cartoon_video.setFps(self.ui.spinBox_fps.value())
 
-        saveFile = 'output_image1.png'
+        saveFile = 'output\\output_image1.png'
         if os.path.exists(saveFile):
             try:
                 os.remove(saveFile)
             except OSError as e:
                 print("Error: %s : %s" % (saveFile, e.strerror))
 
-        saveFile = 'output_image2.png'
+        saveFile = 'output\\output_image2.png'
         if os.path.exists(saveFile):
             try:
                 os.remove(saveFile)
@@ -666,11 +596,11 @@ class MainWindow:
                             self.ui.label_found_advInput.setHidden(False)
                             self.ui.label_found_advSearch.setHidden(False)
 
-                            self.ui.frameImage_advInput.setPixmap(QPixmap('output_image1.png'))
+                            self.ui.frameImage_advInput.setPixmap(QPixmap('output\\output_image1.png'))
                             self.ui.label_found_advInput.setText(self.cartoon_image.getCharacterName())
                             self.ui.label_frameTitle_advInput.setText('                                Accuracy : '
                                                                       + str(self.cartoon_image.accuracy_image)+'%')
-                            self.ui.frameImage_advSearch.setPixmap(QPixmap('output_image2.png'))
+                            self.ui.frameImage_advSearch.setPixmap(QPixmap('output\\output_image2.png'))
                             self.ui.label_found_advSearch.setText(self.cartoon_video.getCharacterName())
                             self.ui.label_frameTitle_advSearch.setText('                                Accuracy : '
                                                                        + str(self.cartoon_video.accuracy_image)+'%')

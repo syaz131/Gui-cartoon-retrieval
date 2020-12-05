@@ -177,11 +177,11 @@ class Cartoon:
         # Storing Image ================= make sure have folder output
         if self.MODE == "image":
             if self.isVideoDetails == False:
-                cv2.imwrite("output_image.png", image)
+                cv2.imwrite("output\\output_image.png", image)
             else:
-                saveFile = "output_image1.png"
+                saveFile = "output\\output_image1.png"
                 if os.path.exists(saveFile):
-                    saveFile = "output_image2.png"
+                    saveFile = "output\\output_image2.png"
                     cv2.imwrite(saveFile, image)
                 else:
                     cv2.imwrite(saveFile, image)
@@ -210,7 +210,7 @@ class Cartoon:
 
             # Change fourcc according to video format supported by your device
             fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # (*'XVID') (*'MJPG')
-            op_vid = cv2.VideoWriter("output_video." + self.ext, fourcc, fps, (frame.shape[1], frame.shape[0]))
+            op_vid = cv2.VideoWriter("output\\output_video." + "mp4", fourcc, fps, (frame.shape[1], frame.shape[0]))
             self.videoWidth = frame.shape[1]
             self.videoHeight = frame.shape[0]
             self.videoFps = fps
@@ -402,7 +402,7 @@ class Cartoon:
         if not os.path.exists(fileName):
             sys.exit("[ERROR] Invalid config path given")
 
-        firstFrameName = 'video_firstFrame.png'
+        firstFrameName = 'UI Images\\video_firstFrame.png'
         cap = cv2.VideoCapture(fileName)
         ret, frame = cap.read()  # read first frame
         cv2.imwrite(firstFrameName, frame)
@@ -468,11 +468,3 @@ class Cartoon:
         charName = self.characterName.upper()
         return charName
 
-
-if __name__ == '__main__':
-    cartoon = Cartoon()
-    # dir = 'input_images/shin-chan2.jpg'
-    dir = 'input_images/bean 5 secs.mp4'
-    # cartoon.setConfidence(0.6)
-    cartoon.setFileName(dir)
-    cartoon.detectCharacter()

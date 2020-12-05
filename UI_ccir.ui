@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1298</width>
-    <height>748</height>
+    <height>747</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -82,7 +82,7 @@ font:10pt &quot;Open Sans&quot;;</string>
      <enum>QFrame::NoFrame</enum>
     </property>
     <property name="currentIndex">
-     <number>7</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="start_page">
      <property name="styleSheet">
@@ -1090,7 +1090,7 @@ background-color: none;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color:gray;
-font: 12pt &quot;Shiny Signature&quot;, &quot;Arial&quot;;
+font: 13pt &quot;Shiny Signature&quot;, &quot;Arial&quot;;
 color: white;
 </string>
       </property>
@@ -1144,6 +1144,26 @@ border-radius: 15px;</string>
        <enum>QFrame::Raised</enum>
       </property>
      </widget>
+     <widget class="QPushButton" name="btn_toInsertPage">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>630</y>
+        <width>191</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+background-color: none;</string>
+      </property>
+      <property name="text">
+       <string>Back to Insert Page</string>
+      </property>
+     </widget>
      <zorder>frame_dragDrop_6</zorder>
      <zorder>frame_dragDrop_5</zorder>
      <zorder>groupBox_4</zorder>
@@ -1152,6 +1172,7 @@ border-radius: 15px;</string>
      <zorder>frame_dragDrop_4</zorder>
      <zorder>btn_chooseImage_advancePage</zorder>
      <zorder>btn_findMatchCharacter_advanceSearch</zorder>
+     <zorder>btn_toInsertPage</zorder>
     </widget>
     <widget class="QWidget" name="loading_page">
      <widget class="QLabel" name="label_10">

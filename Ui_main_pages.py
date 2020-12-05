@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1298, 748)
+        MainWindow.resize(1298, 747)
         MainWindow.setMinimumSize(QtCore.QSize(1000, 600))
         MainWindow.setMaximumSize(QtCore.QSize(1400, 800))
         MainWindow.setAcceptDrops(True)
@@ -373,7 +373,7 @@ class Ui_MainWindow(object):
         self.btn_findMatchCharacter_advanceSearch = QtWidgets.QPushButton(self.advanceSearch_page)
         self.btn_findMatchCharacter_advanceSearch.setGeometry(QtCore.QRect(860, 610, 291, 61))
         self.btn_findMatchCharacter_advanceSearch.setStyleSheet("background-color:gray;\n"
-"font: 12pt \"Shiny Signature\", \"Arial\";\n"
+"font: 13pt \"Shiny Signature\", \"Arial\";\n"
 "color: white;\n"
 "")
         self.btn_findMatchCharacter_advanceSearch.setObjectName("btn_findMatchCharacter_advanceSearch")
@@ -393,6 +393,12 @@ class Ui_MainWindow(object):
         self.frame_dragDrop_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_dragDrop_6.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_dragDrop_6.setObjectName("frame_dragDrop_6")
+        self.btn_toInsertPage = QtWidgets.QPushButton(self.advanceSearch_page)
+        self.btn_toInsertPage.setEnabled(True)
+        self.btn_toInsertPage.setGeometry(QtCore.QRect(490, 630, 191, 41))
+        self.btn_toInsertPage.setStyleSheet("font: 9pt \"Arial Rounded MT Bold\", \"Arial\";\n"
+"background-color: none;")
+        self.btn_toInsertPage.setObjectName("btn_toInsertPage")
         self.frame_dragDrop_6.raise_()
         self.frame_dragDrop_5.raise_()
         self.groupBox_4.raise_()
@@ -401,6 +407,7 @@ class Ui_MainWindow(object):
         self.frame_dragDrop_4.raise_()
         self.btn_chooseImage_advancePage.raise_()
         self.btn_findMatchCharacter_advanceSearch.raise_()
+        self.btn_toInsertPage.raise_()
         self.stackedWidget.addWidget(self.advanceSearch_page)
         self.loading_page = QtWidgets.QWidget()
         self.loading_page.setObjectName("loading_page")
@@ -1198,7 +1205,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(7)
+        self.stackedWidget.setCurrentIndex(3)
         self.tabWidget_foundPage.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1241,6 +1248,7 @@ class Ui_MainWindow(object):
         self.advancePage_insertImage.setText(_translate("MainWindow", "     Choose an image to search"))
         self.btn_chooseImage_advancePage.setText(_translate("MainWindow", "Choose Image"))
         self.btn_findMatchCharacter_advanceSearch.setText(_translate("MainWindow", "FIND MATCH CHARACTER"))
+        self.btn_toInsertPage.setText(_translate("MainWindow", "Back to Insert Page"))
         self.label_10.setText(_translate("MainWindow", "loading page"))
         self.label_8.setText(_translate("MainWindow", "Input Image"))
         self.btn_findMatchCharacter.setText(_translate("MainWindow", "FIND MATCH CHARACTER"))
