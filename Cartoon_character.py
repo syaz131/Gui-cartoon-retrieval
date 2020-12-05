@@ -27,6 +27,9 @@ class Cartoon:
         self.timestamps = []
         self.fileNames = []
         self.frame_accuracies = []
+
+        self.outputImageFolderList = []
+        self.outputVideoFolderList = []
         # self.isFound = False
         self.accuracy_image = ''
 
@@ -283,6 +286,130 @@ class Cartoon:
 
     def checkVideo(self):
         return 0
+
+
+
+
+    def process_Image_inFolder(self, image, index, count):
+        width = image.shape[1]
+        height = image.shape[0]
+        blob = cv2.dnn.blobFromImage(image, self.SCALE, (416, 416), (0, 0, 0), True, crop=False)
+        self.net.setInput(blob)
+
+        outs = self.net.forward(self.output_layers)
+
+        class_ids = []
+        confidences = []
+        boxes = []
+
+        for out in outs:
+            for detection in out:
+                scores = detection[5:]
+                class_id = np.argmax(scores)
+                confidence = scores[class_id]
+                # Thresholding
+                if confidence > self.CONFIDENCE:
+                    # Calculating BBox params
+                    c_x = int(detection[0] * width)
+                    c_y = int(detection[1] * height)
+                    w = int(detection[2] * width)
+                    h = int(detection[3] * height)
+                    x = c_x - w / 2
+                    y = c_y - h / 2
+
+                    class_ids.append(class_id)
+                    confidences.append(float(confidence))
+                    boxes.append([x, y, w, h])
+
+        indices = cv2.dnn.NMSBoxes(boxes, confidences, self.CONFIDENCE, self.NMS_THRESHOLD)
+
+        self.isCharacterFound = False
+
+        for ind in indices:
+            i = ind[0]
+            box = boxes[i]
+            x = box[0]
+            y = box[1]
+            w = box[2]
+            h = box[3]
+            self.draw_BBox(image, class_ids[i], confidences[i], round(x), round(y), round(x + w), round(y + h))
+            self.characterName = self.classes[class_ids[i]]
+            self.characterId = class_ids[i]
+
+        if self.MODE == "image" and self.isCharacterFound and self.characterId == self.characterToFindId:
+            outputFile = "output\\output_" + self.characterName + str(count+1) + ".png"
+            self.outputImageFolderList.append(outputFile)
+            self.frame_accuracies.append(self.numAccuracy)
+            cv2.imwrite(outputFile, image)
+
+    def detectCharacter_inFolder(self, count):
+        start = time.time()
+        if self.MODE == "image":
+            img = cv2.imread(self.FILE, cv2.IMREAD_COLOR)
+            self.process_Image_inFolder(img, 1, count)
+
+        # if self.MODE == "video":
+        #     cap = cv2.VideoCapture(self.FILE)
+        #     fps = int(cap.get(cv2.CAP_PROP_FPS))
+        #     self.fpsStats = fps
+        #     frameWidth = 600
+        #
+        #     if self.isVideoDetails == True:
+        #         frameWidth = self.videoWidth
+        #         fps = self.videoFps
+        #
+        #     ret, frame = cap.read()
+        #     frame = imutils.resize(frame, width=frameWidth)
+        #
+        #     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+        #     op_vid = cv2.VideoWriter("output_video." + self.ext, fourcc, fps, (frame.shape[1], frame.shape[0]))
+        #     self.videoWidth = frame.shape[1]
+        #     self.videoHeight = frame.shape[0]
+        #     self.videoFps = fps
+        #
+        #
+        #     index = 0
+        #     self.timestamps.clear()
+        #     self.fileNames.clear()
+        #     self.frame_accuracies.clear()
+        #
+        #     while cap.isOpened():
+        #         ret, frame = cap.read()
+        #         numOfFrame = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        #         self.numOfFramestats = numOfFrame
+        #
+        #         if ret:
+        #             frame = imutils.resize(frame, width=frameWidth)
+        #             frameTimestamp = int(cap.get(cv2.CAP_PROP_POS_MSEC)) / 1000  # in milliseconds - times by 1000
+        #             frameTimestamp = "{:.3f}".format(frameTimestamp)
+        #
+        #             self.process_Image(frame, index)
+        #             index += 1
+        #             op_vid.write(frame)
+        #
+        #             if self.isCharacterFound and self.characterId == self.characterToFindId:
+        #
+        #                 self.isImageMatchedVideo = True
+        #
+        #                 output_file = "output_" + self.characterName + str(index).zfill(5) + "." + "png"
+        #
+        #                 output_frame_name = "output/" + output_file
+        #                 fileName = 'output\\' + output_file
+        #
+        #                 self.timestamps.append(str(frameTimestamp) + ' sec')
+        #                 self.fileNames.append(fileName)
+        #                 self.frame_accuracies.append(self.numAccuracy)
+        #                 cv2.imwrite(output_frame_name, frame)
+        #         else:
+        #             break
+        #
+        #     cap.release()
+        #     op_vid.release()
+        #
+        end = time.time()
+        total_time = round(end - start, 2)
+        print("[INFO] Time : {} sec".format(total_time))
+
 
     # ============================    set and get function   ============================================
 

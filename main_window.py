@@ -134,6 +134,7 @@ class MainWindow:
         #
         # # button openFile =====================================
         self.ui.tableFrameFound.itemDoubleClicked.connect(self.changeFrameFound)
+        self.ui.tableFileName_folderFound.itemDoubleClicked.connect(self.openImageOutput)
 
         # ========= initiate cartoon detector ==================
         self.cartoon_image = Cartoon()
@@ -247,7 +248,7 @@ class MainWindow:
 
         row = 0
         for accuracy in accuracy_list:
-            self.ui.tableFileName_folderFound.setItem(row, 1, QTableWidgetItem(accuracy))
+            self.ui.tableFileName_folderFound.setItem(row, 1, QTableWidgetItem(str(accuracy) + '%'))
             row = row + 1
 
     # =================== show pages ========================
@@ -340,9 +341,13 @@ class MainWindow:
         self.ui.label_frameTitle_folderFound.setText('                                Accuracy : ' +
                                                      self.cartoon_image.accuracy_image)
 
-        self.ui.label_conf_folderFound.setText(str(self.cartoon_image.CONFIDENCE))
-        self.ui.label_scale_folderFound.setText(str(self.cartoon_image.SCALE))
-        self.ui.label_thresh_folderFound.setText(str(self.cartoon_image.NMS_THRESHOLD))
+        self.ui.label_conf_folderFound.setText(str(self.cartoon_video.CONFIDENCE))
+        self.ui.label_scale_folderFound.setText(str(self.cartoon_video.SCALE))
+        self.ui.label_thresh_folderFound.setText(str(self.cartoon_video.NMS_THRESHOLD))
+
+        self.ui.label_widthFolderFound.setText(str(self.cartoon_video.videoWidth))
+        self.ui.label_heightFolderFound.setText(str(self.cartoon_video.videoHeight))
+        self.ui.label_fpsFolderFound.setText(str(self.cartoon_video.videoFps))
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.resultFoundPage_advFolder)
 
@@ -504,6 +509,11 @@ class MainWindow:
         acc = self.ui.tableFrameFound.item(row, 2).text()
         self.ui.label_frameTitle.setText('      Time : ' + time + '          Accuracy : ' + acc)
         self.setFrameFound(item)
+
+    def openImageOutput(self):
+        row = self.ui.tableFileName_folderFound.currentRow()
+        item = self.ui.tableFileName_folderFound.item(row, 0).text()
+        self.runFile(item)
 
     def playVideoDirectly(self):
         self.runFile(self.videoOutput_name)
@@ -738,16 +748,24 @@ class MainWindow:
                     for image in image_glob:
                         self.imageList.append(image)
 
-                    print(len(self.imageList))
-                    accuracy_list = ['82.61%', '82.79%', '73.9%']
-                    self.load_outputData_folderSearch(self.imageList, accuracy_list)
-                    # if 0 then no load data
+                    if len(self.imageList) == 0:
+                        self.showPopupError('Error', 'No image file in folder')
 
-                    self.ui.groupBox_videoDetail_folderSearch.setHidden(True)
-                    self.showFolderFoundPage()
+                    else:
+                        print(len(self.imageList))
+                        # accuracy_list = ['82.61%', '82.79%', '73.9%']
+                        # self.load_outputData_folderSearch(self.imageList, accuracy_list)
+                        self.detectCartoonList(self.imageList)
 
+                        if len(self.cartoon_video.outputImageFolderList) == 0:
+                            self.showNotFoundPage()
 
+                        else:
+                            self.load_outputData_folderSearch(self.cartoon_video.outputImageFolderList,
+                                                              self.cartoon_video.frame_accuracies)
 
+                            self.ui.groupBox_videoDetail_folderSearch.setHidden(True)
+                            self.showFolderFoundPage()
 
             except:
                 self.showPopupError('Error', 'Choose a folder to search')
@@ -776,22 +794,33 @@ class MainWindow:
                     for video in video_glob:
                         self.videoList.append(video)
 
-                    print(len(self.videoList))
-                    accuracy_list = ['82.61%', '82.79%', '73.9%']
-                    self.load_outputData_folderSearch(self.videoList, accuracy_list)
+                    if len(self.videoList) == 0:
+                        self.showPopupError('Error', 'No video file in folder')
 
-                    self.ui.groupBox_videoDetail_folderSearch.setHidden(False)
-                    self.showFolderFoundPage()
+                    else:
 
-                    # self.cartoon_video.setFileName(self.videoList[0])
-                    # self.cartoon_video.setCharacterToFindId(3)
-                    # self.cartoon_video.detectCharacter()
+                        print(len(self.videoList))
+                        # accuracy_list = ['82.61%', '82.79%', '73.9%']
+                        # self.load_outputData_folderSearch(self.videoList, accuracy_list)
+
+                        self.ui.groupBox_videoDetail_folderSearch.setHidden(False)
+                        self.showFolderFoundPage()
 
             except:
                 self.showPopupError('Error', 'Choose a folder to search')
 
         else:
             self.showPopupError('Search Item Not Chosen', 'Choose a search item')
+
+    def detectCartoonList(self, cartoonList):
+        self.cartoon_video.outputImageFolderList.clear()
+        self.cartoon_video.frame_accuracies.clear()
+        count = 0
+        for imageName in cartoonList:
+            self.cartoon_video.setFileName(imageName)
+            self.cartoon_video.setCharacterToFindId(self.cartoon_image.characterId)
+            self.cartoon_video.detectCharacter_inFolder(count)
+            count = count + 1
 
     def settings_details_backToDefault(self):
         confidence = 0.5
