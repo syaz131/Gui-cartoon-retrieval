@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1298</width>
-    <height>747</height>
+    <width>1260</width>
+    <height>729</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -47,8 +47,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
+      <x>0</x>
+      <y>0</y>
       <width>1261</width>
       <height>711</height>
      </rect>
@@ -82,7 +82,7 @@ font:10pt &quot;Open Sans&quot;;</string>
      <enum>QFrame::NoFrame</enum>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>9</number>
     </property>
     <widget class="QWidget" name="start_page">
      <property name="styleSheet">
@@ -263,10 +263,10 @@ background-color: none;</string>
      <widget class="QPushButton" name="btn_chooseImage">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>450</y>
-        <width>211</width>
-        <height>51</height>
+        <x>360</x>
+        <y>460</y>
+        <width>511</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -280,9 +280,9 @@ background-color: none;</string>
      <widget class="QFrame" name="frame_dragDrop">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>130</y>
-        <width>431</width>
+        <x>350</x>
+        <y>150</y>
+        <width>531</width>
         <height>301</height>
        </rect>
       </property>
@@ -304,7 +304,7 @@ border-radius: 10px;</string>
         <rect>
          <x>10</x>
          <y>10</y>
-         <width>411</width>
+         <width>511</width>
          <height>281</height>
         </rect>
        </property>
@@ -322,7 +322,7 @@ font-size: 11pt;
 color: gray;</string>
        </property>
        <property name="text">
-        <string>              Choose an image to search</string>
+        <string>                           Choose an image to search</string>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -358,68 +358,16 @@ color: white;
 </string>
       </property>
       <property name="text">
-       <string>CONFIRM IMAGE AND VIDEO</string>
+       <string>CONFIRM INSERT IMAGE</string>
       </property>
-     </widget>
-     <widget class="QFrame" name="frame_dragDrop_2">
-      <property name="geometry">
-       <rect>
-        <x>660</x>
-        <y>130</y>
-        <width>431</width>
-        <height>301</height>
-       </rect>
-      </property>
-      <property name="acceptDrops">
-       <bool>true</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:lightgray;
-border-radius: 10px;</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <widget class="QLabel" name="insertPage_cartoonVideo">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>411</width>
-         <height>281</height>
-        </rect>
-       </property>
-       <property name="acceptDrops">
-        <bool>true</bool>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color:white;
-border-radius: 0;
-border: 2px dashed gray;
-font-size: 11pt;
-color: gray;</string>
-       </property>
-       <property name="text">
-        <string>                Choose a video to search</string>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-      </widget>
      </widget>
      <widget class="QPushButton" name="btn_chooseVideo">
       <property name="geometry">
        <rect>
-        <x>770</x>
-        <y>450</y>
-        <width>211</width>
-        <height>51</height>
+        <x>430</x>
+        <y>600</y>
+        <width>181</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -433,8 +381,8 @@ background-color: none;</string>
      <widget class="QPushButton" name="btn_advanceSearch">
       <property name="geometry">
        <rect>
-        <x>1020</x>
-        <y>30</y>
+        <x>220</x>
+        <y>610</y>
         <width>201</width>
         <height>41</height>
        </rect>
@@ -452,9 +400,9 @@ color: white;
      <widget class="QFrame" name="frame_dragDrop_7">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>350</x>
         <y>30</y>
-        <width>471</width>
+        <width>531</width>
         <height>81</height>
        </rect>
       </property>
@@ -474,7 +422,7 @@ border-radius: 10px;</string>
       <widget class="QLabel" name="label_12">
        <property name="geometry">
         <rect>
-         <x>170</x>
+         <x>200</x>
          <y>20</y>
          <width>261</width>
          <height>41</height>
@@ -489,6 +437,116 @@ border-radius: 10px;</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>0</y>
+         <width>141</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>../../../../Pictures/we bare bear sticker medium.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="btn_toSelectVideoPage">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>990</x>
+        <y>440</y>
+        <width>191</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+background-color: none;</string>
+      </property>
+      <property name="text">
+       <string>Search Video File</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_toSelectImagePage">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>990</x>
+        <y>380</y>
+        <width>191</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+background-color: none;</string>
+      </property>
+      <property name="text">
+       <string>Search Image File</string>
+      </property>
+     </widget>
+     <zorder>frame_dragDrop_7</zorder>
+     <zorder>btn_chooseImage</zorder>
+     <zorder>frame_dragDrop</zorder>
+     <zorder>btn_confirmImageVideo</zorder>
+     <zorder>btn_chooseVideo</zorder>
+     <zorder>btn_advanceSearch</zorder>
+     <zorder>text1</zorder>
+     <zorder>btn_toSelectVideoPage</zorder>
+     <zorder>btn_toSelectImagePage</zorder>
+    </widget>
+    <widget class="QWidget" name="videoSearchPage">
+     <widget class="QFrame" name="frame_dragDrop_9">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>30</y>
+        <width>431</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="acceptDrops">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:cyan;
+border-radius: 10px;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="label_33">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>251</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Shiny Signature&quot;, &quot;Arial&quot;;
+</string>
+       </property>
+       <property name="text">
+        <string>SELECT VIDEO FILE</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_34">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -508,21 +566,493 @@ border-radius: 10px;</string>
        </property>
       </widget>
      </widget>
-     <zorder>frame_dragDrop_7</zorder>
-     <zorder>btn_chooseImage</zorder>
-     <zorder>frame_dragDrop</zorder>
-     <zorder>btn_confirmImageVideo</zorder>
-     <zorder>frame_dragDrop_2</zorder>
-     <zorder>btn_chooseVideo</zorder>
-     <zorder>btn_advanceSearch</zorder>
-     <zorder>text1</zorder>
+     <widget class="QGroupBox" name="groupBox_7">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>140</y>
+        <width>731</width>
+        <height>441</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:white;</string>
+      </property>
+      <property name="title">
+       <string>Search Item</string>
+      </property>
+      <widget class="QFrame" name="frame_5">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>30</y>
+         <width>381</width>
+         <height>251</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QFrame" name="frame_dragDrop_12">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>10</y>
+          <width>321</width>
+          <height>191</height>
+         </rect>
+        </property>
+        <property name="acceptDrops">
+         <bool>true</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:lightgray;
+border-radius: 10px;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLabel" name="advancePage_insertFile_video">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>301</width>
+           <height>171</height>
+          </rect>
+         </property>
+         <property name="acceptDrops">
+          <bool>true</bool>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:white;
+border-radius: 0;
+border: 2px dashed gray;
+font-size: 11pt;
+color: gray;</string>
+         </property>
+         <property name="text">
+          <string>         Choose a file to search</string>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QPushButton" name="btn_chooseFile_advancePage_video">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>210</y>
+          <width>301</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 9pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+background-color: none;</string>
+        </property>
+        <property name="text">
+         <string>Choose File</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QRadioButton" name="radioButton_videoFolder">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>320</y>
+         <width>161</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Videos in Folder</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="radioButton_videoFile">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>50</y>
+         <width>181</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Video File</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_chooseFolder_video">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>560</x>
+         <y>360</y>
+         <width>131</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+background-color: none;</string>
+       </property>
+       <property name="text">
+        <string>Choose Folder</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_dirAdvance_video">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>360</y>
+         <width>511</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 1px solid gray;
+padding-left: 10px;
+font-size:9pt;</string>
+       </property>
+       <property name="text">
+        <string>Folder Directory</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="btn_toInsertPage_video">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>620</y>
+        <width>191</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+background-color: none;</string>
+      </property>
+      <property name="text">
+       <string>Back to Insert Page</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_findVideoSearch">
+      <property name="geometry">
+       <rect>
+        <x>850</x>
+        <y>600</y>
+        <width>291</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:gray;
+font: 13pt &quot;Shiny Signature&quot;, &quot;Arial&quot;;
+color: white;
+</string>
+      </property>
+      <property name="text">
+       <string>FIND MATCH CHARACTER</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>380</y>
+        <width>301</width>
+        <height>201</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:lightyellow;</string>
+      </property>
+      <property name="title">
+       <string>Video Details</string>
+      </property>
+      <widget class="QLabel" name="label_43">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>70</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Height (px) : </string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="spinBox_height">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>70</y>
+         <width>71</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>2000</number>
+       </property>
+       <property name="value">
+        <number>336</number>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="spinBox_width">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>40</y>
+         <width>71</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>2000</number>
+       </property>
+       <property name="value">
+        <number>600</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_47">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>100</y>
+         <width>141</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>FPS : </string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="spinBox_fps">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>100</y>
+         <width>71</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>2000</number>
+       </property>
+       <property name="value">
+        <number>30</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_48">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>40</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Width (px) :</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_reset_videoDetails">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>150</y>
+         <width>111</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 8pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+background-color: none;</string>
+       </property>
+       <property name="text">
+        <string>Reset to Default</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_8">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>140</y>
+        <width>301</width>
+        <height>201</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:lightyellow;</string>
+      </property>
+      <property name="title">
+       <string>Detection Settings</string>
+      </property>
+      <widget class="QLabel" name="label_49">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>40</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Confidence :</string>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="doubleSpinBox_scale_video">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>70</y>
+         <width>71</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="decimals">
+        <number>3</number>
+       </property>
+       <property name="minimum">
+        <double>0.001000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>1.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.001000000000000</double>
+       </property>
+       <property name="value">
+        <double>0.004000000000000</double>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="doubleSpinBox_threshold_video">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>100</y>
+         <width>71</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="minimum">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>1.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="value">
+        <double>0.300000000000000</double>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="doubleSpinBox_confidence_video">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>40</y>
+         <width>71</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="minimum">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>1.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="value">
+        <double>0.500000000000000</double>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_59">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>100</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Threshold :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_60">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>70</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Scale : </string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_reset_detectionSettings_video">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>150</y>
+         <width>111</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 8pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+background-color: none;</string>
+       </property>
+       <property name="text">
+        <string>Reset to Default</string>
+       </property>
+      </widget>
+     </widget>
     </widget>
-    <widget class="QWidget" name="advanceSearch_page">
+    <widget class="QWidget" name="imageSearchPage">
      <widget class="QGroupBox" name="groupBox_4">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>270</y>
+        <x>100</x>
+        <y>140</y>
         <width>291</width>
         <height>191</height>
        </rect>
@@ -647,136 +1177,7 @@ border-radius: 10px;</string>
         <string>Scale : </string>
        </property>
       </widget>
-      <widget class="QPushButton" name="btn_reset_detectionSettings">
-       <property name="geometry">
-        <rect>
-         <x>170</x>
-         <y>140</y>
-         <width>111</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font: 8pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
-background-color: none;</string>
-       </property>
-       <property name="text">
-        <string>Reset to Default</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QGroupBox" name="groupBox_3">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>500</y>
-        <width>291</width>
-        <height>191</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:lightyellow;</string>
-      </property>
-      <property name="title">
-       <string>Video Details</string>
-      </property>
-      <widget class="QLabel" name="label_16">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>70</y>
-         <width>121</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Height (px) : </string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spinBox_height">
-       <property name="geometry">
-        <rect>
-         <x>170</x>
-         <y>70</y>
-         <width>71</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="minimum">
-        <number>1</number>
-       </property>
-       <property name="maximum">
-        <number>2000</number>
-       </property>
-       <property name="value">
-        <number>336</number>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spinBox_width">
-       <property name="geometry">
-        <rect>
-         <x>170</x>
-         <y>40</y>
-         <width>71</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="minimum">
-        <number>1</number>
-       </property>
-       <property name="maximum">
-        <number>2000</number>
-       </property>
-       <property name="value">
-        <number>600</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_17">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>100</y>
-         <width>141</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>FPS : </string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spinBox_fps">
-       <property name="geometry">
-        <rect>
-         <x>170</x>
-         <y>100</y>
-         <width>71</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="minimum">
-        <number>1</number>
-       </property>
-       <property name="maximum">
-        <number>2000</number>
-       </property>
-       <property name="value">
-        <number>30</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_18">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>40</y>
-         <width>121</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Width (px) :</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btn_reset_videoDetails">
+      <widget class="QPushButton" name="btn_reset_detectionSettings_image">
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -797,10 +1198,10 @@ background-color: none;</string>
      <widget class="QGroupBox" name="groupBox_5">
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>10</y>
-        <width>661</width>
-        <height>581</height>
+        <x>430</x>
+        <y>130</y>
+        <width>731</width>
+        <height>451</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -815,7 +1216,7 @@ background-color: none;</string>
        </property>
        <property name="geometry">
         <rect>
-         <x>470</x>
+         <x>560</x>
          <y>370</y>
          <width>131</width>
          <height>51</height>
@@ -832,9 +1233,9 @@ background-color: none;</string>
       <widget class="QLabel" name="label_dirAdvance_image">
        <property name="geometry">
         <rect>
-         <x>60</x>
+         <x>50</x>
          <y>370</y>
-         <width>411</width>
+         <width>511</width>
          <height>51</height>
         </rect>
        </property>
@@ -850,9 +1251,9 @@ font-size:9pt;</string>
       <widget class="QFrame" name="frame_2">
        <property name="geometry">
         <rect>
-         <x>260</x>
-         <y>50</y>
-         <width>341</width>
+         <x>310</x>
+         <y>40</y>
+         <width>381</width>
          <height>251</height>
         </rect>
        </property>
@@ -865,7 +1266,7 @@ font-size:9pt;</string>
        <widget class="QFrame" name="frame_dragDrop_3">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>30</x>
           <y>10</y>
           <width>321</width>
           <height>191</height>
@@ -884,7 +1285,7 @@ border-radius: 10px;</string>
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <widget class="QLabel" name="advancePage_insertFile">
+        <widget class="QLabel" name="advancePage_insertFile_image">
          <property name="geometry">
           <rect>
            <x>10</x>
@@ -914,10 +1315,10 @@ color: gray;</string>
          </property>
         </widget>
        </widget>
-       <widget class="QPushButton" name="btn_chooseFile_advancePage">
+       <widget class="QPushButton" name="btn_chooseFile_advancePage_image">
         <property name="geometry">
          <rect>
-          <x>20</x>
+          <x>40</x>
           <y>210</y>
           <width>301</width>
           <height>31</height>
@@ -935,8 +1336,8 @@ background-color: none;</string>
       <widget class="QRadioButton" name="radioButton_imageFolder">
        <property name="geometry">
         <rect>
-         <x>60</x>
-         <y>340</y>
+         <x>50</x>
+         <y>330</y>
          <width>161</width>
          <height>21</height>
         </rect>
@@ -945,145 +1346,25 @@ background-color: none;</string>
         <string>Images in Folder</string>
        </property>
       </widget>
-      <widget class="QRadioButton" name="radioButton_videoFolder">
+      <widget class="QRadioButton" name="radioButton_imageFile">
        <property name="geometry">
         <rect>
-         <x>60</x>
-         <y>460</y>
-         <width>161</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Videos in Folder</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="radioButton_oneFile">
-       <property name="geometry">
-        <rect>
-         <x>60</x>
+         <x>50</x>
          <y>60</y>
          <width>181</width>
          <height>31</height>
         </rect>
        </property>
        <property name="text">
-        <string>A Image/Video File</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btn_chooseFolder_video">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>470</x>
-         <y>490</y>
-         <width>131</width>
-         <height>51</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font: 9pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
-background-color: none;</string>
-       </property>
-       <property name="text">
-        <string>Choose Folder</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_dirAdvance_video">
-       <property name="geometry">
-        <rect>
-         <x>60</x>
-         <y>490</y>
-         <width>411</width>
-         <height>51</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border: 1px solid gray;
-padding-left: 10px;
-font-size:9pt;</string>
-       </property>
-       <property name="text">
-        <string>Folder Directory</string>
+        <string>Image File</string>
        </property>
       </widget>
      </widget>
-     <widget class="QFrame" name="frame_dragDrop_4">
+     <widget class="QPushButton" name="btn_findImageSearch">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>20</y>
-        <width>311</width>
-        <height>181</height>
-       </rect>
-      </property>
-      <property name="acceptDrops">
-       <bool>true</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:lightgray;
-border-radius: 10px;</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <widget class="QLabel" name="advancePage_insertImage">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>291</width>
-         <height>161</height>
-        </rect>
-       </property>
-       <property name="acceptDrops">
-        <bool>true</bool>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color:white;
-border-radius: 0;
-border: 2px dashed gray;
-font-size: 11pt;
-color: gray;</string>
-       </property>
-       <property name="text">
-        <string>     Choose an image to search</string>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QPushButton" name="btn_chooseImage_advancePage">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>210</y>
-        <width>291</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 9pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
-background-color: none;</string>
-      </property>
-      <property name="text">
-       <string>Choose Image</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_findMatchCharacter_advanceSearch">
-      <property name="geometry">
-       <rect>
-        <x>860</x>
-        <y>610</y>
+        <x>870</x>
+        <y>600</y>
         <width>291</width>
         <height>61</height>
        </rect>
@@ -1098,60 +1379,14 @@ color: white;
        <string>FIND MATCH CHARACTER</string>
       </property>
      </widget>
-     <widget class="QFrame" name="frame_dragDrop_5">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>490</y>
-        <width>311</width>
-        <height>211</height>
-       </rect>
-      </property>
-      <property name="acceptDrops">
-       <bool>true</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:lightyellow;
-border-radius: 15px;</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-     </widget>
-     <widget class="QFrame" name="frame_dragDrop_6">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>260</y>
-        <width>311</width>
-        <height>211</height>
-       </rect>
-      </property>
-      <property name="acceptDrops">
-       <bool>true</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:lightyellow;
-border-radius: 15px;</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_toInsertPage">
+     <widget class="QPushButton" name="btn_toInsertPage_image">
       <property name="enabled">
        <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>630</y>
+        <x>110</x>
+        <y>620</y>
         <width>191</width>
         <height>41</height>
        </rect>
@@ -1164,15 +1399,65 @@ background-color: none;</string>
        <string>Back to Insert Page</string>
       </property>
      </widget>
-     <zorder>frame_dragDrop_6</zorder>
-     <zorder>frame_dragDrop_5</zorder>
-     <zorder>groupBox_4</zorder>
-     <zorder>groupBox_3</zorder>
-     <zorder>groupBox_5</zorder>
-     <zorder>frame_dragDrop_4</zorder>
-     <zorder>btn_chooseImage_advancePage</zorder>
-     <zorder>btn_findMatchCharacter_advanceSearch</zorder>
-     <zorder>btn_toInsertPage</zorder>
+     <widget class="QFrame" name="frame_dragDrop_10">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>20</y>
+        <width>431</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="acceptDrops">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:cyan;
+border-radius: 10px;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="label_36">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>251</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Shiny Signature&quot;, &quot;Arial&quot;;
+</string>
+       </property>
+       <property name="text">
+        <string>SELECT IMAGE FILE</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_61">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>0</y>
+         <width>141</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>../../../../Pictures/we bare bear sticker medium.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="loading_page">
      <widget class="QLabel" name="label_10">
@@ -3337,26 +3622,6 @@ border-radius: 6px;
       </property>
       <property name="text">
        <string>No character</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_11">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>550</y>
-        <width>491</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:lightyellow;
-border: 2px solid gray;
-font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
-padding-left:10px;
-</string>
-      </property>
-      <property name="text">
-       <string/>
       </property>
      </widget>
      <widget class="QGroupBox" name="groupBox_6">
