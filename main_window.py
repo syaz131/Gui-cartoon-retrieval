@@ -257,10 +257,15 @@ class MainWindow:
         self.reset_detectionSettings()
 
     def showSelectImagePage(self):
+        self.ui.radioButton_imageFile.setChecked(True)
+        self.radioBtn_chooseFileImage()
+        self.reset_videoDetails()
+        self.reset_detectionSettings()
 
-        self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
+        self.ui.advancePage_insertFile_image.setText('         Choose a file to search')
+        self.ui.label_dirAdvance_image.setText('Folder Directory')
+        self.fileAdvance_name = ''
 
-    def showAdvanceSearchPage(self):
         print('image search')
         try:
             if self.image_name != '':
