@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1260</width>
-    <height>729</height>
+    <width>1259</width>
+    <height>734</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -82,7 +82,7 @@ font:10pt &quot;Open Sans&quot;;</string>
      <enum>QFrame::NoFrame</enum>
     </property>
     <property name="currentIndex">
-     <number>9</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="start_page">
      <property name="styleSheet">
@@ -166,19 +166,6 @@ color: white;
      <zorder>btn_howToUse</zorder>
     </widget>
     <widget class="QWidget" name="howToUse_page">
-     <widget class="QPlainTextEdit" name="text1_3">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>40</y>
-        <width>191</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="plainText">
-       <string>how to use page</string>
-      </property>
-     </widget>
      <widget class="QFrame" name="frame_14">
       <property name="geometry">
        <rect>
@@ -237,21 +224,80 @@ background-color: none;</string>
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>150</y>
-        <width>101</width>
-        <height>51</height>
+        <x>340</x>
+        <y>190</y>
+        <width>561</width>
+        <height>301</height>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>1. Insert Image 
+ 2.Choose Seacrh Item - Image / Video 
+3.Choose Search Type - File / Folder 
+ 4.Selecte File / Folder 
+ 5.For advance search, set Detection Setting 
+ and Video Detail values</string>
       </property>
      </widget>
-     <zorder>frame_14</zorder>
-     <zorder>text1_3</zorder>
-     <zorder>frame_15</zorder>
-     <zorder>btn_readyToStart</zorder>
-     <zorder>label_5</zorder>
+     <widget class="QFrame" name="frame_dragDrop_11">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>80</y>
+        <width>631</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="acceptDrops">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:cyan;
+border-radius: 10px;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="label_16">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>20</y>
+         <width>371</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Shiny Signature&quot;, &quot;Arial&quot;;
+</string>
+       </property>
+       <property name="text">
+        <string>HOW TO USE CCIR APPLICATION</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_11">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>0</y>
+         <width>141</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>../../../../Pictures/we bare bear sticker medium.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="insert_page">
      <property name="acceptDrops">
@@ -329,74 +375,6 @@ color: gray;</string>
        </property>
       </widget>
      </widget>
-     <widget class="QPlainTextEdit" name="text1">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>20</y>
-        <width>104</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="plainText">
-       <string>insert page</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_confirmImageVideo">
-      <property name="geometry">
-       <rect>
-        <x>710</x>
-        <y>580</y>
-        <width>331</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:gray;
-font: 12pt &quot;Shiny Signature&quot;, &quot;Arial&quot;;
-color: white;
-</string>
-      </property>
-      <property name="text">
-       <string>CONFIRM INSERT IMAGE</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_chooseVideo">
-      <property name="geometry">
-       <rect>
-        <x>430</x>
-        <y>600</y>
-        <width>181</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
-background-color: none;</string>
-      </property>
-      <property name="text">
-       <string>Choose Video</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_advanceSearch">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>610</y>
-        <width>201</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:gray;
-font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
-color: white;
-</string>
-      </property>
-      <property name="text">
-       <string>Advance Search</string>
-      </property>
-     </widget>
      <widget class="QFrame" name="frame_dragDrop_7">
       <property name="geometry">
        <rect>
@@ -462,14 +440,14 @@ border-radius: 10px;</string>
       </property>
       <property name="geometry">
        <rect>
-        <x>990</x>
-        <y>440</y>
-        <width>191</width>
-        <height>41</height>
+        <x>630</x>
+        <y>580</y>
+        <width>241</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 9pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+       <string notr="true">font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
 background-color: none;</string>
       </property>
       <property name="text">
@@ -482,14 +460,14 @@ background-color: none;</string>
       </property>
       <property name="geometry">
        <rect>
-        <x>990</x>
-        <y>380</y>
-        <width>191</width>
-        <height>41</height>
+        <x>360</x>
+        <y>580</y>
+        <width>241</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 9pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
+       <string notr="true">font: 12pt &quot;Arial Rounded MT Bold&quot;, &quot;Arial&quot;;
 background-color: none;</string>
       </property>
       <property name="text">
@@ -499,10 +477,6 @@ background-color: none;</string>
      <zorder>frame_dragDrop_7</zorder>
      <zorder>btn_chooseImage</zorder>
      <zorder>frame_dragDrop</zorder>
-     <zorder>btn_confirmImageVideo</zorder>
-     <zorder>btn_chooseVideo</zorder>
-     <zorder>btn_advanceSearch</zorder>
-     <zorder>text1</zorder>
      <zorder>btn_toSelectVideoPage</zorder>
      <zorder>btn_toSelectImagePage</zorder>
     </widget>
@@ -2041,9 +2015,9 @@ padding-left: 30px;</string>
      <widget class="QLabel" name="label_15">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>30</x>
         <y>20</y>
-        <width>1221</width>
+        <width>1211</width>
         <height>41</height>
        </rect>
       </property>
@@ -2078,9 +2052,9 @@ background-color: none;</string>
      <widget class="QTabWidget" name="tabWidget_foundPage">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>30</x>
         <y>80</y>
-        <width>1221</width>
+        <width>1211</width>
         <height>521</height>
        </rect>
       </property>
@@ -2088,7 +2062,7 @@ background-color: none;</string>
        <enum>QTabWidget::North</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_frame_table">
        <attribute name="title">
@@ -2097,7 +2071,7 @@ background-color: none;</string>
        <widget class="QFrame" name="frame_8">
         <property name="geometry">
          <rect>
-          <x>710</x>
+          <x>700</x>
           <y>110</y>
           <width>491</width>
           <height>331</height>
@@ -2172,7 +2146,7 @@ padding-left: 30px;</string>
        <widget class="QTableWidget" name="tableFrameFound">
         <property name="geometry">
          <rect>
-          <x>20</x>
+          <x>10</x>
           <y>50</y>
           <width>671</width>
           <height>391</height>
@@ -2212,7 +2186,7 @@ padding-left: 30px;</string>
        <widget class="QLabel" name="label_characterName">
         <property name="geometry">
          <rect>
-          <x>710</x>
+          <x>700</x>
           <y>50</y>
           <width>491</width>
           <height>51</height>
@@ -2591,94 +2565,12 @@ padding-left:10px;
        <attribute name="title">
         <string>Play Video</string>
        </attribute>
-       <widget class="QFrame" name="frame_11">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>330</y>
-          <width>231</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color:lightgray;
-border-radius: 10px;</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <widget class="QLabel" name="label_videoPlay">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>10</y>
-           <width>351</width>
-           <height>151</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:white; border-radius: 0;</string>
-         </property>
-         <property name="text">
-          <string>Video</string>
-         </property>
-        </widget>
-        <widget class="QSlider" name="horizontalSlider_video">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>270</y>
-           <width>381</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:white;
- border-radius:0;</string>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_playVideo">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>260</y>
-           <width>61</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:white; border-radius:5px;</string>
-         </property>
-         <property name="text">
-          <string>Play</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QPushButton" name="pushButton_pauseVideo">
-        <property name="geometry">
-         <rect>
-          <x>100</x>
-          <y>230</y>
-          <width>93</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Pause</string>
-        </property>
-       </widget>
        <widget class="QPushButton" name="pushButton_runVideoDirectly">
         <property name="geometry">
          <rect>
-          <x>690</x>
-          <y>340</y>
-          <width>241</width>
+          <x>630</x>
+          <y>350</y>
+          <width>301</width>
           <height>51</height>
          </rect>
         </property>
@@ -2690,46 +2582,13 @@ background-color: none;</string>
          <string>PLAY VIDEO</string>
         </property>
        </widget>
-       <widget class="QFrame" name="frame_12">
-        <property name="geometry">
-         <rect>
-          <x>120</x>
-          <y>130</y>
-          <width>161</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color:lightgray;
-border-radius: 10px;</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <widget class="QGraphicsView" name="graphicsView_video">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>10</y>
-           <width>361</width>
-           <height>231</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:lightyellow</string>
-         </property>
-        </widget>
-       </widget>
        <widget class="QGroupBox" name="groupBox_videoDetail_folderSearch_2">
         <property name="geometry">
          <rect>
-          <x>680</x>
+          <x>630</x>
           <y>120</y>
-          <width>261</width>
-          <height>171</height>
+          <width>301</width>
+          <height>191</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -2742,7 +2601,7 @@ border-radius: 10px;</string>
          <property name="geometry">
           <rect>
            <x>30</x>
-           <y>80</y>
+           <y>90</y>
            <width>121</width>
            <height>21</height>
           </rect>
@@ -2755,7 +2614,7 @@ border-radius: 10px;</string>
          <property name="geometry">
           <rect>
            <x>30</x>
-           <y>120</y>
+           <y>140</y>
            <width>141</width>
            <height>20</height>
           </rect>
@@ -2780,7 +2639,7 @@ border-radius: 10px;</string>
         <widget class="QLabel" name="label_width_tabFound">
          <property name="geometry">
           <rect>
-           <x>160</x>
+           <x>190</x>
            <y>40</y>
            <width>91</width>
            <height>21</height>
@@ -2796,8 +2655,8 @@ border-radius: 10px;</string>
         <widget class="QLabel" name="label_height_tabFound">
          <property name="geometry">
           <rect>
-           <x>160</x>
-           <y>80</y>
+           <x>190</x>
+           <y>90</y>
            <width>91</width>
            <height>21</height>
           </rect>
@@ -2812,8 +2671,8 @@ border-radius: 10px;</string>
         <widget class="QLabel" name="label_fps_tabFound">
          <property name="geometry">
           <rect>
-           <x>160</x>
-           <y>120</y>
+           <x>190</x>
+           <y>140</y>
            <width>91</width>
            <height>21</height>
           </rect>
@@ -2829,10 +2688,10 @@ border-radius: 10px;</string>
        <widget class="QGroupBox" name="groupBox_11">
         <property name="geometry">
          <rect>
-          <x>350</x>
+          <x>230</x>
           <y>120</y>
-          <width>261</width>
-          <height>171</height>
+          <width>301</width>
+          <height>191</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -2845,7 +2704,7 @@ border-radius: 10px;</string>
          <property name="geometry">
           <rect>
            <x>30</x>
-           <y>80</y>
+           <y>90</y>
            <width>121</width>
            <height>21</height>
           </rect>
@@ -2858,7 +2717,7 @@ border-radius: 10px;</string>
          <property name="geometry">
           <rect>
            <x>30</x>
-           <y>120</y>
+           <y>140</y>
            <width>141</width>
            <height>20</height>
           </rect>
@@ -2883,7 +2742,7 @@ border-radius: 10px;</string>
         <widget class="QLabel" name="label_conf_tabFound">
          <property name="geometry">
           <rect>
-           <x>160</x>
+           <x>200</x>
            <y>40</y>
            <width>91</width>
            <height>21</height>
@@ -2899,8 +2758,8 @@ border-radius: 10px;</string>
         <widget class="QLabel" name="label_scale_tabFound">
          <property name="geometry">
           <rect>
-           <x>160</x>
-           <y>80</y>
+           <x>200</x>
+           <y>90</y>
            <width>91</width>
            <height>21</height>
           </rect>
@@ -2915,8 +2774,8 @@ border-radius: 10px;</string>
         <widget class="QLabel" name="label_thresh_tabFound">
          <property name="geometry">
           <rect>
-           <x>160</x>
-           <y>120</y>
+           <x>200</x>
+           <y>140</y>
            <width>91</width>
            <height>21</height>
           </rect>
@@ -3411,9 +3270,9 @@ padding-left: 30px;</string>
      <widget class="QLabel" name="label_titleFound_fileSearch">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>30</x>
         <y>30</y>
-        <width>1221</width>
+        <width>1211</width>
         <height>51</height>
        </rect>
       </property>
@@ -3565,9 +3424,9 @@ border-radius: 6px;
      <widget class="QLabel" name="label_titleNotFound_fileSearch">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>30</x>
         <y>30</y>
-        <width>1221</width>
+        <width>1211</width>
         <height>51</height>
        </rect>
       </property>

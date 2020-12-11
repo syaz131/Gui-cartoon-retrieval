@@ -1,16 +1,14 @@
-import sys, os, glob
+import glob
+import os
+import sys
 
-from PyQt5 import QtCore
-from PyQt5.QtCore import Qt, QUrl, QDir
-from PyQt5.QtGui import QPixmap, QIcon, QMovie
-from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
-from PyQt5.QtMultimediaWidgets import QVideoWidget
-from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox, QTableWidgetItem, QSlider, QLabel, \
-    QSizePolicy, QStyle, QWidget
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox, QTableWidgetItem
 
+from Cartoon_character import Cartoon
 # change from file
 from Ui_main_pages import Ui_MainWindow
-from Cartoon_character import Cartoon
+
 
 class MainWindow:
     def __init__(self):
@@ -34,27 +32,15 @@ class MainWindow:
         self.ui.label_14.setPixmap(QPixmap(we_bear_icon))
         self.ui.label_34.setPixmap(QPixmap(we_bear_icon))
         self.ui.label_61.setPixmap(QPixmap(we_bear_icon))
+        self.ui.label_11.setPixmap(QPixmap(we_bear_icon))
 
-        loadingGif = 'Loading_2.gif'
-        self.movie = QMovie(loadingGif)
-        self.ui.label_buffer.setMovie(self.movie)
-        self.ui.label_videoPlay.setMovie(self.movie)
-        # self.ui.label_buffer_insertPage.setMovie(self.movie)
-        # self.ui.label_buffer_insertPage.setHidden(True)
-        self.movie.start()
 
         self.videoOutput_name = 'output\\output_video.mp4'
-        # self.videoPlay_output = QMovie(self.videoOutput_name)
-        # self.ui.label_videoPlay.setMovie(self.videoPlay_output)
-        # self.videoPlay_output.setPaused(True)
 
         # start first page
         self.ui.stackedWidget.setCurrentWidget(self.ui.start_page)
-        # self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
-        # self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
         # set switch button pages
-        # self.ui.btn_startApp.clicked.connect(self.showLoadingPage)
         self.ui.btn_startApp.clicked.connect(self.showInsertPage)
         self.ui.btn_insertAnotherImage1.clicked.connect(self.showInsertPage)
         self.ui.btn_insertAnotherImage2.clicked.connect(self.showInsertPage)
@@ -64,12 +50,7 @@ class MainWindow:
         self.ui.btn_toInsertPage_video.clicked.connect(self.showInsertPage)
 
         # # ======= initiate button connection ==================================
-        # self.ui.btn_confirmImageVideo.clicked.connect(self.showLoadingPage)
-        self.ui.btn_confirmImageVideo.clicked.connect(self.showMatchPage)
         self.ui.btn_chooseImage.clicked.connect(self.chooseImage)
-        self.ui.btn_chooseVideo.clicked.connect(self.chooseVideo)
-        # self.ui.pushButton_foundPage.clicked.connect(self.showFoundPage)
-        # self.ui.pushButton_notFoundPage.clicked.connect(self.showNotFoundPage)
         self.ui.pushButton_runVideoDirectly.clicked.connect(self.playVideoDirectly)
 
         self.ui.btn_toSelectImagePage.clicked.connect(self.showSelectImagePage)
@@ -85,7 +66,7 @@ class MainWindow:
         # self.ui.insertPage_cartoonImage.setPixmap(image)
 
         # ================ Extra Pages - Advance Search / How To Use ===================
-        self.ui.btn_advanceSearch.clicked.connect(self.showAdvanceSearchPage)  # reset all value var
+        # self.ui.btn_advanceSearch.clicked.connect(self.showAdvanceSearchPage)  # reset all value var
         self.ui.btn_howToUse.clicked.connect(self.showHowToUsePage)
         self.ui.btn_readyToStart.clicked.connect(self.showInsertPage)
         self.ui.btn_findImageSearch.clicked.connect(self.findMatch_imagePageSearch)
@@ -93,8 +74,6 @@ class MainWindow:
 
         self.ui.btn_chooseFile_advancePage_image.clicked.connect(self.chooseFileImage)
         self.ui.btn_chooseFile_advancePage_video.clicked.connect(self.chooseFileVideo)
-        # self.ui.btn_chooseFile_advancePage_video.clicked.connect(self.chooseFileAdvance)
-        # self.ui.btn_chooseImage_advancePage.clicked.connect(self.chooseImageAdvance)
         self.ui.btn_chooseFolder_video.clicked.connect(self.chooseVideoFolder)
         self.ui.btn_chooseFolder_image.clicked.connect(self.chooseImageFolder)
 
@@ -124,38 +103,7 @@ class MainWindow:
         # ========= initiate cartoon detector ==================
         self.cartoon_image = Cartoon()
         self.cartoon_video = Cartoon()
-        # dir = 'images/shin-chan2.jpg'
-        # dir = 'images/bean 5 secs.mp4'
-        # cartoon.setConfidence(0.6)
 
-        # ============================= videoPlayer ==============================
-        self.mediaPlayer = QMediaPlayer(None, QMediaPlayer.VideoSurface)
-
-        # videoWidget = QVideoWidget()
-        self.label_moviePlay = QVideoWidget()
-        # self.label_moviePlay = QVideoWidget(self.ui.frame_11)
-        # self.label_moviePlay.setGeometry(QtCore.QRect(12, 15, 440, 210))
-        # self.label_moviePlay.setStyleSheet("background-color:lightyellow; border-radius: 0;")
-
-        # self.playButton = QPushButton()
-        # self.ui.pushButton_playVideo.setEnabled(False)
-        # self.ui.pushButton_playVideo.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
-        self.ui.pushButton_playVideo.clicked.connect(self.play)
-        self.ui.pushButton_pauseVideo.clicked.connect(self.openVideoFile)
-
-        self.ui.horizontalSlider_video = QSlider(Qt.Horizontal)
-        self.ui.horizontalSlider_video.setRange(0, 0)
-        self.ui.horizontalSlider_video.sliderMoved.connect(self.setPosition)
-
-        # self.errorLabel = QLabel()
-        # self.errorLabel.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
-
-        self.mediaPlayer.setVideoOutput(self.label_moviePlay)
-        # self.mediaPlayer.setVideoOutput(videoWidget)
-        self.mediaPlayer.stateChanged.connect(self.mediaStateChanged)
-        self.mediaPlayer.positionChanged.connect(self.positionChanged)
-        self.mediaPlayer.durationChanged.connect(self.durationChanged)
-        self.mediaPlayer.error.connect(self.handleError)
 
     def load_frame_output_data(self, name_list='h', time_list='h', accuracy_list='b'):
         self.ui.tableFrameFound.setRowCount(len(name_list))
@@ -196,7 +144,6 @@ class MainWindow:
     def showInsertPage(self):
         self.settings_details_backToDefault()
         self.ui.insertPage_cartoonImage.setText('                           Choose an image to search')
-        # self.ui.insertPage_cartoonVideo.setText('                Choose a video to search')
         self.image_name = ''
         self.video_name = ''
         self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
@@ -210,17 +157,6 @@ class MainWindow:
                 self.cartoon_image.setFileName(self.image_name)
                 self.cartoon_image.detectCharacter()
                 self.ui.stackedWidget.setCurrentWidget(self.ui.videoSearchPage)
-                # self.ui.stackedWidget.setCurrentWidget(self.ui.match_page)
-
-                # if self.video_name != '':
-                #     self.ui.matchPage_inputVideo.setPixmap(QPixmap(self.firstFrameName))
-                #
-                #     self.ui.text_2.setPlainText(str(self.cartoon_image.isCharacterFound))
-                #     self.ui.stackedWidget.setCurrentWidget(self.ui.match_page)
-                #
-                # else:
-                #     # when no file selected
-                #     self.showPopupError('No Video!', "Please choose a Video")
             else:
                 # when no file selected
                 self.showPopupError('No Image!', "Please choose an Image")
@@ -233,15 +169,10 @@ class MainWindow:
 
             self.cartoon_video.setFileName(self.video_name)
             self.cartoon_video.setCharacterToFindId(self.cartoon_image.characterId)
-            # self.loadingScreen.startAnimation()
             self.ui.label_statusStartLoad.setEnabled(True)
             self.cartoon_video.detectCharacter()
-            # self.loadingScreen.stopAnimation()
-            # self.ui.label_buffer_insertPage.setHidden(True)
 
             self.isImageMatchedVideo = self.cartoon_video.isImageMatchedVideo  # assign img match vid is T/F
-            # true go to found page
-            # false go to not found
             if self.isImageMatchedVideo:
                 self.load_frame_output_data(self.cartoon_video.fileNames, self.cartoon_video.timestamps,
                                             self.cartoon_video.frame_accuracies)
@@ -280,7 +211,7 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.resultFoundPage_advFolder)
 
     def showFoundPage(self):
-        output_image_name = 'output\\output_image.png'
+        output_image_name = 'output\\output_imageInput.png'
 
         self.ui.inputImage_found.setPixmap(QPixmap(output_image_name))
         self.ui.frameFound.setText('             Double click on Data to change Frame')
@@ -321,29 +252,53 @@ class MainWindow:
         self.ui.label_percentageAppearance.setText(str(appearancePercentage) + '%')
         self.ui.label_totalAppearanceTime.setText(str(totalTimeAppearance) + ' seconds')
 
+        self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
 
+        self.reset_detectionSettings()
 
+    def showSelectImagePage(self):
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
 
     def showAdvanceSearchPage(self):
-        self.radioBtn_chooseFile()
-        # reset all value to default
+        print('image search')
+        try:
+            if self.image_name != '':
+                self.ui.matchPage_inputImage.setPixmap(QPixmap(self.image_name))
+                self.cartoon_image.setFileName(self.image_name)
+                self.cartoon_image.detectCharacter()
+                self.ui.stackedWidget.setCurrentWidget(self.ui.imageSearchPage)
+            else:
+                self.showPopupError('No Image!', "Please choose an Image before proceed.")
+        except:
+            self.showPopupError('No Image!', "Please choose an Image before proceed.")
+
+
+    def showSelectVideoPage(self):
+        self.ui.radioButton_videoFile.setChecked(True)
+        self.radioBtn_chooseFileVideo()
         self.reset_videoDetails()
         self.reset_detectionSettings()
-        self.ui.advancePage_insertImage.setText('     Choose an image to search')
-        self.ui.advancePage_insertFile.setText('         Choose a file to search')
-        self.ui.label_dirAdvance_image.setText('Folder Directory')
-        self.ui.label_dirAdvance_video.setText('Folder Directory')
 
-        self.ui.stackedWidget.setCurrentWidget(self.ui.imageSearchPage)
+        self.ui.advancePage_insertFile_video.setText('         Choose a file to search')
+        self.ui.label_dirAdvance_video.setText('Folder Directory')
+        self.fileAdvance_name = ''
+
+        print('video search')
+        try:
+            if self.image_name != '':
+                self.ui.matchPage_inputImage.setPixmap(QPixmap(self.image_name))
+                self.cartoon_image.setFileName(self.image_name)
+                self.cartoon_image.detectCharacter()
+                self.ui.stackedWidget.setCurrentWidget(self.ui.videoSearchPage)
+            else:
+                self.showPopupError('No Image!', "Please choose an Image before proceed.")
+        except:
+            self.showPopupError('No Image!', "Please choose an Image before proceed.")
+
 
     def showHowToUsePage(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.howToUse_page)
-
-    def showLoadingPage(self):
-        self.movie.start()
-        self.ui.stackedWidget.setCurrentWidget(self.ui.loading_page)
 
     def showPopupError(self, errorText, errorInfo):
         msg = QMessageBox()
@@ -376,13 +331,6 @@ class MainWindow:
         except:
             # self.ui.insertPage_cartoonVideo.setText(' ')
             print('[ERROR] - Cant read video file')
-
-    def chooseImageAdvance(self):
-        fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
-                                            'c:\\Users\\Asus\\Pictures\\cartoon character',
-                                            "Image files (*.jpg *.png *.jpeg)")
-        self.image_name = fname[0]
-        self.ui.advancePage_insertImage.setPixmap(QPixmap(self.image_name))
 
     def chooseFileImage(self):
         fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
@@ -558,43 +506,6 @@ class MainWindow:
         self.ui.spinBox_height.setValue(height)
         self.ui.spinBox_fps.setValue(fps)
 
-    def showAdvanceSearchResult(self):
-        print(22)
-
-        # set vid details and detect settings
-        self.cartoon_image.isVideoDetails = True
-        self.cartoon_video.isVideoDetails = True
-        # self.cartoon_image.setConfidence(self.ui.doubleSpinBox_confidence.value())
-        # self.cartoon_image.setScale(self.ui.doubleSpinBox_scale.value())
-        # self.cartoon_image.setThreshold(self.ui.doubleSpinBox_threshold.value())
-        self.cartoon_video.setConfidence(self.ui.doubleSpinBox_confidence.value())
-        self.cartoon_video.setScale(self.ui.doubleSpinBox_scale.value())
-        self.cartoon_video.setThreshold(self.ui.doubleSpinBox_threshold.value())
-
-        # print(self.ui.doubleSpinBox_threshold.value()) - use this
-        # video advance details
-        self.cartoon_video.setWidth(self.ui.spinBox_width.value())
-        self.cartoon_video.setHeight(self.ui.spinBox_height.value())
-        self.cartoon_video.setFps(self.ui.spinBox_fps.value())
-
-
-
-        # if self.image_name != '':
-        #     self.cartoon_image.setFileName(self.image_name)
-        #     self.cartoon_image.detectCharacter()
-        if self.cartoon_image.isCharacterFound:
-            print('call find_match_character')
-
-            self.find_match_character()
-            self.cartoon_image.isVideoDetails = False
-            self.cartoon_video.isVideoDetails = False
-        else:
-            self.showNotFoundPage()
-            self.cartoon_image.isVideoDetails = False
-            self.cartoon_video.isVideoDetails = False
-        # else:
-        #     self.showPopupError('No Image Chosen!', 'Please choose an input image')
-
     def findMatch_imagePageSearch(self):
         print('image search btn')
 
@@ -605,7 +516,6 @@ class MainWindow:
 
         if self.cartoon_image.isCharacterFound:
             print('find match adv')
-            # ===== edit here ==============
             self.find_match_character()
 
             self.cartoon_image.isVideoDetails = False
@@ -628,7 +538,6 @@ class MainWindow:
 
         if self.cartoon_image.isCharacterFound:
             print('find match adv')
-            # ===== edit here ==============
             self.find_match_character()
 
             self.cartoon_image.isVideoDetails = False
@@ -691,12 +600,6 @@ class MainWindow:
                         self.ui.label_found_advSearch.setHidden(True)
 
                         self.showFileAdvSearchResult()
-
-                    # elif self.cartoon_video.MODE == 'video':
-                    #     print('detect video')
-                    #     self.video_name = directory
-                    #     self.showResultPage()
-
             except:
                 self.showPopupError('Error', 'Choose a file to search')
 
@@ -846,99 +749,6 @@ class MainWindow:
         self.cartoon_video.SCALE = scale
         self.cartoon_video.NMS_THRESHOLD = threshold
 
-    def showSelectImagePage(self):
-        self.ui.radioButton_imageFile.setChecked(True)
-        self.radioBtn_chooseFileImage()
-        self.reset_videoDetails()
-        self.reset_detectionSettings()
-
-        self.ui.advancePage_insertFile_image.setText('         Choose a file to search')
-        self.ui.label_dirAdvance_image.setText('Folder Directory')
-        self.fileAdvance_name = ''
-
-        print('image search')
-        try:
-            if self.image_name != '':
-                self.ui.matchPage_inputImage.setPixmap(QPixmap(self.image_name))
-                self.cartoon_image.setFileName(self.image_name)
-                self.cartoon_image.detectCharacter()
-                self.ui.stackedWidget.setCurrentWidget(self.ui.imageSearchPage)
-            else:
-                self.showPopupError('No Image!', "Please choose an Image before proceed.")
-        except:
-            self.showPopupError('No Image!', "Please choose an Image before proceed.")
-
-
-    def showSelectVideoPage(self):
-        self.ui.radioButton_videoFile.setChecked(True)
-        self.radioBtn_chooseFileVideo()
-        self.reset_videoDetails()
-        self.reset_detectionSettings()
-
-        self.ui.advancePage_insertFile_video.setText('         Choose a file to search')
-        self.ui.label_dirAdvance_video.setText('Folder Directory')
-        self.fileAdvance_name = ''
-
-        print('video search')
-        try:
-            if self.image_name != '':
-                self.ui.matchPage_inputImage.setPixmap(QPixmap(self.image_name))
-                self.cartoon_image.setFileName(self.image_name)
-                self.cartoon_image.detectCharacter()
-                self.ui.stackedWidget.setCurrentWidget(self.ui.videoSearchPage)
-            else:
-                self.showPopupError('No Image!', "Please choose an Image before proceed.")
-        except:
-            self.showPopupError('No Image!', "Please choose an Image before proceed.")
-
-    # # =================== play video event ========================
-
-    def openVideoFile(self):
-        fileName = self.videoOutput_name
-        if fileName != '':
-            self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(fileName)))
-            self.ui.pushButton_playVideo.setEnabled(True)
-
-    # def openFile(self):
-    #     fileName, _ = QFileDialog.getOpenFileName(self, "Open Movie",
-    #                                               QDir.homePath())
-    #
-    #     if fileName != '':
-    #         self.mediaPlayer.setMedia(
-    #             QMediaContent(QUrl.fromLocalFile(fileName)))
-    #         self.playButton.setEnabled(True)
-
-    def play(self):
-        self.movie.start()
-        if self.mediaPlayer.state() == QMediaPlayer.PlayingState:
-            self.mediaPlayer.pause()
-            # self.movie.setPaused(True)
-        else:
-            self.mediaPlayer.play()
-            # self.movie.setPaused(False)
-
-    def mediaStateChanged(self, state):
-        if self.mediaPlayer.state() == QMediaPlayer.PlayingState:
-            self.ui.pushButton_playVideo.setText('Play')
-            # self.ui.pushButton_playVideo.setIcon(
-            #     self.style().standardIcon(QStyle.SP_MediaPause))
-        else:
-            self.ui.pushButton_playVideo.setText('Pause')
-            # self.ui.pushButton_playVideo.setIcon(
-            # self.style().standardIcon(QStyle.SP_MediaPlay))
-
-    def positionChanged(self, position):
-        self.ui.horizontalSlider_video.setValue(position)
-
-    def durationChanged(self, duration):
-        self.ui.horizontalSlider_video.setRange(0, duration)
-
-    def setPosition(self, position):
-        self.mediaPlayer.setPosition(position)
-
-    def handleError(self):
-        self.ui.pushButton_playVideo.setEnabled(False)
-        # self.errorLabel.setText("Error: " + self.mediaPlayer.errorString())
 
 
 if __name__ == '__main__':
