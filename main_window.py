@@ -356,9 +356,9 @@ class MainWindow:
         x = msg.exec_()
 
     def showPopupSuccess(self, successText, successInfo):
+        success_icon = 'UI Images\\success icon.png'
         msg = QMessageBox()
-        msg.setIcon(QMessageBox.Information)
-        # msg.setIconPixmap(QPixmap('UI Images\\title we bare bear.png'))
+        msg.setIconPixmap(QPixmap(success_icon))
         msg.setWindowTitle("Success Popup")
         msg.setText(successText)
         msg.setInformativeText(successInfo)
