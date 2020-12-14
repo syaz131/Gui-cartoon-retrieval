@@ -82,7 +82,7 @@ font:10pt &quot;Open Sans&quot;;</string>
      <enum>QFrame::NoFrame</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>8</number>
     </property>
     <widget class="QWidget" name="start_page">
      <property name="styleSheet">
@@ -2055,7 +2055,7 @@ background-color: none;</string>
         <x>30</x>
         <y>80</y>
         <width>1211</width>
-        <height>521</height>
+        <height>531</height>
        </rect>
       </property>
       <property name="tabPosition">
@@ -2072,7 +2072,7 @@ background-color: none;</string>
         <property name="geometry">
          <rect>
           <x>700</x>
-          <y>110</y>
+          <y>100</y>
           <width>491</width>
           <height>331</height>
          </rect>
@@ -2147,7 +2147,7 @@ padding-left: 30px;</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>50</y>
+          <y>40</y>
           <width>671</width>
           <height>391</height>
          </rect>
@@ -2187,7 +2187,7 @@ padding-left: 30px;</string>
         <property name="geometry">
          <rect>
           <x>700</x>
-          <y>50</y>
+          <y>40</y>
           <width>491</width>
           <height>51</height>
          </rect>
@@ -2202,6 +2202,23 @@ border-radius: 6px;
         </property>
         <property name="text">
          <string>doraemon</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_videoSearch_toCsv">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>440</y>
+          <width>151</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+background-color: none;</string>
+        </property>
+        <property name="text">
+         <string>Save table to csv</string>
         </property>
        </widget>
       </widget>
@@ -2433,7 +2450,7 @@ border-radius: 0;</string>
          <property name="geometry">
           <rect>
            <x>50</x>
-           <y>230</y>
+           <y>200</y>
            <width>211</width>
            <height>21</height>
           </rect>
@@ -2462,7 +2479,7 @@ border-radius: 0;</string>
          <property name="geometry">
           <rect>
            <x>300</x>
-           <y>230</y>
+           <y>200</y>
            <width>121</width>
            <height>21</height>
           </rect>
@@ -2494,20 +2511,20 @@ border-radius: 0;</string>
          <property name="geometry">
           <rect>
            <x>50</x>
-           <y>200</y>
+           <y>230</y>
            <width>211</width>
            <height>21</height>
           </rect>
          </property>
          <property name="text">
-          <string>  Total Appearance Time </string>
+          <string>  Total Screen Time </string>
          </property>
         </widget>
         <widget class="QLabel" name="label_totalAppearanceTime">
          <property name="geometry">
           <rect>
            <x>300</x>
-           <y>200</y>
+           <y>230</y>
            <width>121</width>
            <height>21</height>
           </rect>
@@ -2558,6 +2575,23 @@ padding-left:10px;
         </property>
         <property name="text">
          <string>Character detail statistics in Video</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_saveCharDetails">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>430</y>
+          <width>191</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+background-color: none;</string>
+        </property>
+        <property name="text">
+         <string>Save character details</string>
         </property>
        </widget>
       </widget>
@@ -3188,6 +3222,23 @@ border-radius: 6px;
       </property>
       <property name="text">
        <string>Table Folder Search Result - Double click to open file</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_folderSearch_toCsv">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>510</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+background-color: none;</string>
+      </property>
+      <property name="text">
+       <string>Save table to csv</string>
       </property>
      </widget>
     </widget>

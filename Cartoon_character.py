@@ -27,6 +27,7 @@ class Cartoon:
         self.timestamps = []
         self.fileNames = []
         self.frame_accuracies = []
+        self.inputNameList = []
 
         self.outputImageFolderList = []
         self.outputVideoFolderList = []
@@ -329,6 +330,7 @@ class Cartoon:
             outputFile = "output\\output_" + self.characterName + str(count + 1) + ".png"
             self.outputImageFolderList.append(outputFile)
             self.frame_accuracies.append(self.numAccuracy)
+            self.inputNameList.append(self.FILE)
             cv2.imwrite(outputFile, image)
 
     def detectCharacter_inFolder(self, count):
@@ -384,6 +386,7 @@ class Cartoon:
                 avgAcc = round(sumAcc/len(accuracies), 2)
                 self.outputVideoFolderList.append(videoName)
                 self.frame_accuracies.append(avgAcc)
+                self.inputNameList.append(self.FILE)
             else:
                 os.remove(videoName)
 

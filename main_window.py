@@ -1,12 +1,12 @@
 import glob
 import os
 import sys
+import pandas as pd
 
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox, QTableWidgetItem
 
 from Cartoon_character import Cartoon
-# change from file
 from Ui_main_pages import Ui_MainWindow
 
 
@@ -15,7 +15,6 @@ class MainWindow:
         self.main_win = QMainWindow()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.main_win)
-        # mimeData = QMimeData()
 
         self.image_name = ''
         self.video_name = ''
@@ -33,7 +32,6 @@ class MainWindow:
         self.ui.label_34.setPixmap(QPixmap(we_bear_icon))
         self.ui.label_61.setPixmap(QPixmap(we_bear_icon))
         self.ui.label_11.setPixmap(QPixmap(we_bear_icon))
-
 
         self.videoOutput_name = 'output\\output_video.mp4'
 
@@ -57,6 +55,10 @@ class MainWindow:
         self.ui.btn_toSelectVideoPage.clicked.connect(self.showSelectVideoPage)
         self.ui.btn_changeImage.clicked.connect(self.changeImage_clicked)
         self.ui.btn_changeVIdeo.clicked.connect(self.changeVideo_clicked)
+
+        self.ui.pushButton_folderSearch_toCsv.clicked.connect(self.save_to_csv_folderSearch)
+        self.ui.pushButton_videoSearch_toCsv.clicked.connect(self.save_to_csv_videoSearch)
+        self.ui.pushButton_saveCharDetails.clicked.connect(self.save_character_details)
 
         # not yet functioning
         self.ui.btn_findMatchCharacter.clicked.connect(self.showResultPage)
@@ -104,7 +106,6 @@ class MainWindow:
         self.cartoon_image = Cartoon()
         self.cartoon_video = Cartoon()
 
-
     def load_frame_output_data(self, name_list='h', time_list='h', accuracy_list='b'):
         self.ui.tableFrameFound.setRowCount(len(name_list))
 
@@ -137,7 +138,52 @@ class MainWindow:
             self.ui.tableFileName_folderFound.setItem(row, 1, QTableWidgetItem(str(accuracy) + '%'))
             row = row + 1
 
-    # =================== show pages ========================
+    def save_to_csv_folderSearch(self):
+        inputName_list = self.cartoon_video.inputNameList
+        accuracy_list = self.cartoon_video.frame_accuracies
+
+        if len(self.cartoon_video.outputImageFolderList) == 0:
+            outputName_list = self.cartoon_video.outputVideoFolderList
+        else:
+            outputName_list = self.cartoon_video.outputImageFolderList
+
+        dictionary = {'Input File': inputName_list, 'Output File': outputName_list, 'Accuracy': accuracy_list}
+        df = pd.DataFrame(dictionary)
+        df.to_csv('output_folderSearch_table.csv', index=False, header=True)
+        self.showPopupSuccess('success', 'file saved in the current folder')
+
+    def save_to_csv_videoSearch(self):
+        outputName_list = self.cartoon_video.fileNames
+        accuracy_list = self.cartoon_video.frame_accuracies
+        time_list = self.cartoon_video.timestamps
+
+        dictionary = {'Output File': outputName_list, 'Accuracy': accuracy_list, 'Appearance Time': time_list}
+        df = pd.DataFrame(dictionary)
+        df.to_csv('output_videoSearch_table.csv', index=False, header=True)
+        self.showPopupSuccess('success', 'file saved in the current folder')
+
+    def save_character_details(self):
+        print(1)
+
+        character_name = self.cartoon_image.getCharacterName()
+        lowest_accuracy = self.ui.label_lowestAccNum.text()
+        highest_accuracy = self.ui.label_highestAccNum.text()
+        average_accuracy = self.ui.label_averageAccNum.text()
+        num_of_appearance = self.ui.label_numAppearance.text()
+        num_of_fps = self.ui.label_numFps.text()
+        percentage_appearance = self.ui.label_percentageAppearance.text()
+        total_screen_time = self.ui.label_totalAppearanceTime.text()
+
+        details = ['character_name', 'lowest_accuracy', 'highest_accuracy', 'percentage_appearance', 'total_screen_time']
+        data = [character_name, lowest_accuracy, highest_accuracy, percentage_appearance, total_screen_time]
+
+        dictionary = {'Details': details, 'Data': data}
+        df = pd.DataFrame(dictionary)
+        df.to_csv('output_character_details.csv', index=False, header=False)
+        self.showPopupSuccess('success', 'file saved in the current folder')
+
+        # =================== show pages ========================
+
     def show(self):
         self.main_win.show()
 
@@ -233,19 +279,17 @@ class MainWindow:
         # print(minAcc+maxAcc)
         sumAcc = sum(self.cartoon_video.frame_accuracies)
         numOfAppearance = len(self.cartoon_video.frame_accuracies)
-        avgAcc = round(sumAcc/numOfAppearance, 2)
+        avgAcc = round(sumAcc / numOfAppearance, 2)
         numOfFrame = self.cartoon_video.numOfFramestats
-        appearancePercentage = round(numOfAppearance/numOfFrame*100, 2)
+        appearancePercentage = round(numOfAppearance / numOfFrame * 100, 2)
         # print(appearancePercentage)
         fps = self.cartoon_video.fpsStats
-        totalTimeAppearance = round((1/fps)*numOfAppearance, 2)
+        totalTimeAppearance = round((1 / fps) * numOfAppearance, 2)
         # print(totalTimeAppearance)
 
-
         self.ui.label_characterName_input.setText('Input Image - ' + self.cartoon_image.getCharacterName())
-        self.ui.label_lowestAccNum.setText(str(minAcc)+'%')
-        self.ui.label_highestAccNum.setText(str(maxAcc)+'%')
-
+        self.ui.label_lowestAccNum.setText(str(minAcc) + '%')
+        self.ui.label_highestAccNum.setText(str(maxAcc) + '%')
         self.ui.label_averageAccNum.setText(str(avgAcc) + '%')
         self.ui.label_numAppearance.setText(str(numOfAppearance) + ' frames')
         self.ui.label_numFps.setText(str(numOfFrame) + ' frames')
@@ -253,7 +297,6 @@ class MainWindow:
         self.ui.label_totalAppearanceTime.setText(str(totalTimeAppearance) + ' seconds')
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.found_page)
-
         self.reset_detectionSettings()
 
     def showSelectImagePage(self):
@@ -278,7 +321,6 @@ class MainWindow:
         except:
             self.showPopupError('No Image!', "Please choose an Image before proceed.")
 
-
     def showSelectVideoPage(self):
         self.ui.radioButton_videoFile.setChecked(True)
         self.radioBtn_chooseFileVideo()
@@ -301,7 +343,6 @@ class MainWindow:
         except:
             self.showPopupError('No Image!', "Please choose an Image before proceed.")
 
-
     def showHowToUsePage(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.howToUse_page)
 
@@ -311,6 +352,16 @@ class MainWindow:
         msg.setWindowTitle("Warning Popup")
         msg.setText(errorText)
         msg.setInformativeText(errorInfo)
+        msg.setStandardButtons(QMessageBox.Ok)
+        x = msg.exec_()
+
+    def showPopupSuccess(self, successText, successInfo):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        # msg.setIconPixmap(QPixmap('UI Images\\title we bare bear.png'))
+        msg.setWindowTitle("Success Popup")
+        msg.setText(successText)
+        msg.setInformativeText(successInfo)
         msg.setStandardButtons(QMessageBox.Ok)
         x = msg.exec_()
 
@@ -378,8 +429,8 @@ class MainWindow:
 
     def chooseImageFolder(self):
         directory = QFileDialog.getExistingDirectory(self.ui.insert_page, 'Open file',
-                                               'c:\\Users\\Asus\\Pictures\\cartoon character',
-                                               QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
+                                                     'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                                     QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
         try:
             print(directory)
             self.ui.label_dirAdvance_image.setText(directory)
@@ -388,8 +439,8 @@ class MainWindow:
 
     def chooseVideoFolder(self):
         directory = QFileDialog.getExistingDirectory(self.ui.insert_page, 'Open file',
-                                               'c:\\Users\\Asus\\Pictures\\cartoon character',
-                                               QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
+                                                     'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                                     QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
         try:
             print(directory)
             self.ui.label_dirAdvance_video.setText(directory)
@@ -435,7 +486,6 @@ class MainWindow:
         # self.ui.insertPage_cartoonVideo.setText('                Choose a video to search')
         self.video_name = ''
         self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
-
 
     def radioBtn_chooseFileImage(self):
         self.ui.frame_2.setEnabled(True)
@@ -575,12 +625,12 @@ class MainWindow:
                         self.ui.frameImage_advInput.setPixmap(QPixmap(outputName_imageInput))
                         self.ui.label_found_advInput.setText(self.cartoon_image.getCharacterName())
                         self.ui.label_frameTitle_advInput.setText('                                Accuracy : '
-                                                                  + str(self.cartoon_image.accuracy_image)+'%')
+                                                                  + str(self.cartoon_image.accuracy_image) + '%')
 
                         self.ui.frameImage_advSearch.setPixmap(QPixmap(outputName_imageItem))
                         self.ui.label_found_advSearch.setText(self.cartoon_video.getCharacterName())
                         self.ui.label_frameTitle_advSearch.setText('                                Accuracy : '
-                                                                   + str(self.cartoon_video.accuracy_image)+'%')
+                                                                   + str(self.cartoon_video.accuracy_image) + '%')
 
                         self.ui.label_titleNotFound_fileSearch.setHidden(True)
                         self.ui.label_notFound_advInput.setHidden(True)
@@ -732,6 +782,7 @@ class MainWindow:
     def detectCartoonList(self, cartoonList):
         self.cartoon_video.outputImageFolderList.clear()
         self.cartoon_video.outputVideoFolderList.clear()
+        self.cartoon_video.inputNameList.clear()
         self.cartoon_video.frame_accuracies.clear()
 
         count = 0
@@ -739,6 +790,7 @@ class MainWindow:
             self.cartoon_video.setFileName(cartoonFileName)
             self.cartoon_video.setCharacterToFindId(self.cartoon_image.characterId)
             self.cartoon_video.detectCharacter_inFolder(count)
+
             count = count + 1
 
     def settings_details_backToDefault(self):
@@ -753,7 +805,6 @@ class MainWindow:
         self.cartoon_video.CONFIDENCE = confidence
         self.cartoon_video.SCALE = scale
         self.cartoon_video.NMS_THRESHOLD = threshold
-
 
 
 if __name__ == '__main__':
