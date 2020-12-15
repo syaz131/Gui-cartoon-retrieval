@@ -12,7 +12,7 @@ Able to search character Naruto, Mr Bean, Shin Chan, Conan, and Doraemon
 
 2. Unzip the downloaded file
 
-3. Google Drive - download model and input data
+3. Google Drive - download CCIR Input folder
 - [Google Drive - CCIR Input](https://drive.google.com/drive/folders/1cszh6-b40UdTkNgZFnlYyLk8F1O3vx1Y?usp=sharing)
 
 4. Unzip the downloaded file
