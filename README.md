@@ -21,6 +21,9 @@ Able to search character Naruto, Mr Bean, Shin Chan, Conan, and Doraemon
 
 
 ### Run Application
+For better explanation refer to :
+[Youtube - Run CCIR Application](https://www.youtube.com/watch?v=SrgViXj0zMU&ab_channel=InternetNiel-net)
+
 1. Open Anaconda cmd.exe prompt / cmd to run python
 
 2. Change directory to Gui-cartoon-retrieval folder
@@ -43,6 +46,5 @@ conda env export > ccir_env.yml
 activate ccir_env
 ```
 
-### Referance
-For better explanation refer to :
-[Youtube - Run CCIR Application](https://www.youtube.com/watch?v=SrgViXj0zMU&ab_channel=InternetNiel-net)
+### References
+- [Youtube - Run CCIR Application](https://www.youtube.com/watch?v=SrgViXj0zMU&ab_channel=InternetNiel-net)
