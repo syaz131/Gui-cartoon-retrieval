@@ -22,7 +22,7 @@ Able to search character Naruto, Mr Bean, Shin Chan, Conan, and Doraemon
 
 ### Run Application
 For better explanation refer to :
-[Youtube - Run CCIR Application](https://www.youtube.com/watch?v=SrgViXj0zMU&ab_channel=InternetNiel-net)
+[Youtube - Run CCIR Application](https://www.youtube.com/watch?v=Y-ycsY36Iqg&t=4s&ab_channel=SyazwanSalleh)
 
 1. Open Anaconda cmd.exe prompt / cmd to run python
 
@@ -50,4 +50,5 @@ python.exe main_window.py
 ```
 
 ### References
-- [Youtube - Run CCIR Application](https://www.youtube.com/watch?v=SrgViXj0zMU&ab_channel=InternetNiel-net)
+- [Youtube - Run CCIR Application](https://www.youtube.com/watch?v=Y-ycsY36Iqg&t=4s&ab_channel=SyazwanSalleh)
+- [Youtube - 5 Cartoon Characters Detection Results](https://www.youtube.com/watch?v=hlU6WKobE2U&ab_channel=SyazwanSalleh)
