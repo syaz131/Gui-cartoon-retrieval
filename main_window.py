@@ -3,12 +3,24 @@ import os
 import sys
 import pandas as pd
 
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox, QTableWidgetItem
+from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox, QTableWidgetItem, QLabel, QWidget
 
 from Cartoon_character import Cartoon
 from Ui_main_pages import Ui_MainWindow
 
+class LoadingScreen(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setFixedSize(300, 300)
+        self.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.CustomizeWindowHint)
+
+    def start_load_screen(self):
+        self.show()
+
+    def stop_load_screen(self):
+        self.close()
 
 class MainWindow:
     def __init__(self):
@@ -101,6 +113,8 @@ class MainWindow:
         # # button openFile =====================================
         self.ui.tableFrameFound.itemDoubleClicked.connect(self.changeFrameFound)
         self.ui.tableFileName_folderFound.itemDoubleClicked.connect(self.openImageAndVideoOutput)
+
+        self.loadingScreen = LoadingScreen()
 
         # ========= initiate cartoon detector ==================
         self.cartoon_image = Cartoon()
@@ -370,8 +384,8 @@ class MainWindow:
     # to read image
     def chooseImage(self):
         fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
-                                            'c:\\',
-                                            # 'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                            # 'c:\\',
+                                            'c:\\Users\\Asus\\Pictures\\cartoon character',
                                             "Image files (*.jpg *.png *.jpeg)")
         self.image_name = fname[0]
         self.ui.insertPage_cartoonImage.setPixmap(QPixmap(self.image_name))
@@ -412,8 +426,8 @@ class MainWindow:
 
     def chooseFileVideo(self):
         fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
-                                            'c:\\',
-                                            # 'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                            # 'c:\\',
+                                            'c:\\Users\\Asus\\Pictures\\cartoon character',
                                             "Image files (*.mp4 *.avi)")
 
         self.fileAdvance_name = fname[0]
@@ -622,7 +636,9 @@ class MainWindow:
                 else:
                     print('run file search')
                     self.cartoon_video.setFileName(directory)
+                    self.loadingScreen.start_load_screen()
                     self.cartoon_video.detectCharacter()
+                    self.loadingScreen.stop_load_screen()
 
                     if self.cartoon_image.characterId == self.cartoon_video.characterId:
                         outputName_imageInput = "output\\output_imageInput.png"
@@ -675,10 +691,11 @@ class MainWindow:
 
                 else:
                     print('search video file')
-                    self.cartoon_video.setFileName(directory)
-                    self.cartoon_video.detectCharacter()
                     self.video_name = directory
+                    self.loadingScreen.start_load_screen()
                     self.showResultPage()
+                    self.loadingScreen.stop_load_screen()
+
             except:
                 self.showPopupError('Error', 'Choose a file to search')
 
@@ -723,8 +740,9 @@ class MainWindow:
                         self.showPopupError('Error', 'No image file in folder')
 
                     else:
+                        self.loadingScreen.start_load_screen()
                         self.detectCartoonList(self.imageList)
-                        print(self.imageList)
+                        self.loadingScreen.stop_load_screen()
 
                         if len(self.cartoon_video.outputImageFolderList) == 0:
                             self.showNotFoundPage()
@@ -766,7 +784,9 @@ class MainWindow:
                         self.showPopupError('Error', 'No video file in folder')
 
                     else:
+                        self.loadingScreen.start_load_screen()
                         self.detectCartoonList(self.videoList)
+                        self.loadingScreen.stop_load_screen()
 
                         if len(self.cartoon_video.outputVideoFolderList) == 0:
                             self.showNotFoundPage()
