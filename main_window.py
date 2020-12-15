@@ -816,8 +816,9 @@ if __name__ == '__main__':
 # activate activate ccir_environment
 # python.exe main_window.py
 
-# to import env from yml file
+# Create the environment from the environment.yml file:
 # conda env create -f ccir_env.yml
+
 # to export env to yml file
 # conda env export > ccir_env.yml
 
