@@ -370,14 +370,16 @@ class MainWindow:
     # to read image
     def chooseImage(self):
         fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
-                                            'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                            'c:\\',
+                                            # 'c:\\Users\\Asus\\Pictures\\cartoon character',
                                             "Image files (*.jpg *.png *.jpeg)")
         self.image_name = fname[0]
         self.ui.insertPage_cartoonImage.setPixmap(QPixmap(self.image_name))
 
     def chooseVideo(self):
         fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
-                                            'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                            'c:\\',
+                                            # 'c:\\Users\\Asus\\Pictures\\cartoon character',
                                             "Video files (*.mp4 *.avi)")
         self.video_name = fname[0]
 
@@ -390,7 +392,8 @@ class MainWindow:
 
     def chooseFileImage(self):
         fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
-                                            'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                            'c:\\',
+                                            # 'c:\\Users\\Asus\\Pictures\\cartoon character',
                                             "Image files (*.jpg *.png *.jpeg)")
 
         self.fileAdvance_name = fname[0]
@@ -409,7 +412,8 @@ class MainWindow:
 
     def chooseFileVideo(self):
         fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
-                                            'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                            'c:\\',
+                                            # 'c:\\Users\\Asus\\Pictures\\cartoon character',
                                             "Image files (*.mp4 *.avi)")
 
         self.fileAdvance_name = fname[0]
@@ -429,7 +433,8 @@ class MainWindow:
 
     def chooseImageFolder(self):
         directory = QFileDialog.getExistingDirectory(self.ui.insert_page, 'Open file',
-                                                     'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                                     'c:\\',
+                                                     # 'c:\\Users\\Asus\\Pictures\\cartoon character',
                                                      QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
         try:
             print(directory)
@@ -439,7 +444,8 @@ class MainWindow:
 
     def chooseVideoFolder(self):
         directory = QFileDialog.getExistingDirectory(self.ui.insert_page, 'Open file',
-                                                     'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                                     'c:\\',
+                                                     # 'c:\\Users\\Asus\\Pictures\\cartoon character',
                                                      QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
         try:
             print(directory)
