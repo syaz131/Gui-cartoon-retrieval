@@ -11,3 +11,4 @@ main_window.spec
 *.gif
 UI Images/video_firstFrame.png
 *.csv
+*.pyc
