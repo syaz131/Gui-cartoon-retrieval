@@ -8,12 +8,12 @@ Able to search character Naruto, Mr Bean, Shin Chan, Conan, and Doraemon
 ### Download Files
 
 1. Github - download zip file
-[Github - Gui Cartoon Retrieval](https://github.com/syaz131/Gui-cartoon-retrieval)
+- [Github - Gui Cartoon Retrieval](https://github.com/syaz131/Gui-cartoon-retrieval)
 
 2. Unzip the downloaded file
 
 3. Google Drive - download model and input data
-[Google Drive - CCIR Input](https://drive.google.com/drive/folders/1cszh6-b40UdTkNgZFnlYyLk8F1O3vx1Y?usp=sharing)
+- [Google Drive - CCIR Input](https://drive.google.com/drive/folders/1cszh6-b40UdTkNgZFnlYyLk8F1O3vx1Y?usp=sharing)
 
 4. Unzip the downloaded file
 
