@@ -34,9 +34,9 @@ For better explanation refer to :
 cd C:\Users\Asus\Desktop\Gui-cartoon-retrieval
 ```
 
-3. Export yml file to python environment
+3. Create an environment using yml file
 ```
-conda env export > ccir_env.yml
+conda env create -f ccir_env.yml
 ```
 
 4. Activate the ccir_env environment
