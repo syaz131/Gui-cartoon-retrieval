@@ -35,15 +35,18 @@ cd C:\Users\Asus\Desktop\Gui-cartoon-retrieval
 ```
 
 3. Export yml file to python environment
-- use command below : 
 ```
 conda env export > ccir_env.yml
 ```
 
 4. Activate the ccir_env environment
-- use command below :
 ```
 activate ccir_env
+```
+
+5. At last, now you can run the application
+```
+python.exe main_window.py
 ```
 
 ### References
