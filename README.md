@@ -26,7 +26,7 @@ Able to search character Naruto, Mr Bean, Shin Chan, Conan, and Doraemon
 2. Change directory to Gui-cartoon-retrieval folder
 - use cd command 
 - copy paste from explorer
-- example : 
+- command example : 
 ```
 cd C:\Users\Asus\Desktop\Gui-cartoon-retrieval
 ```
@@ -43,5 +43,6 @@ conda env export > ccir_env.yml
 activate ccir_env
 ```
 
+### Referance
 For better explanation refer to :
 [Youtube - Run CCIR Application](https://www.youtube.com/watch?v=SrgViXj0zMU&ab_channel=InternetNiel-net)
