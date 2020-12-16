@@ -216,22 +216,6 @@ class MainWindow:
         self.video_name = ''
         self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
 
-    def showMatchPage(self):
-        # self.ui.label_statusStartLoad.setText('  Click the button to start Matching Character >>')
-
-        try:
-            if self.image_name != '':
-                self.ui.matchPage_inputImage.setPixmap(QPixmap(self.image_name))
-                self.cartoon_image.setFileName(self.image_name)
-                self.cartoon_image.detectCharacter()
-                self.ui.stackedWidget.setCurrentWidget(self.ui.videoSearchPage)
-            else:
-                # when no file selected
-                self.showPopupError('No Image!', "Please choose an Image")
-
-        except:
-            self.showPopupError('No Image or Video!', "Please choose Image and Video")
-
     def showResultPage(self):
         if self.cartoon_image.isCharacterFound:
 
@@ -682,7 +666,7 @@ class MainWindow:
                 self.showPopupError('Error', 'Choose a file to search')
 
         # search video file
-        elif self.ui.btn_chooseFile_advancePage_video and self.ui.radioButton_videoFile.isChecked():
+        elif self.ui.btn_chooseFile_advancePage_video.isEnabled() and self.ui.radioButton_videoFile.isChecked():
             try:
                 directory = self.fileAdvance_name
                 print(directory)
