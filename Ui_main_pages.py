@@ -87,7 +87,7 @@ class Ui_MainWindow(object):
         self.frame_15.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_15.setObjectName("frame_15")
         self.btn_readyToStart = QtWidgets.QPushButton(self.howToUse_page)
-        self.btn_readyToStart.setGeometry(QtCore.QRect(800, 610, 221, 61))
+        self.btn_readyToStart.setGeometry(QtCore.QRect(770, 590, 221, 61))
         self.btn_readyToStart.setStyleSheet("font: 12pt \"Shiny Signature\", \"Arial\";\n"
 "background-color: none;")
         self.btn_readyToStart.setObjectName("btn_readyToStart")
@@ -767,7 +767,7 @@ class Ui_MainWindow(object):
 "")
         self.label_characterName.setObjectName("label_characterName")
         self.pushButton_videoSearch_toCsv = QtWidgets.QPushButton(self.tab_frame_table)
-        self.pushButton_videoSearch_toCsv.setGeometry(QtCore.QRect(530, 440, 151, 41))
+        self.pushButton_videoSearch_toCsv.setGeometry(QtCore.QRect(520, 440, 161, 41))
         self.pushButton_videoSearch_toCsv.setStyleSheet("\n"
 "background-color: none;")
         self.pushButton_videoSearch_toCsv.setObjectName("pushButton_videoSearch_toCsv")
@@ -990,7 +990,7 @@ class Ui_MainWindow(object):
 "")
         self.label_characterName_folderFound.setObjectName("label_characterName_folderFound")
         self.tableFileName_folderFound = QtWidgets.QTableWidget(self.resultFoundPage_advFolder)
-        self.tableFileName_folderFound.setGeometry(QtCore.QRect(30, 150, 671, 331))
+        self.tableFileName_folderFound.setGeometry(QtCore.QRect(30, 150, 681, 331))
         self.tableFileName_folderFound.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tableFileName_folderFound.setAlternatingRowColors(True)
         self.tableFileName_folderFound.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
@@ -1017,7 +1017,7 @@ class Ui_MainWindow(object):
 "background-color: none;")
         self.btn_insertAnotherImage_folderFound.setObjectName("btn_insertAnotherImage_folderFound")
         self.groupBox_videoDetail_folderSearch = QtWidgets.QGroupBox(self.resultFoundPage_advFolder)
-        self.groupBox_videoDetail_folderSearch.setGeometry(QtCore.QRect(390, 500, 261, 171))
+        self.groupBox_videoDetail_folderSearch.setGeometry(QtCore.QRect(290, 500, 251, 171))
         self.groupBox_videoDetail_folderSearch.setStyleSheet("background-color:lightyellow;")
         self.groupBox_videoDetail_folderSearch.setObjectName("groupBox_videoDetail_folderSearch")
         self.label_44 = QtWidgets.QLabel(self.groupBox_videoDetail_folderSearch)
@@ -1030,19 +1030,19 @@ class Ui_MainWindow(object):
         self.label_46.setGeometry(QtCore.QRect(30, 40, 121, 21))
         self.label_46.setObjectName("label_46")
         self.label_widthFolderFound = QtWidgets.QLabel(self.groupBox_videoDetail_folderSearch)
-        self.label_widthFolderFound.setGeometry(QtCore.QRect(160, 40, 91, 21))
+        self.label_widthFolderFound.setGeometry(QtCore.QRect(160, 40, 81, 21))
         self.label_widthFolderFound.setStyleSheet("font: 13pt \"MS Sans Serif\";")
         self.label_widthFolderFound.setObjectName("label_widthFolderFound")
         self.label_heightFolderFound = QtWidgets.QLabel(self.groupBox_videoDetail_folderSearch)
-        self.label_heightFolderFound.setGeometry(QtCore.QRect(160, 80, 91, 21))
+        self.label_heightFolderFound.setGeometry(QtCore.QRect(160, 80, 81, 21))
         self.label_heightFolderFound.setStyleSheet("font: 13pt \"MS Sans Serif\";")
         self.label_heightFolderFound.setObjectName("label_heightFolderFound")
         self.label_fpsFolderFound = QtWidgets.QLabel(self.groupBox_videoDetail_folderSearch)
-        self.label_fpsFolderFound.setGeometry(QtCore.QRect(160, 120, 91, 21))
+        self.label_fpsFolderFound.setGeometry(QtCore.QRect(160, 120, 81, 21))
         self.label_fpsFolderFound.setStyleSheet("font: 13pt \"MS Sans Serif\";")
         self.label_fpsFolderFound.setObjectName("label_fpsFolderFound")
         self.groupBox_10 = QtWidgets.QGroupBox(self.resultFoundPage_advFolder)
-        self.groupBox_10.setGeometry(QtCore.QRect(70, 500, 261, 171))
+        self.groupBox_10.setGeometry(QtCore.QRect(30, 500, 251, 171))
         self.groupBox_10.setStyleSheet("background-color:lightyellow;")
         self.groupBox_10.setObjectName("groupBox_10")
         self.label_50 = QtWidgets.QLabel(self.groupBox_10)
@@ -1055,19 +1055,19 @@ class Ui_MainWindow(object):
         self.label_52.setGeometry(QtCore.QRect(30, 40, 121, 21))
         self.label_52.setObjectName("label_52")
         self.label_conf_folderFound = QtWidgets.QLabel(self.groupBox_10)
-        self.label_conf_folderFound.setGeometry(QtCore.QRect(160, 40, 91, 21))
+        self.label_conf_folderFound.setGeometry(QtCore.QRect(160, 40, 81, 21))
         self.label_conf_folderFound.setStyleSheet("font: 13pt \"MS Sans Serif\";")
         self.label_conf_folderFound.setObjectName("label_conf_folderFound")
         self.label_scale_folderFound = QtWidgets.QLabel(self.groupBox_10)
-        self.label_scale_folderFound.setGeometry(QtCore.QRect(160, 80, 91, 21))
+        self.label_scale_folderFound.setGeometry(QtCore.QRect(160, 80, 81, 21))
         self.label_scale_folderFound.setStyleSheet("font: 13pt \"MS Sans Serif\";")
         self.label_scale_folderFound.setObjectName("label_scale_folderFound")
         self.label_thresh_folderFound = QtWidgets.QLabel(self.groupBox_10)
-        self.label_thresh_folderFound.setGeometry(QtCore.QRect(160, 120, 91, 21))
+        self.label_thresh_folderFound.setGeometry(QtCore.QRect(160, 120, 81, 21))
         self.label_thresh_folderFound.setStyleSheet("font: 13pt \"MS Sans Serif\";")
         self.label_thresh_folderFound.setObjectName("label_thresh_folderFound")
         self.label_characterName_folderFound_2 = QtWidgets.QLabel(self.resultFoundPage_advFolder)
-        self.label_characterName_folderFound_2.setGeometry(QtCore.QRect(30, 100, 671, 41))
+        self.label_characterName_folderFound_2.setGeometry(QtCore.QRect(30, 100, 681, 41))
         self.label_characterName_folderFound_2.setStyleSheet("background-color:palegreen;\n"
 "border: 2px solid green;\n"
 "font: 11pt \"Arial Rounded MT Bold\", \"Arial\";\n"
@@ -1076,7 +1076,7 @@ class Ui_MainWindow(object):
 "")
         self.label_characterName_folderFound_2.setObjectName("label_characterName_folderFound_2")
         self.pushButton_folderSearch_toCsv = QtWidgets.QPushButton(self.resultFoundPage_advFolder)
-        self.pushButton_folderSearch_toCsv.setGeometry(QtCore.QRect(690, 510, 151, 41))
+        self.pushButton_folderSearch_toCsv.setGeometry(QtCore.QRect(560, 500, 151, 41))
         self.pushButton_folderSearch_toCsv.setStyleSheet("\n"
 "background-color: none;")
         self.pushButton_folderSearch_toCsv.setObjectName("pushButton_folderSearch_toCsv")
@@ -1084,7 +1084,7 @@ class Ui_MainWindow(object):
         self.resultPage_fileSearch = QtWidgets.QWidget()
         self.resultPage_fileSearch.setObjectName("resultPage_fileSearch")
         self.frame_16 = QtWidgets.QFrame(self.resultPage_fileSearch)
-        self.frame_16.setGeometry(QtCore.QRect(670, 200, 491, 331))
+        self.frame_16.setGeometry(QtCore.QRect(680, 200, 491, 331))
         self.frame_16.setStyleSheet("background-color:lightgray;\n"
 "border-radius: 10px;")
         self.frame_16.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -1125,7 +1125,7 @@ class Ui_MainWindow(object):
 "")
         self.label_titleFound_fileSearch.setObjectName("label_titleFound_fileSearch")
         self.label_found_advSearch = QtWidgets.QLabel(self.resultPage_fileSearch)
-        self.label_found_advSearch.setGeometry(QtCore.QRect(670, 140, 491, 51))
+        self.label_found_advSearch.setGeometry(QtCore.QRect(680, 140, 491, 51))
         self.label_found_advSearch.setStyleSheet("background-color:palegreen;\n"
 "border: 2px solid green;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
@@ -1134,7 +1134,7 @@ class Ui_MainWindow(object):
 "")
         self.label_found_advSearch.setObjectName("label_found_advSearch")
         self.btn_insertAnotherImage_pageFileAdvSch = QtWidgets.QPushButton(self.resultPage_fileSearch)
-        self.btn_insertAnotherImage_pageFileAdvSch.setGeometry(QtCore.QRect(870, 620, 371, 61))
+        self.btn_insertAnotherImage_pageFileAdvSch.setGeometry(QtCore.QRect(800, 610, 371, 61))
         self.btn_insertAnotherImage_pageFileAdvSch.setStyleSheet("font: 12pt \"Shiny Signature\", \"Arial\";\n"
 "background-color: none;")
         self.btn_insertAnotherImage_pageFileAdvSch.setObjectName("btn_insertAnotherImage_pageFileAdvSch")
@@ -1198,7 +1198,7 @@ class Ui_MainWindow(object):
 "")
         self.label_notFound_advInput.setObjectName("label_notFound_advInput")
         self.label_notFound_advSearch = QtWidgets.QLabel(self.resultPage_fileSearch)
-        self.label_notFound_advSearch.setGeometry(QtCore.QRect(670, 140, 491, 51))
+        self.label_notFound_advSearch.setGeometry(QtCore.QRect(680, 140, 491, 51))
         self.label_notFound_advSearch.setStyleSheet("background-color:pink;\n"
 "border: 2px solid red;\n"
 "font: 12pt \"Arial Rounded MT Bold\", \"Arial\";\n"
@@ -1238,7 +1238,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(8)
+        self.stackedWidget.setCurrentIndex(9)
         self.tabWidget_foundPage.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 

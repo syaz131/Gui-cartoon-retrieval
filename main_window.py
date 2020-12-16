@@ -154,24 +154,31 @@ class MainWindow:
         else:
             outputName_list = self.cartoon_video.outputImageFolderList
 
-        dictionary = {'Input File': inputName_list, 'Output File': outputName_list, 'Accuracy': accuracy_list}
+        dictionary = {'Input File': inputName_list, 'Output File': outputName_list, 'Accuracy (%)': accuracy_list}
         df = pd.DataFrame(dictionary)
-        df.to_csv('output_folderSearch_table.csv', index=False, header=True)
-        self.showPopupSuccess('success', 'file saved in the current folder')
+        try:
+            df.to_csv('Folder_search_table.csv', index=False, header=True)
+            info = 'File saved as Folder_search_table.csv'
+            self.showPopupSuccess('Save successful', info)
+        except:
+            self.showPopupError('Error', 'Cannot save csv folder')
 
     def save_to_csv_videoSearch(self):
         outputName_list = self.cartoon_video.fileNames
         accuracy_list = self.cartoon_video.frame_accuracies
         time_list = self.cartoon_video.timestamps
 
-        dictionary = {'Output File': outputName_list, 'Accuracy': accuracy_list, 'Appearance Time': time_list}
+        dictionary = {'Output File': outputName_list, 'Accuracy (%)': accuracy_list, 'Appearance Time': time_list}
         df = pd.DataFrame(dictionary)
-        df.to_csv('output_videoSearch_table.csv', index=False, header=True)
-        self.showPopupSuccess('success', 'file saved in the current folder')
+
+        try:
+            df.to_csv('Video_search_table.csv', index=False, header=True)
+            info = 'File saved as Video_search_table.csv'
+            self.showPopupSuccess('Save successful', info)
+        except:
+            self.showPopupError('Error', 'Cannot save csv folder')
 
     def save_character_details(self):
-        print(1)
-
         character_name = self.cartoon_image.getCharacterName()
         lowest_accuracy = self.ui.label_lowestAccNum.text()
         highest_accuracy = self.ui.label_highestAccNum.text()
@@ -181,14 +188,22 @@ class MainWindow:
         percentage_appearance = self.ui.label_percentageAppearance.text()
         total_screen_time = self.ui.label_totalAppearanceTime.text()
 
-        details = ['character_name', 'lowest_accuracy', 'highest_accuracy', 'percentage_appearance',
-                   'total_screen_time']
-        data = [character_name, lowest_accuracy, highest_accuracy, percentage_appearance, total_screen_time]
+        details = ['character_name', 'lowest_accuracy', 'highest_accuracy',
+                   'average_accuracy', 'num_of_appearance', 'num_of_fps',
+                   'percentage_appearance', 'total_screen_time']
+        data = [character_name, lowest_accuracy, highest_accuracy,
+                average_accuracy, num_of_appearance, num_of_fps,
+                percentage_appearance, total_screen_time]
 
         dictionary = {'Details': details, 'Data': data}
         df = pd.DataFrame(dictionary)
-        df.to_csv('output_character_details.csv', index=False, header=False)
-        self.showPopupSuccess('success', 'file saved in the current folder')
+
+        try:
+            df.to_csv('Character_details.csv', index=False, header=False)
+            info = 'File saved as Character_details.csv'
+            self.showPopupSuccess('Save successful', info)
+        except:
+            self.showPopupError('Error', 'Cannot save csv folder')
 
     # ========= Show pages functions ==============================================================================
     def show(self):
@@ -281,18 +296,14 @@ class MainWindow:
 
         # statistics video
         maxAcc = max(self.cartoon_video.frame_accuracies)
-        # print(maxAcc)
         minAcc = min(self.cartoon_video.frame_accuracies)
-        # print(minAcc+maxAcc)
         sumAcc = sum(self.cartoon_video.frame_accuracies)
         numOfAppearance = len(self.cartoon_video.frame_accuracies)
         avgAcc = round(sumAcc / numOfAppearance, 2)
         numOfFrame = self.cartoon_video.numOfFramestats
         appearancePercentage = round(numOfAppearance / numOfFrame * 100, 2)
-        # print(appearancePercentage)
         fps = self.cartoon_video.fpsStats
         totalTimeAppearance = round((1 / fps) * numOfAppearance, 2)
-        # print(totalTimeAppearance)
 
         self.ui.label_characterName_input.setText('Input Image - ' + self.cartoon_image.getCharacterName())
         self.ui.label_lowestAccNum.setText(str(minAcc) + '%')
@@ -375,8 +386,8 @@ class MainWindow:
     # ========= Choose file and folder functions ===================================================================
     def chooseImage(self):
         fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
-                                            # 'c:\\',
-                                            'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                            'c:\\',
+                                            # 'c:\\Users\\Asus\\Pictures\\cartoon character',
                                             "Image files (*.jpg *.png *.jpeg)")
         self.image_name = fname[0]
         self.ui.insertPage_cartoonImage.setPixmap(QPixmap(self.image_name))
@@ -410,8 +421,8 @@ class MainWindow:
 
     def chooseFileVideo(self):
         fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
-                                            # 'c:\\',
-                                            'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                            'c:\\',
+                                            # 'c:\\Users\\Asus\\Pictures\\cartoon character',
                                             "Image files (*.mp4 *.avi)")
 
         self.fileAdvance_name = fname[0]
@@ -431,8 +442,8 @@ class MainWindow:
 
     def chooseImageFolder(self):
         directory = QFileDialog.getExistingDirectory(self.ui.insert_page, 'Open file',
-                                                     # 'c:\\',
-                                                     'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                                     'c:\\',
+                                                     # 'c:\\Users\\Asus\\Pictures\\cartoon character',
                                                      QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
         try:
             print(directory)
@@ -694,7 +705,6 @@ class MainWindow:
         # Folder Search - IMAGE
         elif self.ui.btn_chooseFolder_image.isEnabled() and self.ui.radioButton_imageFolder.isChecked():
             try:
-                print(222)
                 directory = self.ui.label_dirAdvance_image.text()
                 print(directory)
 
