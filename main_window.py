@@ -10,6 +10,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox,
 from Cartoon_character import Cartoon
 from Ui_main_pages import Ui_MainWindow
 
+
 class LoadingScreen(QDialog):
     def __init__(self):
         super().__init__()
@@ -22,6 +23,7 @@ class LoadingScreen(QDialog):
 
     def stop_load_screen(self):
         self.close()
+
 
 class MainWindow:
     def __init__(self):
@@ -36,6 +38,10 @@ class MainWindow:
 
         self.videoList = []
         self.imageList = []
+
+        self.loadingScreen = LoadingScreen()
+        self.cartoon_image = Cartoon()
+        self.cartoon_video = Cartoon()
 
         we_bear_title = 'UI Images\\title we bare bear.png'
         we_bear_icon = 'UI Images\\we bare bear sticker medium.png'
@@ -66,14 +72,10 @@ class MainWindow:
 
         self.ui.btn_toSelectImagePage.clicked.connect(self.showSelectImagePage)
         self.ui.btn_toSelectVideoPage.clicked.connect(self.showSelectVideoPage)
-        self.ui.btn_changeImage.clicked.connect(self.changeImage_clicked)
-        self.ui.btn_changeVIdeo.clicked.connect(self.changeVideo_clicked)
 
         self.ui.pushButton_folderSearch_toCsv.clicked.connect(self.save_to_csv_folderSearch)
         self.ui.pushButton_videoSearch_toCsv.clicked.connect(self.save_to_csv_videoSearch)
         self.ui.pushButton_saveCharDetails.clicked.connect(self.save_character_details)
-
-        self.ui.btn_findMatchCharacter.clicked.connect(self.showResultPage)
 
         # ================ Extra Pages - Advance Search / How To Use ===================
         # self.ui.btn_advanceSearch.clicked.connect(self.showAdvanceSearchPage)  # reset all value var
@@ -105,17 +107,12 @@ class MainWindow:
 
         self.ui.tableFileName_folderFound.setColumnWidth(0, 490)
         self.ui.tableFileName_folderFound.setColumnWidth(1, 120)
-        #
-        # # button openFile =====================================
+
+        # button openFile =====================================
         self.ui.tableFrameFound.itemDoubleClicked.connect(self.changeFrameFound)
         self.ui.tableFileName_folderFound.itemDoubleClicked.connect(self.openImageAndVideoOutput)
 
-        self.loadingScreen = LoadingScreen()
-
-        # ========= initiate cartoon detector ==================
-        self.cartoon_image = Cartoon()
-        self.cartoon_video = Cartoon()
-
+    # ========= Loading table data / Save csv file ===================================================================
     def load_frame_output_data(self, name_list='h', time_list='h', accuracy_list='b'):
         self.ui.tableFrameFound.setRowCount(len(name_list))
 
@@ -184,7 +181,8 @@ class MainWindow:
         percentage_appearance = self.ui.label_percentageAppearance.text()
         total_screen_time = self.ui.label_totalAppearanceTime.text()
 
-        details = ['character_name', 'lowest_accuracy', 'highest_accuracy', 'percentage_appearance', 'total_screen_time']
+        details = ['character_name', 'lowest_accuracy', 'highest_accuracy', 'percentage_appearance',
+                   'total_screen_time']
         data = [character_name, lowest_accuracy, highest_accuracy, percentage_appearance, total_screen_time]
 
         dictionary = {'Details': details, 'Data': data}
@@ -192,8 +190,7 @@ class MainWindow:
         df.to_csv('output_character_details.csv', index=False, header=False)
         self.showPopupSuccess('success', 'file saved in the current folder')
 
-        # =================== show pages ========================
-
+    # ========= Show pages functions ==============================================================================
     def show(self):
         self.main_win.show()
 
@@ -375,9 +372,7 @@ class MainWindow:
         msg.setStandardButtons(QMessageBox.Ok)
         x = msg.exec_()
 
-    # =================== button function ========================
-
-    # to read image
+    # ========= Choose file and folder functions ===================================================================
     def chooseImage(self):
         fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
                                             # 'c:\\',
@@ -385,13 +380,6 @@ class MainWindow:
                                             "Image files (*.jpg *.png *.jpeg)")
         self.image_name = fname[0]
         self.ui.insertPage_cartoonImage.setPixmap(QPixmap(self.image_name))
-
-    def chooseVideo(self):
-        fname = QFileDialog.getOpenFileName(self.ui.insert_page, 'Open file',
-                                            'c:\\',
-                                            # 'c:\\Users\\Asus\\Pictures\\cartoon character',
-                                            "Video files (*.mp4 *.avi)")
-        self.video_name = fname[0]
 
         try:
             self.firstFrameName = self.cartoon_video.getFirstFrame(self.video_name)
@@ -463,14 +451,7 @@ class MainWindow:
         except:
             print("No folder selected")
 
-    def changeFrameFound(self):
-        row = self.ui.tableFrameFound.currentRow()
-        item = self.ui.tableFrameFound.item(row, 0).text()
-        time = self.ui.tableFrameFound.item(row, 1).text()
-        acc = self.ui.tableFrameFound.item(row, 2).text()
-        self.ui.label_frameTitle.setText('      Time : ' + time + '          Accuracy : ' + acc)
-        self.setFrameFound(item)
-
+    # ========= Open or play file selected ==========================================================================
     def openImageAndVideoOutput(self):
         row = self.ui.tableFileName_folderFound.currentRow()
         item = self.ui.tableFileName_folderFound.item(row, 0).text()
@@ -485,6 +466,7 @@ class MainWindow:
         except:
             print('[ERROR] File Not Found')
 
+    # ========= Set and change frame found functions ==============================================================
     def setFrameFound(self, fileName):
         img_ext = ["jpg", "jpeg", "png", "bmp"]
         ext = fileName.split('.')[-1]
@@ -493,16 +475,15 @@ class MainWindow:
         else:
             self.showPopupError('Not an image', 'File not found or \nFile open should be in *.png, *jpeg, *jpg')
 
-    def changeImage_clicked(self):
-        self.ui.insertPage_cartoonImage.setText('              Choose an image to search')
-        self.image_name = ''
-        self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
+    def changeFrameFound(self):
+        row = self.ui.tableFrameFound.currentRow()
+        item = self.ui.tableFrameFound.item(row, 0).text()
+        time = self.ui.tableFrameFound.item(row, 1).text()
+        acc = self.ui.tableFrameFound.item(row, 2).text()
+        self.ui.label_frameTitle.setText('      Time : ' + time + '          Accuracy : ' + acc)
+        self.setFrameFound(item)
 
-    def changeVideo_clicked(self):
-        # self.ui.insertPage_cartoonVideo.setText('                Choose a video to search')
-        self.video_name = ''
-        self.ui.stackedWidget.setCurrentWidget(self.ui.insert_page)
-
+    # ========= Radio buttons, reset and default value functions ====================================================
     def radioBtn_chooseFileImage(self):
         self.ui.frame_2.setEnabled(True)
         self.ui.btn_chooseFile_advancePage_image.setEnabled(True)
@@ -555,6 +536,19 @@ class MainWindow:
         self.ui.label_dirAdvance_video.setEnabled(True)
         self.ui.btn_chooseFolder_video.setEnabled(True)
 
+    def settings_details_backToDefault(self):
+        confidence = 0.5
+        scale = 0.004
+        threshold = 0.3
+
+        self.cartoon_image.CONFIDENCE = confidence
+        self.cartoon_image.SCALE = scale
+        self.cartoon_image.NMS_THRESHOLD = threshold
+
+        self.cartoon_video.CONFIDENCE = confidence
+        self.cartoon_video.SCALE = scale
+        self.cartoon_video.NMS_THRESHOLD = threshold
+
     def reset_detectionSettings(self):
         confidence = 0.5
         scale = 0.004
@@ -577,6 +571,7 @@ class MainWindow:
         self.ui.spinBox_height.setValue(height)
         self.ui.spinBox_fps.setValue(fps)
 
+    # ========= Find match detection process functions ==============================================================
     def findMatch_imagePageSearch(self):
         print('image search btn')
 
@@ -619,7 +614,6 @@ class MainWindow:
             self.cartoon_video.isVideoDetails = False
 
     def find_match_character(self):
-
         # search image file
         if self.ui.btn_chooseFile_advancePage_image.isEnabled() and self.ui.radioButton_imageFile.isChecked():
             try:
@@ -812,21 +806,7 @@ class MainWindow:
             self.cartoon_video.setFileName(cartoonFileName)
             self.cartoon_video.setCharacterToFindId(self.cartoon_image.characterId)
             self.cartoon_video.detectCharacter_inFolder(count)
-
             count = count + 1
-
-    def settings_details_backToDefault(self):
-        confidence = 0.5
-        scale = 0.004
-        threshold = 0.3
-
-        self.cartoon_image.CONFIDENCE = confidence
-        self.cartoon_image.SCALE = scale
-        self.cartoon_image.NMS_THRESHOLD = threshold
-
-        self.cartoon_video.CONFIDENCE = confidence
-        self.cartoon_video.SCALE = scale
-        self.cartoon_video.NMS_THRESHOLD = threshold
 
 
 if __name__ == '__main__':
