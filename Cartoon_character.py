@@ -16,12 +16,10 @@ class Cartoon:
         self.CLASSES = 'cfg/cartoon.names'
         self.CONFIG = 'cfg/yolov2.cfg'
         self.WEIGHTS = 'cfg/cartoon_yolo.weights'
-        # self.FILE = 'images/shin-chan2.jpg'  # can be video, can be image
         self.CONFIDENCE = 0.5
         self.NMS_THRESHOLD = 0.3
         self.SCALE = 0.00392
 
-        # self.FILE = 'images/shin-chan2.jpg'  # can be video, can be image
         self.FILE = ''  # can be video, can be image
         self.characterName = ''
         self.timestamps = []
@@ -31,7 +29,6 @@ class Cartoon:
 
         self.outputImageFolderList = []
         self.outputVideoFolderList = []
-        # self.isFound = False
         self.accuracy_image = ''
 
         # to compare image with video
@@ -53,11 +50,7 @@ class Cartoon:
             sys.exit("[ERROR] Invalid config path given")
         if not os.path.exists(self.WEIGHTS):
             sys.exit("[ERROR] Invalid weights path given")
-        # if not os.path.exists(self.FILE):
-        #     sys.exit("[ERROR] Invalid file path given")
 
-        # # put at match character
-        # # clear output first
         output_dir = 'output/'
         if os.path.exists(output_dir):
             try:
@@ -96,13 +89,11 @@ class Cartoon:
         self.net = cv2.dnn.readNet(self.WEIGHTS, self.CONFIG)
         print("[INFO] Model loaded successfully")
 
-        # Retriving Output Layers
+        # Retrieving Output Layers
         layers_names = self.net.getLayerNames()
         self.output_layers = [layers_names[i[0] - 1] for i in self.net.getUnconnectedOutLayers()]
 
     # ========================   detect character function   ===============================
-
-    # Function to draw bounding boxes
     def draw_BBox(self, image, class_id, confidence, x, y, x_plus_width, y_plus_height):
         label = str(self.classes[class_id]) + " " + str(round(confidence * 100, 2)) + "%"
         color = self.COLORS[class_id]
@@ -117,7 +108,7 @@ class Cartoon:
     def process_Image(self, image, index):
         # print("[INFO] Processing Frame : ", (index + 1))
 
-        # Retriving dimensions of image
+        # Retrieving dimensions of image
         # print("[INFO] Image Dimension : ", image.shape)
         width = image.shape[1]
         height = image.shape[0]
@@ -171,10 +162,6 @@ class Cartoon:
             self.characterName = self.classes[class_ids[i]]
             self.characterId = class_ids[i]
 
-            # self.isFound = True
-            # print("[Prediction] Class : ", self.classes[class_ids[i]])
-            # print("[Prediction] Score : ", round(confidences[i] * 100, 6))
-
         # Storing Image ================= make sure have folder output
         if self.MODE == "image":
             if self.isVideoDetails == False:
@@ -183,9 +170,7 @@ class Cartoon:
                 cv2.imwrite("output\\output_imageItem.png", image)
 
     def detectCharacter(self):
-        # self.isFound = False
         start = time.time()
-        # Loading input file and processing
         if self.MODE == "image":
             img = cv2.imread(self.FILE, cv2.IMREAD_COLOR)
             self.process_Image(img, 1)
@@ -201,7 +186,6 @@ class Cartoon:
                 fps = self.videoFps
 
             ret, frame = cap.read()  # read first frame
-            # - change width only
             frame = imutils.resize(frame, width=frameWidth)
 
             # Change fourcc according to video format supported by your device
@@ -232,15 +216,8 @@ class Cartoon:
                     op_vid.write(frame)
 
                     if self.isCharacterFound and self.characterId == self.characterToFindId:
-                        # if self.isCharacterFound and self.characterId == self.characterToFindId:  # is character =
-                        # character / label
-                        # print('charId : ' + str(self.characterId))
-                        # print('charId to find : ' + str(self.characterToFindId))
-
                         self.isImageMatchedVideo = True
-
                         output_file = "output_" + self.characterName + str(index).zfill(5) + "." + "png"
-
                         output_frame_name = "output/" + output_file
                         fileName = 'output\\' + output_file
 
@@ -257,29 +234,8 @@ class Cartoon:
         end = time.time()
         total_time = round(end - start, 2)
         print("[INFO] Time : {} sec".format(total_time))
-        # print(len(self.frame_accuracies))
-        # print(self.timestamps)
 
-        # delete when no match found - NO EFFECT
-        # if not self.isImageMatchedVideo and self.MODE == "video":
-        #     output_dir = 'output/'
-        #     output_vid = 'output_video.mp4'
-        #
-        #     if os.path.exists(output_dir):
-        #         try:
-        #             shutil.rmtree(output_dir)
-        #         except OSError as e:
-        #             print("Error: %s : %s" % (output_dir, e.strerror))
-        #
-        #     if os.path.exists(output_vid):
-        #         try:
-        #             shutil.rmtree(output_vid)
-        #         except OSError as e:
-        #             print("Error: %s : %s" % (output_vid, e.strerror))
-
-    def checkVideo(self):
-        return 0
-
+    # ============================    detection folder functions   ============================================
     def process_Image_inFolder(self, image, index, count):
         width = image.shape[1]
         height = image.shape[0]
@@ -395,7 +351,6 @@ class Cartoon:
         print("[INFO] Time : {} sec".format(total_time))
 
     # ============================    set and get function   ============================================
-
     def getFirstFrame(self, fileName):
         if not os.path.exists(fileName):
             sys.exit("[ERROR] Invalid config path given")
@@ -409,13 +364,8 @@ class Cartoon:
         return firstFrameName
 
     def setFileName(self, fileName):
-        # reset all video status
-        # to compare image with video
-        # self.isCharacterFound = False
-        # self.characterMatchedId = None
-
         self.isImageMatchedVideo = False
-        self.characterId = None  # not a big prob - always change at ddraw
+        self.characterId = None
         self.characterToFindId = None
 
         if not os.path.exists(fileName):
