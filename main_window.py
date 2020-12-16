@@ -5,16 +5,17 @@ import pandas as pd
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox, QTableWidgetItem, QLabel, QWidget
+from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox, QTableWidgetItem, QDialog
 
 from Cartoon_character import Cartoon
 from Ui_main_pages import Ui_MainWindow
 
-class LoadingScreen(QWidget):
+class LoadingScreen(QDialog):
     def __init__(self):
         super().__init__()
-        self.setFixedSize(300, 300)
-        self.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.CustomizeWindowHint)
+        self.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.CustomizeWindowHint | Qt.WindowTitleHint)
+        self.setWindowTitle('           Loading ...           This might take a while ...   ')
+        self.setFixedSize(400, 100)
 
     def start_load_screen(self):
         self.show()
@@ -72,12 +73,7 @@ class MainWindow:
         self.ui.pushButton_videoSearch_toCsv.clicked.connect(self.save_to_csv_videoSearch)
         self.ui.pushButton_saveCharDetails.clicked.connect(self.save_character_details)
 
-        # not yet functioning
         self.ui.btn_findMatchCharacter.clicked.connect(self.showResultPage)
-        # self.ui.pushButton_3.clicked.connect(self.showBlue)
-
-        # drag and drop image
-        # self.ui.insertPage_cartoonImage.setPixmap(image)
 
         # ================ Extra Pages - Advance Search / How To Use ===================
         # self.ui.btn_advanceSearch.clicked.connect(self.showAdvanceSearchPage)  # reset all value var
@@ -447,8 +443,8 @@ class MainWindow:
 
     def chooseImageFolder(self):
         directory = QFileDialog.getExistingDirectory(self.ui.insert_page, 'Open file',
-                                                     'c:\\',
-                                                     # 'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                                     # 'c:\\',
+                                                     'c:\\Users\\Asus\\Pictures\\cartoon character',
                                                      QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
         try:
             print(directory)
