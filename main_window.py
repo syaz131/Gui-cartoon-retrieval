@@ -437,8 +437,8 @@ class MainWindow:
 
     def chooseVideoFolder(self):
         directory = QFileDialog.getExistingDirectory(self.ui.insert_page, 'Open file',
-                                                     'c:\\',
-                                                     # 'c:\\Users\\Asus\\Pictures\\cartoon character',
+                                                     # 'c:\\',
+                                                     'c:\\Users\\Asus\\Pictures\\cartoon character',
                                                      QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
         try:
             print(directory)
