@@ -169,6 +169,7 @@ class Cartoon:
             else:
                 cv2.imwrite("output\\output_imageItem.png", image)
 
+    # ============================    detection file functions   ============================================
     def detectCharacter(self):
         start = time.time()
         if self.MODE == "image":

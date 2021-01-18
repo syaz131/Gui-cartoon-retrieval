@@ -74,28 +74,13 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.start_page)
         self.howToUse_page = QtWidgets.QWidget()
         self.howToUse_page.setObjectName("howToUse_page")
-        self.frame_14 = QtWidgets.QFrame(self.howToUse_page)
-        self.frame_14.setGeometry(QtCore.QRect(0, 0, 201, 711))
-        self.frame_14.setStyleSheet("background-color:lightyellow")
-        self.frame_14.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_14.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_14.setObjectName("frame_14")
-        self.frame_15 = QtWidgets.QFrame(self.howToUse_page)
-        self.frame_15.setGeometry(QtCore.QRect(1060, 0, 201, 711))
-        self.frame_15.setStyleSheet("background-color:lightyellow")
-        self.frame_15.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_15.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_15.setObjectName("frame_15")
         self.btn_readyToStart = QtWidgets.QPushButton(self.howToUse_page)
-        self.btn_readyToStart.setGeometry(QtCore.QRect(770, 590, 221, 61))
+        self.btn_readyToStart.setGeometry(QtCore.QRect(840, 610, 221, 61))
         self.btn_readyToStart.setStyleSheet("font: 12pt \"Shiny Signature\", \"Arial\";\n"
 "background-color: none;")
         self.btn_readyToStart.setObjectName("btn_readyToStart")
-        self.label_5 = QtWidgets.QLabel(self.howToUse_page)
-        self.label_5.setGeometry(QtCore.QRect(340, 190, 561, 301))
-        self.label_5.setObjectName("label_5")
         self.frame_dragDrop_11 = QtWidgets.QFrame(self.howToUse_page)
-        self.frame_dragDrop_11.setGeometry(QtCore.QRect(310, 80, 631, 81))
+        self.frame_dragDrop_11.setGeometry(QtCore.QRect(310, 40, 631, 81))
         self.frame_dragDrop_11.setAcceptDrops(True)
         self.frame_dragDrop_11.setStyleSheet("background-color:cyan;\n"
 "border-radius: 10px;")
@@ -113,6 +98,24 @@ class Ui_MainWindow(object):
         self.label_11.setPixmap(QtGui.QPixmap("../../../../Pictures/we bare bear sticker medium.png"))
         self.label_11.setScaledContents(True)
         self.label_11.setObjectName("label_11")
+        self.tabWidget = QtWidgets.QTabWidget(self.howToUse_page)
+        self.tabWidget.setGeometry(QtCore.QRect(210, 160, 851, 431))
+        self.tabWidget.setObjectName("tabWidget")
+        self.tab_step = QtWidgets.QWidget()
+        self.tab_step.setObjectName("tab_step")
+        self.label_5 = QtWidgets.QLabel(self.tab_step)
+        self.label_5.setGeometry(QtCore.QRect(100, 20, 551, 311))
+        self.label_5.setObjectName("label_5")
+        self.tabWidget.addTab(self.tab_step, "")
+        self.tab_advance = QtWidgets.QWidget()
+        self.tab_advance.setObjectName("tab_advance")
+        self.label_17 = QtWidgets.QLabel(self.tab_advance)
+        self.label_17.setGeometry(QtCore.QRect(50, 10, 341, 361))
+        self.label_17.setObjectName("label_17")
+        self.label_18 = QtWidgets.QLabel(self.tab_advance)
+        self.label_18.setGeometry(QtCore.QRect(450, 10, 341, 271))
+        self.label_18.setObjectName("label_18")
+        self.tabWidget.addTab(self.tab_advance, "")
         self.stackedWidget.addWidget(self.howToUse_page)
         self.insert_page = QtWidgets.QWidget()
         self.insert_page.setAcceptDrops(True)
@@ -1238,7 +1241,8 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(9)
+        self.stackedWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(0)
         self.tabWidget_foundPage.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1248,19 +1252,53 @@ class Ui_MainWindow(object):
         self.btn_startApp.setText(_translate("MainWindow", "START APPLICATION"))
         self.btn_howToUse.setText(_translate("MainWindow", "How To Use"))
         self.btn_readyToStart.setText(_translate("MainWindow", "READY TO START"))
-        self.label_5.setText(_translate("MainWindow", "1. Insert Image \n"
-" 2.Choose Seacrh Item - Image / Video \n"
-"3.Choose Search Type - File / Folder \n"
-" 4.Selecte File / Folder \n"
-" 5.For advance search, set Detection Setting \n"
-" and Video Detail values"))
         self.label_16.setText(_translate("MainWindow", "HOW TO USE CCIR APPLICATION"))
+        self.label_5.setText(_translate("MainWindow", "\n"
+"1. Insert Input Image. \n"
+"\n"
+"2. Choose Search Item - Image / Video. \n"
+"\n"
+"3. Choose File / Folder Search radio box. \n"
+"\n"
+"4. Browse file or folder path of cartoon images or videos. \n"
+"\n"
+"5. For advance search, set Detection Settings and Video Detail values. \n"
+"\n"
+"6. Observe and save search detection output."))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_step), _translate("MainWindow", "Searching Steps"))
+        self.label_17.setText(_translate("MainWindow", "Detection Settings : \n"
+"\n"
+"Confidence \n"
+"Minimum value for accuracy of object. \n"
+"Confidence score that is lower, will \n"
+"be filtered. \n"
+"\n"
+"Scale \n"
+"Multiplier for image values. Used to scale \n"
+"objects dimension. \n"
+"\n"
+"Threshold \n"
+"A value used in non maximum \n"
+"suppression, an algorithm to select \n"
+"entity out of overlapping entities"))
+        self.label_18.setText(_translate("MainWindow", "Video Details : \n"
+"\n"
+"Width \n"
+"Width of video output in pixel. \n"
+"\n"
+"Height \n"
+"Height of video output in pixel. \n"
+"\n"
+"FPS \n"
+"Frame per second. Number of consecutive \n"
+"frame displayed in each second."))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_advance), _translate("MainWindow", "Advance Search"))
         self.btn_chooseImage.setText(_translate("MainWindow", "Choose Image"))
         self.insertPage_cartoonImage.setText(_translate("MainWindow", "                           Choose an image to search"))
         self.label_12.setText(_translate("MainWindow", "INSERT INPUT IMAGE"))
-        self.btn_toSelectVideoPage.setText(_translate("MainWindow", "Search Video File"))
-        self.btn_toSelectImagePage.setText(_translate("MainWindow", "Search Image File"))
-        self.label_33.setText(_translate("MainWindow", "SELECT VIDEO FILE"))
+        self.btn_toSelectVideoPage.setText(_translate("MainWindow", "Search Video Item"))
+        self.btn_toSelectImagePage.setText(_translate("MainWindow", "Search Image Item"))
+        self.label_33.setText(_translate("MainWindow", "SELECT VIDEO ITEM"))
         self.groupBox_7.setTitle(_translate("MainWindow", "Search Item"))
         self.advancePage_insertFile_video.setText(_translate("MainWindow", "         Choose a file to search"))
         self.btn_chooseFile_advancePage_video.setText(_translate("MainWindow", "Choose File"))
@@ -1294,7 +1332,7 @@ class Ui_MainWindow(object):
         self.radioButton_imageFile.setText(_translate("MainWindow", "Image File"))
         self.btn_findImageSearch.setText(_translate("MainWindow", "FIND MATCH CHARACTER"))
         self.btn_toInsertPage_image.setText(_translate("MainWindow", "Back to Insert Page"))
-        self.label_36.setText(_translate("MainWindow", "SELECT IMAGE FILE"))
+        self.label_36.setText(_translate("MainWindow", "SELECT IMAGE ITEM"))
         self.label_10.setText(_translate("MainWindow", "loading page"))
         self.label_8.setText(_translate("MainWindow", "Input Image"))
         self.btn_findMatchCharacter.setText(_translate("MainWindow", "FIND MATCH CHARACTER"))
